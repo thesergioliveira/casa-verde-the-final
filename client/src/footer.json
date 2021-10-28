@@ -1,0 +1,27 @@
+[
+    {
+        "id": 0,
+        "name": "Impressum",
+        "path": "/impressum"
+      },
+      {
+        "id": 1,
+        "name": "AGB's",
+        "path": "/agb"
+      },
+      {
+        "id": 2,
+        "name": "Datenschutzerklärung",
+        "path": "/datenschutzerklaerung"
+      },
+      {
+        "id": 3,
+        "name": "Widerrufsbelehrung",
+        "path": "/widerrufsbelehrung"
+      },
+      {
+        "id": 4,
+        "name": "Zahlung & Versand",
+        "path": "/zahlung-versand"
+      }
+]

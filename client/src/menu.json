@@ -1,0 +1,52 @@
+[
+  
+  {
+    "id": 1,
+    "position": "center",
+    "name": "Shop",
+    "path": "/shop"
+  },
+  {
+    "id": 2,
+    "position": "center",
+    "name": "Decoration Services",
+    "path": "/services"
+  },
+  {
+    "id": 3,
+    "position": "center",
+    "name": "Events",
+    "path": "/events"
+  },
+  {
+    "id": 4,
+    "position": "center",
+    "name": "Rental Services",
+    "path": "/rent"
+  },
+  {
+    "id": 5,
+    "position": "center",
+    "name": "Ballet/Pilates",
+    "path": "/ballet-pilates"
+  },
+  {
+    "id": 6,
+    "position": "center",
+    "name": "Technical Services",
+    "path": "/technic"
+  },
+{
+    "id": 7,
+    "position": "left",
+    "name": "About",
+    "path": "/about"
+  },
+  {
+    "id": 8,
+    "position": "left",
+    "name": "Contact",
+    "path": "/contact"
+  }
+
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "name": "Weddings",
+        "link": "#weddings"
+      },
+      {
+        "id": 1,
+        "name": "Plant ideas",
+        "link": "#plant"
+      },
+      {
+        "id": 2,
+        "name": "Gift ideas",
+        "link": "#gift"
+      },
+      {
+        "id": 3,
+        "name": "Funerals",
+        "link": "#funerals"
+      }
+]

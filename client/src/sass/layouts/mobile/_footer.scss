@@ -1,0 +1,27 @@
+// Footer setup
+footer {
+    width: 100vw;
+    height: auto;
+    background-color: $cream;
+ 
+    // Ul setup
+    ul {
+        padding: 1em 0;
+        text-align: center;
+
+        // Link's setup
+        a {
+            text-decoration: none;
+        }
+    }
+
+    // Div's and p setup
+    p, div {
+        text-align: center;
+    }
+}
+
+// Secondary div setup
+.footer-secondary {
+    padding-bottom: 1em;
+}

@@ -1,0 +1,89 @@
+// Navigation setup
+
+// Nav setup
+header nav {
+    flex-direction: column;
+    background-color: $cream;
+
+    .nav-top {
+        padding: 2vh 7vw;
+        @include flex;
+        justify-content:  space-between;
+    }
+}
+
+// Hamburger menu setup
+.hamburger {
+    @include flex;
+    flex-direction: column;
+}
+
+// Hamburger menu content
+.menu-top,
+.menu-center,
+.menu-bottom {
+    width: 2em;
+    height: .3em;
+    margin: .1em;
+    background-color: black;
+    border: black solid 1px;
+    border-radius: 1em;
+}
+
+// Hamburger menu (Casa roof)
+.menu-roof {
+    width: 0;        
+    height: 0;
+    border-style: solid;
+    border-width: 0 1.1em .7em;        
+    border-color: transparent transparent black;
+    margin-bottom: .1em;
+}
+
+// Open nav setup
+.open {
+    .menu-roof {
+        position: relative;
+        transform: rotate(30deg);
+        margin-bottom: .4em;
+        right: -.3em;
+        transition: .2s;
+    }
+}
+
+// Close nav setup
+.close {
+    transition: .2s;
+}
+
+// Ul display none
+.none{
+    height: 0;
+    display: none;
+    transition: 2s;
+}
+
+// Show nav setup
+.show {
+    width: 60vw;
+    height: 100vh;
+    position: relative;
+    float: right;
+    @include flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: $cream;
+    transition: 2s;
+
+    // Li setup
+    li {
+        padding-left: 1em;
+        list-style: none;
+    }
+    
+    // Link's setup
+    a {
+        text-decoration: none;
+    }
+}

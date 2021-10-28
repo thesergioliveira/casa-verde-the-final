@@ -1,0 +1,17 @@
+[
+    {
+        "id": 0,
+        "name": "Workshops",
+        "link": "#workshops"
+      },
+      {
+        "id": 1,
+        "name": "Seminaries",
+        "link": "#seminaries"
+      },
+      {
+        "id": 2,
+        "name": "Art Market",
+        "link": "#art"
+      }
+]
