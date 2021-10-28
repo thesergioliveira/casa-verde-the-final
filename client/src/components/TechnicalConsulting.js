@@ -1,6 +1,6 @@
 import React from "react";
-import Map from "./Map";
 import ContactForm from "./ContactForm";
+import Map from "./Map";
 
 const TechnicalConsulting = () => {
   return (

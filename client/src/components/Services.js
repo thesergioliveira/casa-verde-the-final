@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import ServicesData from "../services.json";
+import ServicesData from "../JSON/services.json";
 import ContactForm from './ContactForm';
 import Map from "./Map";
 
@@ -15,6 +15,22 @@ const Services = () => {
     );
   });
 
+  // const componentsMenu = ServicesData.map((obj) => {
+  //   const { id, name, link, img } = obj;
+  //   // const img = images.map((image) => {
+  //   //   return (<img src={image} alt="details" width="100" height="100" />
+        
+  //   //   )
+  //   //});
+  //   //console.log(img);
+  //   return (
+  //     <li key={id}>
+  //       <h2 id={link}>{name}</h2>
+  //       <img src={img} alt="details" width="100" height="100" />
+  //     </li>
+  //   );
+  // });
+
   return (
     <div className="home">
       <div className="home-top">
@@ -23,7 +39,9 @@ const Services = () => {
         <p>Decoration Services</p>
       </div>
       <ul>{servicesMenu}</ul>
-      <div>Images- not ready</div>
+      {/* <div>
+        {componentsMenu}
+      </div> */}
       <ContactForm />
      <Map />
     </div>

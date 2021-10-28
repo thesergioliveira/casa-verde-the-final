@@ -1,8 +1,8 @@
 import React, { useState,useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Menu from "../menu.json";
+import Menu from "../JSON/menu.json";
 import { DataContext } from "./Context";
-import {FiLogOut} from "react-icons/fi"
+import {FiLogOut} from "react-icons/fi";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);

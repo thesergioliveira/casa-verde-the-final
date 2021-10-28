@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import EventsData from "../events.json";
+import EventsData from "../JSON/events.json";
+import ContactForm from './ContactForm';
 import Map from "./Map";
 
 const Events = () => {
@@ -23,6 +24,7 @@ const Events = () => {
       <ul>{eventsMenu}</ul>
       <button>Contact Now!</button>
       <div>Images- not ready</div>
+      <ContactForm />
       <Map />
     </div>
   );

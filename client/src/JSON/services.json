@@ -1,0 +1,30 @@
+[
+    {
+        "id": 0,
+        "name": "Weddings",
+        "link": "#weddings",
+        "linkId": "weddings",
+        "img": "./images/website.jpg"
+      },
+      {
+        "id": 1,
+        "name": "Plant ideas",
+        "link": "#plant",
+        "linkId": "plant",
+        "img": "./images/website.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Gift ideas",
+        "link": "#gift",
+        "linkId": "gift",
+        "img": "./images/website.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Funerals",
+        "link": "#funerals",
+        "linkId": "funerals",
+        "img": "./images/website.jpg"
+      }
+]

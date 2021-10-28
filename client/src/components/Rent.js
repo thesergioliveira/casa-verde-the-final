@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactForm from './ContactForm';
 import Map from "./Map";
 
 const Rent = () => {
@@ -12,6 +13,7 @@ const Rent = () => {
       <div>image???</div>
       <button>Contact Now!</button>
       <div>Images- not ready</div>
+      <ContactForm />
       <Map />
     </div>
     );

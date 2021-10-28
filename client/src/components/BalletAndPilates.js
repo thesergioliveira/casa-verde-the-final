@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CoursesData from "../courses.json";
+import CoursesData from "../JSON/courses.json";
+import ContactForm from './ContactForm';
 import Map from "./Map";
 
 const BalletAndPilates = () => {
@@ -23,6 +24,7 @@ const BalletAndPilates = () => {
       <ul>{coursesMenu}</ul>
       <button>Contact Now!</button>
       <div>Images- not ready</div>
+      <ContactForm />
       <Map />
     </div>
   );
