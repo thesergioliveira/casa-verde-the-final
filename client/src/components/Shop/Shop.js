@@ -35,8 +35,7 @@ function Shop() {
   };
  
   //localStorage.setItem("data", JSON.stringify(data));s
-  const getBasket = localStorage.getItem("basket");
-  console.log(getBasket);
+  
   useEffect(() => {
     getAllProducts();
   }, []);
@@ -55,14 +54,10 @@ function Shop() {
 
     return <Shopitem obj ={obj} />
   });
-  console.log(typeof(getBasket));
+
   return (
     <div>
-      <nav>basket: you have {getBasket} in your basket</nav>
-      {/* <p>
-        Total: €
-        {getProducts.reduce((sum, item) => sum + item.price * item.quantity, 0)}
-      </p> */}
+    
       <h1>Hi, I am the Shop Component!!!</h1>
       <div
         style={{

@@ -45,17 +45,20 @@ const Nav = () => {
         <Link to="/">
         <div className="logo">img</div>
         </Link>
+        <Link to="/basket">
+                  <button>Basket</button>
+                </Link>
         <div  >
             {token ? (
               <>
-                {" "}
+                
                 <div style={{color:"black" , fontWeight:"bold" ,textDecoration:"none", cursor:"pointer" }} onClick={logOut} alt="logout"><FiLogOut/></div>
               </>
             ) : (
               <>
-                {" "}
+             
                 <Link style={{color:"black" , fontWeight:"bold" ,textDecoration:"none"}}to="/login">sign in</Link>
-                {"  "}
+              
                 <Link style={{color:"black" , fontWeight:"bold" ,textDecoration:"none"}}to="/register">sign up</Link>
               </>
             )}

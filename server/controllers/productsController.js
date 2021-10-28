@@ -183,11 +183,11 @@ allProductControllers.getOneByID = async (req, res) => {
   try {
     const user = await User.findById(req.params.id).populate("basket");
     // res.status(200).json(user);
+    
     res.status(200).json({
-      message: `${user.username} has ${user.basket.length} stuff in his basket`,
-      basket: user.basket
-        .map((item) => ` ${item.name} from ${item.category} `)
-        .join("AND"),
+      
+      basket: user.basket.map((item) => item.toObject()),
+       
     });
   } catch (err) {
     res.status(err.status).json({ message: err.message });

@@ -1,15 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import React from "react";
-
+import {DataContext} from "../Context";
 function Shopitem(props) {
-    console.log(props.obj);
+    // console.log(props.obj);
     const [count, setCount] = useState(0);  
     const [wishlist, setWishlist] = useState(true);
+    const [data, setData] = useContext(DataContext);
+    
+    let indUserId=data?.user.id
+    console.log(indUserId);
       // add to basket
     const addToBasket = (id) => {
         setCount(count + 1);
-        axios.post("user/616fecb8c07e23a17f5f1042", {
+        axios.post(`user/${indUserId}`, {
           productId: id,
         })
       .then((res) => {
@@ -17,7 +21,7 @@ function Shopitem(props) {
       
       });
       };
-      //user/616fecb8c07e23a17f5f1042 is hard coded 
+    //to dos
 //make wishlist have only unique ids
       //https://stackoverflow.com/questions/50215619/axios-delete-method-not-working-in-react fix the delete operation
  const removeFromBasket = (id) => {

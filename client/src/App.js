@@ -20,11 +20,7 @@ function App() {
   return (
     <DataProvider>
     <Router
-      state={{
-        width: "100vw",
-        height: "100v",
-        display: "flex",
-      }}
+     
     >
       <Nav />
       <main>
