@@ -1,6 +1,7 @@
 import React from "react";
 import Map from "./Map";
 import ContactForm from "./ContactForm";
+import ContactInformation from "./ContactInformation";
 
 const TechnicalConsulting = () => {
   return (
@@ -13,6 +14,9 @@ const TechnicalConsulting = () => {
       <div>???</div>
       <button>Contact Now!</button>
       <div> ??? not ready</div>
+
+      {/* Info, Form && Map */}
+      <ContactInformation />
       <ContactForm />
       <Map />
     </div>
