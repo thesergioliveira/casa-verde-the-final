@@ -23,8 +23,8 @@ const ContactInformation = () => {
       </div>
       <div className="location">
         <h5>Anschrift</h5>
-        <p>Straße und Nummer</p>
-        <p>PLZ Stadt</p>
+        <p>Hauptstraße 28A</p>
+        <p>67304 Eisenberg (Pfalz)</p>
       </div>
     </div>
   );
