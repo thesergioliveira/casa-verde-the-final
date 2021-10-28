@@ -1,7 +1,7 @@
 .info-container {
   width: 100%;
   @include flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   background-color: rgb(174, 206, 255); // <--------- remove later
 
   // Header
