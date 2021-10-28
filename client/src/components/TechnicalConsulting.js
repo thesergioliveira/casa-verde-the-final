@@ -17,8 +17,10 @@ const TechnicalConsulting = () => {
 
       {/* Info, Form && Map */}
       <ContactInformation />
-      <ContactForm />
-      <Map />
+      <div className="form-map">
+        <ContactForm />
+        <Map />
+      </div>
     </div>
   );
 };

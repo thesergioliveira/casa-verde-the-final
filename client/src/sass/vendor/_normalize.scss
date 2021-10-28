@@ -1,7 +1,15 @@
 // Normalize
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// change later just for testing
+.form-map {
+  width: 100%;
+  height: 550px;
+  display: flex;
+  flex-wrap: wrap;
 }
