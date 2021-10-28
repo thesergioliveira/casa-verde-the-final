@@ -14,9 +14,11 @@ import Contact from "./components/footer/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
+import { DataProvider } from "./components/Context";
 
 function App() {
   return (
+    <DataProvider>
     <Router
       state={{
         width: "100vw",
@@ -46,7 +48,7 @@ function App() {
         </Switch>
       </main>
       <Footer />
-    </Router>
+    </Router></DataProvider>
   );
 }
 
