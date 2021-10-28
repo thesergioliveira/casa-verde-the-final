@@ -1,0 +1,11 @@
+// Google Map
+.map-contaier {
+  @include flex;
+  width: 90vw;
+  margin-bottom: 15px;
+
+  iframe {
+    border: none;
+    border-radius: 5px;
+  }
+}
