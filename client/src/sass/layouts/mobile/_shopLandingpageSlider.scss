@@ -1,10 +1,24 @@
 .slider-wrapper {
   width: 100vw;
   height: 70vh;
+  position: relative;
+  border: 1px dashed red; // <-- remove !!!
 
-  img {
+  .slide {
+    position: absolute;
+    opacity: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    transition: opacity ease-in-out 0.5s;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .silder-icon {
+    position: absolute;
   }
 }
