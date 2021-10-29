@@ -19,7 +19,14 @@ const ShopLandingpage = () => {
 
   // previous slide function
 
-  const prevSlide = () => {};
+  const prevSlide = () => {
+    if (slideId !== 1) {
+      setSlideId(slideId - 1);
+    }
+    if (slideId === 1) {
+      setSlideId(ShopSlider.length);
+    }
+  };
 
   // Map the images
   const slider = ShopSlider.map((obj) => {
