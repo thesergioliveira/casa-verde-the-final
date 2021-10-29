@@ -7,8 +7,6 @@ import ShopLandingpage from "./Shop/ShopLandingpage";
 const TechnicalConsulting = () => {
   return (
     <div className="home">
-      {/* Slider */}
-      <ShopLandingpage />
       <div className="home-top">
         <div className="roof"></div>
         <h1>Casa Verde</h1>
@@ -17,6 +15,9 @@ const TechnicalConsulting = () => {
       <div>???</div>
       <button>Contact Now!</button>
       <div> ??? not ready</div>
+
+      {/* Slider */}
+      <ShopLandingpage />
 
       {/* Info, Form && Map */}
       <ContactInformation />
