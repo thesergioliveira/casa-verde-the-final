@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactForm = () => {
   return (
-    <div className="wrapper-contact">
+    <div id="contact" className="wrapper-contact">
       {/* Form */}
       <div className="form-container">
         <div className="blur"></div>
