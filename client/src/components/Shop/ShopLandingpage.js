@@ -8,7 +8,14 @@ const ShopLandingpage = () => {
 
   // next slide function
 
-  const nextSlide = () => {};
+  const nextSlide = () => {
+    if (slideId !== ShopSlider.length) {
+      setSlideId(slideId + 1);
+    }
+    if (slideId === ShopSlider.length) {
+      setSlideId(1);
+    }
+  };
 
   // previous slide function
 
@@ -19,7 +26,7 @@ const ShopLandingpage = () => {
     const { id, name, alt, img } = obj;
 
     return (
-      <div key={id} className="slide">
+      <div key={id} className={slideId === id ? "slide active-slide" : "slide"}>
         <img src={process.env.PUBLIC_URL + img} alt={alt} />
       </div>
     );

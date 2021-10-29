@@ -18,7 +18,20 @@
     }
   }
 
+  .active-slide {
+    opacity: 1;
+  }
+
   .silder-icon {
     position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    color: white;
+  }
+  .left {
+    left: 1rem;
+  }
+  .right {
+    right: 1rem;
   }
 }
