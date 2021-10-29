@@ -33,10 +33,7 @@ function App() {
             <Route path="/events" exact render={Events}></Route>
             <Route path="/rent" exact render={Rent}></Route>
             <Route
-              path="/ballet-pilates"
-              exact
-              render={BalletAndPilates}
-            ></Route>
+              path="/ballet-pilates" exact render={BalletAndPilates}></Route>
             <Route path="/technic" exact render={TechnicalConsulting}></Route>
             <Route path="/about" exact render={About}></Route>
             <Route path="/contact" exact render={Contact}></Route>

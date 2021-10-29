@@ -1,17 +1,17 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../menu.json";
 import { DataContext } from "./Context";
-import {FiLogOut} from "react-icons/fi"
+import { FiLogOut } from "react-icons/fi";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(true);
   const [none, setNone] = useState(true);
-//use the context
+  //use the context
   const [data, setData] = useContext(DataContext);
   console.log(data?.user?.basket.length);
-  var basket=data?.user?.basket.length;
+  var basket = data?.user?.basket.length;
 
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
@@ -38,29 +38,57 @@ const Nav = () => {
   const redirect = () => {
     history.push("/login");
   };
- 
 
   return (
     <header>
       <nav>
         <div className="nav-top">
-        <Link to="/">
-        <div className="logo">img</div>
-        </Link>
-        <div>{basket}</div>
-        
-        <div  >
+          <Link to="/">
+            <div className="logo">img</div>
+          </Link>
+          <div>{basket}</div>
+
+          <div>
             {data ? (
               <>
                 {" "}
-                <div style={{color:"black" , fontWeight:"bold" ,textDecoration:"none", cursor:"pointer" }} onClick={logOut} alt="logout"><FiLogOut/></div>
+                <div
+                  style={{
+                    color: "black",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                    cursor: "pointer",
+                  }}
+                  onClick={logOut}
+                  alt="logout"
+                >
+                  <FiLogOut />
+                </div>
               </>
             ) : (
               <>
                 {" "}
-                <Link style={{color:"black" , fontWeight:"bold" ,textDecoration:"none"}}to="/login">sign in</Link>
+                <Link
+                  style={{
+                    color: "black",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                  }}
+                  to="/login"
+                >
+                  sign in
+                </Link>
                 {"  "}
-                <Link style={{color:"black" , fontWeight:"bold" ,textDecoration:"none"}}to="/register">sign up</Link>
+                <Link
+                  style={{
+                    color: "black",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                  }}
+                  to="/register"
+                >
+                  sign up
+                </Link>
               </>
             )}
           </div>

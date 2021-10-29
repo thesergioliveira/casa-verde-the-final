@@ -4,16 +4,17 @@ import React from "react";
 import { DataContext } from "../Context";
 
 function Shopitem(props) {
-  console.log(props.obj);
+  //console.log(props.obj);
   const [count, setCount] = useState(0);
   const [wishlist, setWishlist] = useState(true);
   const [data, setData] = useContext(DataContext);
-  //console.log(data.user.id);
+  //console.log(data?.user?.id);
+  //console.log(data?.user.basket);
   // add to basket
   const addToBasket = (id) => {
     setCount(count + 1);
     axios
-      .post("user/616fecb8c07e23a17f5f1042", {
+      .post(`user/${data?.user?.id}`, {
         productId: id,
       })
       .then((res) => {
@@ -26,7 +27,7 @@ function Shopitem(props) {
   const removeFromBasket = (id) => {
     setCount(count - 1);
     axios
-      .delete("user/616fecb8c07e23a17f5f1042", {
+      .delete(`user/${data?.user?.id}`, {
         productId: id,
       })
       .then((res) => {
