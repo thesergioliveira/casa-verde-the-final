@@ -9,7 +9,9 @@ const BalletAndPilates = () => {
     const { id, name, link } = obj;
     return (
       <li key={id}>
-        <Link to={link}>{name}</Link>
+        {/* the link is working only using anchor in this example */}
+        {/* <Link to={link}>{name}</Link> */}
+        <a href={link}>{name}</a>
       </li>
     );
   });
