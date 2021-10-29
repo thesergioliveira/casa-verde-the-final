@@ -60,7 +60,7 @@ const Rent = () => {
       <div>
         {componentsMenu}
       </div>
-      {/* to do- adding address */}
+      {/* to do- adding calendar and address */}
       <ContactForm />
       <Map />
     </div>
