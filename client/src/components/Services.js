@@ -10,13 +10,14 @@ const Services = () => {
     const { id, name, link } = obj;
     return (
       <li key={id}>
-        <Link to={link}>{name}</Link>
+        {/* <Link to={link}>{name}</Link> */}
+        <a href={link}>{name}</a>
       </li>
     );
   });
 
   const componentsMenu = ServicesData.map((obj) => {
-    const { id, name, link, img1, img2, img3, img4, img5, img6 } = obj;
+    const { id, name, linkId, img1, img2, img3, img4, img5, img6 } = obj;
     // const img = images.map((image) => {
     //   return (<img src={image} alt="details" width="100" height="100" />
         
@@ -25,7 +26,7 @@ const Services = () => {
     //console.log(img);
     return (
       <li key={id}>
-        <h2 id={link}>{name}</h2>
+        <h2 id={linkId}>{name}</h2>
         <img src={img1} alt="details" width="100" height="100" />
         <img src={img2} alt="details" width="100" height="100" />
         <img src={img3} alt="details" width="100" height="100" />
