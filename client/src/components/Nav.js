@@ -4,6 +4,7 @@ import Menu from "../JSON/menu.json";
 import { DataContext } from "./Context";
 import {FiLogOut} from "react-icons/fi";
 
+// set onClick for logo to close the menu - to do
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(true);
@@ -27,10 +28,16 @@ const Nav = () => {
     setClose(!close);
     setNone(!none);
   };
+  // closing hamburger menu function
+  const closeMenu = () => {
+    setClose(true);
+    setNone(true);
+  }
   //logout
   const logOut = () => {
     localStorage.clear();
     setData("");
+    closeMenu();
     redirect();
   };
   // redirect to login when its logged out
@@ -38,7 +45,6 @@ const Nav = () => {
   const redirect = () => {
     history.push("/login");
   };
- 
 
   return (
     <header>
@@ -58,9 +64,9 @@ const Nav = () => {
             ) : (
               <>
                 {" "}
-                <Link style={{color:"black" , fontWeight:"bold" ,textDecoration:"none"}}to="/login">sign in</Link>
+                <Link style={{color:"black" , fontWeight:"bold" ,textDecoration:"none"}} onClick={closeMenu} to="/login">sign in</Link>
                 {"  "}
-                <Link style={{color:"black" , fontWeight:"bold" ,textDecoration:"none"}}to="/register">sign up</Link>
+                <Link style={{color:"black" , fontWeight:"bold" ,textDecoration:"none"}} onClick={closeMenu} to="/register">sign up</Link>
               </>
             )}
           </div>
