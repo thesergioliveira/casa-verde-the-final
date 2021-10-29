@@ -24,7 +24,6 @@ const Register = () => {
         redirect();
       })
       .catch((err) => {
-        console.log(err.response)
         setRegisterMessage(err.response.data.message);
       });
   };

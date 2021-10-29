@@ -75,7 +75,7 @@ function Shopitem(props) {
         </button>{" "}
         {count}{" "}
         <button
-          disabled={count == 0}
+          disabled={count === 0}
           onClick={() => removeFromBasket(props.obj._id)}
         >
           remove(-) from basket
