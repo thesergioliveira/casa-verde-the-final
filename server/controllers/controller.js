@@ -22,7 +22,6 @@ allControllers.addUser = async (req, res) => {
       state: req.body.state,
       zip: req.body.zip,
       country: req.body.country,
-      avatar: req.file.path,
     });
 
     await user.save();
@@ -64,6 +63,7 @@ allControllers.login = async (req, res) => {
             password: user.password,
             username: user.username,
             basket: user.basket,
+            id: user._id,
           },
         });
     } else {

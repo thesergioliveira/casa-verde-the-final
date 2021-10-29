@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FooterData from '../footer.json';
+import FooterData from '../JSON/footer.json';
 
 // Only About and Contact pages links are working for the moment
 // The other are not created

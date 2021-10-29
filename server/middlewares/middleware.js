@@ -6,7 +6,7 @@ middleware.validator = async (req, res, next) => {
   //check User
   const userCheck = await User.findOne({ username: req.body.username });
   if (userCheck) {
-    return res.status(400).send("This name is already been used");
+    return res.status(400).send({message:"This name is already been used"});
   }
   //check email
   const email = req.body.email;
@@ -28,7 +28,7 @@ middleware.validator = async (req, res, next) => {
 middleware.checkToken = async (req, res, next) => {
   // Take Bearer out
   const accessToken = req.headers.authorization.split(" ")[0] || "";
-  console.log("token", accessToken);
+
   if (accessToken == "null") {
     return res.json({ auth: false, message: "User NOT Authenticated!" });
   }

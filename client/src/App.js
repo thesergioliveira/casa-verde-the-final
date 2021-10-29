@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./sass/main.scss";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
-import About from "./components/footer/About";
+import About from "./components/About";
 import Services from "./components/Services";
 import Shop from "./components/Shop/Shop";
 import Events from "./components/Events";
@@ -10,20 +10,16 @@ import Rent from "./components/Rent";
 import BalletAndPilates from "./components/BalletAndPilates";
 import TechnicalConsulting from "./components/TechnicalConsulting";
 import Footer from "./components/Footer";
-import Contact from "./components/footer/Contact";
+import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
+import { DataProvider } from "./components/Context";
 
 function App() {
   return (
-    <Router
-      state={{
-        width: "100vw",
-        height: "100v",
-        display: "flex",
-      }}
-    >
+    <DataProvider>
+    <Router>
       <Nav />
       <main>
         <p>
@@ -47,6 +43,7 @@ function App() {
       </main>
       <Footer />
     </Router>
+  </DataProvider>
   );
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HomeData from "../home.json";
+import HomeData from "../JSON/home.json";
 
 const Home = () => {
   const homeElements = HomeData.map((obj) => {

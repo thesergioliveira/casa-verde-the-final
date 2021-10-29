@@ -7,14 +7,11 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
+  const [registerMessage, setRegisterMessage] = useState("");
   axios.defaults.withCredentials = true;
 
   const handleSubmit = () => {
-    const data = new FormData();
-    data.append("username", username);
-    data.append("password", password);
-    data.append("passwordConf", passwordConf);
-    data.append("email", email);
+    const data = { username, password, passwordConf, email };
 
     axios
       .post("user/register", data, {
@@ -22,12 +19,18 @@ const Register = () => {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        console.log(res.data);
+        redirect();
+      })
+      .catch((err) => {
+        setRegisterMessage(err.response.data.message);
+      });
   };
   // i used useHistory to redirect after registering to the login page
   let history = useHistory();
   const redirect = () => {
-    history.push("/login");
+    history.push("/");
   };
   return (
     <div className="register-container">
@@ -61,18 +64,11 @@ const Register = () => {
         placeholder="confirm your password"
       />
 
-
-      <button
-        onClick={() => {
-          handleSubmit();
-          redirect();
-        }}
-      >
-        Register
-      </button>
+      <button onClick={handleSubmit}>Register</button>
 
       <h4>OR</h4>
       <Link to="/login">Login</Link>
+      <h3>{registerMessage}</h3>
     </div>
   );
 };
