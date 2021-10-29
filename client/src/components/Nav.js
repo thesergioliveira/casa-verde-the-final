@@ -9,7 +9,9 @@ const Nav = () => {
   const [close, setClose] = useState(true);
   const [none, setNone] = useState(true);
 //use the context
-  const [token, setToken] = useContext(DataContext);
+  const [data, setData] = useContext(DataContext);
+  console.log(data?.user?.basket.length);
+  var basket=data?.user?.basket.length;
 
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
@@ -28,7 +30,7 @@ const Nav = () => {
   //logout
   const logOut = () => {
     localStorage.clear();
-    setToken("");
+    setData("");
     redirect();
   };
   // redirect to login when its logged out
@@ -45,8 +47,10 @@ const Nav = () => {
         <Link to="/">
         <div className="logo">img</div>
         </Link>
+        <div>{basket}</div>
+        
         <div  >
-            {token ? (
+            {data ? (
               <>
                 {" "}
                 <div style={{color:"black" , fontWeight:"bold" ,textDecoration:"none", cursor:"pointer" }} onClick={logOut} alt="logout"><FiLogOut/></div>
