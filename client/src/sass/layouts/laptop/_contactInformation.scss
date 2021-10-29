@@ -1,5 +1,10 @@
 .info-container {
   .contact-info {
     flex-direction: row;
+
+    .phone,
+    .mail {
+      width: 30%;
+    }
   }
 }
