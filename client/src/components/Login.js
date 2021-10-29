@@ -6,7 +6,7 @@ import { DataContext } from "./Context";
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useContext(DataContext);
+  const [data, setData] = useContext(DataContext);
   const [loginMessage, setLoginMessage] = useState("");
   axios.defaults.withCredentials = true;
   const loginUser = () => {
@@ -19,9 +19,8 @@ const Login = ({ history }) => {
         if (!res.data.token) {
           setLoginMessage("token issue try again");
         } else {
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("basket", res.data.user.basket);
-          setToken(res.data.token);
+         setData(res.data);
+         localStorage.setItem("token", res.data.token);
           setLoginMessage("You are logged in");
           history.push("/");
         }
