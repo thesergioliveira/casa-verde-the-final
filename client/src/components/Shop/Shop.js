@@ -9,9 +9,7 @@ import Shopitem from "./Shopitem";
 function Shop() {
   const [data, setData] = useState([]);
 
-  
-
-//show all products
+  //show all products
   const getAllProducts = () => {
     const config = {
       headers: {
@@ -24,7 +22,7 @@ function Shop() {
       .then((res) => {
         if (res.data) {
           setData(res.data);
-         // console.log(res.data);
+          // console.log(res.data);
         } else {
           setData({ message: "user NOT Authenticated" });
         }
@@ -33,7 +31,7 @@ function Shop() {
         console.log("here", err.message);
       });
   };
- 
+
   //localStorage.setItem("data", JSON.stringify(data));s
   const getBasket = localStorage.getItem("basket");
   console.log(getBasket);
@@ -49,13 +47,13 @@ function Shop() {
       </div>
     );
   }
-  
+
   const getProducts = data?.map((obj) => {
     const { _id, category, name, price, description, quantity } = obj;
 
-    return <Shopitem obj ={obj} />
+    return <Shopitem obj={obj} />;
   });
-  console.log(typeof(getBasket));
+  console.log(typeof getBasket);
   return (
     <div>
       <nav>basket: you have {getBasket} in your basket</nav>
@@ -71,12 +69,11 @@ function Shop() {
           justifyContent: "center",
           flexWrap: "wrap",
         }}
-        
-      > 
-        {getProducts } 
-      </div> 
+      >
+        {getProducts}
+      </div>
     </div>
   );
 }
-   
+
 export default Shop;
