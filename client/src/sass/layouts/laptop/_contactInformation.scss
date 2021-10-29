@@ -1,10 +1,15 @@
 .info-container {
   .contact-info {
     flex-direction: row;
+    justify-content: flex-end;
+    border: 1px dashed red;
+    padding-right: 4rem;
 
     .phone,
     .mail {
-      width: 30%;
+      width: 35%;
+      max-width: 12rem;
+      border: 1px dashed red;
     }
   }
 }

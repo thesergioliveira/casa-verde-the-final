@@ -1,0 +1,10 @@
+.wrapper-contact {
+  float: right;
+  align-items: flex-end;
+  padding-right: 4rem;
+  .form-container {
+    border: 1px dashed red;
+    width: 65%;
+    max-width: 25rem;
+  }
+}
