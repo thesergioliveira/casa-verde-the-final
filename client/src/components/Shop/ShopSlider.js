@@ -39,10 +39,20 @@ const ShopSlider = () => {
     );
   });
 
+  // Slider Dots
+  // Slide to image when click on a dot
+  const clickDot = (i) => {
+    setSlideId(i);
+  };
+
   // create the Dots based on the length of slides.json
   const dots = Array.from({ length: Slides.length }).map((el, i) => {
     return (
-      <div key={i} className={slideId === i + 1 ? "dot active" : "dot"}></div>
+      <div
+        key={i}
+        onClick={() => clickDot(i + 1)}
+        className={slideId === i + 1 ? "dot active" : "dot"}
+      ></div>
     );
   });
 

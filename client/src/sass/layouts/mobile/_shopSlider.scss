@@ -40,7 +40,6 @@
   .container-dots {
     @include flex;
     justify-content: space-evenly;
-    border: 1px dashed red;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
