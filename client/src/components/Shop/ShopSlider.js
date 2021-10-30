@@ -39,11 +39,18 @@ const ShopSlider = () => {
     );
   });
 
+  // function for Dots
+
   return (
     <div className="slider-wrapper">
+      {/* Slider images */}
       {slider}
+
+      {/* Icons for next && previous slide */}
       <MdArrowBackIos className="silder-icon left" onClick={prevSlide} />
       <MdArrowForwardIos className="silder-icon right" onClick={nextSlide} />
+
+      {/* Slider dots */}
       <div className="container-dots"></div>
     </div>
   );
