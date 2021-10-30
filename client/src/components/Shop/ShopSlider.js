@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slides from "../../JSON/slides.json";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
@@ -55,6 +55,15 @@ const ShopSlider = () => {
       ></div>
     );
   });
+
+  // Image is changed automatically every 3.5 seconds (there are still problems)
+  // useEffect(() => {
+  //   setTimeout(
+  //     () => setSlideId((nextId) => (nextId === 5 ? 1 : nextId + 1)),
+  //     7000
+  //   );
+  //   return () => {};
+  // }, [slideId]);
 
   return (
     <div className="slider-wrapper">
