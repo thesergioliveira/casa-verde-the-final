@@ -76,6 +76,15 @@ const ShopSlider = () => {
 
       {/* Slider dots */}
       <div className="container-dots">{dots}</div>
+
+      {/* Buttons */}
+      <div className="container-btn-slider">
+        <button>Blumensträuße</button>
+        <button>Deko nach Jahreszeit</button>
+        <button>Topfpflanzen</button>
+        <button>Geschenkideen</button>
+        <button>Italienische Spezialitäten</button>
+      </div>
     </div>
   );
 };

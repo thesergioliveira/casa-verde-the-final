@@ -60,4 +60,26 @@
       background-color: black; // <-- Color
     }
   }
+
+  .container-btn-slider {
+    width: 90%;
+    height: 60%;
+    position: absolute;
+    @include flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+
+    button {
+      width: 90%;
+      height: 2.5rem;
+      background-color: rgba(221, 255, 211, 0.75);
+      border: none;
+      border-radius: 1.2rem;
+      font-size: 1.05rem;
+    }
+  }
 }
