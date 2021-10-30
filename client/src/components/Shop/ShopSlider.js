@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import ShopSlider from "../../shopSlider.json";
+import Slides from "../../JSON/slides.json";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
-const ShopLandingpage = () => {
+const ShopSlider = () => {
   // useState for ID
   const [slideId, setSlideId] = useState(1);
 
   // next slide function
 
   const nextSlide = () => {
-    if (slideId !== ShopSlider.length) {
+    if (slideId !== Slides.length) {
       setSlideId(slideId + 1);
     }
-    if (slideId === ShopSlider.length) {
+    if (slideId === Slides.length) {
       setSlideId(1);
     }
   };
@@ -24,13 +24,13 @@ const ShopLandingpage = () => {
       setSlideId(slideId - 1);
     }
     if (slideId === 1) {
-      setSlideId(ShopSlider.length);
+      setSlideId(Slides.length);
     }
   };
 
   // Map the images
-  const slider = ShopSlider.map((obj) => {
-    const { id, name, alt, img } = obj;
+  const slider = Slides.map((obj) => {
+    const { id, alt, img } = obj;
 
     return (
       <div key={id} className={slideId === id ? "slide active-slide" : "slide"}>
@@ -44,8 +44,9 @@ const ShopLandingpage = () => {
       {slider}
       <MdArrowBackIos className="silder-icon left" onClick={prevSlide} />
       <MdArrowForwardIos className="silder-icon right" onClick={nextSlide} />
+      <div className="container-dots"></div>
     </div>
   );
 };
 
-export default ShopLandingpage;
+export default ShopSlider;
