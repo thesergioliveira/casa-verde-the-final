@@ -39,7 +39,12 @@ const ShopSlider = () => {
     );
   });
 
-  // function for Dots
+  // create the Dots based on the length of slides.json
+  const dots = Array.from({ length: Slides.length }).map((el, i) => {
+    return (
+      <div key={i} className={slideId === i + 1 ? "dot active" : "dot"}></div>
+    );
+  });
 
   return (
     <div className="slider-wrapper">
@@ -51,7 +56,7 @@ const ShopSlider = () => {
       <MdArrowForwardIos className="silder-icon right" onClick={nextSlide} />
 
       {/* Slider dots */}
-      <div className="container-dots"></div>
+      <div className="container-dots">{dots}</div>
     </div>
   );
 };
