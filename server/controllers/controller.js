@@ -64,6 +64,7 @@ allControllers.login = async (req, res) => {
             password: user.password,
             username: user.username,
             basket: user.basket,
+            wishlist: user.wishlist,
             id: user._id,
           },
         });

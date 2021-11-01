@@ -4,7 +4,8 @@ import React from "react";
 import {DataContext} from "../Context";
 function Shopitem(props) {
     // console.log(props.obj);
-    const [count, setCount] = useState(0);  
+    const [count, setCount] = useState(0);
+    const [quantity, setQuantity] = useState(0);
     const [wishlist, setWishlist] = useState(true);
     const [data, setData] = useContext(DataContext);
     
@@ -12,6 +13,7 @@ function Shopitem(props) {
     console.log(indUserId);
       // add to basket
     const addToBasket = (id) => {
+     if (count>0) {setQuantity(count)}
         setCount(count + 1);
         axios.post(`user/${indUserId}`, {
           productId: id,
@@ -20,9 +22,14 @@ function Shopitem(props) {
         console.log(res);
       
       });
+      
       };
+      console.log(count);
     //to dos
-//make wishlist have only unique ids
+    //add a new user name angelos
+    // make the checkout button in the basket work
+    // add categories and show products up0n the category
+
       //https://stackoverflow.com/questions/50215619/axios-delete-method-not-working-in-react fix the delete operation
  const removeFromBasket = (id) => {
         setCount(count - 1);
@@ -53,6 +60,9 @@ function Shopitem(props) {
         
      
       };
+      
+       
+        
     return (
         <div
           style={{ border: "1px solid red",
@@ -65,7 +75,7 @@ function Shopitem(props) {
             <li>name: {props.obj.name}</li>
             <li>price: {props.obj.price}</li>
             <li>description: {props.obj.description}</li>
-            <li>only {props.obj.quantity} left</li>  
+            <li>only {props.obj.quantity- count} left</li>  
             <button disabled ={count>=props.obj.quantity} onClick={() => addToBasket(props.obj._id)}>Add (+)to basket</button> {count} <button disabled ={count==0} onClick={() => removeFromBasket(props.obj._id)}>remove(-) from basket</button>
             <button onClick={() => addToWishlist(props.obj._id)}>{wishlist?`Add to`:`added to the`} wishlist</button>
           </ul>
