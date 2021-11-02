@@ -17,10 +17,10 @@ const Login = ({ history }) => {
       })
       .then((res) => {
         if (!res.data.token) {
-          setLoginMessage("token issue try again");
+          setLoginMessage(res.data.message);
         } else {
-         setData(res.data);
-         localStorage.setItem("token", res.data.token);
+          setData(res.data);
+          localStorage.setItem("token", res.data.token);
           setLoginMessage("You are logged in");
           history.push("/");
         }

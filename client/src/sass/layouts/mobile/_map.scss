@@ -1,0 +1,19 @@
+.form-map {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Google Map
+.map-container {
+  @include flex;
+  width: 100%;
+  height: 22rem;
+
+  iframe {
+    border: none;
+    border-radius: 5px;
+    width: 90%;
+    height: 300px;
+  }
+}

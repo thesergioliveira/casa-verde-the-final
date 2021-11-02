@@ -1,16 +1,17 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Menu from "../menu.json";
+import Menu from "../JSON/menu.json";
 import { DataContext } from "./Context";
 import { FiLogOut } from "react-icons/fi";
 
+// set onClick for logo to close the menu - to do
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(true);
   const [none, setNone] = useState(true);
   //use the context
   const [data, setData] = useContext(DataContext);
-  console.log(data?.user?.basket.length);
+  //console.log(data?.user?.basket.length);
   var basket = data?.user?.basket.length;
 
   const navMenu = Menu.map((obj) => {
@@ -27,10 +28,16 @@ const Nav = () => {
     setClose(!close);
     setNone(!none);
   };
+  // closing hamburger menu function
+  const closeMenu = () => {
+    setClose(true);
+    setNone(true);
+  };
   //logout
   const logOut = () => {
     localStorage.clear();
     setData("");
+    closeMenu();
     redirect();
   };
   // redirect to login when its logged out
@@ -67,13 +74,13 @@ const Nav = () => {
               </>
             ) : (
               <>
-                {" "}
                 <Link
                   style={{
                     color: "black",
                     fontWeight: "bold",
                     textDecoration: "none",
                   }}
+                  onClick={closeMenu}
                   to="/login"
                 >
                   sign in
@@ -85,6 +92,7 @@ const Nav = () => {
                     fontWeight: "bold",
                     textDecoration: "none",
                   }}
+                  onClick={closeMenu}
                   to="/register"
                 >
                   sign up

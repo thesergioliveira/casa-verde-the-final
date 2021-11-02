@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CoursesData from "../courses.json";
+import CoursesData from "../JSON/courses.json";
+import ContactForm from './ContactForm';
 import Map from "./Map";
 
 const BalletAndPilates = () => {
@@ -8,7 +9,9 @@ const BalletAndPilates = () => {
     const { id, name, link } = obj;
     return (
       <li key={id}>
-        <Link to={link}>{name}</Link>
+        {/* the link is working only using anchor in this example */}
+        {/* <Link to={link}>{name}</Link> */}
+        <a href={link}>{name}</a>
       </li>
     );
   });
@@ -23,6 +26,7 @@ const BalletAndPilates = () => {
       <ul>{coursesMenu}</ul>
       <button>Contact Now!</button>
       <div>Images- not ready</div>
+      <ContactForm />
       <Map />
     </div>
   );

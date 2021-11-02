@@ -1,6 +1,8 @@
 import React from "react";
-import Map from "./Map";
+import ContactInformation from "./ContactInformation";
+import ShopLandingpage from "./Shop/ShopLandingpage";
 import ContactForm from "./ContactForm";
+import Map from "./Map";
 
 const TechnicalConsulting = () => {
   return (
@@ -13,8 +15,16 @@ const TechnicalConsulting = () => {
       <div>???</div>
       <button>Contact Now!</button>
       <div> ??? not ready</div>
-      <ContactForm />
-      <Map />
+
+      {/* Slider */}
+      <ShopLandingpage />
+
+      {/* Info, Form && Map */}
+      <ContactInformation />
+      <div className="form-map">
+        <ContactForm />
+        <Map />
+      </div>
     </div>
   );
 };
