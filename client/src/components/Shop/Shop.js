@@ -106,6 +106,10 @@ console.log(userText)
     <div>
     
       <h1>WELCOME TO OUR CASA VERDE SHOP</h1>
+
+    
+
+
       <input
             type="search"
             name="search"
@@ -114,7 +118,16 @@ console.log(userText)
             className="searchInput"
             placeholder="search ..."
           />
-      
+   price: <select id="price"> 
+  <option value="high"> high to low </option>
+  <option value="low"  > low to high </option>
+  </select>
+  delivery method: <select id="delivery"> 
+  <option value="all"  > all </option>
+  <option value="notshipped"> pick up from store </option>
+  <option value="shipped"  > shipping </option>
+  </select>
+
      
       <div
         style={{
