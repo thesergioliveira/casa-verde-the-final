@@ -79,6 +79,7 @@ const ShopSlider = () => {
 
       {/* Buttons */}
       <div className="container-btn-slider">
+        {/* React-Router is missing */}
         <button>Blumensträuße</button>
         <button>Deko nach Jahreszeit</button>
         <button>Topfpflanzen</button>
