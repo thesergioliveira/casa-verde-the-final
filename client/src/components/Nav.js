@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
+import LogoData from "../JSON/logo.json";
 import { DataContext } from "./Context";
 import { FiLogOut } from "react-icons/fi";
 
@@ -20,6 +21,15 @@ const Nav = () => {
       <li key={id}>
         <Link to={path}>{name}</Link>
       </li>
+    );
+  });
+
+  const logo = LogoData.map((obj) => {
+    const { id, name, path, img } = obj;
+    return (
+        <Link to={path}>
+          <img src={img} alt={name} key={id} className={name} />
+        </Link>
     );
   });
 
@@ -51,7 +61,7 @@ const Nav = () => {
       <nav>
         <div className="nav-top">
           <Link to="/">
-            <div className="logo">img</div>
+            <div className="logo-container">{logo}</div>
           </Link>
           <div>{basket}</div>
 
