@@ -19,13 +19,15 @@ allProductControllers.addProduct = async (req, res) => {
           price: req.body.price,
           description: req.body.description,
           // image: req.file.path,
+          delivery: req.body.delivery,
+          image: req.body.image,
           quantity: req.body.quantity,
         });
         product.save();
-        console.log(user.basket);
-        user.basket.push(product);
-        console.log(user.basket);
-        user.save();
+        console.log(product);
+       // user.basket.push(product);
+        
+       // user.save();
         res
           .status(201)
           .json({ message: "New product being added ✅", product });

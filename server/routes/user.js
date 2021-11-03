@@ -10,7 +10,7 @@ router.get(
   middleware.checkToken,
   allProductControllers.getAllProducts
 );
-// register http://localhost:5005/user/register
+// register http://localhost:5000/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
 
 // login http://localhost:5000/user/login

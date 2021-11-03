@@ -15,7 +15,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
 import { DataProvider } from "./components/Context";
-import AdminDashboard from "./components/Shop/AdminDashboard";
+import AdminDash from "./components/AdminDash";
 function App() {
   return (
     <DataProvider>
@@ -28,7 +28,7 @@ function App() {
           <Switch>
             {/* Need to add public.env */}
             <Route path="/" exact render={Home}></Route>
-            <Route path="/admindashboard" exact render={AdminDashboard}></Route>
+            <Route path="/admindash" exact component={AdminDash}></Route>
             <Route path="/shop" exact component={Shop}></Route>
             <Route path="/services" exact render={Services}></Route>
             <Route path="/events" exact render={Events}></Route>

@@ -64,6 +64,10 @@ const Nav = () => {
           <Link to="/">
             <div className="logo-container"  onClick={closeMenu}>{logo}</div>
           </Link>
+          <Link to="/admindash">
+        <button >Admin Dashboard</button>
+                 
+                </Link>
           <Link to="/basket">
                   <button>Basket</button>
                 </Link>

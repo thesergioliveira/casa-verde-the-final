@@ -3,7 +3,8 @@ import axios from "axios";
 import React from "react";
 import {DataContext} from "../Context";
     //to dos
-//add a new user name angelos
+//FIX THE DELIVERY 
+//FIX THE CHECKOUT
    
 //FIX THE FCKING DELETE
 function Shopitem(props) {

@@ -57,7 +57,7 @@ function Shop() {
     
     
     ).map((obj) => {
-    const {id, category, name, price, description, quantity} = obj;
+    const {id, category, name, price, description ,delivery, image, quantity} = obj;
      return <Shopitem obj ={obj} />
    
 
@@ -67,12 +67,13 @@ priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) =
 
 //delievery filter     WE NEED NEW SCHEMA PLZ DONT DELETE
 
-// if (deliveryInput=="yes"){
-//   data?.filter(el => el.delivery === true)
-// }else if (deliveryInput=="no"){
-//   data?.filter(el => el.delivery === false)
-// }
+if (deliveryInput=="yes"){
+  data?.filter(el => el.delivery = true)
+}else if (deliveryInput=="no"){
+  data?.filter(el => el.delivery = false)
+}
 console.log(priceInput , deliveryInput)
+
   //getFlowerAndPlantsPots
   const getFlowerAndPlantsPots = data?.filter(el => el.category === "Flower and plants pots").map((obj) => {
     const {id, category, name, price, description, quantity} = obj;
