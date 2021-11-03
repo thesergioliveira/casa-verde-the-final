@@ -12,7 +12,7 @@ const cors = require("cors");
 app.use(
   cors({
     origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "DELETE", "PUT", "UPDATE"],
     credentials: true,
   })
 );
@@ -46,7 +46,6 @@ mongoose
   .catch((error) => {
     console.log(`There was a problem ${error.message}`);
   });
-
 
 // Initializing Routes
 var indexRouter = require("./routes/index");

@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { DataContext } from "./Context";
-
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,10 +16,10 @@ const Login = ({ history }) => {
       })
       .then((res) => {
         if (!res.data.token) {
-          setLoginMessage("token issue try again");
+          setLoginMessage(res.data.message);
         } else {
-         setData(res.data);
-         localStorage.setItem("token", res.data.token);
+          setData(res.data);
+          localStorage.setItem("token", res.data.token);
           setLoginMessage("You are logged in");
           history.push("/");
         }
@@ -29,7 +28,6 @@ const Login = ({ history }) => {
         setLoginMessage(error.response.data.message);
       });
   };
-
   return (
     <div className="login-container">
       <input
@@ -53,5 +51,4 @@ const Login = ({ history }) => {
     </div>
   );
 };
-
 export default Login;

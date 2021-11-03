@@ -7,7 +7,8 @@ import Map from "./Map";
 const Rent = () => {
 
   const rentMenu = RentData.map((obj) => {
-    const { id, name, link, img } = obj;
+    // const { id, name, link, img } = obj;
+    const { img } = obj;
     return (
       // <li key={id}>
       //    {/* the link is working only using anchor in this example */}
