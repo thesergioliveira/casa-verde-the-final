@@ -6,10 +6,15 @@ header nav {
     background-color: $cream;
 
     .nav-top {
-        padding: 2vh 7vw;
+        padding: 0 5vw;
         @include flex;
         justify-content:  space-between;
     }
+}
+
+.logo {
+    width: 5rem;
+    height: 5rem;
 }
 
 // Hamburger menu setup
@@ -78,7 +83,7 @@ header nav {
 
     // Li setup
     li {
-        padding-left: 1em;
+        padding-left: 2em;
         list-style: none;
     }
     
