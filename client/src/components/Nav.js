@@ -64,7 +64,9 @@ const Nav = () => {
           <Link to="/">
             <div className="logo-container"  onClick={closeMenu}>{logo}</div>
           </Link>
-          <div>{basket}</div>
+          <Link to="/basket">
+                  <button>Basket</button>
+                </Link>
 
           <div>
             {data ? (

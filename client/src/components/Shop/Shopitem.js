@@ -1,92 +1,88 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import React from "react";
-import { DataContext } from "../Context";
-
+import {DataContext} from "../Context";
+    //to dos
+//add a new user name angelos
+   
+//FIX THE FCKING DELETE
 function Shopitem(props) {
-  //console.log(props.obj);
-  const [count, setCount] = useState(0);
-  const [wishlist, setWishlist] = useState(true);
-  const [data, setData] = useContext(DataContext);
-  //console.log(data?.user?.id);
-  //console.log(data?.user.basket);
-  // add to basket
-  const addToBasket = (id) => {
-    setCount(count + 1);
-    axios
-      .post(`user/${data?.user?.id}`, {
-        productId: id,
-      })
+    // console.log(props.obj);
+    const [count, setCount] = useState(0);
+    const [quantity, setQuantity] = useState(0);
+    const [wishlist, setWishlist] = useState(true);
+    const [data, setData] = useContext(DataContext);
+    
+    let indUserId=data?.user.id
+    //61794db8beb58d52f8cc22f3
+    //console.log(indUserId);
+      // add to basket
+    const addToBasket = (id) => {
+     if (count>0) {setQuantity(count)}
+        setCount(count + 1);
+        axios.post(`user/${indUserId}`, {
+          productId: id,
+        })
       .then((res) => {
         console.log(res);
       });
-  };
-  //user/616fecb8c07e23a17f5f1042 is hard coded
-  //make wishlist have only unique ids
-  //https://stackoverflow.com/questions/50215619/axios-delete-method-not-working-in-react fix the delete operation
-  const removeFromBasket = (id) => {
-    setCount(count - 1);
-    axios
-      .delete(`user/${data?.user?.id}`, {
-        productId: id,
-      })
-      .then((res) => {
-        console.log(res);
-      });
-  };
-  const addToWishlist = (id) => {
-    setWishlist(!wishlist);
-    if (wishlist) {
-      axios
-        .post("user/wishlist/616fecb8c07e23a17f5f1042", {
-          productId: id,
-        })
+      
+      };
+   
+
+  
+ const removeFromBasket = (id) => {
+        setCount(count - 1);
+        axios
+          .delete(`user/${indUserId}`, {
+            productId: id,
+
+          })
+          .then((res) => {
+            console.log(res);
+            
+          });
+      }
+      const addToWishlist = (id) => {
+        setWishlist(!wishlist);
+        if (wishlist) {
+          axios.post(`user/wishlist/${indUserId}`, {
+            productId: id,})
         .then((res) => {
           console.log(res);
         });
-    } else {
-      axios
-        .delete("user/wishlist/616fecb8c07e23a17f5f1042", {
-          productId: id,
-        })
-        .then((res) => {
-          console.log(res);
-        });
-    }
-  };
-  return (
-    <div
-      style={{
-        border: "1px solid red",
-        backgroundColor: "green",
-        fontSize: "18px",
-      }}
-    >
+        } else {
+          axios.delete(`user/wishlist/${indUserId}`, {
+            productId: id,
+          }).then((res) => {
+            console.log(res);
+          });
+        }
+        
+     
+      };
+      
+       
+        
+    return (
+        <div
+          style={{ border: "1px solid red",
+            backgroundColor: "green",
+            fontSize: "18px",
+          }}
+        >
       <ul key={props.obj._id}>
-        <li>category: {props.obj.category}</li>
-        <li>name: {props.obj.name}</li>
-        <li>price: {props.obj.price}</li>
-        <li>description: {props.obj.description}</li>
-        <li>only {props.obj.quantity} left</li>
-        <button
-          disabled={count >= props.obj.quantity}
-          onClick={() => addToBasket(props.obj._id)}
-        >
-          Add (+)to basket
-        </button>{" "}
-        {count}{" "}
-        <button
-          disabled={count === 0}
-          onClick={() => removeFromBasket(props.obj._id)}
-        >
-          remove(-) from basket
-        </button>
-        <button onClick={() => addToWishlist(props.obj._id)}>
-          {wishlist ? `Add to` : `added to the`} wishlist
-        </button>
-      </ul>
-    </div>
-  );
+            <li>category: {props.obj.category}</li>
+            <li>name: {props.obj.name}</li>
+            <li>price: {props.obj.price}</li>
+            <li>description: {props.obj.description}</li>
+            <li>only {props.obj.quantity- count} left</li>  
+            <li><img src={props.obj.image} alt="logo" width="200px" height="200px"/> </li>
+            <button disabled ={count>=props.obj.quantity} onClick={() => addToBasket(props.obj._id)}>Add (+)to basket</button> {count} <button disabled ={count==0} onClick={() => removeFromBasket(props.obj._id)}>remove(-) from basket</button>
+            <button onClick={() => addToWishlist(props.obj._id)}>{wishlist?`🤍`:`❤️`} wishlist</button>
+          </ul>
+        </div>
+    )
 }
 
 export default Shopitem;
