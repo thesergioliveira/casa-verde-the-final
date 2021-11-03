@@ -65,8 +65,8 @@ header nav {
 
 // Show nav setup
 .show {
-    width: 60vw;
-    height: 100vh;
+    width: 100vw;
+    height: 90vh;
     position: relative;
     float: right;
     @include flex;

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Flowers",
+    "alt": "Blumenstrauß",
+    "img": "./images/shop-slider/img-1.png"
+  },
+  {
+    "id": 2,
+    "name": "Deco",
+    "alt": "Dekorations Idee",
+    "img": "./images/shop-slider/img-2.png"
+  },
+  {
+    "id": 3,
+    "name": "Potted plants",
+    "alt": "Topfpflanze",
+    "img": "./images/shop-slider/img-3.png"
+  },
+  {
+    "id": 4,
+    "name": "Gift ideas",
+    "alt": "Geschenkideen",
+    "img": "./images/shop-slider/img-4.png"
+  },
+  {
+    "id": 5,
+    "name": "Italian specialties",
+    "alt": "Italienische Spezialitäten",
+    "img": "./images/shop-slider/img-5.png"
+  }
+]
