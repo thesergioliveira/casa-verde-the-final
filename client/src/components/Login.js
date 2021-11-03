@@ -18,13 +18,8 @@ const Login = ({ history }) => {
         if (!res.data.token) {
           setLoginMessage(res.data.message);
         } else {
-<<<<<<< HEAD
-        
-          setData(res.data);
-=======
           setData(res.data);
           localStorage.setItem("token", res.data.token);
->>>>>>> caa0a87e122caec20e24bec41fe745262563e08c
           setLoginMessage("You are logged in");
           history.push("/");
         }
