@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 //import { get } from "mongoose";
 
 import Shopitem from "./Shopitem";
-
+import Select from 'react-select'
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
- 
+ const[priceInput, setPriceInput] = useState("")
+ const[deliveryInput, setDeliveryInput] = useState("")
 //to get all products
   const getAllProducts = () => {
     const config = {
@@ -46,14 +47,8 @@ function Shop() {
   //searchbar setup here
   const changeHandle = (e) => {
     setUserInput(e.target.value);
-console.log(e.target.value)
   };
  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    
-  };
   const userText = userInput.toLocaleLowerCase().trim();
   let searchResult = data?.filter(
     el => el.name.includes(userText) || el.description.includes(userText) ||el.category.includes(userText)
@@ -67,7 +62,17 @@ console.log(e.target.value)
    
 
    });
-console.log(userText)
+// products price filter
+priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) => a.price - b.price)
+
+//delievery filter     WE NEED NEW SCHEMA PLZ DONT DELETE
+
+// if (deliveryInput=="yes"){
+//   data?.filter(el => el.delivery === true)
+// }else if (deliveryInput=="no"){
+//   data?.filter(el => el.delivery === false)
+// }
+console.log(priceInput , deliveryInput)
   //getFlowerAndPlantsPots
   const getFlowerAndPlantsPots = data?.filter(el => el.category === "Flower and plants pots").map((obj) => {
     const {id, category, name, price, description, quantity} = obj;
@@ -97,20 +102,23 @@ console.log(userText)
      });
 
 // get all products
+
   const getProducts = data?.map((obj) => {
     const { _id, category, name, price, description, quantity } = obj;
     
-    return <Shopitem obj ={obj} />
+
+    return <li><Shopitem obj ={obj} /></li>
   });
   return (
     <div>
     
       <h1>WELCOME TO OUR CASA VERDE SHOP</h1>
-
-    
-
-
-      <input
+      <Link to="/admindashboard">
+        <button >Admin Dashboard</button>
+                 
+                </Link>
+                
+  <input
             type="search"
             name="search"
             onChange={changeHandle}
@@ -118,17 +126,26 @@ console.log(userText)
             className="searchInput"
             placeholder="search ..."
           />
-   price: <select id="price"> 
+   price: <select id="price"
+   onChange={(e) =>{
+       setPriceInput(e.target.value)
+   } }
+      > 
+   <option value="low"> low to high </option>
   <option value="high"> high to low </option>
-  <option value="low"  > low to high </option>
+   </select>
+  delivery method: <select id="delivery"
+  onChange={(e) =>{
+      setDeliveryInput(e.target.value)
+  } }
+  > 
+  <option value="all" > all </option>
+  <option value="no"> pick up from store </option>
+  <option value="yes" > shipping </option>
   </select>
-  delivery method: <select id="delivery"> 
-  <option value="all"  > all </option>
-  <option value="notshipped"> pick up from store </option>
-  <option value="shipped"  > shipping </option>
-  </select>
-
-     
+ 
+   
+  
       <div
         style={{
           display: "flex",
@@ -153,7 +170,7 @@ console.log(userText)
        
       </div>
       
-        <h2>Flower and plants pots</h2>
+        {/* <h2>Flower and plants pots</h2>
       {getFlowerAndPlantsPots}
       <h2>Bouquet of flowers</h2>
       {getBouquetOfFlowers}
@@ -161,8 +178,9 @@ console.log(userText)
       {getGiftBaskets}
       <h2>Italian Products</h2>
       {italianProducts}
-      <h2>View All </h2>
-      {getProducts}
+      <h2>View All </h2> */}
+      <ul>{getProducts}</ul>
+      {/* {getProducts} */}
       </div> 
     </div>
   );
