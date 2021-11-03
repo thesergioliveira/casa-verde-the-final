@@ -24,6 +24,7 @@ const Nav = () => {
     );
   });
 
+   // Logo setup
   const logo = LogoData.map((obj) => {
     const { id, name, path, img } = obj;
     return (
