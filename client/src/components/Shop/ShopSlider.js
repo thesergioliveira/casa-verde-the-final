@@ -58,12 +58,12 @@ const ShopSlider = () => {
 
   // Image is changed automatically every 3.5 seconds (there are still problems)
   // useEffect(() => {
-  //   setTimeout(
-  //     () => setSlideId((nextId) => (nextId === 5 ? 1 : nextId + 1)),
-  //     7000
-  //   );
+  // setTimeout(
+  //   () => setSlideId((nextId) => (nextId === 5 ? 1 : nextId + 1)),
+  //   3000
+  // );
   //   return () => {};
-  // }, [slideId]);
+  // });
 
   return (
     <div className="slider-wrapper">
