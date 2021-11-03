@@ -9,14 +9,9 @@ import Shopitem from "./Shopitem";
 
 function Shop() {
   const [data, setData] = useState([]);
-<<<<<<< HEAD
   const [userInput, setUserInput] = useState("");
  
 //to get all products
-=======
-
-  //show all products
->>>>>>> caa0a87e122caec20e24bec41fe745262563e08c
   const getAllProducts = () => {
     const config = {
       headers: {
@@ -36,12 +31,7 @@ function Shop() {
         console.log("here", err.response?.data);
       });
   };
-<<<<<<< HEAD
  useEffect(() => {
-=======
-
-  useEffect(() => {
->>>>>>> caa0a87e122caec20e24bec41fe745262563e08c
     getAllProducts();
   }, []);
 
@@ -53,7 +43,6 @@ function Shop() {
       </div>
     );
   }
-<<<<<<< HEAD
   //searchbar setup here
   const changeHandle = (e) => {
     setUserInput(e.target.value);
@@ -140,22 +129,6 @@ console.log(userText)
   </select>
 
      
-=======
-
-  const getProducts = data?.map((obj) => {
-    const { _id, category, name, price, description, quantity } = obj;
-
-    return <Shopitem obj={obj} />;
-  });
-  //console.log(typeof getBasket);
-  return (
-    <div>
-      {/* <p>
-        Total: €
-        {getProducts.reduce((sum, item) => sum + item.price * item.quantity, 0)}
-      </p> */}
-      <h1>Hi, I am the Shop Component!!!</h1>
->>>>>>> caa0a87e122caec20e24bec41fe745262563e08c
       <div
         style={{
           display: "flex",
@@ -163,7 +136,6 @@ console.log(userText)
           justifyContent: "center",
           flexWrap: "wrap",
         }}
-<<<<<<< HEAD
         
       > 
       <div className="space-for-results" 
@@ -192,11 +164,6 @@ console.log(userText)
       <h2>View All </h2>
       {getProducts}
       </div> 
-=======
-      >
-        {getProducts}
-      </div>
->>>>>>> caa0a87e122caec20e24bec41fe745262563e08c
     </div>
   );
 }
