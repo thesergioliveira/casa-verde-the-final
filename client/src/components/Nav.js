@@ -53,7 +53,9 @@ const Nav = () => {
           <Link to="/">
             <div className="logo">img</div>
           </Link>
-          <div>{basket}</div>
+          <Link to="/basket">
+                  <button>Basket</button>
+                </Link>
 
           <div>
             {data ? (
