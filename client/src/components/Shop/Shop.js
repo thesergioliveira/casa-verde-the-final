@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 //import { get } from "mongoose";
 
 import Shopitem from "./Shopitem";
-import Select from 'react-select'
+
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -106,8 +106,9 @@ console.log(priceInput , deliveryInput)
   const getProducts = data?.map((obj) => {
     const { _id, category, name, price, description, quantity } = obj;
     
-
-    return <li><Shopitem obj ={obj} /></li>
+// version with ul 
+    // return <li><Shopitem obj ={obj} /></li>
+    return <Shopitem obj ={obj} />
   });
   return (
     <div>
@@ -170,7 +171,7 @@ console.log(priceInput , deliveryInput)
        
       </div>
       
-        {/* <h2>Flower and plants pots</h2>
+        <h2>Flower and plants pots</h2>
       {getFlowerAndPlantsPots}
       <h2>Bouquet of flowers</h2>
       {getBouquetOfFlowers}
@@ -178,9 +179,10 @@ console.log(priceInput , deliveryInput)
       {getGiftBaskets}
       <h2>Italian Products</h2>
       {italianProducts}
-      <h2>View All </h2> */}
-      <ul>{getProducts}</ul>
-      {/* {getProducts} */}
+      <h2>View All </h2>
+      {getProducts}
+      {/* version with ul */}
+      {/* <ul>{getProducts}</ul> */}
       </div> 
     </div>
   );
