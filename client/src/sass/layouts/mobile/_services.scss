@@ -1,0 +1,20 @@
+.home {
+  .wrapper-img-services {
+    width: 100vw;
+    // height: 33rem;
+    @include flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+
+    .img-container {
+      width: 8.5rem;
+      height: 8.5rem;
+      @include flex;
+
+      img {
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+  }
+}
