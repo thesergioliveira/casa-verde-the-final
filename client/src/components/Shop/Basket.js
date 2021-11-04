@@ -12,7 +12,7 @@ const Basket = () => {
     const [userdata, setUserdata] = useContext(DataContext);
     const indUserId= userdata?.user.id;
 
-console.log(indUserId)
+//console.log(indUserId)
     const displayBasket = () => {
         const config = {
           headers: {

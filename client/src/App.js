@@ -16,6 +16,7 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
+import EditUser from "./components/Settings/EditUser"
 import { DataProvider } from "./components/Context";
 import AdminDashboard from "./components/Shop/AdminDashboard";
 
@@ -58,6 +59,7 @@ function App() {
             <Route path="/login" exact component={Login}></Route>
             <Route path="/register" exact component={Register}></Route>
             <Route path="/basket" exact component={Basket}></Route>
+            <Route path="/settings" exact component={EditUser}></Route>
           </Switch>
         </main>
         <Footer logo={logo}/>

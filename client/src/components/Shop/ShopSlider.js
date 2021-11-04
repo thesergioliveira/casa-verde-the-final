@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Slides from "../../JSON/slides.json";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 

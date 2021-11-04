@@ -7,11 +7,13 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [registerMessage, setRegisterMessage] = useState("");
   axios.defaults.withCredentials = true;
 
   const handleSubmit = () => {
-    const data = { username, password, passwordConf, email };
+    const data = { username, password, passwordConf, email,address,phone };
 
     axios
       .post("user/register", data, {
@@ -62,6 +64,20 @@ const Register = () => {
         name="passwordConf"
         onChange={(e) => setPasswordConf(e.target.value)}
         placeholder="confirm your password"
+      />
+        <input
+        type="phone"
+        value={phone}
+        name="phone"
+        onChange={(e) => setPhone(e.target.value)}
+        placeholder="enter your phone number"
+      />
+       <input
+        type="address"
+        value={address}
+        name="address"
+        onChange={(e) => setAddress(e.target.value)}
+        placeholder="enter your address"
       />
 
       <button onClick={handleSubmit}>Register</button>
