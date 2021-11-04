@@ -72,7 +72,7 @@ priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) =
 // }else if (deliveryInput=="no"){
 //   data?.filter(el => el.delivery === false)
 // }
-console.log(priceInput , deliveryInput)
+//console.log(priceInput , deliveryInput)
   //getFlowerAndPlantsPots
   const getFlowerAndPlantsPots = data?.filter(el => el.category === "Flower and plants pots").map((obj) => {
     const {id, category, name, price, description, quantity} = obj;
@@ -170,7 +170,7 @@ console.log(priceInput , deliveryInput)
         {userInput.length ? searchResult  : null}
        
       </div>
-      
+      {/* set on click to display the products from the same cat */}
         <h2>Flower and plants pots</h2>
       {getFlowerAndPlantsPots}
       <h2>Bouquet of flowers</h2>

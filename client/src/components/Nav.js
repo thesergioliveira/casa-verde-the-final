@@ -12,7 +12,7 @@ const Nav = ({logo}) => {
   //use the context
   const [data, setData] = useContext(DataContext);
   //console.log(data?.user?.basket.length);
-  var basket = data?.user?.basket.length;
+  let basket = data?.user?.basket.length;
 
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
