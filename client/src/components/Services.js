@@ -23,7 +23,7 @@ const Services = () => {
     return imgs.map((img) => {
       return (
         <div key={id} className="img-container">
-          <img src={img} />
+          <img src={img} alt={linkId} />
         </div>
       );
     });
