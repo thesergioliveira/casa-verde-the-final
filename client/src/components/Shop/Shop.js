@@ -161,6 +161,7 @@ function Shop() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          flexDirection: "column",
           flexWrap: "wrap",
         }}
       >
@@ -176,25 +177,17 @@ function Shop() {
         >
           {userInput.length ? searchResult : null}
         </div>
-        <h2>Flower and plants pots</h2>
-        <div>
-        {getFlowerAndPlantsPots}
-        </div>
-        <h2>Bouquet of flowers</h2>
-        <div>
-        {getBouquetOfFlowers}
-        </div>
-        <h2>Gift baskets</h2>
-        <div>
-        {getGiftBaskets}
-        </div>
-        <h2>Italian Products</h2>
-        <div>
-        {italianProducts}
-        </div>
-        <h2>View All </h2>
-        <div>
-        {getProducts}
+        <div className="products-container">
+          <h2>Flower and plants pots</h2>
+          <div className="products">{getFlowerAndPlantsPots}</div>
+          <h2>Bouquet of flowers</h2>
+          <div className="products">{getBouquetOfFlowers}</div>
+          <h2>Gift baskets</h2>
+          <div className="products">{getGiftBaskets}</div>
+          <h2>Italian Products</h2>
+          <div className="products">{italianProducts}</div>
+          <h2>View All </h2>
+          <div className="products">{getProducts}</div>
         </div>
         {/* version with ul */}
         {/* <ul>{getProducts}</ul> */}
