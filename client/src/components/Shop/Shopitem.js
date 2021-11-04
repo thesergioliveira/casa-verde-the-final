@@ -70,7 +70,7 @@ function Shopitem(props) {
           //   backgroundColor: "green",
           //   fontSize: "18px",
           // }}
-        >
+        className="product-item">
       <ul key={props.obj._id}>
             {/* <li><img src={props.obj.image} alt="logo" /> </li> */}
             <li><img src="https://s3.amazonaws.com/mentoring.redesign/s3fs-public/900product.jpg" width="200px" height="200px" alt="logo" /> </li>
