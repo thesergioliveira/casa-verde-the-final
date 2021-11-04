@@ -3,3 +3,14 @@
        text-align: center;
    }
 }
+
+.product {
+    width: 10.1rem;
+    margin: 1rem;
+    border: blue 1px solid;
+    img {
+        width: 10rem;
+        height: 10rem;
+        border: red 1px solid;
+    }
+}
