@@ -65,38 +65,24 @@ function Shopitem(props) {
        
         
     return (
-      //   <div
-      //     style={{ border: "1px solid red",
-      //       backgroundColor: "green",
-      //       fontSize: "18px",
-      //     }}
-      //   >
-      // <ul key={props.obj._id}>
-      //       {/* <li><img src={props.obj.image} alt="logo" /> </li> */}
-      //       <li><img src={props.obj.image} width="200px" height="200px" alt="logo" /> </li>
-      //       <li>category: {props.obj.category}</li>
-      //       <li>name: {props.obj.name}</li>
-      //       <li>price: {props.obj.price}</li>
-      //       <li>description: {props.obj.description}</li>
-      //       <li>only {props.obj.quantity- count} left</li> 
-      //       <button disabled ={count>=props.obj.quantity} onClick={() => addToBasket(props.obj._id)}>Add (+)to basket</button> {count} <button disabled ={count==0} onClick={() => removeFromBasket(props.obj._id)}>remove(-) from basket</button>
-      //       <button onClick={() => addToWishlist(props.obj._id)}>{wishlist?`🤍`:`❤️`} wishlist</button>
-      //     </ul>
-      //   </div>
-
-      <ul>
-      <li key={props.obj._id}>
+        <div
+          // style={{ border: "1px solid red",
+          //   backgroundColor: "green",
+          //   fontSize: "18px",
+          // }}
+        >
+      <ul key={props.obj._id}>
             {/* <li><img src={props.obj.image} alt="logo" /> </li> */}
-            <img src="https://s3.amazonaws.com/mentoring.redesign/s3fs-public/900product.jpg" width="200px" height="200px" alt="logo" />
-            <p>category: {props.obj.category}</p>
-            <p>name: {props.obj.name}</p>
-            <p>price: {props.obj.price}</p>
-            <p>description: {props.obj.description}</p>
-            <p>only {props.obj.quantity- count} left</p> 
+            <li><img src="https://s3.amazonaws.com/mentoring.redesign/s3fs-public/900product.jpg" width="200px" height="200px" alt="logo" /> </li>
+            <li>category: {props.obj.category}</li>
+            <li>name: {props.obj.name}</li>
+            <li>price: {props.obj.price}</li>
+            <li>description: {props.obj.description}</li>
+            <li>only {props.obj.quantity- count} left</li> 
             <button disabled ={count>=props.obj.quantity} onClick={() => addToBasket(props.obj._id)}>Add (+)to basket</button> {count} <button disabled ={count==0} onClick={() => removeFromBasket(props.obj._id)}>remove(-) from basket</button>
             <button onClick={() => addToWishlist(props.obj._id)}>{wishlist?`🤍`:`❤️`} wishlist</button>
-          </li>
-        </ul>
+          </ul>
+        </div>
     )
 }
 
