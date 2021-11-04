@@ -77,30 +77,17 @@ function Shopitem(props) {
       }}
     >
       <ul key={props.obj._id}>
-        <li>category: {props.obj.category}</li>
-        <li>name: {props.obj.name}</li>
-        <li>price: {props.obj.price}</li>
-        <li>description: {props.obj.description}</li>
-        <li>only {props.obj.quantity - count} left</li>
-        <button
-          disabled={count >= props.obj.quantity}
-          onClick={() => addToBasket(props.obj._id)}
-        >
-          Add (+)to basket
-        </button>{" "}
-        {count}{" "}
-        <button
-          disabled={count === 0}
-          onClick={() => removeFromBasket(props.obj._id)}
-        >
-          remove(-) from basket
-        </button>
-        <button onClick={() => addToWishlist(props.obj._id)}>
-          {wishlist ? `🤍` : `❤️`} wishlist
-        </button>
-      </ul>
-    </div>
-  );
+            <li>category: {props.obj.category}</li>
+            <li>name: {props.obj.name}</li>
+            <li>price: {props.obj.price}</li>
+            <li>description: {props.obj.description}</li>
+            <li>only {props.obj.quantity- count} left</li>  
+            <li><img src={props.obj.image} alt="logo" width="200px" height="200px"/> </li>
+            <button disabled ={count>=props.obj.quantity} onClick={() => addToBasket(props.obj._id)}>Add (+)to basket</button> {count} <button disabled ={count==0} onClick={() => removeFromBasket(props.obj._id)}>remove(-) from basket</button>
+            <button onClick={() => addToWishlist(props.obj._id)}>{wishlist?`🤍`:`❤️`} wishlist</button>
+          </ul>
+        </div>
+    )
 }
 
 export default Shopitem;

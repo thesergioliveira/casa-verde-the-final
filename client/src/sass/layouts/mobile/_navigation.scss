@@ -11,6 +11,16 @@ header nav {
     justify-content: space-between;
     position: relative;
   }
+    .nav-top {
+        padding: 0 5vw;
+        @include flex;
+        justify-content:  space-between;
+    }
+}
+
+.logo {
+    width: 5rem;
+    height: 5rem;
 }
 
 // Hamburger menu setup
@@ -89,6 +99,7 @@ header nav {
   }
 }
 
+
 // Ul display none
 .userNone {
   height: 0;
@@ -139,6 +150,13 @@ header nav {
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
+
+    // Li setup
+    li {
+        padding-left: 2em;
+        list-style: none;
+    }
+
     
   }
   

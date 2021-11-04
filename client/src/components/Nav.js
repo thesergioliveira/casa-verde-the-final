@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
+import LogoData from "../JSON/logo.json";
 import { DataContext } from "./Context";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
@@ -38,6 +39,17 @@ const Nav = () => {
     setCloseUser(true);
     setShow(true);
   };
+
+   // Logo setup
+  const logo = LogoData.map((obj) => {
+    const { id, name, path, img } = obj;
+    return (
+        <Link to={path}>
+          <img src={img} alt={name} key={id} className={name} />
+        </Link>
+    );
+  });
+
   const showMenu = () => {
     setOpen(open);
     setClose(!close);
@@ -66,7 +78,7 @@ const Nav = () => {
       <nav>
         <div className="nav-top">
           <Link to="/">
-            <div className="logo">img</div>
+            <div className="logo-container"  onClick={closeMenu}>{logo}</div>
           </Link>
 
           <div className="nav-user">
