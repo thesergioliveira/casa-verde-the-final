@@ -20,46 +20,24 @@ const Services = () => {
   const componentsMenu = ServicesData.map((obj) => {
     const { id, name, linkId, imgs } = obj;
 
-    return imgs.map((img) => {
-      return (
-        <div key={id} className="img-container">
-          <img src={img} alt={linkId} />
+    return (
+      <div className="container-test">
+        <h3 key={id}>{name}</h3>
+        <div className="container-two">
+          {imgs.map((img) => {
+            if (imgs.indexOf(img) <= 5) {
+              return (
+                <div key={id} className="img-container">
+                  <img src={img} alt={linkId} />
+                </div>
+              );
+            }
+          })}
         </div>
-      );
-    });
+        <button key={id}>Show more</button>
+      </div>
+    );
   });
-
-  // const componentsMenu = ServicesData.map((obj) => {
-  //   const { id, name, linkId, img, img2, img3, img4, img5, img6 } = obj;
-  //   // tried to put the images into an array and map them, is not working for the  moment
-  //   // const img = images.map((image) => {
-  //   //   return (<img src={image} alt="details" width="100" height="100" />
-
-  //   //   )
-  //   //});
-  //   //console.log(img);
-  //   return (
-  //     <li key={id}>
-  //       <h2 id={linkId}>{name}</h2>
-  //       <div>
-  //         <img src={img} alt="details" width="100" height="100" />
-  //         <img src={img2} alt="details" width="100" height="100" />
-  //       </div>
-  //       <div>
-  //         <img src={img3} alt="details" width="100" height="100" />
-  //         <img src={img4} alt="details" width="100" height="100" />
-  //       </div>
-  //       <div>
-  //         <img src={img5} alt="details" width="100" height="100" />
-  //         <img src={img6} alt="details" width="100" height="100" />
-  //       </div>
-  //       {/* to do- create pages and adding links to them */}
-  //       <Link to="/{linkId}">
-  //         <button>Show more</button>
-  //       </Link>
-  //     </li>
-  //   );
-  // });
 
   return (
     <div className="home">
@@ -75,6 +53,7 @@ const Services = () => {
         <button>Contact Now!</button>
       </a>
 
+      {/* Display images */}
       <div className="wrapper-img-services">{componentsMenu}</div>
 
       {/* Info, Form && Map */}
