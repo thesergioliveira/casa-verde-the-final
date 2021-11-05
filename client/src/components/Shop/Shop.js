@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 //import { get } from "mongoose";
-import Shopitem from "./Shopitem";
+import ShopItem from "./ShopItem";
+import ShopSlider from "./ShopSlider";
+
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -25,16 +27,11 @@ function Shop() {
           localStorage.setItem("product", JSON.stringify(res.data));
         } else {
           setData({ auth: false });
-        }
-      })
+      }})
       .catch((err) => {
         console.log("here", err.response?.data);
       });
   };
- useEffect(() => {
-    getAllProducts();
-  }, [deliveryInput]);
-
   const productFromStorage = JSON.parse(localStorage.getItem("product"));
   //console.log(productFromStorage)
   useEffect(() => {
@@ -71,7 +68,7 @@ function Shop() {
         image,
         quantity,
       } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   // products price filter
   priceInput === "high"
@@ -89,78 +86,76 @@ function Shop() {
     ?.filter((el) => el.category === "Flower and plants pots")
     .map((obj) => {
       const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
     ?.filter((el) => el.category === "Bouquet of flowers")
     .map((obj) => {
       const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   //getGiftBaskets
   const getGiftBaskets = data
     ?.filter((el) => el.category === "Gift baskets")
     .map((obj) => {
       const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   //italianProducts
   const italianProducts = data
     ?.filter((el) => el.category === "Italian Products")
     .map((obj) => {
       const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   // get all products
   const getProducts = data?.map((obj) => {
     const { _id, category, name, price, description, quantity } = obj;
     // version with ul
-    // return <li><Shopitem obj ={obj} /></li>
-    return <Shopitem obj={obj} />;
+    // return <li><ShopItem obj ={obj} /></li>
+    return <ShopItem obj={obj} />;
   });
   return (
     <div className="shop">
       <h1>WELCOME TO OUR CASA VERDE SHOP</h1>
-      
-                
-  <input
-            type="search"
-            name="search"
-            onChange={changeHandle}
-            value={userInput}
-            className="searchInput"
-            placeholder="search ..."
-          />
-   price: <select id="price"
-   onChange={(e) =>{
-       setPriceInput(e.target.value)
-   } }
-      > 
-   <option value="low"> low to high </option>
-  <option value="high"> high to low </option>
-   </select>
-  delivery method: <select id="delivery"
-  onChange={(e) =>{
-   // setDeliveryInput(e.target.value)
-   setDeliveryInput(deliveryInput+1);
-    let newdata = data.filter(el => el.delivery.toString() == e.target.value)
-    setData(newdata)
-   
-
-     console.log(typeof(e.target.value), e.target.value )
-     console.log(newdata )
-     //
- } }
-  > 
-  
-  <option value={true}> pick up from store </option>
-  <option value={false} > shipping </option>
-  <option value={null} > all </option>
-  </select>
- 
-   
-  
+      <input
+        type="search"
+        name="search"
+        onChange={changeHandle}
+        value={userInput}
+        className="searchInput"
+        placeholder="search ..."
+      />
+      price:{" "}
+      <select
+        id="price"
+        onChange={(e) => {
+          setPriceInput(e.target.value);
+        }}
+      >
+        <option value="low"> low to high </option>
+        <option value="high"> high to low </option>
+      </select>
+      delivery method:{" "}
+      <select
+        id="delivery"
+        onChange={(e) => {
+          // setDeliveryInput(e.target.value)
+          setDeliveryInput(deliveryInput + 1);
+          let newdata = data.filter(
+            (el) => el.delivery.toString() == e.target.value
+          );
+          setData(newdata);
+          console.log(typeof e.target.value, e.target.value);
+          console.log(newdata);
+          //
+        }}
+      >
+        <option value={true}> pick up from store </option>
+        <option value={false}> shipping </option>
+        <option value={null}> all </option>
+      </select>
       <div
         style={{
           display: "flex",
@@ -183,6 +178,8 @@ function Shop() {
         >
           {userInput.length ? searchResult : null}
         </div>
+        {/* Slider */}
+        <ShopSlider />
         <div className="products-container">
           <h2>Flower and plants pots</h2>
           <div className="products">{getFlowerAndPlantsPots}</div>

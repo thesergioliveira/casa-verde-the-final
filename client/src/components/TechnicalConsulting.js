@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TechnicData from "../JSON/technic.json";
 import ContactInformation from "./ContactInformation";
-import ShopSlider from "./Shop/ShopSlider";
 import ContactForm from "./ContactForm";
 import Map from "./Map";
 
@@ -64,10 +63,6 @@ const TechnicalConsulting = () => {
         {componentsMenu}
       </div>
       {/* to do- adding calendar and address */}
-
-      {/* Slider */}
-      <ShopSlider />
-
       {/* Info, Form && Map */}
       <ContactInformation />
       <div className="form-map">
