@@ -7,16 +7,9 @@ import Shopitem from "./Shopitem";
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
-<<<<<<< HEAD
- const[priceInput, setPriceInput] = useState("")
- const[deliveryInput, setDeliveryInput] = useState(1)
- 
-//to get all products
-=======
   const [priceInput, setPriceInput] = useState("");
   const [deliveryInput, setDeliveryInput] = useState(1);
   //to get all products
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
   const getAllProducts = () => {
     // the config will use it when add to the basket to check if its the right user or not
     /* const config = {
@@ -38,13 +31,6 @@ function Shop() {
         console.log("here", err.response?.data);
       });
   };
-<<<<<<< HEAD
- useEffect(() => {
-    getAllProducts();
-  }, [deliveryInput]);
-=======
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
-
   const productFromStorage = JSON.parse(localStorage.getItem("product"));
   //console.log(productFromStorage)
   useEffect(() => {
@@ -63,32 +49,6 @@ function Shop() {
     setUserInput(e.target.value);
   };
   const userText = userInput.toLocaleLowerCase().trim();
-<<<<<<< HEAD
-  let searchResult = data?.filter(
-    el => el.name.includes(userText) || el.description.includes(userText) ||el.category.includes(userText)
-    
-    
-    
-    
-    ).map((obj) => {
-    const {id, category, name, price, description ,delivery, image, quantity} = obj;
-     return <Shopitem obj ={obj} />
-   
-
-   });
-// products price filter
-priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) => a.price - b.price)
-
-//delivery filter  WE NEED NEW SCHEMA PLZ DONT DELETE
-
-// if (deliveryInput=="yes"){
-// data && setData(data.filter(el => el.delivery === true))
-// }else if (deliveryInput=="no"){
-//   data && setData(data.filter(el => el.delivery === false))
-// } 
-//console.log(priceInput , deliveryInput)
-
-=======
   let searchResult = productFromStorage
     ?.filter(
       (el) =>
@@ -120,7 +80,6 @@ priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) =
   //   data && setData(data.filter(el => el.delivery === false))
   // }
   //console.log(priceInput , deliveryInput)
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
   //getFlowerAndPlantsPots
   const getFlowerAndPlantsPots = data
     ?.filter((el) => el.category === "Flower and plants pots")
@@ -159,47 +118,6 @@ priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) =
   return (
     <div className="shop">
       <h1>WELCOME TO OUR CASA VERDE SHOP</h1>
-<<<<<<< HEAD
-      
-                
-  <input
-            type="search"
-            name="search"
-            onChange={changeHandle}
-            value={userInput}
-            className="searchInput"
-            placeholder="search ..."
-          />
-   price: <select id="price"
-   onChange={(e) =>{
-       setPriceInput(e.target.value)
-   } }
-      > 
-   <option value="low"> low to high </option>
-  <option value="high"> high to low </option>
-   </select>
-  delivery method: <select id="delivery"
-  onChange={(e) =>{
-   // setDeliveryInput(e.target.value)
-   setDeliveryInput(deliveryInput+1);
-    let newdata = data.filter(el => el.delivery.toString() == e.target.value)
-    setData(newdata)
-   
-
-     console.log(typeof(e.target.value), e.target.value )
-     console.log(newdata )
-     //
- } }
-  > 
-  
-  <option value={true}> pick up from store </option>
-  <option value={false} > shipping </option>
-  <option value={null} > all </option>
-  </select>
- 
-   
-  
-=======
       <input
         type="search"
         name="search"
@@ -237,7 +155,6 @@ priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) =
         <option value={false}> shipping </option>
         <option value={null}> all </option>
       </select>
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
       <div
         style={{
           display: "flex",
@@ -245,7 +162,7 @@ priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) =
           justifyContent: "center",
           flexDirection: "column",
           flexWrap: "wrap",
-          flexDirection:"column"
+          flexDirection: "column",
         }}
       >
         <div

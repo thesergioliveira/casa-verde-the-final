@@ -16,30 +16,24 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
-import EditUser from "./components/Settings/EditUser"
+import EditUser from "./components/Settings/EditUser";
 import { DataProvider } from "./components/Context";
-<<<<<<< HEAD
 import AdminDash from "./components/AdminDash";
-=======
-import AdminDashboard from "./components/Shop/AdminDashboard";
-
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
 function App() {
-
-   // Logo setup
+  // Logo setup
   const logo = LogoData.map((obj) => {
     const { id, name, path, img } = obj;
     return (
-        <Link to={path}>
-          <img src={img} alt={name} key={id} className={name} />
-        </Link>
+      <Link to={path}>
+        <img src={img} alt={name} key={id} className={name} />
+      </Link>
     );
   });
 
   return (
     <DataProvider>
       <Router>
-        <Nav logo={logo}/>
+        <Nav logo={logo} />
         <main>
           <p>
             <b>**Mobile page is under construction**</b>
@@ -66,7 +60,7 @@ function App() {
             <Route path="/settings" exact component={EditUser}></Route>
           </Switch>
         </main>
-        <Footer logo={logo}/>
+        <Footer logo={logo} />
       </Router>
     </DataProvider>
   );

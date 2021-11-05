@@ -1,18 +1,11 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import React from "react";
-<<<<<<< HEAD
-import {DataContext} from "../Context";
-    //to dos
-//FIX THE DELIVERY 
-//FIX THE CHECKOUT
-   
-=======
 import { DataContext } from "../Context";
 //to dos
-//add a new user name angelos
+//FIX THE DELIVERY
+//FIX THE CHECKOUT
 
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
 //FIX THE FCKING DELETE
 function Shopitem(props) {
   // console.log(props.obj);
@@ -78,17 +71,34 @@ function Shopitem(props) {
 
   return (
     <div key={props.obj._id} className="product">
-            {/* <img src={props.obj.image} alt="logo" />*/}
-            <img src="https://s3.amazonaws.com/mentoring.redesign/s3fs-public/900product.jpg" alt="product img" />
-            <p>{props.obj.category}</p>
-            <p>name: {props.obj.name}</p>
-            <p>description: {props.obj.description}</p>
-            <p>only {props.obj.quantity- count} left</p> 
-            <p>price: {props.obj.price} $</p>
-            <button disabled ={count>=props.obj.quantity} onClick={() => addToBasket(props.obj._id)}>Add (+)to basket</button> {count} <button disabled ={count==0} onClick={() => removeFromBasket(props.obj._id)}>remove(-) from basket</button>
-            <button onClick={() => addToWishlist(props.obj._id)}>{wishlist?`🤍`:`❤️`} wishlist</button>
-        </div>
-    )
+      {/* <img src={props.obj.image} alt="logo" />*/}
+      <img
+        src="https://s3.amazonaws.com/mentoring.redesign/s3fs-public/900product.jpg"
+        alt="product img"
+      />
+      <p>{props.obj.category}</p>
+      <p>name: {props.obj.name}</p>
+      <p>description: {props.obj.description}</p>
+      <p>only {props.obj.quantity - count} left</p>
+      <p>price: {props.obj.price} $</p>
+      <button
+        disabled={count >= props.obj.quantity}
+        onClick={() => addToBasket(props.obj._id)}
+      >
+        Add (+)to basket
+      </button>{" "}
+      {count}{" "}
+      <button
+        disabled={count == 0}
+        onClick={() => removeFromBasket(props.obj._id)}
+      >
+        remove(-) from basket
+      </button>
+      <button onClick={() => addToWishlist(props.obj._id)}>
+        {wishlist ? `🤍` : `❤️`} wishlist
+      </button>
+    </div>
+  );
 }
 
 export default Shopitem;
