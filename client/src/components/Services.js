@@ -19,17 +19,19 @@ const Services = () => {
     );
   });
 
+  // Show more images
   const showMoreImg = () => {
     ServicesData.map((obj) => {
       const { id } = obj;
-      console.log(id);
 
+      // here is still missing a solution to show more images from the clicked category. if you currently click a button is still triggered each category.
       if (id === 0) {
-        setShowMore(showMore + 2);
+        setShowMore(showMore + 6);
       }
     });
   };
 
+  // Show image gallery with header and button
   const componentsMenu = ServicesData.map((obj) => {
     const { id, name, linkId, imgs } = obj;
 
