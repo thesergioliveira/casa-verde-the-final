@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 //import { get } from "mongoose";
-import Shopitem from "./Shopitem";
+import ShopItem from "./ShopItem";
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -67,7 +67,7 @@ function Shop() {
         image,
         quantity,
       } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   // products price filter
   priceInput === "high"
@@ -85,35 +85,35 @@ function Shop() {
     ?.filter((el) => el.category === "Flower and plants pots")
     .map((obj) => {
       const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
     ?.filter((el) => el.category === "Bouquet of flowers")
     .map((obj) => {
       const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   //getGiftBaskets
   const getGiftBaskets = data
     ?.filter((el) => el.category === "Gift baskets")
     .map((obj) => {
       const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   //italianProducts
   const italianProducts = data
     ?.filter((el) => el.category === "Italian Products")
     .map((obj) => {
       const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      return <ShopItem obj={obj} />;
     });
   // get all products
   const getProducts = data?.map((obj) => {
     const { _id, category, name, price, description, quantity } = obj;
     // version with ul
-    // return <li><Shopitem obj ={obj} /></li>
-    return <Shopitem obj={obj} />;
+    // return <li><ShopItem obj ={obj} /></li>
+    return <ShopItem obj={obj} />;
   });
   return (
     <div className="shop">

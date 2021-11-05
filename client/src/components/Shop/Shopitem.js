@@ -7,7 +7,7 @@ import { DataContext } from "../Context";
 //FIX THE CHECKOUT
 
 //FIX THE FCKING DELETE
-function Shopitem(props) {
+function ShopItem(props) {
   // console.log(props.obj);
   const [count, setCount] = useState(0);
   const [quantity, setQuantity] = useState(0);
@@ -101,4 +101,4 @@ function Shopitem(props) {
   );
 }
 
-export default Shopitem;
+export default ShopItem;
