@@ -66,25 +66,10 @@ const Nav = ({ logo }) => {
     <header>
       <nav>
         <div className="nav-top">
-<<<<<<< HEAD
-          <Link to="/">
-            <div className="logo-container"  onClick={closeMenu}>{logo}</div>
-          </Link>
-          <Link to="/admindash">
-        <button >Admin Dashboard</button>
-                 
-                </Link>
-          <Link to="/basket">
-                  <button>Basket</button>
-                </Link>
-
-          <div>
-=======
           <div className="logo-container" onClick={closeMenu}>
             {logo}
           </div>
           <div className="nav-user">
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
             {data ? (
               <>
                 {" "}

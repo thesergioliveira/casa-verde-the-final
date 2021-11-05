@@ -1,18 +1,11 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import React from "react";
-<<<<<<< HEAD
 import {DataContext} from "../Context";
     //to dos
 //FIX THE DELIVERY 
 //FIX THE CHECKOUT
    
-=======
-import { DataContext } from "../Context";
-//to dos
-//add a new user name angelos
-
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
 //FIX THE FCKING DELETE
 function Shopitem(props) {
   // console.log(props.obj);
