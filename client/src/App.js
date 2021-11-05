@@ -1,5 +1,7 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "./sass/main.scss";
+import LogoData from "./JSON/logo.json";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -17,11 +19,23 @@ import Basket from "./components/Shop/Basket";
 import EditUser from "./components/Settings/EditUser"
 import { DataProvider } from "./components/Context";
 import AdminDashboard from "./components/Shop/AdminDashboard";
+
 function App() {
+
+   // Logo setup
+  const logo = LogoData.map((obj) => {
+    const { id, name, path, img } = obj;
+    return (
+        <Link to={path}>
+          <img src={img} alt={name} key={id} className={name} />
+        </Link>
+    );
+  });
+
   return (
     <DataProvider>
       <Router>
-        <Nav />
+        <Nav logo={logo}/>
         <main>
           <p>
             <b>**Mobile page is under construction**</b>
@@ -48,7 +62,7 @@ function App() {
             <Route path="/settings" exact component={EditUser}></Route>
           </Switch>
         </main>
-        <Footer />
+        <Footer logo={logo}/>
       </Router>
     </DataProvider>
   );
