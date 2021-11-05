@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ServicesData from "../JSON/services.json";
 import ContactInformation from "./ContactInformation";
@@ -6,45 +6,59 @@ import ContactForm from './ContactForm';
 import Map from "./Map";
 
 const Services = () => {
+  const [showMore, setShowMore] = useState(5);
 
   const servicesMenu = ServicesData.map((obj) => {
     const { id, name, link } = obj;
     return (
       <li key={id}>
-         {/* the link is working only using anchor in this example */}
+        {/* the link is working only using anchor in this example */}
         {/* <Link to={link}>{name}</Link> */}
         <a href={link}>{name}</a>
       </li>
     );
   });
 
+  // Show more images onClick
+  const showMoreImg = () => {
+    ServicesData.map((obj) => {
+      const { id } = obj;
+
+      // here is still missing a solution to show more images from the clicked category. if you currently click a button is still triggered each category.
+      if (id === 0) {
+        setShowMore(showMore + 6);
+      }
+    });
+  };
+
+  // Show image gallery with header and button
   const componentsMenu = ServicesData.map((obj) => {
-    const { id, name, linkId, img1, img2, img3, img4, img5, img6 } = obj;
-    // tried to put the images into an array and map them, is not working for the  moment
-    // const img = images.map((image) => {
-    //   return (<img src={image} alt="details" width="100" height="100" />
-        
-    //   )
-    //});
-    //console.log(img);
+    const { id, name, linkId, imgs } = obj;
+
     return (
-      <li key={id}>
-        <h2 id={linkId}>{name}</h2>
-        <div>
-        <img src={img1} alt="details" width="100" height="100" />
-        <img src={img2} alt="details" width="100" height="100" />
+      <div className="container-gallery">
+        {/* header image gallery */}
+        <h3 key={id}>{name}</h3>
+
+        {/* show images */}
+        <div className="container-img-outer">
+          {imgs.map((img) => {
+            console.log(imgs.indexOf(img));
+            if (imgs.indexOf(img) <= showMore) {
+              return (
+                <div key={id} className="container-img-inner">
+                  <img src={img} alt={linkId} />
+                </div>
+              );
+            }
+          })}
         </div>
-        <div>
-        <img src={img3} alt="details" width="100" height="100" />
-        <img src={img4} alt="details" width="100" height="100" />
-        </div>
-        <div>
-        <img src={img5} alt="details" width="100" height="100" />
-        <img src={img6} alt="details" width="100" height="100" />
-        </div>
-        {/* to do- create pages and adding links to them */}
-        <Link to="/{linkId}"><button>Show more</button></Link>
-      </li>
+
+        {/* button to show more images */}
+        <button key={id} onClick={showMoreImg}>
+          Show more
+        </button>
+      </div>
     );
   });
 
@@ -55,10 +69,21 @@ const Services = () => {
         <h1>Casa Verde</h1>
         <p>Decoration Services</p>
       </div>
+
       <ul>{servicesMenu}</ul>
-      <a href="#contact"><button>Contact Now!</button></a>
-      <div>
-        {componentsMenu}
+
+      <a href="#contact">
+        <button>Contact Now!</button>
+      </a>
+
+      {/* Display images */}
+      <div className="wrapper-img-services">{componentsMenu}</div>
+
+      {/* Info, Form && Map */}
+      <ContactInformation />
+      <div className="form-map">
+        <ContactForm />
+        <Map />
       </div>
       <ContactInformation />
       <div className="form-map">
@@ -67,6 +92,6 @@ const Services = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Services;
