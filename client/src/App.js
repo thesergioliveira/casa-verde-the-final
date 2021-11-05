@@ -1,5 +1,7 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "./sass/main.scss";
+import LogoData from "./JSON/logo.json";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -14,13 +16,30 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
+import EditUser from "./components/Settings/EditUser"
 import { DataProvider } from "./components/Context";
+<<<<<<< HEAD
+import AdminDash from "./components/AdminDash";
+=======
+import AdminDashboard from "./components/Shop/AdminDashboard";
 
+>>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
 function App() {
+
+   // Logo setup
+  const logo = LogoData.map((obj) => {
+    const { id, name, path, img } = obj;
+    return (
+        <Link to={path}>
+          <img src={img} alt={name} key={id} className={name} />
+        </Link>
+    );
+  });
+
   return (
     <DataProvider>
       <Router>
-        <Nav />
+        <Nav logo={logo}/>
         <main>
           <p>
             <b>**Mobile page is under construction**</b>
@@ -28,6 +47,7 @@ function App() {
           <Switch>
             {/* Need to add public.env */}
             <Route path="/" exact render={Home}></Route>
+            <Route path="/admindash" exact component={AdminDash}></Route>
             <Route path="/shop" exact component={Shop}></Route>
             <Route path="/services" exact component={Services}></Route>
             <Route path="/events" exact render={Events}></Route>
@@ -43,9 +63,10 @@ function App() {
             <Route path="/login" exact component={Login}></Route>
             <Route path="/register" exact component={Register}></Route>
             <Route path="/basket" exact component={Basket}></Route>
+            <Route path="/settings" exact component={EditUser}></Route>
           </Switch>
         </main>
-        <Footer />
+        <Footer logo={logo}/>
       </Router>
     </DataProvider>
   );

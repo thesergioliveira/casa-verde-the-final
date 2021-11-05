@@ -2,18 +2,24 @@ import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
 import { DataContext } from "./Context";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiSettings } from "react-icons/fi";
+import { FaUser, FaShoppingBasket } from "react-icons/fa";
 
 // set onClick for logo to close the menu - to do
-const Nav = () => {
+const Nav = ({ logo }) => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(true);
   const [none, setNone] = useState(true);
+  const [show, setShow] = useState(true);
+  const [closeUser, setCloseUser] = useState(true);
+  const [openUser, setOpenUser] = useState(false);
   //use the context
   const [data, setData] = useContext(DataContext);
-  //console.log(data?.user?.basket.length);
-  var basket = data?.user?.basket.length;
+  //console.log("nav data",data.token);
+  // get the userName
+  const userName = data?.user?.username.toUpperCase();
 
+  //hamburgerMenu
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
     return (
@@ -22,11 +28,22 @@ const Nav = () => {
       </li>
     );
   });
+  //userMenu
+  const showEditUser = () => {
+    setOpenUser(openUser);
+    setCloseUser(!closeUser);
+    setShow(!show);
+  };
+  const closeUserMenu = () => {
+    setCloseUser(true);
+    setShow(true);
+  };
 
   const showMenu = () => {
     setOpen(open);
     setClose(!close);
     setNone(!none);
+    closeUserMenu();
   };
   // closing hamburger menu function
   const closeMenu = () => {
@@ -45,34 +62,62 @@ const Nav = () => {
   const redirect = () => {
     history.push("/login");
   };
-
   return (
     <header>
       <nav>
         <div className="nav-top">
+<<<<<<< HEAD
           <Link to="/">
-            <div className="logo">img</div>
+            <div className="logo-container"  onClick={closeMenu}>{logo}</div>
           </Link>
+          <Link to="/admindash">
+        <button >Admin Dashboard</button>
+                 
+                </Link>
           <Link to="/basket">
                   <button>Basket</button>
                 </Link>
 
           <div>
+=======
+          <div className="logo-container" onClick={closeMenu}>
+            {logo}
+          </div>
+          <div className="nav-user">
+>>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
             {data ? (
               <>
                 {" "}
+                <Link to="/basket">
+                  <li id="basket">
+                    <FaShoppingBasket />
+                  </li>
+                </Link>
                 <div
-                  style={{
-                    color: "black",
-                    fontWeight: "bold",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                  }}
-                  onClick={logOut}
-                  alt="logout"
+                  className={closeUser ? "hamburger close" : "hamburger open"}
+                  onClick={showEditUser}
                 >
-                  <FiLogOut />
+                  <li>
+                    <FaUser />
+                  </li>
                 </div>
+                <ul
+                  className={show ? "userNone" : "userShow"}
+                  onClick={showEditUser}
+                >
+                  <li> WELCOME: {userName}</li>
+
+                  <Link to="/settings">
+                    <li>
+                      {" "}
+                      Settings <FiSettings />
+                    </li>
+                  </Link>
+
+                  <li onClick={logOut} alt="logout">
+                    Logout <FiLogOut />
+                  </li>
+                </ul>
               </>
             ) : (
               <>
@@ -102,6 +147,7 @@ const Nav = () => {
               </>
             )}
           </div>
+
           <div
             className={close ? "hamburger close" : "hamburger open"}
             onClick={showMenu}

@@ -18,6 +18,7 @@ const Login = ({ history }) => {
         if (!res.data.token) {
           setLoginMessage(res.data.message);
         } else {
+          localStorage.setItem("data", JSON.stringify(res.data));
           setData(res.data);
           localStorage.setItem("token", res.data.token);
           setLoginMessage("You are logged in");
