@@ -37,7 +37,7 @@ const productFromStorage=JSON.parse(localStorage.getItem("product"))
  useEffect(() => {
     getAllProducts();
   }, [deliveryInput]);
-  if (productFromStorage?.auth === false || productFromStorage === undefined) {
+  if (data?.auth === false || productFromStorage === undefined) {
     return (
       <div>
         <h1>you are logged out</h1>
@@ -132,6 +132,7 @@ priceInput==="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) 
           alignItems: "center",
           justifyContent: "center",
           flexWrap: "wrap",
+          flexDirection:"column"
         }}
       >
       <div className="space-for-results"
