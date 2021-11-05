@@ -11,7 +11,8 @@ function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
  const[priceInput, setPriceInput] = useState("")
- const[deliveryInput, setDeliveryInput] = useState("")
+ const[deliveryInput, setDeliveryInput] = useState(1)
+ 
 //to get all products
   const getAllProducts = () => {
     const config = {
@@ -34,7 +35,7 @@ function Shop() {
   };
  useEffect(() => {
     getAllProducts();
-  }, []);
+  }, [deliveryInput]);
 
   if (data?.auth === false || data.length === 0) {
     return (
@@ -65,14 +66,14 @@ function Shop() {
 // products price filter
 priceInput=="high" ? data.sort((a, b) => b.price - a.price) : data.sort((a, b) => a.price - b.price)
 
-//delievery filter     WE NEED NEW SCHEMA PLZ DONT DELETE
+//delivery filter  WE NEED NEW SCHEMA PLZ DONT DELETE
 
-if (deliveryInput=="yes"){
-  data?.filter(el => el.delivery = true)
-}else if (deliveryInput=="no"){
-  data?.filter(el => el.delivery = false)
-}
-console.log(priceInput , deliveryInput)
+// if (deliveryInput=="yes"){
+// data && setData(data.filter(el => el.delivery === true))
+// }else if (deliveryInput=="no"){
+//   data && setData(data.filter(el => el.delivery === false))
+// } 
+//console.log(priceInput , deliveryInput)
 
   //getFlowerAndPlantsPots
   const getFlowerAndPlantsPots = data?.filter(el => el.category === "Flower and plants pots").map((obj) => {
@@ -115,10 +116,7 @@ console.log(priceInput , deliveryInput)
     <div>
     
       <h1>WELCOME TO OUR CASA VERDE SHOP</h1>
-      <Link to="/admindashboard">
-        <button >Admin Dashboard</button>
-                 
-                </Link>
+      
                 
   <input
             type="search"
@@ -138,12 +136,21 @@ console.log(priceInput , deliveryInput)
    </select>
   delivery method: <select id="delivery"
   onChange={(e) =>{
-      setDeliveryInput(e.target.value)
-  } }
+   // setDeliveryInput(e.target.value)
+   setDeliveryInput(deliveryInput+1);
+    let newdata = data.filter(el => el.delivery.toString() == e.target.value)
+    setData(newdata)
+   
+
+     console.log(typeof(e.target.value), e.target.value )
+     console.log(newdata )
+     //
+ } }
   > 
-  <option value="all" > all </option>
-  <option value="no"> pick up from store </option>
-  <option value="yes" > shipping </option>
+  
+  <option value={true}> pick up from store </option>
+  <option value={false} > shipping </option>
+  <option value={null} > all </option>
   </select>
  
    
