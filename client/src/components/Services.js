@@ -19,7 +19,7 @@ const Services = () => {
     );
   });
 
-  // Show more images
+  // Show more images onClick
   const showMoreImg = () => {
     ServicesData.map((obj) => {
       const { id } = obj;
@@ -36,20 +36,25 @@ const Services = () => {
     const { id, name, linkId, imgs } = obj;
 
     return (
-      <div className="container-test">
+      <div className="container-gallery">
+        {/* header image gallery */}
         <h3 key={id}>{name}</h3>
-        <div className="container-two">
+
+        {/* show images */}
+        <div className="container-img-outer">
           {imgs.map((img) => {
             console.log(imgs.indexOf(img));
             if (imgs.indexOf(img) <= showMore) {
               return (
-                <div key={id} className="img-container">
+                <div key={id} className="container-img-inner">
                   <img src={img} alt={linkId} />
                 </div>
               );
             }
           })}
         </div>
+
+        {/* button to show more images */}
         <button key={id} onClick={showMoreImg}>
           Show more
         </button>
