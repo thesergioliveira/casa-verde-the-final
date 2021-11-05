@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ServicesData from "../JSON/services.json";
 import ContactInformation from "./ContactInformation";
@@ -6,6 +6,8 @@ import ContactForm from "./ContactForm";
 import Map from "./Map";
 
 const Services = () => {
+  const [showMore, setShowMore] = useState(5);
+
   const servicesMenu = ServicesData.map((obj) => {
     const { id, name, link } = obj;
     return (
@@ -17,6 +19,17 @@ const Services = () => {
     );
   });
 
+  const showMoreImg = () => {
+    ServicesData.map((obj) => {
+      const { id } = obj;
+      console.log(id);
+
+      if (id === 0) {
+        setShowMore(showMore + 2);
+      }
+    });
+  };
+
   const componentsMenu = ServicesData.map((obj) => {
     const { id, name, linkId, imgs } = obj;
 
@@ -25,7 +38,8 @@ const Services = () => {
         <h3 key={id}>{name}</h3>
         <div className="container-two">
           {imgs.map((img) => {
-            if (imgs.indexOf(img) <= 5) {
+            console.log(imgs.indexOf(img));
+            if (imgs.indexOf(img) <= showMore) {
               return (
                 <div key={id} className="img-container">
                   <img src={img} alt={linkId} />
@@ -34,7 +48,9 @@ const Services = () => {
             }
           })}
         </div>
-        <button key={id}>Show more</button>
+        <button key={id} onClick={showMoreImg}>
+          Show more
+        </button>
       </div>
     );
   });

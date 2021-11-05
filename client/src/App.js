@@ -29,7 +29,7 @@ function App() {
             {/* Need to add public.env */}
             <Route path="/" exact render={Home}></Route>
             <Route path="/shop" exact component={Shop}></Route>
-            <Route path="/services" exact render={Services}></Route>
+            <Route path="/services" exact component={Services}></Route>
             <Route path="/events" exact render={Events}></Route>
             <Route path="/rent" exact render={Rent}></Route>
             <Route
