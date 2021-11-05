@@ -65,7 +65,9 @@ allControllers.login = async (req, res) => {
             basket: user.basket,
             wishlist: user.wishlist,
             id: user._id,
-            admin: user.admin,
+            email: user.email,
+            phone: user.phone,
+            address: user.address,
           },
         });
     } else {
@@ -93,6 +95,7 @@ allControllers.deleteUser = async (req, res) => {
   }
 };
 //getOneByID
+
 allControllers.getOneUser = async (req, res) => {
   console.log(req.query.id);
   try {
@@ -102,7 +105,21 @@ allControllers.getOneUser = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
-
+allControllers.updateUser = async (req, res) => {
+  try {
+    const findUser = await User.findByIdAndUpdate(req.params.id, {
+      $set: {
+        username: req.body.username,
+        email: req.body.email,
+        phone: req.body.username,
+        address: req.body.address,
+      },
+    });
+    res.status(200).json({ message: "user been updated", findUser });
+  } catch (error) {
+    res.status(400).json({ message: err.message });
+  }
+};
 allControllers.getDate = async (req, res) => {
   res.status(200).json("welcome to casaVerde");
 };
