@@ -85,11 +85,6 @@ const Services = () => {
         <ContactForm />
         <Map />
       </div>
-      <ContactInformation />
-      <div className="form-map">
-        <ContactForm />
-        <Map />
-      </div>
     </div>
   );
 };
