@@ -4,7 +4,6 @@
       position: relative;
       width: 100vw;
       @include flex;
-      overflow: hidden;
       flex-direction: column;
 
       h3 {
@@ -39,6 +38,7 @@
         border-radius: 0.25rem;
         border: none;
         font-size: 0.9rem;
+        box-shadow: 0.2rem 0.2rem 0.6rem black;
       }
     }
   }
