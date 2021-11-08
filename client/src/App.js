@@ -35,9 +35,6 @@ function App() {
       <Router>
         <Nav logo={logo} />
         <main>
-          <p>
-            <b>**Mobile page is under construction**</b>
-          </p>
           <Switch>
             {/* Need to add public.env */}
             <Route path="/" exact render={Home}></Route>
