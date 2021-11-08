@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ServicesData from "../JSON/services.json";
 import Weddings from "../components/Gallery/Weddings";
 import PlantIdeas from "../components/Gallery/PlantIdeas";
+import GiftIdeas from "../components/Gallery/GiftIdeas";
 import ContactInformation from "./ContactInformation";
 import ContactForm from "./ContactForm";
 import Map from "./Map";
@@ -38,6 +39,9 @@ const Services = () => {
 
       {/* Plant Ideas */}
       <PlantIdeas />
+
+      {/* Gift Ideas */}
+      <GiftIdeas />
 
       {/* Info, Form && Map */}
       <ContactInformation />
