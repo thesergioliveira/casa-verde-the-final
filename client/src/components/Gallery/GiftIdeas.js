@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import ServicesData from "../../JSON/services.json";
 import { v4 as uuidv4 } from "uuid";
 
-const Weddings = () => {
+const GiftIdeas = () => {
   const [images, setImages] = useState(5);
 
-  const weddings = ServicesData.filter((obj) => obj.name === "Gift ideas");
+  const giftIdeas = ServicesData.filter((obj) => obj.name === "Gift ideas");
 
   // onClick show more images
   const showMoreImg = () => {
@@ -13,7 +13,7 @@ const Weddings = () => {
   };
 
   // Category --> heading, images and button
-  const weddingGallery = weddings.map((obj) => {
+  const giftIdeasGallery = giftIdeas.map((obj) => {
     const { name, linkId, imgs } = obj;
 
     return (
@@ -44,7 +44,7 @@ const Weddings = () => {
     );
   });
 
-  return <div className="wrapper-img-services">{weddingGallery}</div>;
+  return <div className="wrapper-img-services">{giftIdeasGallery}</div>;
 };
 
-export default Weddings;
+export default GiftIdeas;
