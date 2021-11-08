@@ -38,6 +38,28 @@ allProductControllers.addProduct = async (req, res) => {
       res.status(400).json({ message: err.message });
     });
 };
+// update a product 
+allProductControllers.updateProduct = async (req, res) => {
+  
+  try {
+    const findProduct = await Product.findByIdAndUpdate(req.params.id, {
+      
+      $set: {
+         category: req.body.category,
+         description: req.body.description,
+          price: req.body.price,
+           // image: req.file.path,
+          delivery: req.body.delivery,
+         // image: req.body.image,
+          quantity: req.body.quantity,
+      }, 
+    });
+    console.log("REQQ  BODY IDDD", req.params.id);
+    res.status(200).json({ message: "Product has been updated", findProduct });
+  } catch (error) {
+    res.status(400).json({ message: err.message });
+  }
+};
 // Add new Product to the basket from users
 //616ec638b7d4def05aa683c5 bs for product id
 //
@@ -106,7 +128,14 @@ allProductControllers.removeFromBasket = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
-
+allProductControllers.deleteProduct = async (req, res) => {
+  try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: "Product deleted ✅" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+}
 allProductControllers.getCheckout = async (req, res) => {
   //we will get it from front end as obj  once the payment is done
   //const placedOrder = true;

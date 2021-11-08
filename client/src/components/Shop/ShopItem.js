@@ -1,35 +1,32 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-<<<<<<< HEAD
 import {DataContext} from "../Context";
     //to dos
 //FIX THE DELIVERY 
 //FIX THE CHECKOUT
    
-=======
-import { DataContext } from "../Context";
-//to dos
-//add a new user name angelos
-
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
 //FIX THE FCKING DELETE
-function Shopitem(props) {
+function ShopItem(props) {
   // console.log(props.obj);
   const [count, setCount] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [wishlist, setWishlist] = useState(true);
   const [data, setData] = useContext(DataContext);
-
+  const [userData, setUserData] = useState()
   //i hard coded the user id so that you can work further, ill redirect it to login before its crushed ,it will be done tomorrow
   //the id 61794db8beb58d52f8cc22f3 is for the user salim
-
+  const indUserId = data?.user.id;
   //let indUserId ="61794db8beb58d52f8cc22f3";
-  let indUserId = "61794db8beb58d52f8cc22f3";
-  //indUserId ? indUserId :indUserId===;
+
   //console.log(indUserId);
 
   // add to basket
+// useEffect(() => {
+//  // axios.get().then(data =>setUserData(data.data));
+// console.log('edtg')
+// }, [count])
+
 
   const addToBasket = (id) => {
     if (count > 0) {
@@ -46,9 +43,10 @@ function Shopitem(props) {
   };
 
   const removeFromBasket = (id) => {
+    
     setCount(count - 1);
     axios
-      .delete(`user/${indUserId}`, {
+      .put(`user/${indUserId}`, {
         productId: id,
       })
       .then((res) => {
@@ -67,7 +65,7 @@ function Shopitem(props) {
         });
     } else {
       axios
-        .delete(`user/wishlist/${indUserId}`, {
+        .put(`user/wishlist/${indUserId}`, {
           productId: id,
         })
         .then((res) => {
@@ -91,4 +89,4 @@ function Shopitem(props) {
     )
 }
 
-export default Shopitem;
+export default ShopItem;

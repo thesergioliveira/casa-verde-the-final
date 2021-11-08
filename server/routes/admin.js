@@ -7,11 +7,15 @@ const middleware = require("../middlewares/middleware");
 router.post("/product/:id", allProductControllers.addProduct);
 
 // get all users
-// getAll http://localhost:5000/admin/users
+// getAll http://localhost:5005/admin/users
 router.get("/users",middleware.checkToken, allControllers.getAllUsers);
+// update Product.
+router.put("/product/:id", allProductControllers.updateProduct);
+router.delete("/product/:id", allProductControllers.deleteProduct);
+
 // delete Product.
 
 
-// delete Product.
+
 
 module.exports = router;

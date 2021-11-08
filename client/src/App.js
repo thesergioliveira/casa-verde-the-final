@@ -18,12 +18,7 @@ import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
 import EditUser from "./components/Settings/EditUser"
 import { DataProvider } from "./components/Context";
-<<<<<<< HEAD
 import AdminDash from "./components/AdminDash";
-=======
-import AdminDashboard from "./components/Shop/AdminDashboard";
-
->>>>>>> d3b32b2e922a040f37227de747afe95fc46fcd4b
 function App() {
 
    // Logo setup
