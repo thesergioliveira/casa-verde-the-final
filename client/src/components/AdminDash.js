@@ -4,8 +4,15 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import {DataContext} from "./UserContext";
 import { Link, useHistory } from "react-router-dom";
-const AdminDash = () => {
+import { AuthContext } from "./AuthContext";
   
+const AdminDash = () => {
+  const [token] = useContext(AuthContext);
+  const config = {
+    headers: {
+      authorization: token,
+    },
+  };
   
   // axios.defaults.withCredentials = true;
   const [data, setData] = useState([]);
@@ -25,11 +32,7 @@ let allow
  
 //find users
  const displayUsers = () => {
-  const config = {
-    headers: {
-      authorization: localStorage.getItem("token"),
-    },
-  };
+  
   
 axios.get(`admin/users`, config)
     .then((res) => {
@@ -50,7 +53,7 @@ useEffect(() => {
 // get all products WE CAN GET THEM WITH USECONTEXT
 const getAllProducts = () => {
  axios
-    .get("user/products")
+    .get("user/products", config)
     .then((res) => {
       if (res.data) {
         setProductData(res.data);
@@ -74,7 +77,7 @@ const handleSubmit = () => {
   const newProductData = { name, category,  description, price, delivery, quantity };
 
   axios
-    .post(`admin/product/${indUserId}`, newProductData
+    .post(`admin/product/`, newProductData, config
     // , {
     //   header: {
     //     "Content-Type": "multipart/form-data",
@@ -94,7 +97,7 @@ const handleSubmitForUpdate = () => {
   const updatedProductData = { category, description, price, delivery, quantity};
   console.log(name);
   axios
-  .put(`admin/product/${name}`, updatedProductData)
+  .put(`admin/product/${name}`, updatedProductData, config)
   .then((res) => {
     console.log(res.updatedProductData);
    
@@ -106,7 +109,7 @@ const handleSubmitForUpdate = () => {
 }
 const handleDelete = (id) => {
   if (window.confirm('Are you sure you want to delete this thing from the database?')) {
-    axios.delete(`admin/product/${id}`)
+    axios.delete(`admin/product/${id}`, config)
     .then((res) => {
       console.log(res.data);
   
@@ -127,7 +130,7 @@ const handleStock = () => {
   const updatedProductData = {quantity};
   console.log(name);
   axios
-  .put(`admin/product/${name}`, updatedProductData)
+  .put(`admin/product/${name}`, updatedProductData, config)
   .then((res) => {
     console.log(res.updatedProductData);
    

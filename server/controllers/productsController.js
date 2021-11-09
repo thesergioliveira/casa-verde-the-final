@@ -6,7 +6,7 @@ const allProductControllers = {};
 
 // Add new Product from admin
 allProductControllers.addProduct = async (req, res) => {
-  User.findById(req.params.id)
+  User.findById(req.id)
     .then((user) => {
       if (user && user.admin) {
         const product = new Product({
