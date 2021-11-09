@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import React from "react";
-import { DataContext } from "../Context";
+//import { DataContext } from "../UserContext";
+import { AuthContext } from "../AuthContext";
 //to dos
 //FIX THE DELIVERY
 //FIX THE CHECKOUT
@@ -12,27 +13,31 @@ function ShopItem(props) {
   const [count, setCount] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [wishlist, setWishlist] = useState(true);
-  const [data, setData] = useContext(DataContext);
+  //const [userData, setUserData] = useContext(DataContext);
+  const [token] = useContext(AuthContext);
 
-  //i hard coded the user id so that you can work further, ill redirect it to login before its crushed ,it will be done tomorrow
-  //the id 61794db8beb58d52f8cc22f3 is for the user salim
-
-  //let indUserId ="61794db8beb58d52f8cc22f3";
-  let indUserId = "61794db8beb58d52f8cc22f3";
-  //indUserId ? indUserId :indUserId===;
-  //console.log(indUserId);
-
+  const config = {
+    headers: {
+      authorization: token,
+    },
+  };
   // add to basket
 
   const addToBasket = (id) => {
+    console.log("test");
     if (count > 0) {
       setQuantity(count);
     }
     setCount(count + 1);
+
     axios
-      .post(`user/${indUserId}`, {
-        productId: id,
-      })
+      .post(
+        "user/addToBasket",
+        {
+          productId: id,
+        },
+        config
+      )
       .then((res) => {
         console.log(res.data.message);
       });
@@ -40,10 +45,15 @@ function ShopItem(props) {
 
   const removeFromBasket = (id) => {
     setCount(count - 1);
+
     axios
-      .delete(`user/${indUserId}`, {
-        productId: id,
-      })
+      .put(
+        "user/removeFromTheBasket",
+        {
+          productId: id,
+        },
+        config
+      )
       .then((res) => {
         console.log(res.data.message);
       });
@@ -52,17 +62,25 @@ function ShopItem(props) {
     setWishlist(!wishlist);
     if (wishlist) {
       axios
-        .post(`user/wishlist/${indUserId}`, {
-          productId: id,
-        })
+        .post(
+          "user/wishlist",
+          {
+            productId: id,
+          },
+          config
+        )
         .then((res) => {
           console.log(res.data.message);
         });
     } else {
       axios
-        .delete(`user/wishlist/${indUserId}`, {
-          productId: id,
-        })
+        .delete(
+          "user/wishlist",
+          {
+            productId: id,
+          },
+          config
+        )
         .then((res) => {
           console.log(res);
         });
@@ -89,7 +107,7 @@ function ShopItem(props) {
       </button>{" "}
       {count}{" "}
       <button
-        disabled={count == 0}
+        disabled={count === 0}
         onClick={() => removeFromBasket(props.obj._id)}
       >
         remove(-) from basket
