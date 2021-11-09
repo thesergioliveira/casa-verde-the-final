@@ -68,6 +68,7 @@ useEffect(() => {
   getAllProducts();
 }, []);
 
+
 // add a product 
 const handleSubmit = () => {
   const newProductData = { name, category,  description, price, delivery, quantity };
@@ -120,7 +121,27 @@ const handleDelete = (id) => {
   
 
 }
-  
+
+const handleStock = () => {
+  setQuantity(quantity - 1);
+  const updatedProductData = {quantity};
+  console.log(name);
+  axios
+  .put(`admin/product/${name}`, updatedProductData)
+  .then((res) => {
+    console.log(res.updatedProductData);
+   
+   })
+  .catch((err) => {
+    console.log(err.message);
+    
+  });
+
+} 
+
+
+
+
     return <div 
     style={{
         display:`${allow}`,
@@ -133,7 +154,17 @@ const handleDelete = (id) => {
             <h2>Total items in wishlists {data?.map((item) => item.wishlist.length).reduce((a, b) => a + b, 0)}</h2>
             <h2>Total items in baskets {data?.map((item) => item.basket.length).reduce((a, b) => a + b, 0)}</h2>
         <div >
-              
+              <h2>STOCK UPDATE</h2>
+              <select id="name"
+   onChange={(e) =>{
+    setName(e.target.value)
+    console.log(name)
+   } }
+      > 
+    {productData.map((item) => <option value={item._id}> {item.name} </option>)}
+      </select>
+      <button onClick={handleStock}>MINUS ONE</button>
+      
       <h2>ADD A PRODUCT</h2>
       <p>name it:</p>
       <input

@@ -150,7 +150,7 @@ allProductControllers.getCheckout = async (req, res) => {
     // we count the amount of each purcashed product by counting the numbers of the same ids
      const quantityCounter ={}
     user.basket.forEach(function(item){
-        quantityCounter[item._id] = quantityCounter[item._id] ? quantityCounter[item._id]+1 : 1;
+        quantityCounter[item._id] = quantityCounter[item._id] ? quantityCounter[item._id]-1 : 1;
       })
       // we update the quantity in our inventory
  product.forEach((item) => {
