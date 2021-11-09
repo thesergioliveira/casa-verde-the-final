@@ -17,34 +17,33 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
 import EditUser from "./components/Settings/EditUser"
-import { DataProvider } from "./components/Context";
+import {DataProvider}  from "./components/UserContext";
+import {AuthContextProvider}  from "./components/AuthContext";
 import AdminDash from "./components/AdminDash";
-function App() {
 
-   // Logo setup
+function App() {
+  // Logo setup
   const logo = LogoData.map((obj) => {
     const { id, name, path, img } = obj;
     return (
-        <Link to={path}>
-          <img src={img} alt={name} key={id} className={name} />
-        </Link>
+      <Link to={path}>
+        <img src={img} alt={name} key={id} className={name} />
+      </Link>
     );
   });
 
   return (
     <DataProvider>
+      <AuthContextProvider>
       <Router>
-        <Nav logo={logo}/>
+        <Nav logo={logo} />
         <main>
-          <p>
-            <b>**Mobile page is under construction**</b>
-          </p>
           <Switch>
             {/* Need to add public.env */}
             <Route path="/" exact render={Home}></Route>
             <Route path="/admindash" exact component={AdminDash}></Route>
             <Route path="/shop" exact component={Shop}></Route>
-            <Route path="/services" exact render={Services}></Route>
+            <Route path="/services" exact component={Services}></Route>
             <Route path="/events" exact render={Events}></Route>
             <Route path="/rent" exact render={Rent}></Route>
             <Route
@@ -61,8 +60,9 @@ function App() {
             <Route path="/settings" exact component={EditUser}></Route>
           </Switch>
         </main>
-        <Footer logo={logo}/>
+        <Footer logo={logo} />
       </Router>
+      </AuthContextProvider>
     </DataProvider>
   );
 }

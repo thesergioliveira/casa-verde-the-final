@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-import {DataContext} from "../Context";
+import {DataContext} from "../UserContext";
     //to dos
 //FIX THE DELIVERY 
 //FIX THE CHECKOUT

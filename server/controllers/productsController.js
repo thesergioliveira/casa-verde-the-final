@@ -2,31 +2,29 @@
 const { User, Product } = require("../model/casaverdeModel");
 const mongoose = require("mongoose");
 
-
-
 const allProductControllers = {};
 
 // Add new Product from admin
 allProductControllers.addProduct = async (req, res) => {
   User.findById(req.params.id)
     .then((user) => {
-      if (user && user.admin ) {
+      if (user && user.admin) {
         const product = new Product({
           _id: new mongoose.Types.ObjectId(),
           name: req.body.name,
-         category: req.body.category,
-         description: req.body.description,
+          category: req.body.category,
+          description: req.body.description,
           price: req.body.price,
-           // image: req.file.path,
+          // image: req.file.path,
           delivery: req.body.delivery,
-         // image: req.body.image,
+          // image: req.body.image,
           quantity: req.body.quantity,
         });
         product.save();
         console.log(product);
-       // user.basket.push(product);
-        
-       // user.save();
+        // user.basket.push(product);
+
+        // user.save();
         res
           .status(201)
           .json({ message: "New product being added ✅", product });
@@ -66,7 +64,7 @@ allProductControllers.updateProduct = async (req, res) => {
 //adding controllers
 allProductControllers.addToBasket = async (req, res) => {
   try {
-  const user = await User.findById(req.params.id);
+    const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
       user.basket.push(product);
@@ -80,46 +78,44 @@ allProductControllers.addToBasket = async (req, res) => {
   }
 };
 allProductControllers.addToWishlist = async (req, res) => {
-
   try {
-    const user = await User.findById(req.params.id);
-      const product = await Product.findById(req.body.productId);
-      if (user && product) {
-        user.wishlist.push(product);
-        user.save();
-        res.status(201).json({ message: "Product added to wishlist ✅" });
-      } else {
-        res.status(404).json({ message: "User or product not found" });
-      }
-    } catch (err) {
-      res.status(400).json({ message: err.message });
+    const user = await User.findById(req.id);
+    const product = await Product.findById(req.body.productId);
+    if (user && product) {
+      user.wishlist.push(product);
+      user.save();
+      res.status(201).json({ message: "Product added to wishlist ✅" });
+    } else {
+      res.status(404).json({ message: "User or product not found" });
     }
-}
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
 // remove controllers
 allProductControllers.removeFromWishlist = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-      const product = await Product.findById(req.body.productId);
-      if (user && product) {
-        user.wishlist.pull(product);
-        user.save();
-        res.status(201).json({ message: "Product removed from wishlist ✅" });
-      } else {
-        res.status(404).json({ message: "User or product not found" });
-      }
-    } catch (err) {
-      res.status(400).json({ message: err.message });
+    const user = await User.findById(req.id);
+    const product = await Product.findById(req.body.productId);
+    if (user && product) {
+      user.wishlist.pull(product);
+      user.save();
+      res.status(201).json({ message: "Product removed from wishlist ✅" });
+    } else {
+      res.status(404).json({ message: "User or product not found" });
     }
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 };
 allProductControllers.removeFromBasket = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
-
       user.basket.pull(product);
       user.save();
-     
+
       res.status(201).json({ message: "Product removed from basket ✅" });
     } else {
       res.status(404).json({ message: "User or product not found" });
@@ -140,8 +136,8 @@ allProductControllers.getCheckout = async (req, res) => {
   //we will get it from front end as obj  once the payment is done
   //const placedOrder = true;
   try {
-    const user = await User.findById(req.params.id);
-    
+    const user = await User.findById(req.id);
+
     const product = await Product.find({
       _id: {
         $in: user.basket,
@@ -181,16 +177,16 @@ const updatedProduct = await Product.updateMany(
 //  console.log( product.map(item=>item.quantity))
 //  console.log(product.map((el)=> `${el._id} only ${el.quantity} left`));
 
- // we empty the basket
-     const basketupdater = await User.findByIdAndUpdate(req.params.id, {
+    // we empty the basket
+    const basketupdater = await User.findByIdAndUpdate(req.params.id, {
       $set: {
         basket: [],
       },
     });
-// update the db
- res.status(200).json({
+    // update the db
+    res.status(200).json({
       message:
-        "inventory updated, thank u for ur purchase we hope to see u again "
+        "inventory updated, thank u for ur purchase we hope to see u again ",
     });
   } catch (err) {
     res.status(err.status).json({
@@ -211,18 +207,15 @@ allProductControllers.getAllProducts = async (req, res) => {
 
 allProductControllers.getOneByID = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate("basket");
+    const user = await User.findById(req.id).populate("basket");
     // res.status(200).json(user);
-    
-    res.status(200).json({
-      
+
+    await res.status(200).json({
       basket: user.basket.map((item) => item.toObject()),
-       
     });
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }
 };
-
 
 module.exports = allProductControllers;

@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios";
 
 import { useState, useEffect, useContext } from "react";
-import {DataContext} from "./Context";
+import {DataContext} from "./UserContext";
 import { Link, useHistory } from "react-router-dom";
 const AdminDash = () => {
   
@@ -21,7 +21,7 @@ const AdminDash = () => {
  
     //control
 let allow
- userdata?.user.admin ? allow="none": allow="flex";
+ !userdata?.user.admin ? allow="none": allow="flex";
  
 //find users
  const displayUsers = () => {
@@ -123,7 +123,7 @@ const handleDelete = (id) => {
 }
 
 const handleStock = () => {
-  setQuantity(quantity - 1);
+  setQuantity(quantity - 0);
   const updatedProductData = {quantity};
   console.log(name);
   axios

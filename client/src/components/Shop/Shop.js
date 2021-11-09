@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import React from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 //import { get } from "mongoose";
 import ShopItem from "./ShopItem";
+import ShopSlider from "./ShopSlider";
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -12,7 +13,7 @@ function Shop() {
   //to get all products
   const getAllProducts = () => {
     // the config will use it when add to the basket to check if its the right user or not
-    /* const config = {
+    /*const config = {
       headers: {
         authorization: localStorage.getItem("token"),
       },
@@ -21,6 +22,7 @@ function Shop() {
       .get("user/products")
       .then((res) => {
         if (res.data) {
+          //console.log(res.data)
           setData(res.data);
           localStorage.setItem("product", JSON.stringify(res.data));
         } else {
@@ -36,14 +38,7 @@ function Shop() {
   useEffect(() => {
     getAllProducts();
   }, [deliveryInput]);
-  if (data?.auth === false || productFromStorage === undefined) {
-    return (
-      <div>
-        <h1>you are logged out</h1>
-        <Link to="/login">Login</Link>
-      </div>
-    );
-  }
+
   //searchbar setup here
   const changeHandle = (e) => {
     setUserInput(e.target.value);
@@ -57,16 +52,16 @@ function Shop() {
         el.category.includes(userText)
     )
     .map((obj) => {
-      const {
-        id,
-        category,
-        name,
-        price,
-        description,
-        delivery,
-        image,
-        quantity,
-      } = obj;
+      // const {
+      //   id,
+      //   category,
+      //   name,
+      //   price,
+      //   description,
+      //   delivery,
+      //   image,
+      //   quantity,
+      // } = obj;
       return <ShopItem obj={obj} />;
     });
   // products price filter
@@ -84,33 +79,33 @@ function Shop() {
   const getFlowerAndPlantsPots = data
     ?.filter((el) => el.category === "Flower and plants pots")
     .map((obj) => {
-      const { id, category, name, price, description, quantity } = obj;
+      // const { id, category, name, price, description, quantity } = obj;
       return <ShopItem obj={obj} />;
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
     ?.filter((el) => el.category === "Bouquet of flowers")
     .map((obj) => {
-      const { id, category, name, price, description, quantity } = obj;
+      // const { id, category, name, price, description, quantity } = obj;
       return <ShopItem obj={obj} />;
     });
   //getGiftBaskets
   const getGiftBaskets = data
     ?.filter((el) => el.category === "Gift baskets")
     .map((obj) => {
-      const { id, category, name, price, description, quantity } = obj;
+      // const { id, category, name, price, description, quantity } = obj;
       return <ShopItem obj={obj} />;
     });
   //italianProducts
   const italianProducts = data
     ?.filter((el) => el.category === "Italian Products")
     .map((obj) => {
-      const { id, category, name, price, description, quantity } = obj;
+      // const { id, category, name, price, description, quantity } = obj;
       return <ShopItem obj={obj} />;
     });
   // get all products
   const getProducts = data?.map((obj) => {
-    const { _id, category, name, price, description, quantity } = obj;
+    // const { _id, category, name, price, description, quantity } = obj;
     // version with ul
     // return <li><ShopItem obj ={obj} /></li>
     return <ShopItem obj={obj} />;
@@ -143,7 +138,7 @@ function Shop() {
           // setDeliveryInput(e.target.value)
           setDeliveryInput(deliveryInput + 1);
           let newdata = data.filter(
-            (el) => el.delivery.toString() == e.target.value
+            (el) => el.delivery.toString() === e.target.value
           );
           setData(newdata);
           console.log(typeof e.target.value, e.target.value);
@@ -162,7 +157,6 @@ function Shop() {
           justifyContent: "center",
           flexDirection: "column",
           flexWrap: "wrap",
-          flexDirection:"column"
         }}
       >
         <div
@@ -177,6 +171,8 @@ function Shop() {
         >
           {userInput.length ? searchResult : null}
         </div>
+        {/* Slider */}
+        <ShopSlider />
         <div className="products-container">
           <h2>Flower and plants pots</h2>
           <div className="products">{getFlowerAndPlantsPots}</div>
