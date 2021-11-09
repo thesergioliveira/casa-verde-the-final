@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ServicesData from "../../JSON/services.json";
 import { v4 as uuidv4 } from "uuid";
+import { IoMdClose } from "react-icons/io";
 
 const Weddings = () => {
   const [images, setImages] = useState(5);
@@ -28,7 +29,9 @@ const Weddings = () => {
           {imgs.map((img) => {
             if (imgs.indexOf(img) <= images) {
               return (
-                <div key={uuidv4()} className="container-img-inner">
+                // active-img-inner -------------------------------- onClick Image
+                <div key={uuidv4()} className="container-img-inner ">
+                  <IoMdClose className="img-close" />
                   <img src={img} alt={linkId} />
                 </div>
               );
