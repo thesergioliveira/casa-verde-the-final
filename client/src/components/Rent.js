@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import RentData from "../JSON/rent.json";
+import ContactInformation from "./ContactInformation";
 import ContactForm from './ContactForm';
 import Map from "./Map";
 
@@ -61,9 +62,12 @@ const Rent = () => {
       <div>
         {componentsMenu}
       </div>
-      {/* to do- adding calendar and address */}
-      <ContactForm />
-      <Map />
+      {/* to do- adding calendar */}
+      <ContactInformation />
+      <div className="form-map">
+        <ContactForm />
+        <Map />
+      </div>
     </div>
     );
 }

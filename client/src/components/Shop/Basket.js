@@ -9,8 +9,8 @@ const Basket = () => {
   // console.log(userdata.user.wishlist.map(item => item._id))
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
-  const [userdata, setUserdata] = useContext(DataContext);
-  const indUserId = userdata?.user.id;
+  const [userData, setUserData] = useContext(DataContext);
+  const indUserId = userData?.user.id;
 
   const displayBasket = () => {
     const config = {
@@ -67,7 +67,7 @@ const Basket = () => {
 
   return (
     <div>
-      <h1> welcome {userdata?.user.username} </h1>
+      <h1> welcome {userData?.user.username} </h1>
       <h2> Shopping Basket</h2>
       <div></div>
       <div
@@ -80,7 +80,7 @@ const Basket = () => {
       >
         <ul>
           <h3> wishlist </h3>
-          {userdata.user.wishlist.map((item, index) => (
+          {userData.user.wishlist.map((item, index) => (
             <li key={index}>
               <p>{item.name}</p>
               <p>${item.price}</p>

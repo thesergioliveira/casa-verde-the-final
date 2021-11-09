@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CoursesData from "../JSON/courses.json";
 import ContactForm from './ContactForm';
+import ContactInformation from "./ContactInformation";
 import Map from "./Map";
 
 const BalletAndPilates = () => {
@@ -59,9 +60,11 @@ const BalletAndPilates = () => {
       <div>
         {componentsMenu}
       </div>
-      {/* to do- adding address */}
-      <ContactForm />
-      <Map />
+      <ContactInformation />
+      <div className="form-map">
+        <ContactForm />
+        <Map />
+      </div>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import ServicesData from "../JSON/services.json";
 import Weddings from "../components/Gallery/Weddings";
 import PlantIdeas from "../components/Gallery/PlantIdeas";
 import GiftIdeas from "../components/Gallery/GiftIdeas";
 import Funerals from "../components/Gallery/Funerals";
 import ContactInformation from "./ContactInformation";
-import ContactForm from "./ContactForm";
+import ContactForm from './ContactForm';
 import Map from "./Map";
 
 const Services = () => {
