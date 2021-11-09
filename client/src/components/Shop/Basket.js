@@ -16,8 +16,7 @@ const Basket = () => {
       authorization: token,
     },
   };
-
-  useEffect(() => {
+ useEffect(() => {
     const displayBasket = async () => {
       await axios
         .get("user/getTheBasket", config)
