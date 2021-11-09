@@ -17,7 +17,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
 import EditUser from "./components/Settings/EditUser"
-import { DataProvider } from "./components/Context";
+import {DataProvider}  from "./components/UserContext";
+import {AuthContextProvider}  from "./components/AuthContext";
 import AdminDashboard from "./components/Shop/AdminDashboard";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <DataProvider>
+      <AuthContextProvider>
       <Router>
         <Nav logo={logo}/>
         <main>
@@ -64,6 +66,7 @@ function App() {
         </main>
         <Footer logo={logo}/>
       </Router>
+      </AuthContextProvider>
     </DataProvider>
   );
 }

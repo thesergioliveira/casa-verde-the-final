@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-import {DataContext} from "../Context";
+import {DataContext} from "../UserContext";
 function AdminDashboard() {
     return (
         <div>

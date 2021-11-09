@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { DataContext } from "./Context";
+import { DataContext } from "./UserContext";
+import { AuthContext } from "./AuthContext";
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [data, setData] = useContext(DataContext);
+  const [token, setToken] = useContext(AuthContext);
   const [loginMessage, setLoginMessage] = useState("");
   axios.defaults.withCredentials = true;
   const loginUser = () => {
@@ -18,7 +20,7 @@ const Login = ({ history }) => {
         if (!res.data.token) {
           setLoginMessage(res.data.message);
         } else {
-          localStorage.setItem("data", JSON.stringify(res.data));
+          setToken(res.data.token)
           setData(res.data);
           localStorage.setItem("token", res.data.token);
           setLoginMessage("You are logged in");

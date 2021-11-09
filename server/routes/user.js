@@ -5,9 +5,7 @@ const middleware = require("../middlewares/middleware");
 const allProductControllers = require("../controllers/productsController");
 //user route
 // get all productss
-router.get(
-  "/products",allProductControllers.getAllProducts
-);
+router.get("/products", allProductControllers.getAllProducts);
 // register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
 
@@ -18,10 +16,13 @@ router.post("/login", allControllers.login);
 router.get("/logout", allControllers.logout);
 
 //the login and the logout part and checkAuth works only on the browser
-router.get("/checkAuth", middleware.checkToken);
+router.get("/checkAuth", middleware.checkToken, allControllers.getOneUser);
 
-// update user
-router.put("/update/:id", allControllers.updateUser);
+// update user infos && password
+router
+  .get("/oneUser", allControllers.getOneUser)
+  .put("/update/:id", allControllers.updateUser)
+  .put("/updatePassword/:id", allControllers.updatePassword);
 /* with post to add Product to the basket  http://localhost:5000/user/:id where id is the id of the user */
 // it requres req.body.productID  => {
 // "productID": "write the id of ur product"
