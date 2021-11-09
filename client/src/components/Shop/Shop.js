@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import React from "react";
 //import { Link } from "react-router-dom";
 //import { get } from "mongoose";
-import Shopitem from "./Shopitem";
+import ShopItem from "./ShopItem";
+import ShopSlider from "./ShopSlider";
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -32,7 +33,6 @@ function Shop() {
         console.log("here", err.response?.data);
       });
   };
-
   const productFromStorage = JSON.parse(localStorage.getItem("product"));
   //console.log(productFromStorage)
   useEffect(() => {
@@ -52,17 +52,17 @@ function Shop() {
         el.category.includes(userText)
     )
     .map((obj) => {
-      const {
-        id,
-        category,
-        name,
-        price,
-        description,
-        delivery,
-        image,
-        quantity,
-      } = obj;
-      return <Shopitem obj={obj} />;
+      // const {
+      //   id,
+      //   category,
+      //   name,
+      //   price,
+      //   description,
+      //   delivery,
+      //   image,
+      //   quantity,
+      // } = obj;
+      return <ShopItem obj={obj} />;
     });
   // products price filter
   priceInput === "high"
@@ -79,36 +79,36 @@ function Shop() {
   const getFlowerAndPlantsPots = data
     ?.filter((el) => el.category === "Flower and plants pots")
     .map((obj) => {
-      const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      // const { id, category, name, price, description, quantity } = obj;
+      return <ShopItem obj={obj} />;
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
     ?.filter((el) => el.category === "Bouquet of flowers")
     .map((obj) => {
-      const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      // const { id, category, name, price, description, quantity } = obj;
+      return <ShopItem obj={obj} />;
     });
   //getGiftBaskets
   const getGiftBaskets = data
     ?.filter((el) => el.category === "Gift baskets")
     .map((obj) => {
-      const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      // const { id, category, name, price, description, quantity } = obj;
+      return <ShopItem obj={obj} />;
     });
   //italianProducts
   const italianProducts = data
     ?.filter((el) => el.category === "Italian Products")
     .map((obj) => {
-      const { id, category, name, price, description, quantity } = obj;
-      return <Shopitem obj={obj} />;
+      // const { id, category, name, price, description, quantity } = obj;
+      return <ShopItem obj={obj} />;
     });
   // get all products
   const getProducts = data?.map((obj) => {
-    const { _id, category, name, price, description, quantity } = obj;
+    // const { _id, category, name, price, description, quantity } = obj;
     // version with ul
-    // return <li><Shopitem obj ={obj} /></li>
-    return <Shopitem obj={obj} />;
+    // return <li><ShopItem obj ={obj} /></li>
+    return <ShopItem obj={obj} />;
   });
   return (
     <div className="shop">
@@ -138,7 +138,7 @@ function Shop() {
           // setDeliveryInput(e.target.value)
           setDeliveryInput(deliveryInput + 1);
           let newdata = data.filter(
-            (el) => el.delivery.toString() == e.target.value
+            (el) => el.delivery.toString() === e.target.value
           );
           setData(newdata);
           console.log(typeof e.target.value, e.target.value);
@@ -157,7 +157,6 @@ function Shop() {
           justifyContent: "center",
           flexDirection: "column",
           flexWrap: "wrap",
-          flexDirection: "column",
         }}
       >
         <div
@@ -172,6 +171,8 @@ function Shop() {
         >
           {userInput.length ? searchResult : null}
         </div>
+        {/* Slider */}
+        <ShopSlider />
         <div className="products-container">
           <h2>Flower and plants pots</h2>
           <div className="products">{getFlowerAndPlantsPots}</div>

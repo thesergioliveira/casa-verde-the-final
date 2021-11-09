@@ -15,14 +15,15 @@ router.post("/login", allControllers.login);
 // register http://localhost:5000/user/logout
 router.get("/logout", allControllers.logout);
 
-//the login and the logout part and checkAuth works only on the browser
-router.get("/checkAuth", middleware.checkToken, allControllers.getOneUser);
-
 // update user infos && password
 router
-  .get("/oneUser", allControllers.getOneUser)
-  .put("/update/:id", allControllers.updateUser)
-  .put("/updatePassword/:id", allControllers.updatePassword);
+  .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)
+  .put("/update", middleware.checkToken, allControllers.updateUser)
+  .put(
+    "/updatePassword",
+    middleware.checkToken,
+    allControllers.updatePassword
+  );
 /* with post to add Product to the basket  http://localhost:5000/user/:id where id is the id of the user */
 // it requres req.body.productID  => {
 // "productID": "write the id of ur product"
@@ -35,12 +36,28 @@ router
 // "productID": "write the id of ur product"
 // }
 router
-  .post("/wishlist/:id", allProductControllers.addToWishlist)
-  .delete("/wishlist/:id", allProductControllers.removeFromWishlist);
+  .post("/wishlist", middleware.checkToken, allProductControllers.addToWishlist)
+  .put(
+    "/wishlist",
+    middleware.checkToken,
+    allProductControllers.removeFromWishlist
+  );
 router
-  .post("/:id", allProductControllers.addToBasket)
-  .get("/:id", allProductControllers.getOneByID)
-  .delete("/:id", allProductControllers.removeFromBasket);
+  .post(
+    "/addToBasket",
+    middleware.checkToken,
+    allProductControllers.addToBasket
+  )
+  .get("/getTheBasket", middleware.checkToken, allProductControllers.getOneByID)
+  .put(
+    "/removeFromTheBasket",
+    middleware.checkToken,
+    allProductControllers.removeFromBasket
+  );
 
-router.put("/checkout/:id", allProductControllers.getCheckout);
+router.put(
+  "/checkout",
+  middleware.checkToken,
+  allProductControllers.getCheckout
+);
 module.exports = router;

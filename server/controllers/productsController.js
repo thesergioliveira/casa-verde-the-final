@@ -8,22 +8,23 @@ const allProductControllers = {};
 allProductControllers.addProduct = async (req, res) => {
   User.findById(req.params.id)
     .then((user) => {
-      if (user && user.admin && user.username == "sven") {
+      if (user && user.admin) {
         const product = new Product({
           _id: new mongoose.Types.ObjectId(),
-          user: req.params.id, // get the _id from that user which is in my params
-          category: req.body.category,
           name: req.body.name,
-          price: req.body.price,
+          category: req.body.category,
           description: req.body.description,
+          price: req.body.price,
           // image: req.file.path,
+          delivery: req.body.delivery,
+          // image: req.body.image,
           quantity: req.body.quantity,
         });
         product.save();
-        console.log(user.basket);
-        user.basket.push(product);
-        console.log(user.basket);
-        user.save();
+        console.log(product);
+        // user.basket.push(product);
+
+        // user.save();
         res
           .status(201)
           .json({ message: "New product being added ✅", product });
@@ -41,7 +42,7 @@ allProductControllers.addProduct = async (req, res) => {
 //adding controllers
 allProductControllers.addToBasket = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
       user.basket.push(product);
@@ -56,7 +57,7 @@ allProductControllers.addToBasket = async (req, res) => {
 };
 allProductControllers.addToWishlist = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
       user.wishlist.push(product);
@@ -72,7 +73,7 @@ allProductControllers.addToWishlist = async (req, res) => {
 // remove controllers
 allProductControllers.removeFromWishlist = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
       user.wishlist.pull(product);
@@ -87,7 +88,7 @@ allProductControllers.removeFromWishlist = async (req, res) => {
 };
 allProductControllers.removeFromBasket = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
       user.basket.pull(product);
@@ -106,7 +107,7 @@ allProductControllers.getCheckout = async (req, res) => {
   //we will get it from front end as obj  once the payment is done
   //const placedOrder = true;
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.id);
 
     const product = await Product.find({
       _id: {
@@ -177,10 +178,10 @@ allProductControllers.getAllProducts = async (req, res) => {
 
 allProductControllers.getOneByID = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate("basket");
+    const user = await User.findById(req.id).populate("basket");
     // res.status(200).json(user);
 
-    res.status(200).json({
+    await res.status(200).json({
       basket: user.basket.map((item) => item.toObject()),
     });
   } catch (err) {

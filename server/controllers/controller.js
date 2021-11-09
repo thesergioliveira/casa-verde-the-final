@@ -105,7 +105,7 @@ allControllers.getOneUser = async (req, res) => {
 // update userInfos
 allControllers.updateUser = async (req, res) => {
   try {
-    const findUser = await User.findByIdAndUpdate(req.params.id, {
+    const findUser = await User.findByIdAndUpdate(req.id, {
       $set: {
         username: req.body.username,
         email: req.body.email,
@@ -121,12 +121,12 @@ allControllers.updateUser = async (req, res) => {
 // change password
 allControllers.updatePassword = async (req, res) => {
   let password = req.body.password;
-  let _id = req.params.id;
+  let _id = req.id;
   const hashedPassword = await bcrypt.hash(req.body.NewPassword, 10);
   const user = await User.findById({ _id });
   try {
     if (await bcrypt.compare(password, user.password)) {
-      const findUser = await User.findByIdAndUpdate(req.params.id, {
+      const findUser = await User.findByIdAndUpdate(req.id, {
         $set: {
           password: hashedPassword,
         },

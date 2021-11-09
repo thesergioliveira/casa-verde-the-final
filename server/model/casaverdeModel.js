@@ -47,13 +47,13 @@ const productSchema = Schema({
       "Gift baskets",
       "Italian Products",
     ],
- },
- delivery: {type:Boolean, default:false},
-  image: { type: String, required: true },
+  },
+  delivery: { type: Boolean, default: false },
+  image: { type: String, required: false },
   name: { type: String, required: true },
   price: { type: Number, required: true, min: 0 },
   description: { type: String, required: true },
-  
+
   quantity: { type: Number, required: false, min: 0 },
 });
 

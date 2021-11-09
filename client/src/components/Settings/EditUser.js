@@ -1,27 +1,33 @@
 import React, { useState, useContext, useEffect } from "react";
 import { DataContext } from "../UserContext";
+import { AuthContext } from "../AuthContext";
 import axios from "axios";
 function EditUser() {
   //use the context
   const [data, setData] = useContext(DataContext);
   const userData = data?.user;
 
-   const [username, setUsername] = useState(userData?.username);
+  const [username, setUsername] = useState(userData?.username);
   const [email, setEmail] = useState(userData?.email);
   const [password, setPassword] = useState("");
   const [NewPassword, setNewPassword] = useState("");
   const [phone, setPhone] = useState(userData?.phone);
   const [address, setAddress] = useState(userData?.address);
   const [updateMessage, setUpdateMessage] = useState("");
-  let userId = userData?._id;
+  const [token] = useContext(AuthContext);
 
- 
+  const config = {
+    headers: {
+      authorization: token,
+    },
+  };
+
   const updateUserInfo = () => {
     const newData = { username, email, address, phone };
 
     //edit user infos
     axios
-      .put(`user/update/${userId}`, newData)
+      .put("user/update", newData, config)
       .then((res) => {
         console.log(res.data);
         setUpdateMessage(res.data.message);
@@ -34,7 +40,7 @@ function EditUser() {
   const changePassword = () => {
     const newPassword = { NewPassword, password, username };
     axios
-      .put(`user/updatePassword/${userId}`, newPassword)
+      .put("user/updatePassword/", newPassword, config)
       .then((res) => {
         console.log(res.data);
         setUpdateMessage(res.data.message);

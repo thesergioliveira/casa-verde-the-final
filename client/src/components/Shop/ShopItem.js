@@ -1,36 +1,43 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import React from "react";
-import { DataContext } from "../UserContext";
+//import { DataContext } from "../UserContext";
+import { AuthContext } from "../AuthContext";
 //to dos
-//add a new user name angelos
+//FIX THE DELIVERY
+//FIX THE CHECKOUT
 
 //FIX THE FCKING DELETE
-function Shopitem(props) {
+function ShopItem(props) {
   // console.log(props.obj);
   const [count, setCount] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [wishlist, setWishlist] = useState(true);
-  const [userData, setUserData] = useContext(DataContext);
-  //i hard coded the user id so that you can work further, ill redirect it to login before its crushed ,it will be done tomorrow
-  //the id 61794db8beb58d52f8cc22f3 is for the user salim
+  //const [userData, setUserData] = useContext(DataContext);
+  const [token] = useContext(AuthContext);
 
-  //let indUserId ="61794db8beb58d52f8cc22f3";
-  let indUserId = userData?.user?._id;
-  //indUserId ? indUserId :indUserId===;
-  //console.log(indUserId);
-
+  const config = {
+    headers: {
+      authorization: token,
+    },
+  };
   // add to basket
 
   const addToBasket = (id) => {
+    console.log("test");
     if (count > 0) {
       setQuantity(count);
     }
     setCount(count + 1);
+
     axios
-      .post(`user/${indUserId}`, {
-        productId: id,
-      })
+      .post(
+        "user/addToBasket",
+        {
+          productId: id,
+        },
+        config
+      )
       .then((res) => {
         console.log(res.data.message);
       });
@@ -38,10 +45,15 @@ function Shopitem(props) {
 
   const removeFromBasket = (id) => {
     setCount(count - 1);
+
     axios
-      .delete(`user/${indUserId}`, {
-        productId: id,
-      })
+      .put(
+        "user/removeFromTheBasket",
+        {
+          productId: id,
+        },
+        config
+      )
       .then((res) => {
         console.log(res.data.message);
       });
@@ -50,17 +62,25 @@ function Shopitem(props) {
     setWishlist(!wishlist);
     if (wishlist) {
       axios
-        .post(`user/wishlist/${indUserId}`, {
-          productId: id,
-        })
+        .post(
+          "user/wishlist",
+          {
+            productId: id,
+          },
+          config
+        )
         .then((res) => {
           console.log(res.data.message);
         });
     } else {
       axios
-        .delete(`user/wishlist/${indUserId}`, {
-          productId: id,
-        })
+        .delete(
+          "user/wishlist",
+          {
+            productId: id,
+          },
+          config
+        )
         .then((res) => {
           console.log(res);
         });
@@ -99,4 +119,4 @@ function Shopitem(props) {
   );
 }
 
-export default Shopitem;
+export default ShopItem;
