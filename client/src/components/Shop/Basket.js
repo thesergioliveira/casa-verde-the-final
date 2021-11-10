@@ -26,7 +26,7 @@ const Basket = () => {
 
     displayData();
   }, []);
-
+ 
   const Checkout = () => {
     axios
       .put(`user/checkout/`, config)
