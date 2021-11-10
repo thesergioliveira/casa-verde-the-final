@@ -12,12 +12,16 @@ const Basket = () => {
     headers: {
       authorization: token,
     },
+<<<<<<< HEAD
   };
 <<<<<<< HEAD
  useEffect(() => {
     const displayBasket = async () => {
       
 =======
+=======
+  }; 
+>>>>>>> 26ed61bdab1ed392c84f85097a4a6c560e0e669d
   useEffect(() => {
     const displayData = async () => {
 >>>>>>> cd3a6e9955bff705a4645ffb8c05c33eed39d205
