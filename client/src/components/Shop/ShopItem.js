@@ -35,7 +35,6 @@ function ShopItem(props) {
   };
   // add to basket
   const addToBasket = (id) => {
-    console.log("test");
     if (count > 0) {
       setQuantity(count);
     }
@@ -120,7 +119,7 @@ function ShopItem(props) {
         remove(-) from basket
       </button>
       <button onClick={() => addToWishlist(props.obj._id)}>
-        {wishlist ? `🤍`:`❤️`} wishlist
+        {wishlist ? `🤍` : `❤️`} wishlist
       </button>
     </div>
   );

@@ -18,7 +18,6 @@ const AdminDash = () => {
   const [data, setData] = useState([]);
   const [productData, setProductData] = useState([]);
   const [userdata, setUserdata] = useContext(DataContext);
-  const indUserId= userdata?.user.id;
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Gift baskets");
   const [price, setPrice] = useState(0);
@@ -28,7 +27,7 @@ const AdminDash = () => {
  
     //control
 let allow
- !userdata?.user.admin ? allow="none": allow="flex";
+ userdata?.user.admin ? allow="none": allow="flex";
  
 //find users
  const displayUsers = () => {

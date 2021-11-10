@@ -42,7 +42,7 @@ function App() {
           <Switch>
             {/* Need to add public.env */}
             <Route path="/" exact render={Home}></Route>
-            <Route path="/admindash" exact component={AdminDash}></Route>
+            <Route path="/adminDash" exact component={AdminDash}></Route>
             <Route path="/shop" exact component={Shop}></Route>
             <Route path="/services" exact component={Services}></Route>
             <Route path="/events" exact render={Events}></Route>
