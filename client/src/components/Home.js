@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HomeData from "../JSON/home.json";
+import { v4 as uuidv4 } from "uuid";
 
 const Home = () => {
   const homeElements = HomeData.map((obj) => {
-    const { id, name, path } = obj;
+    const { name, path } = obj;
     return (
-      <li key={id}>
-        <Link to={path}>{name}</Link>
-      </li>
+      <div key={uuidv4()} className="container-btn-house">
+        <Link to={path}>
+          <button>{name}</button>
+        </Link>
+      </div>
     );
   });
 
@@ -41,7 +44,7 @@ const Home = () => {
         <h1>Casa Verde</h1>
         <p>RAUM FÜR IDEEN</p>
       </div>
-      <ul>{homeElements}</ul>
+      <div className="wrapper-btn-house">{homeElements}</div>
       <div>{cardElements}</div>
     </div>
   );

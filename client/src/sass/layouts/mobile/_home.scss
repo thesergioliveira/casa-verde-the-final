@@ -2,106 +2,123 @@
 
 // The entire div component setup
 .home {
+  width: 100vw;
+  height: auto;
+  // border: red solid 1px;
+  @include flex;
+  flex-direction: column;
+
+  // Top div which includes the roof div, h1 and the p tag
+  .home-top {
     width: 100%;
     height: auto;
-    border: red solid 1px;
     @include flex;
     flex-direction: column;
-    
-    // Top div which includes the roof div, h1 and the p tag
-    .home-top {
-        width: 100vw;
-        height: auto;
-        @include flex;
-        flex-direction: column;
 
-        // Roof div
-        .roof {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 40vw 10vh;
-            border-color: transparent transparent $orange;
-            margin: 1em 0;
-        }
-        
-        // h1 (Casa Verde title)
-        h1 {
-            position: absolute;
-            margin-right: 1.5em;
-            z-index: 1;
-          
-        }
-        
-        // First p tag after h1 (RAUM FÜR IDEEN - Casa Verde Motto)
-        h1+p {
-            position: absolute;
-            margin-top: 2.5em;
-            margin-left: 1.2em;
-            width: 10em;
-            background-color: $green;
-            opacity: .7;
-            padding: .2em 0;
-            text-align: center;
-            
-        }
-    }
-    
-    // Ul for the buttons/links
-    ul {
-        width: 75vw;
-        list-style: none;
-        
-        // Li setup
-        li {
-            height: 2em;
-            margin-bottom: 1em;
-            padding-top: .5em;
-            border: black solid 1px;
-            border-radius: 1em;
-            text-align: center;
-           
-            // Links setup
-            a {
-                text-decoration: none;
-            }
-        }
+    // Roof div
+    .roof {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 40vw 10vh;
+      border-color: transparent transparent $orange;
+      margin: 1em 0;
     }
 
-    // Card elements setup
-    .card-element {
-        width: 75vw;
-        height: 50vh;
-        @include flex;
-        justify-content: space-evenly;
-        flex-direction: column;
-        margin: 1em;
-        text-align: center;
-        border: 2px solid salmon;
-        border-radius: 1em;
-        
-        // Card image setup
-        img {
-            width: 5em;
-            height: 5em;
-        }
-        
-        // Card button setup
-        button {
-            width: 36vw;
-            height: 7.5vh;
-            border-radius: .5em;
-            position: relative;
-            left: 3em;
-            
-        }
+    // h1 (Casa Verde title)
+    h1 {
+      position: absolute;
+      margin-right: 1.5em;
+      z-index: 1;
     }
-    
-    // Top of the card including the name and logo
-    .card-top {
+
+    // First p tag after h1 (RAUM FÜR IDEEN - Casa Verde Motto)
+    h1 + p {
+      position: absolute;
+      margin-top: 2.5em;
+      margin-left: 1.2em;
+      width: 10em;
+      background-color: $green;
+      opacity: 0.7;
+      padding: 0.2em 0;
+      text-align: center;
+    }
+  }
+
+  // Ul for the buttons/links
+  ul {
+    width: 75vw;
+    list-style: none;
+
+    // Li setup
+    li {
+      height: 2em;
+      margin-bottom: 1em;
+      padding-top: 0.5em;
+      border: black solid 1px;
+      border-radius: 1em;
+      text-align: center;
+
+      // Links setup
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  // Card elements setup
+  .card-element {
+    width: 75vw;
+    height: 50vh;
+    @include flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: 1em;
+    text-align: center;
+    border: 2px solid salmon;
+    border-radius: 1em;
+
+    // Card image setup
+    img {
+      width: 5em;
+      height: 5em;
+    }
+
+    // Card button setup
+    button {
+      width: 36vw;
+      height: 7.5vh;
+      border-radius: 0.5em;
+      position: relative;
+      left: 3em;
+    }
+  }
+
+  // Top of the card including the name and logo
+  .card-top {
+    width: 100%;
+    @include flex;
+    justify-content: space-around;
+  }
+
+  // House -> Buttons
+  .wrapper-btn-house {
+    border: 1px solid red;
+    width: 75vw;
+    height: 45vh;
+    @include flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .container-btn-house {
+      border: 1px solid blue;
+      width: 100%;
+      height: 10%;
+      button {
         width: 100%;
-        @include flex;
-        justify-content: space-around;
+        height: 100%;
+        border-radius: 1rem;
+      }
     }
-
+  }
 }
