@@ -78,9 +78,8 @@ const Nav = ({ logo }) => {
           <div className="nav-user">
             {token ?(
               <>
-                {" "}
                 <Link to="/basket">
-                  <li id="basket">
+                  <li id="basket" key="50">
                     <FaShoppingBasket />
                   </li>
                 </Link>
@@ -88,7 +87,7 @@ const Nav = ({ logo }) => {
                   className={closeUser ? "hamburger close" : "hamburger open"}
                   onClick={showEditUser}
                 >
-                  <li>
+                  <li key="51">
                     <FaUser />
                   </li>
                 </div>
@@ -96,16 +95,14 @@ const Nav = ({ logo }) => {
                   className={show ? "userNone" : "userShow"}
                   onClick={showEditUser}
                 >
-                  <li> WELCOME: {userName}</li>
+                  <li key="52"> WELCOME: {userName}</li>
 
                   <Link to="/settings">
-                    <li>
-                      {" "}
+                    <li key="53">
                       Settings <FiSettings />
                     </li>
                   </Link>
-
-                  <li onClick={logOut} alt="logout">
+                  <li key="54" onClick={logOut} alt="logout">
                     Logout <FiLogOut />
                   </li>
                 </ul>
@@ -123,7 +120,6 @@ const Nav = ({ logo }) => {
                 >
                   sign in
                 </Link>
-                {"  "}
                 <Link
                   style={{
                     color: "black",
