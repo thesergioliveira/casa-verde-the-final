@@ -16,9 +16,11 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
-import EditUser from "./components/Settings/EditUser";
-import { DataProvider } from "./components/Context";
+import EditUser from "./components/Settings/EditUser"
+import {DataProvider}  from "./components/UserContext";
+import {AuthContextProvider}  from "./components/AuthContext";
 import AdminDash from "./components/AdminDash";
+
 function App() {
   // Logo setup
   const logo = LogoData.map((obj) => {
@@ -32,6 +34,7 @@ function App() {
 
   return (
     <DataProvider>
+      <AuthContextProvider>
       <Router>
         <Nav logo={logo} />
         <main>
@@ -59,6 +62,7 @@ function App() {
         </main>
         <Footer logo={logo} />
       </Router>
+      </AuthContextProvider>
     </DataProvider>
   );
 }

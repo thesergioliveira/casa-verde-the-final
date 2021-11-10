@@ -5,41 +5,59 @@ const middleware = require("../middlewares/middleware");
 const allProductControllers = require("../controllers/productsController");
 //user route
 // get all productss
-router.get(
-  "/products",allProductControllers.getAllProducts
-);
-// register http://localhost:5000/user/register
+router.get("/products", allProductControllers.getAllProducts);
+// register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
 
-// login http://localhost:5000/user/login
+// login http://localhost:5005/user/login
 router.post("/login", allControllers.login);
 
-// register http://localhost:5000/user/logout
+// register http://localhost:5005/user/logout
 router.get("/logout", allControllers.logout);
 
-//the login and the logout part and checkAuth works only on the browser
-router.get("/checkAuth", middleware.checkToken);
-
-// update user
-router.put("/update/:id", allControllers.updateUser);
+// update user infos && password
+router
+  .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)
+  .put("/update", middleware.checkToken, allControllers.updateUser)
+  .put(
+    "/updatePassword",
+    middleware.checkToken,
+    allControllers.updatePassword
+  );
 /* with post to add Product to the basket  http://localhost:5000/user/:id where id is the id of the user */
 // it requres req.body.productID  => {
 // "productID": "write the id of ur product"
 // }
 //
-/* with get to view Products from a specific user (to view the basket) http://localhost:5000/user/:id where id is the id of the user */
+/* with get to view Products from a specific user (to view the basket) http://localhost:5005/user/:id where id is the id of the user */
 //
-/* with delete to remove a productID from basket(IF THE ID EXISTS 3 TIMES REMOVES IT ALL) http://localhost:5000/user/:id where id is the id of the user */
+/* with delete to remove a productID from basket(IF THE ID EXISTS 3 TIMES REMOVES IT ALL) http://localhost:5005/user/:id where id is the id of the user */
 // it requres req.body.productID  => {
 // "productID": "write the id of ur product"
 // }
 router
-  .post("/wishlist/:id", allProductControllers.addToWishlist)
-  .delete("/wishlist/:id", allProductControllers.removeFromWishlist);
+  .post("/wishlist", middleware.checkToken, allProductControllers.addToWishlist)
+  .put(
+    "/wishlist",
+    middleware.checkToken,
+    allProductControllers.removeFromWishlist
+  );
 router
-  .post("/:id", allProductControllers.addToBasket)
-  .get("/:id", allProductControllers.getOneByID)
-  .delete("/:id", allProductControllers.removeFromBasket);
+  .post(
+    "/addToBasket",
+    middleware.checkToken,
+    allProductControllers.addToBasket
+  )
+  .get("/getTheBasket", middleware.checkToken, allProductControllers.getOneByID)
+  .put(
+    "/removeFromTheBasket",
+    middleware.checkToken,
+    allProductControllers.removeFromBasket
+  );
 
-router.put("/checkout/:id", allProductControllers.getCheckout);
+router.put(
+  "/checkout",
+  middleware.checkToken,
+  allProductControllers.getCheckout
+);
 module.exports = router;

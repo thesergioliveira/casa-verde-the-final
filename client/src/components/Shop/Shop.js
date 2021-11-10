@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import React from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+//import { get } from "mongoose";
 import ShopItem from "./ShopItem";
 import ShopSlider from "./ShopSlider";
-
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -13,7 +13,7 @@ function Shop() {
   //to get all products
   const getAllProducts = () => {
     // the config will use it when add to the basket to check if its the right user or not
-    /* const config = {
+    /*const config = {
       headers: {
         authorization: localStorage.getItem("token"),
       },
@@ -22,11 +22,13 @@ function Shop() {
       .get("user/products")
       .then((res) => {
         if (res.data) {
+          //console.log(res.data)
           setData(res.data);
           localStorage.setItem("product", JSON.stringify(res.data));
         } else {
           setData({ auth: false });
-      }})
+        }
+      })
       .catch((err) => {
         console.log("here", err.response?.data);
       });
@@ -36,14 +38,7 @@ function Shop() {
   useEffect(() => {
     getAllProducts();
   }, [deliveryInput]);
-  if (data?.auth === false || productFromStorage === undefined) {
-    return (
-      <div>
-        <h1>you are logged out</h1>
-        <Link to="/login">Login</Link>
-      </div>
-    );
-  }
+
   //searchbar setup here
   const changeHandle = (e) => {
     setUserInput(e.target.value);
@@ -161,7 +156,7 @@ function Shop() {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
         }}
       >
         <div

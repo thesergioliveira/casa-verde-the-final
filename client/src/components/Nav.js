@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
-import { DataContext } from "./Context";
+import { DataContext } from "./UserContext";
+import { AuthContext } from "./AuthContext";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
 
@@ -15,6 +16,8 @@ const Nav = ({ logo }) => {
   const [openUser, setOpenUser] = useState(false);
   //use the context
   const [data, setData] = useContext(DataContext);
+  const [token, setToken] = useContext(AuthContext);
+
   //console.log("nav data",data.token);
   // get the userName
   const userName = data?.user?.username.toUpperCase();
@@ -54,6 +57,7 @@ const Nav = ({ logo }) => {
   const logOut = () => {
     localStorage.clear();
     setData("");
+    setToken("");
     closeMenu();
     redirect();
   };
@@ -62,6 +66,8 @@ const Nav = ({ logo }) => {
   const redirect = () => {
     history.push("/login");
   };
+  //
+
   return (
     <header>
       <nav>
@@ -70,7 +76,7 @@ const Nav = ({ logo }) => {
             {logo}
           </div>
           <div className="nav-user">
-            {data ? (
+            {token ? (
               <>
                 {" "}
                 <Link to="/basket">

@@ -60,11 +60,10 @@ allControllers.login = async (req, res) => {
           auth: true,
           token,
           user: {
-            password: user.password,
             username: user.username,
             basket: user.basket,
             wishlist: user.wishlist,
-            id: user._id,
+            _id: user._id,
             email: user.email,
             phone: user.phone,
             address: user.address,
@@ -86,7 +85,6 @@ allControllers.logout = async (req, res) => {
 };
 // deleteUser
 allControllers.deleteUser = async (req, res) => {
-  //console.log(req.query.id);
   try {
     const user = await User.findByIdAndDelete(req.query.id);
     res.status(200).json({ message: "this user been deleted", user });
@@ -97,21 +95,21 @@ allControllers.deleteUser = async (req, res) => {
 //getOneByID
 
 allControllers.getOneUser = async (req, res) => {
-  console.log(req.query.id);
   try {
-    const user = await User.findById(req.query.id);
-    res.status(200).json({ message: "user", user });
+    const user = await User.findById(req.id);
+    res.json({ auth: "true", user });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
+// update userInfos
 allControllers.updateUser = async (req, res) => {
   try {
-    const findUser = await User.findByIdAndUpdate(req.params.id, {
+    const findUser = await User.findByIdAndUpdate(req.id, {
       $set: {
         username: req.body.username,
         email: req.body.email,
-        phone: req.body.username,
+        phone: req.body.phone,
         address: req.body.address,
       },
     });
@@ -120,7 +118,31 @@ allControllers.updateUser = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+// change password
+allControllers.updatePassword = async (req, res) => {
+  let password = req.body.password;
+  let _id = req.id;
+  const hashedPassword = await bcrypt.hash(req.body.NewPassword, 10);
+  const user = await User.findById({ _id });
+  try {
+    if (await bcrypt.compare(password, user.password)) {
+      const findUser = await User.findByIdAndUpdate(req.id, {
+        $set: {
+          password: hashedPassword,
+        },
+      });
+      res.status(200).json({ message: "your password been changed" });
+    } else {
+      res.status(400).json({
+        message: "Not Allowed, please check your password",
+      });
+    }
+  } catch (error) {
+    res.status(400).json({ message: err.message });
+  }
+};
+// test landing page
 allControllers.getDate = async (req, res) => {
-  res.status(200).json("welcome to casaVerde");
+  res.status(200).json(req.id);
 };
 module.exports = allControllers;
