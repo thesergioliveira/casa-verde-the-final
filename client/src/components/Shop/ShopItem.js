@@ -1,18 +1,32 @@
-import { useState, useContext } from "react";
+import { useState, useContext,useEffect } from "react";
 import axios from "axios";
 import React from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
-//to dos
-//FIX THE DELIVERY
-//FIX THE CHECKOUT
-//FIX THE FCKING DELETE
+
 function ShopItem(props) {
   // console.log(props.obj);
   const [count, setCount] = useState(0);
+
   const [quantity, setQuantity] = useState(0);
   const [wishlist, setWishlist] = useState(true);
   //const [userData, setUserData] = useContext(DataContext);
+  useEffect(() => {
+    const displayBasket = async () => {
+    await axios
+        .get("user/getTheBasket", config)
+        .then((res) => {
+          
+            setCount(res.data.basket.filter(item => item._id===props.obj._id).length)
+         })
+        .catch((err) => {
+          console.log("SOS SOS SOS SOS", err.message);
+        });
+    };
+
+    displayBasket();
+    
+  },[]);
   const [token] = useContext(AuthContext);
   const config = {
     headers: {
