@@ -1,4 +1,4 @@
-import { useState, useContext,useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 //import { DataContext } from "../UserContext";
@@ -13,20 +13,20 @@ function ShopItem(props) {
   //const [userData, setUserData] = useContext(DataContext);
   useEffect(() => {
     const displayBasket = async () => {
-    await axios
+      await axios
         .get("user/getTheBasket", config)
         .then((res) => {
-          
-            setCount(res.data.basket.filter(item => item._id===props.obj._id).length)
-         })
+          setCount(
+            res.data.basket.filter((item) => item._id === props.obj._id).length
+          );
+        })
         .catch((err) => {
           console.log("SOS SOS SOS SOS", err.message);
         });
     };
 
     displayBasket();
-    
-  },[]);
+  }, []);
   const [token] = useContext(AuthContext);
   const config = {
     headers: {

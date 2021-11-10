@@ -22,6 +22,8 @@ allControllers.addUser = async (req, res) => {
       state: req.body.state,
       zip: req.body.zip,
       country: req.body.country,
+      houseNumber: req.body.houseNumber,
+      postalCode: req.body.postalCode,
     });
 
     await user.save();
@@ -81,6 +83,7 @@ allControllers.deleteUser = async (req, res) => {
       await User.findByIdAndDelete(req.id);
       res.status(200).json({ message: "this user been deleted" });
     }
+    else{res.status(400).json({ message: "false Password please repeat !" });}
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }
@@ -103,9 +106,32 @@ allControllers.updateUser = async (req, res) => {
         email: req.body.email,
         phone: req.body.phone,
         address: req.body.address,
+        houseNumber: req.body.houseNumber,
+        city: req.body.city,
+        country: req.body.country,
+        state: req.body.state,
+        postalCode: req.body.postalCode,
       },
     });
     res.status(200).json({ message: "user been updated" });
+  } catch (error) {
+    res.status(400).json({ message: err.message });
+  }
+};
+//update user Address
+allControllers.updateAddress = async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.id, {
+      $set: {
+        address: req.body.address,
+        houseNumber: req.body.houseNumber,
+        city: req.body.city,
+        country: req.body.country,
+        state: req.body.state,
+        postalCode: req.body.postalCode,
+      },
+    });
+    res.status(200).json({ message: "user address been updated" });
   } catch (error) {
     res.status(400).json({ message: err.message });
   }

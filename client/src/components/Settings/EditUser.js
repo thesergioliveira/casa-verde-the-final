@@ -21,6 +21,11 @@ function EditUser({ history }) {
   const [NewPassword, setNewPassword] = useState("");
   const [phone, setPhone] = useState(userData?.phone);
   const [address, setAddress] = useState(userData?.address);
+  const [houseNumber,setHouseNumber]=useState(userData?.houseNumber);
+  const [city, setCity] = useState(userData?.city);
+  const [state, setState] = useState(userData?.state);
+  const [country, setCountry] = useState(userData?.country);
+  const [postalCode ,setPostalCode] = useState(userData?.postalCode);
   const [updateMessage, setUpdateMessage] = useState("");
   const updateUserInfo = () => {
     const newData = { username, email, address, phone };
@@ -68,7 +73,7 @@ function EditUser({ history }) {
   const deleteUser = () => {
     const logoutAfterDelete = () => {
       setTimeout(
-        () => setUpdateMessage("you are not our client anymore 🖕"),
+        () => setUpdateMessage("you are not our client anymore 😔"),
         3000
       );
       setTimeout(
@@ -129,6 +134,42 @@ function EditUser({ history }) {
           onChange={(e) => setAddress(e.target.value)}
           placeholder="enter your address"
         />
+        <input
+        type="houseNumber"
+        value={houseNumber}
+        name="houseNumber"
+        onChange={(e) => setHouseNumber(e.target.value)}
+        placeholder="enter your houseNumber"
+      /> 
+      <input
+        type="country"
+        value={country}
+        name="country"
+        onChange={(e) => setCountry(e.target.value)}
+        placeholder="enter your Country Name"
+      />
+      <input
+        type="state"
+        value={state}
+        name="state"
+        onChange={(e) => setState(e.target.value)}
+        placeholder="enter your State Name"
+      />
+      <input
+        type="city"
+        value={city}
+        name="city"
+        onChange={(e) => setCity(e.target.value)}
+        placeholder="enter your City Name"
+      />
+     
+      <input
+        type="postalCode"
+        value={postalCode}
+        name="postalCode"
+        onChange={(e) => setPostalCode(e.target.value)}
+        placeholder="enter your postalCode"
+      />
         <button onClick={updateUserInfo}>update Your Profile</button>
       </div>
       <div>

@@ -15,6 +15,7 @@ router.post("/login", allControllers.login);
 router
   .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)
   .put("/update", middleware.checkToken, allControllers.updateUser)
+  .put("/updateAddress", middleware.checkToken, allControllers.updateAddress)
   .put("/updatePassword", middleware.checkToken, allControllers.updatePassword)
   .delete("/deleteUser", middleware.checkToken, allControllers.deleteUser);
 
