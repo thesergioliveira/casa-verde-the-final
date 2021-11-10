@@ -11,10 +11,6 @@ router.post("/register", middleware.validator, allControllers.addUser);
 
 // login http://localhost:5005/user/login
 router.post("/login", allControllers.login);
-
-// register http://localhost:5005/user/logout
-router.get("/logout", allControllers.logout);
-
 // update user infos && password && delete
 router
   .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)
