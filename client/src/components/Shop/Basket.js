@@ -11,7 +11,7 @@ const Basket = () => {
     headers: {
       authorization: token,
     },
-  };
+  }; 
   useEffect(() => {
     const displayData = async () => {
       await axios
