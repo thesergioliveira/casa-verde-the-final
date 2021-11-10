@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FooterData from '../footer.json';
+import FooterData from '../JSON/footer.json';
 
 // Only About and Contact pages links are working for the moment
 // The other are not created
 
-const Footer = () => {
+const Footer = ({logo}) => {
 
   let now = new Date();
   let year = now.getFullYear();
@@ -24,6 +24,7 @@ const Footer = () => {
   return (
     <footer>
       {/* Need to add public.env */}
+      <div className="logo-container">{logo}</div>
       <ul>
         {footerMenu}
       </ul>

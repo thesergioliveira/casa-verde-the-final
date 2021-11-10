@@ -22,7 +22,6 @@ allControllers.addUser = async (req, res) => {
       state: req.body.state,
       zip: req.body.zip,
       country: req.body.country,
-      avatar: req.file.path,
     });
 
     await user.save();
@@ -44,28 +43,26 @@ allControllers.getAllUsers = async (req, res) => {
 // Login
 allControllers.login = async (req, res) => {
   let username = req.body.username;
+  let email = req.body.username;
   let password = req.body.password;
-  const user = await User.findOne({ username });
-
+  const user =
+    (await User.findOne({ username })) || (await User.findOne({ email }));
   if (user == null) {
     return res.status(404).json({ message: "Cannot find user" });
   }
   try {
     if (await bcrypt.compare(password, user.password)) {
       const token = createToken(user);
-      req.session.user = user;
-      await res
-        .status(200)
-        .header("auth", token)
-        .json({
-          auth: true,
-          token,
-          user: {
-            password: user.password,
-            username: user.username,
-            basket: user.basket,
-          },
-        });
+      await res.status(200).json({
+        auth: true,
+        token,
+        user: {
+          username: user.username,
+          email: user.email,
+          phone: user.phone,
+          address: user.address,
+        },
+      });
     } else {
       res.json({
         message: "Not Allowed, please check your username or password",
@@ -75,33 +72,76 @@ allControllers.login = async (req, res) => {
     res.status(err.status).json({ message: err.message });
   }
 };
-// logout
-allControllers.logout = async (req, res) => {
-  res.cookie("token", "", { maxAge: 1 });
-  res.redirect("");
-};
 // deleteUser
 allControllers.deleteUser = async (req, res) => {
-  //console.log(req.query.id);
+  const user = await User.findById(req.id);
+  let password = req.headers.pass;
   try {
-    const user = await User.findByIdAndDelete(req.query.id);
-    res.status(200).json({ message: "this user been deleted", user });
+    if (await bcrypt.compare(password, user.password)) {
+      await User.findByIdAndDelete(req.id);
+      res.status(200).json({ message: "this user been deleted" });
+    }
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }
 };
 //getOneByID
+
 allControllers.getOneUser = async (req, res) => {
-  console.log(req.query.id);
   try {
-    const user = await User.findById(req.query.id);
-    res.status(200).json({ message: "user", user });
+    const user = await User.findById(req.id);
+    res.json({ auth: "true", user });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
-
+// update userInfos
+allControllers.updateUser = async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.id, {
+      $set: {
+        email: req.body.email,
+        phone: req.body.phone,
+        address: req.body.address,
+      },
+    });
+    res.status(200).json({ message: "user been updated" });
+  } catch (error) {
+    res.status(400).json({ message: err.message });
+  }
+};
+// change password
+allControllers.updatePassword = async (req, res) => {
+  let password = req.body.password;
+  let newPassword = req.body.NewPassword;
+  let passwordConf = req.body.passwordConf;
+  if (newPassword !== passwordConf) {
+    return res
+      .status(400)
+      .json({ message: "your confirmation password failed ,please repeat" });
+  }
+  let _id = req.id;
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+  const user = await User.findById({ _id });
+  try {
+    if (await bcrypt.compare(password, user.password)) {
+      await User.findByIdAndUpdate(req.id, {
+        $set: {
+          password: hashedPassword,
+        },
+      });
+      res.status(200).json({ message: "your password been changed" });
+    } else {
+      res.status(400).json({
+        message: "Not Allowed, please check your password",
+      });
+    }
+  } catch (error) {
+    res.status(400).json({ message: err.message });
+  }
+};
+// test landing page
 allControllers.getDate = async (req, res) => {
-  res.status(200).json("welcome to casaVerde");
+  res.status(200).json(req.id);
 };
 module.exports = allControllers;

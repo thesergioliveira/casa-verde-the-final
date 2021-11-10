@@ -9,30 +9,38 @@ router.get("/products", allProductControllers.getAllProducts);
 // register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
 
-// login http://localhost:5000/user/login
+// login http://localhost:5005/user/login
 router.post("/login", allControllers.login);
+// update user infos && password && delete
+router
+  .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)
+  .put("/update", middleware.checkToken, allControllers.updateUser)
+  .put("/updatePassword", middleware.checkToken, allControllers.updatePassword)
+  .delete("/deleteUser", middleware.checkToken, allControllers.deleteUser);
 
-// register http://localhost:5000/user/logout
-router.get("/logout", allControllers.logout);
+router
+  .post("/wishlist", middleware.checkToken, allProductControllers.addToWishlist)
+  .put(
+    "/wishlist",
+    middleware.checkToken,
+    allProductControllers.removeFromWishlist
+  );
+router
+  .post(
+    "/addToBasket",
+    middleware.checkToken,
+    allProductControllers.addToBasket
+  )
+  .get("/getTheBasket", middleware.checkToken, allProductControllers.getOneByID)
+  .put(
+    "/removeFromTheBasket",
+    middleware.checkToken,
+    allProductControllers.removeFromBasket
+  );
 
-//the login and the logout part and checkAuth works only on the browser
-router.get("/checkAuth", middleware.checkToken);
-
-
-/* with post to add Product to the basket  http://localhost:5000/user/:id where id is the id of the user */
-// it requres req.body.productID  => {
-// "productID": "write the id of ur product"
-// }
-//
-/* with get to view Products from a specific user (to view the basket) http://localhost:5000/user/:id where id is the id of the user */
-//
-/* with delete to remove a productID from basket(IF THE ID EXISTS 3 TIMES REMOVES IT ALL) http://localhost:5000/user/:id where id is the id of the user */
-// it requres req.body.productID  => {
-// "productID": "write the id of ur product"
-// }
-router.post("/wishlist/:id", allProductControllers.addToWishlist).delete("/wishlist/:id", allProductControllers.removeFromWishlist);
-router.post("/:id", allProductControllers.addToBasket).get("/:id", allProductControllers.getOneByID).delete("/:id", allProductControllers.removeFromBasket);
-
-
-router.put("/checkout/:id", allProductControllers.getCheckout);
+router.put(
+  "/checkout",
+  middleware.checkToken,
+  allProductControllers.getCheckout
+);
 module.exports = router;

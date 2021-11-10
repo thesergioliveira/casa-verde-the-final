@@ -1,52 +1,89 @@
-import React from 'react'
+import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../AuthContext";
 
 const Basket = () => {
-    const [data, setData] = useState([]);
-    const displayBasket = () => {
-        const config = {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        };
- axios.get("user/616fecb8c07e23a17f5f1042", config)
-          .then((res) => {
-            if (res.data) {
-              setData(res.data);
-             
-            } else {
-              setData({ message: "user NOT Authenticated" });
-            }
-          })
-          .catch((err) => {
-            console.log("here", err.message);
-          });
-      };
-      useEffect(() => {
-        displayBasket();
-      }, []);
-      console.log(data);
-    return (
-        <div>
-           <h1> ;D Basket</h1>
+  const [data, setData] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [token] = useContext(AuthContext);
+  const config = {
+    headers: {
+      authorization: token,
+    },
+  }; 
+  useEffect(() => {
+    const displayData = async () => {
+      await axios
+        .get("user/getTheBasket", config)
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((err) => {
+          console.log("SOS SOS SOS SOS", err.message);
+        });
+    };
 
-           <div
+    displayData();
+  }, []);
+
+  const Checkout = () => {
+    axios
+      .put(`user/checkout/`, config)
+      .then((res) => {
+        if (res.data) {
+          setTotal(res.data);
+          console.log(res.data);
+        } else {
+          setTotal({ message: "user NOT Authenticated" });
+        }
+      })
+      .catch((err) => {
+        console.log("failed checkout", err.message);
+      });
+  };
+
+  return (
+    <div>
+      <h1> welcome {data?.username} </h1>
+      <h2> Shopping Basket</h2>
+      <div></div>
+      <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           flexWrap: "wrap",
         }}
-         > 
-       {data.message},   {data.basket}
-      </div> 
+      >
+        <ul>
+          <h3> wishlist </h3>
+          {data.wishlist?.map((item, index) => (
+            <li key={index}>
+              <p>{item.name}</p>
+              <p>${item.price}</p>
+              <p>only {item.quantity} left </p>
+            </li>
+          ))}
+        </ul>
+        <ul>
+          <h3>basket</h3>
+          {data.basket?.map((item, index) => (
+            <li key={index}>
+              <p>{item.name}</p>
+              <p>${item.price}</p>
+              <p>only {item.quantity} left </p>
+            </li>
+          ))}
+        </ul>
+        <h3>
+          Total:{" "}
+          {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
+        </h3>
+        <button onClick={Checkout}>Checkout</button>
+      </div>
+    </div>
+  );
+};
 
-
-
-
-        </div>
-    )
-}
-
-export default Basket
+export default Basket;

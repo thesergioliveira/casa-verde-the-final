@@ -1,8 +1,13 @@
 // Import style components
 /* Media Query for Mobile Devices */
-@media (max-width: 480px) {
-  @import "./home";
-  @import "./footer";
-  @import "./navigation";
-  @import "./contactForm";
-}
+// @media (max-width: 480px) {
+@import "./home";
+@import "./footer";
+@import "./navigation";
+@import "./contactForm";
+@import "./map";
+@import "./contactInformation";
+@import "./shopSlider";
+@import "./services";
+@import "./shop";
+// }

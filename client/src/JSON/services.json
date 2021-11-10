@@ -1,0 +1,66 @@
+[
+  {
+    "id": 0,
+    "name": "Weddings",
+    "link": "#weddings",
+    "linkId": "weddings",
+    "imgs": [
+      "./images/deco-services/weddings/weddings-1.png",
+      "./images/deco-services/weddings/weddings-2.png",
+      "./images/deco-services/weddings/weddings-3.png",
+      "./images/deco-services/weddings/weddings-4.png",
+      "./images/deco-services/weddings/weddings-5.png",
+      "./images/deco-services/weddings/weddings-6.png",
+      "./images/deco-services/weddings/weddings-7.png",
+      "./images/deco-services/weddings/weddings-8.png"
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Plant ideas",
+    "link": "#plant",
+    "linkId": "plant",
+    "imgs": [
+      "./images/deco-services/plant ideas/plants-1.png",
+      "./images/deco-services/plant ideas/plants-2.png",
+      "./images/deco-services/plant ideas/plants-3.png",
+      "./images/deco-services/plant ideas/plants-4.png",
+      "./images/deco-services/plant ideas/plants-5.png",
+      "./images/deco-services/plant ideas/plants-6.png",
+      "./images/deco-services/plant ideas/plants-7.png",
+      "./images/deco-services/plant ideas/plants-8.png"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Gift ideas",
+    "link": "#gift",
+    "linkId": "gift",
+    "imgs": [
+      "./images/deco-services/gift ideas/gifts-1.png",
+      "./images/deco-services/gift ideas/gifts-2.png",
+      "./images/deco-services/gift ideas/gifts-3.png",
+      "./images/deco-services/gift ideas/gifts-4.png",
+      "./images/deco-services/gift ideas/gifts-5.png",
+      "./images/deco-services/gift ideas/gifts-6.png",
+      "./images/deco-services/gift ideas/gifts-7.png",
+      "./images/deco-services/gift ideas/gifts-8.png"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Funerals",
+    "link": "#funerals",
+    "linkId": "funerals",
+    "imgs": [
+      "./images/deco-services/funerals/funerals-1.png",
+      "./images/deco-services/funerals/funerals-2.png",
+      "./images/deco-services/funerals/funerals-3.png",
+      "./images/deco-services/funerals/funerals-4.png",
+      "./images/deco-services/funerals/funerals-5.png",
+      "./images/deco-services/funerals/funerals-6.png",
+      "./images/deco-services/funerals/funerals-7.png",
+      "./images/deco-services/funerals/funerals-8.png"
+    ]
+  }
+]
