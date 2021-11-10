@@ -1,30 +1,25 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
+import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 import { Link } from "react-router-dom";
 import Checkout from "./Checkout";
 const Basket = () => {
+  // console.log(UserData.token)
+  // console.log(userdata.user.wishlist.map(item => item._id))
   const [data, setData] = useState([]);
-  const [total, setTotal] = useState(0);
+  const [UserData] = useContext(DataContext);
   const [token] = useContext(AuthContext);
   const config = {
     headers: {
       authorization: token,
     },
-<<<<<<< HEAD
   };
-<<<<<<< HEAD
+  //
  useEffect(() => {
     const displayBasket = async () => {
       
-=======
-=======
-  }; 
->>>>>>> 26ed61bdab1ed392c84f85097a4a6c560e0e669d
-  useEffect(() => {
-    const displayData = async () => {
->>>>>>> cd3a6e9955bff705a4645ffb8c05c33eed39d205
       await axios
         .get("user/getTheBasket", config)
         .then((res) => {
@@ -35,18 +30,14 @@ const Basket = () => {
         });
     };
 
-<<<<<<< HEAD
     displayBasket();
     
-=======
-    displayData();
->>>>>>> cd3a6e9955bff705a4645ffb8c05c33eed39d205
   }, []);
 
   
   return (
     <div>
-      <h1> welcome {data?.username} </h1>
+      <h1> welcome {UserData?.user?.username} </h1>
       <h2> Shopping Basket</h2>
       <div></div>
       <div
@@ -59,7 +50,7 @@ const Basket = () => {
       >
         <ul>
           <h3> wishlist </h3>
-          {data.wishlist?.map((item, index) => (
+          {UserData?.user.wishlist.map((item, index) => (
             <li key={index}>
               <p>{item.name}</p>
               <p>${item.price}</p>
