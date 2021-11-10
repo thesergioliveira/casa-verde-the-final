@@ -6,6 +6,7 @@ import { AuthContext } from "../AuthContext";
 import { Link } from "react-router-dom";
 import Checkout from "./Checkout";
 const Basket = () => {
+  //
   // console.log(UserData.token)
   // console.log(userdata.user.wishlist.map(item => item._id))
   const [data, setData] = useState([]);
