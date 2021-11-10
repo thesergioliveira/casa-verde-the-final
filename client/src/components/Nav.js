@@ -72,7 +72,7 @@ const Nav = ({ logo }) => {
     <header>
       <nav>
         <div className="nav-top">
-          <div className="logo-container" onClick={closeMenu}>
+          <div  className="logo-container" onClick={closeMenu}>
             {logo}
           </div>
           <div className="nav-user">

@@ -12,6 +12,7 @@ header nav {
   }
 }
 
+// Logo setup
 .logo {
     width: 6.6rem;
     height: 6.6rem;
@@ -117,16 +118,6 @@ header nav {
   background-color: $cream;
   transition: 2s;
 
-  // Li setup
-  li {
-    padding-left: 1em;
-    list-style: none;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
   // Link's setup
   a {
     text-decoration: none;
@@ -137,21 +128,13 @@ header nav {
   @include flex;
   justify-content: space-evenly;
   width: 30vw;
+
+   // Li setup
   li {
     padding-left: 1em;
     list-style: none;
     color: black;
     font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-
-    // Li setup
-    li {
-        padding-left: 2em;
-        list-style: none;
-    }
-
-    
+    text-decoration: none; 
   }
-  
 }
