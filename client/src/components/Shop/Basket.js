@@ -1,23 +1,19 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 
 const Basket = () => {
-  // console.log(UserData.token)
-  // console.log(userdata.user.wishlist.map(item => item._id))
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
-  const [UserData] = useContext(DataContext);
   const [token] = useContext(AuthContext);
   const config = {
     headers: {
       authorization: token,
     },
   };
- useEffect(() => {
-    const displayBasket = async () => {
+  useEffect(() => {
+    const displayData = async () => {
       await axios
         .get("user/getTheBasket", config)
         .then((res) => {
@@ -28,7 +24,7 @@ const Basket = () => {
         });
     };
 
-    displayBasket();
+    displayData();
   }, []);
 
   const Checkout = () => {
@@ -49,7 +45,7 @@ const Basket = () => {
 
   return (
     <div>
-      <h1> welcome {UserData?.user?.username} </h1>
+      <h1> welcome {data?.username} </h1>
       <h2> Shopping Basket</h2>
       <div></div>
       <div
@@ -62,7 +58,7 @@ const Basket = () => {
       >
         <ul>
           <h3> wishlist </h3>
-          {UserData?.user.wishlist.map((item, index) => (
+          {data.wishlist?.map((item, index) => (
             <li key={index}>
               <p>{item.name}</p>
               <p>${item.price}</p>

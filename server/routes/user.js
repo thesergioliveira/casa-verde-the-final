@@ -15,26 +15,13 @@ router.post("/login", allControllers.login);
 // register http://localhost:5005/user/logout
 router.get("/logout", allControllers.logout);
 
-// update user infos && password
+// update user infos && password && delete
 router
   .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)
   .put("/update", middleware.checkToken, allControllers.updateUser)
-  .put(
-    "/updatePassword",
-    middleware.checkToken,
-    allControllers.updatePassword
-  );
-/* with post to add Product to the basket  http://localhost:5000/user/:id where id is the id of the user */
-// it requres req.body.productID  => {
-// "productID": "write the id of ur product"
-// }
-//
-/* with get to view Products from a specific user (to view the basket) http://localhost:5005/user/:id where id is the id of the user */
-//
-/* with delete to remove a productID from basket(IF THE ID EXISTS 3 TIMES REMOVES IT ALL) http://localhost:5005/user/:id where id is the id of the user */
-// it requres req.body.productID  => {
-// "productID": "write the id of ur product"
-// }
+  .put("/updatePassword", middleware.checkToken, allControllers.updatePassword)
+  .delete("/deleteUser", middleware.checkToken, allControllers.deleteUser);
+
 router
   .post("/wishlist", middleware.checkToken, allProductControllers.addToWishlist)
   .put(
