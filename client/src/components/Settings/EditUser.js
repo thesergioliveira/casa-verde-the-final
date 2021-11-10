@@ -1,13 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 import axios from "axios";
 function EditUser({ history }) {
   //use the context
   const [data] = useContext(DataContext);
-  const userData = data?.user;
+  const userData=data.user;
   const [token, setToken] = useContext(AuthContext);
-
   const config = {
     headers: {
       authorization: token,
@@ -21,14 +20,14 @@ function EditUser({ history }) {
   const [NewPassword, setNewPassword] = useState("");
   const [phone, setPhone] = useState(userData?.phone);
   const [address, setAddress] = useState(userData?.address);
-  const [houseNumber,setHouseNumber]=useState(userData?.houseNumber);
+  const [houseNumber, setHouseNumber] = useState(userData?.houseNumber);
   const [city, setCity] = useState(userData?.city);
   const [state, setState] = useState(userData?.state);
   const [country, setCountry] = useState(userData?.country);
-  const [postalCode ,setPostalCode] = useState(userData?.postalCode);
+  const [postalCode, setPostalCode] = useState(userData?.postalCode);
   const [updateMessage, setUpdateMessage] = useState("");
   const updateUserInfo = () => {
-    const newData = { username, email, address, phone };
+    const newData = { email, address, phone,houseNumber,city,state,country,postalCode };
 
     //edit user infos
     axios
@@ -135,41 +134,41 @@ function EditUser({ history }) {
           placeholder="enter your address"
         />
         <input
-        type="houseNumber"
-        value={houseNumber}
-        name="houseNumber"
-        onChange={(e) => setHouseNumber(e.target.value)}
-        placeholder="enter your houseNumber"
-      /> 
-      <input
-        type="country"
-        value={country}
-        name="country"
-        onChange={(e) => setCountry(e.target.value)}
-        placeholder="enter your Country Name"
-      />
-      <input
-        type="state"
-        value={state}
-        name="state"
-        onChange={(e) => setState(e.target.value)}
-        placeholder="enter your State Name"
-      />
-      <input
-        type="city"
-        value={city}
-        name="city"
-        onChange={(e) => setCity(e.target.value)}
-        placeholder="enter your City Name"
-      />
-     
-      <input
-        type="postalCode"
-        value={postalCode}
-        name="postalCode"
-        onChange={(e) => setPostalCode(e.target.value)}
-        placeholder="enter your postalCode"
-      />
+          type="houseNumber"
+          value={houseNumber}
+          name="houseNumber"
+          onChange={(e) => setHouseNumber(e.target.value)}
+          placeholder="enter your houseNumber"
+        />
+        <input
+          type="country"
+          value={country}
+          name="country"
+          onChange={(e) => setCountry(e.target.value)}
+          placeholder="enter your Country Name"
+        />
+        <input
+          type="state"
+          value={state}
+          name="state"
+          onChange={(e) => setState(e.target.value)}
+          placeholder="enter your State Name"
+        />
+        <input
+          type="city"
+          value={city}
+          name="city"
+          onChange={(e) => setCity(e.target.value)}
+          placeholder="enter your City Name"
+        />
+
+        <input
+          type="postalCode"
+          value={postalCode}
+          name="postalCode"
+          onChange={(e) => setPostalCode(e.target.value)}
+          placeholder="enter your postalCode"
+        />
         <button onClick={updateUserInfo}>update Your Profile</button>
       </div>
       <div>
