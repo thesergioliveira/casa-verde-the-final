@@ -96,14 +96,14 @@ header nav {
 
 
 // Ul display none
-.userNone {
+.user-none {
   height: 0;
   display: none;
   transition: 2s;
 }
 
 // Show nav setup
-.userShow {
+.user-show {
   z-index: 13;
   width: 40vw;
   height: 20vh;

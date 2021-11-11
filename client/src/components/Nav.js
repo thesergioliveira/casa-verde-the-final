@@ -92,7 +92,7 @@ const Nav = ({ logo }) => {
                   </li>
                 </div>
                 <ul
-                  className={show ? "userNone" : "userShow"}
+                  className={show ? "user-none" : "user-show"}
                   onClick={showEditUser}
                 >
                   <li key="52"> WELCOME: {userName}</li>
