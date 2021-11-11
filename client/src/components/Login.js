@@ -1,36 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import { DataContext } from "./UserContext";
+import { AuthContext } from "./AuthContext";
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+  const [data, setData] = useContext(DataContext);
+  const [token, setToken] = useContext(AuthContext);
+  const [loginMessage, setLoginMessage] = useState("");
   axios.defaults.withCredentials = true;
   const loginUser = () => {
     axios
       .post("user/login", {
         username,
         password,
+        
       })
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("basket", res.data.user.basket);
+        if (!res.data.token) {
+          setLoginMessage(res.data.message);
+        } else {
+          setToken(res.data.token)
+          setData(res.data);
+          localStorage.setItem("token", res.data.token);
+          setLoginMessage("You are logged in");
+          history.push("/");
+        }
+      })
+      .catch((error) => {
+        setLoginMessage(error.response.data.message);
       });
   };
-
-  const redirect = () => {
-    history.push("/");
-  };
-  
   return (
-    <div className="register-container">
+    <div className="login-container">
       <input
         type="text"
         value={username}
         name="username"
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="choose your username"
+        placeholder="enter your username or your email"
       />
       <input
         type="password"
@@ -39,18 +48,11 @@ const Login = ({ history }) => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="confirm your password"
       />
-      <button
-        onClick={() => {
-          loginUser();
-          redirect();
-        }}
-      >
-        Login
-      </button>
+      <button onClick={loginUser}>Login</button>
       <h4>OR</h4>
       <Link to="/register">Register</Link>
+      <h2>{loginMessage}</h2>
     </div>
   );
 };
-
 export default Login;

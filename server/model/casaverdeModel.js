@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   _id: Schema.Types.ObjectId,
   username: {
+    trim: true,
     type: String,
     lowercase: true,
     required: [true, "can't be blank"],
@@ -16,26 +17,21 @@ const userSchema = new Schema({
   // the role ADMIN will have always a full basket with all the products
   password: { type: String, required: true },
   email: {
+    trim: true,
     type: String,
     lowercase: true,
     required: [true, "can't be blank"],
     index: true,
   },
   avatar: String,
-  phone: { type: String },
+  phone: { type: Number },
   address: { type: String },
+  houseNumber: { type: Number },
   city: { type: String },
   state: { type: String },
-  zip: { type: String },
+  postalCode: { type: String },
   country: { type: String },
   wishlist: [],
-  //              Tareq's basket
-  // basket: [
-  //   {
-  //     product: { type: Schema.Types.ObjectId, ref: "Product" },
-  //     purchasedQuantity: Number,
-  //   },
-  // ],
   basket: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   orders: [{ type: Schema.Types.ObjectId, ref: "Order" }],
   createdAt: { type: Date, default: Date.now },
@@ -53,12 +49,13 @@ const productSchema = Schema({
       "Italian Products",
     ],
   },
-
+  delivery: { type: Boolean, default: false },
+  image: { type: String, required: false },
   name: { type: String, required: true },
-  price: { type: Number, required: true },
+  price: { type: Number, required: true, min: 0 },
   description: { type: String, required: true },
-  // image: { type: String, required: true },
-  quantity: { type: Number, required: false },
+
+  quantity: { type: Number, required: false, min: 0 },
 });
 
 const Product = mongoose.model("Product", productSchema);

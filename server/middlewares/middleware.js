@@ -6,7 +6,7 @@ middleware.validator = async (req, res, next) => {
   //check User
   const userCheck = await User.findOne({ username: req.body.username });
   if (userCheck) {
-    return res.status(400).send("This name is already been used");
+    return res.status(400).send({ message: "This name is already been used" });
   }
   //check email
   const email = req.body.email;
@@ -27,21 +27,22 @@ middleware.validator = async (req, res, next) => {
 
 middleware.checkToken = async (req, res, next) => {
   // Take Bearer out
-  const accessToken = req.headers.authorization.split(" ")[0] || "";
-  console.log("token", accessToken);
-  if (accessToken == "null") {
-    return res.json({ auth: false, message: "User NOT Authenticated!" });
+
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    const token = authHeader.split(" ")[0];
+
+    if (token == null)
+      return res.status(401).json({ message: "invalid token" });
+
+    verify(token, process.env.TOKEN_TEXT, (err, user) => {
+      if (err) {
+        return res.status(404).json({ auth: false, message: "token expired" });
+      } else {
+        req.id = user.id;
+        next();
+      }
+    });
   }
-  try {
-    const validToken = await verify(accessToken, process.env.TOKEN_TEXT);
-    if (!validToken) {
-      return res
-        .status(404)
-        .json({ auth: false, message: "You need to login!" });
-    }
-  } catch (err) {
-    res.status(400).json({ auth: false, message: err.message });
-  }
-  next();
 };
 module.exports = middleware;

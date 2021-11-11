@@ -12,7 +12,7 @@ const cors = require("cors");
 app.use(
   cors({
     origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "UPDATE", "DELETE"],
     credentials: true,
   })
 );
@@ -47,7 +47,6 @@ mongoose
     console.log(`There was a problem ${error.message}`);
   });
 
-
 // Initializing Routes
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/user");
@@ -65,4 +64,5 @@ app.all("*", (req, res, next) => {
   next(new Error(`Can't find ${req.originalUrl} on this server`, 404));
 });
 // Exporting App
+
 module.exports = app;

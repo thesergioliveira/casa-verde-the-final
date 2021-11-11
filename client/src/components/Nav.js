@@ -1,13 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Menu from "../menu.json";
+import Menu from "../JSON/menu.json";
+import { DataContext } from "./UserContext";
+import { AuthContext } from "./AuthContext";
+import { FiLogOut, FiSettings } from "react-icons/fi";
+import { FaUser, FaShoppingBasket } from "react-icons/fa";
 
-const Nav = () => {
+// set onClick for logo to close the menu - to do
+const Nav = ({ logo }) => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(true);
   const [none, setNone] = useState(true);
-  const [token, setToken] = useState();
+  const [show, setShow] = useState(true);
+  const [closeUser, setCloseUser] = useState(true);
+  const [openUser, setOpenUser] = useState(false);
+  //use the context
+  const [data, setData] = useContext(DataContext);
+  const [token, setToken] = useContext(AuthContext);
+ 
+  // get the userName
+  const userName = data?.user?.username.toUpperCase();
 
+  //hamburgerMenu
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
     return (
@@ -16,16 +30,34 @@ const Nav = () => {
       </li>
     );
   });
+  //userMenu
+  const showEditUser = () => {
+    setOpenUser(openUser);
+    setCloseUser(!closeUser);
+    setShow(!show);
+  };
+  const closeUserMenu = () => {
+    setCloseUser(true);
+    setShow(true);
+  };
 
   const showMenu = () => {
     setOpen(open);
     setClose(!close);
     setNone(!none);
+    closeUserMenu();
+  };
+  // closing hamburger menu function
+  const closeMenu = () => {
+    setClose(true);
+    setNone(true);
   };
   //logout
   const logOut = () => {
     localStorage.clear();
-    setToken("");
+    setData("");
+    setToken("")
+    closeMenu();
     redirect();
   };
   // redirect to login when its logged out
@@ -33,37 +65,79 @@ const Nav = () => {
   const redirect = () => {
     history.push("/login");
   };
-  let getToken = localStorage.getItem("token");
-  useEffect(() => {
-    setToken(getToken);
-  }, [getToken]);
+  //
 
   return (
     <header>
       <nav>
         <div className="nav-top">
-        <Link to="/">
-        <div className="logo">img</div>
-        </Link>
-          <div>
-            {token ? (
+          <div className="logo-container" onClick={closeMenu}>
+            {logo}
+          </div>
+          <div className="nav-user">
+            {token ?(
               <>
+                {" "}
                 <Link to="/basket">
-                  <button>Basket</button>
+                  <li id="basket">
+                    <FaShoppingBasket />
+                  </li>
                 </Link>
-                <button onClick={logOut}>Logout</button>
+                <div
+                  className={closeUser ? "hamburger close" : "hamburger open"}
+                  onClick={showEditUser}
+                >
+                  <li>
+                    <FaUser />
+                  </li>
+                </div>
+                <ul
+                  className={show ? "userNone" : "userShow"}
+                  onClick={showEditUser}
+                >
+                  <li> WELCOME: {userName}</li>
+
+                  <Link to="/settings">
+                    <li>
+                      {" "}
+                      Settings <FiSettings />
+                    </li>
+                  </Link>
+
+                  <li onClick={logOut} alt="logout">
+                    Logout <FiLogOut />
+                  </li>
+                </ul>
               </>
             ) : (
               <>
-                <Link to="/login">
-                  <button>Sign In</button>
+                <Link
+                  style={{
+                    color: "black",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                  }}
+                  onClick={closeMenu}
+                  to="/login"
+                >
+                  sign in
                 </Link>
-                <Link to="/register">
-                <button>Register</button>
+                {"  "}
+                <Link
+                  style={{
+                    color: "black",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                  }}
+                  onClick={closeMenu}
+                  to="/register"
+                >
+                  sign up
                 </Link>
               </>
             )}
           </div>
+
           <div
             className={close ? "hamburger close" : "hamburger open"}
             onClick={showMenu}

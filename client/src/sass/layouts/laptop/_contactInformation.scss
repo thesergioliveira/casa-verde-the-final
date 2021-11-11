@@ -1,0 +1,18 @@
+.info-container {
+  .contact-info {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 4rem;
+
+    .phone,
+    .mail {
+      width: 35%;
+      max-width: 12rem;
+    }
+  }
+
+  .location {
+    align-items: flex-start;
+    padding-left: 5rem;
+  }
+}

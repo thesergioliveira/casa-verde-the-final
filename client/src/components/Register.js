@@ -7,14 +7,18 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [houseNumber,setHouseNumber]=useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode ,setPostalCode] = useState("");
+  const [registerMessage, setRegisterMessage] = useState("");
   axios.defaults.withCredentials = true;
 
   const handleSubmit = () => {
-    const data = new FormData();
-    data.append("username", username);
-    data.append("password", password);
-    data.append("passwordConf", passwordConf);
-    data.append("email", email);
+    const data = { username, password, passwordConf, email,address,phone,city,country,state,postalCode ,houseNumber };
 
     axios
       .post("user/register", data, {
@@ -22,12 +26,18 @@ const Register = () => {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        console.log(res.data);
+        redirect();
+      })
+      .catch((err) => {
+        setRegisterMessage(err.response.data.message);
+      });
   };
   // i used useHistory to redirect after registering to the login page
   let history = useHistory();
   const redirect = () => {
-    history.push("/login");
+    history.push("/");
   };
   return (
     <div className="register-container">
@@ -60,19 +70,63 @@ const Register = () => {
         onChange={(e) => setPasswordConf(e.target.value)}
         placeholder="confirm your password"
       />
+        <input
+        type="phone"
+        value={phone}
+        name="phone"
+        onChange={(e) => setPhone(e.target.value)}
+        placeholder="enter your phone number"
+      />
+       <input
+        type="address"
+        value={address}
+        name="address"
+        onChange={(e) => setAddress(e.target.value)}
+        placeholder="enter your address"
+      /> 
+         <input
+        type="houseNumber"
+        value={houseNumber}
+        name="houseNumber"
+        onChange={(e) => setHouseNumber(e.target.value)}
+        placeholder="enter your houseNumber"
+      /> 
+      <input
+        type="country"
+        value={country}
+        name="country"
+        onChange={(e) => setCountry(e.target.value)}
+        placeholder="enter your Country Name"
+      />
+      <input
+        type="state"
+        value={state}
+        name="state"
+        onChange={(e) => setState(e.target.value)}
+        placeholder="enter your State Name"
+      />
+      <input
+        type="city"
+        value={city}
+        name="city"
+        onChange={(e) => setCity(e.target.value)}
+        placeholder="enter your City Name"
+      />
+     
+      <input
+        type="postalCode"
+        value={postalCode}
+        name="postalCode"
+        onChange={(e) => setPostalCode(e.target.value)}
+        placeholder="enter your postalCode"
+      />
+      
 
-
-      <button
-        onClick={() => {
-          handleSubmit();
-          redirect();
-        }}
-      >
-        Register
-      </button>
+      <button onClick={handleSubmit}>Register</button>
 
       <h4>OR</h4>
       <Link to="/login">Login</Link>
+      <h3>{registerMessage}</h3>
     </div>
   );
 };

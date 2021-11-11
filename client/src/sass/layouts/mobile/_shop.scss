@@ -1,0 +1,22 @@
+.shop {
+   h1 {
+       text-align: center;
+   }
+}
+
+.products{
+    @include flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    width:9.6rem;
+    height: 21rem;
+    margin: 1rem;
+    border: blue 1px solid;
+    img {
+        width: 9.5rem;
+        height: 9.5rem;
+        border: red 1px solid;
+    }
+}
