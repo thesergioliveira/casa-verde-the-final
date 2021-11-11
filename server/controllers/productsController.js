@@ -149,7 +149,7 @@ allProductControllers.getCheckout = async (req, res) => {
       quantityCounter[item._id] = quantityCounter[item._id]
         ? quantityCounter[item._id] - 1
         : 1;
-    });
+    }); 
     // we update the quantity in our inventory
     product.forEach((item) => {
       item.quantity = item.quantity - quantityCounter[item._id];
