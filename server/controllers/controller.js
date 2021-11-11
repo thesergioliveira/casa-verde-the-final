@@ -82,8 +82,9 @@ allControllers.deleteUser = async (req, res) => {
     if (await bcrypt.compare(password, user.password)) {
       await User.findByIdAndDelete(req.id);
       res.status(200).json({ message: "this user been deleted" });
+    } else {
+      res.status(400).json({ message: "false Password please repeat !" });
     }
-    else{res.status(400).json({ message: "false Password please repeat !" });}
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }

@@ -35,6 +35,7 @@ const Nav = ({ logo }) => {
     setOpenUser(openUser);
     setCloseUser(!closeUser);
     setShow(!show);
+   closeMenu();
   };
   const closeUserMenu = () => {
     setCloseUser(true);
