@@ -27,7 +27,7 @@ const AdminDash = () => {
  
     //control
 let allow
- !userdata?.user.admin ? allow="none": allow="flex";
+ //!userdata?.user.admin ? allow="none": allow="flex";
  
 //find users
  const displayUsers = () => {
@@ -150,7 +150,7 @@ const handleStock = () => {
         backgroundColor:`#f5f5f5`,
       }}
     >
-           <h1> welcome {userdata?.user.name}</h1> 
+           {/* <h1> welcome {userdata?.user.name}</h1>  */}
             <h2>Total Users: {data?.length}</h2>
             <h2>Total Products: {productData?.length}</h2>
             <h2>Total items in wishlists {data?.map((item) => item.wishlist.length).reduce((a, b) => a + b, 0)}</h2>

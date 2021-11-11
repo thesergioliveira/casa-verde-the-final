@@ -144,7 +144,6 @@ allProductControllers.getCheckout = async (req, res) => {
     });
    // console.log("product", product);
     // we count the amount of each purcashed product by counting the numbers of the same ids
-<<<<<<< HEAD
      const quantityCounter ={}
      console.log(user.basket)
      console.log(quantityCounter)
@@ -171,40 +170,6 @@ const updatedProduct = await Product.updateMany(
     },
   }
 );
-=======
-    const quantityCounter = {};
-    user.basket.forEach(function (item) {
-      quantityCounter[item._id] = quantityCounter[item._id]
-        ? quantityCounter[item._id] - 1
-        : 1;
-    });
-    // we update the quantity in our inventory
-    product.forEach((item) => {
-      item.quantity = item.quantity - quantityCounter[item._id];
-      item.save();
-    });
-    const updatedProduct = await Product.updateMany(
-      {
-        _id: {
-          $in: user.basket,
-        },
-      },
-      {
-        $set: {
-          quantity: this.quantity,
-          // quantity: 100,
-        },
-      }
-    );
-    // keep them for testing
-    //616ec6feb7d4def05aa683d0 only 94 left ', - should become 88'
-    //616ed198dd2ebe480b74bae7 only 95 left', - should become 90
-    //61712743bc5b07cecabd00c9 only 92 left', - should become 84
-    //617180bcf69f58df9e12c0c5 only 97 left ', - should become 95'
-    //  console.log(quantityCounter);
-    //  console.log( product.map(item=>item.quantity))
-    //  console.log(product.map((el)=> `${el._id} only ${el.quantity} left`));
->>>>>>> 4d64a205ee52ffd6920da070975b20b05a04d37e
 
     // we empty the basket
     const basketupdater = await User.findByIdAndUpdate(req.id, {

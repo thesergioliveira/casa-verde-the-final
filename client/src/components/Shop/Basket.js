@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../AuthContext";
 import {Link} from "react-router-dom"
-
+import ShopItem from "./ShopItem";
 const Basket = () => {
   //
   // console.log(UserData.token)
@@ -33,44 +33,41 @@ const Basket = () => {
 
   
  return (
-    <div>
+    <div className="main-basket-container">
+      <span>
       <h1> welcome {data?.username} </h1>
       <h2> Shopping Basket</h2>
-      <div></div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <ul>
-          <h3> wishlist </h3>
-          {data.wishlist?.map((item, index) => (
-            <li key={index}>
-              <p>{item.name}</p>
-              <p>${item.price}</p>
-              <p>only {item.quantity} left </p>
-            </li>
-          ))}
-        </ul>
-        <ul>
-          <h3>basket</h3>
-          {data.basket?.map((item, index) => (
-            <li key={index}>
-              <p>{item.name}</p>
-              <p>${item.price}</p>
-              <p>only {item.quantity} left </p>
-            </li>
-          ))}
-        </ul>
-        <Link to="/basket/checkout">
+     </span>
+     <Link className="checkout-link" to="/basket/checkout">
         <h3>
           Total:
           {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
         </h3>
         proceed to Checkout </Link>
+      <div className="lists-container">
+      
+        
+        <ul className="basket-list">
+        <li> <h3> basket </h3></li>
+          {data.basket?.map((obj, index) => (
+            
+            <li key={index}>
+              
+           <ShopItem obj={obj}/>
+
+            </li>
+          ))}
+        </ul>
+       
+        <ul className="wishlist-list">
+          <li> <h3> wishlist </h3></li>
+          
+          {data.wishlist?.map((obj, index) => (
+            <li key={index}>
+            <ShopItem obj={obj}/>
+            </li>
+          ))}
+        </ul>
        
       </div>
     </div>
