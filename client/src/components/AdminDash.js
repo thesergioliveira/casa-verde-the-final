@@ -27,7 +27,7 @@ const AdminDash = () => {
  
     //control
 let allow
- userdata?.user.admin ? allow="none": allow="flex";
+ !userdata?.user.admin ? allow="none": allow="flex";
  
 //find users
  const displayUsers = () => {

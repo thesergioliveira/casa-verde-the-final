@@ -26,6 +26,7 @@ const userSchema = new Schema({
   avatar: String,
   phone: { type: Number },
   address: { type: String },
+  houseNumber: { type: Number },
   city: { type: String },
   state: { type: String },
   postalCode: { type: String },
