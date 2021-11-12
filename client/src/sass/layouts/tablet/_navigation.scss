@@ -1,1 +1,32 @@
-// test commit window
+// Navigation setup for tablet
+
+header nav {
+    height: 4.5rem;
+   
+    .nav-top {
+        padding: 0 1.5rem;
+    }
+}
+.logo {
+    width: 7rem;
+    height: 7rem;
+}
+
+.show {
+    width: 40vw;
+    height: 50vh;
+    position: absolute;
+    
+    @include flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: $cream;
+    transition: 2s;
+  
+    // Li setup
+    li {
+      padding-left: 1em;
+    }
+  }
+  
