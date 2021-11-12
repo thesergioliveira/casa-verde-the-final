@@ -17,8 +17,7 @@ const Nav = ({ logo }) => {
   //use the context
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
-  
-  //console.log("nav data",data.token);
+ 
   // get the userName
   const userName = data?.user?.username.toUpperCase();
 

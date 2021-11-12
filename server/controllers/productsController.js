@@ -36,21 +36,19 @@ allProductControllers.addProduct = async (req, res) => {
       res.status(400).json({ message: err.message });
     });
 };
-// update a product 
+// update a product
 allProductControllers.updateProduct = async (req, res) => {
-  
   try {
     const findProduct = await Product.findByIdAndUpdate(req.params.id, {
-      
       $set: {
-         category: req.body.category,
-         description: req.body.description,
-          price: req.body.price,
-           // image: req.file.path,
-          delivery: req.body.delivery,
-         // image: req.body.image,
-          quantity: req.body.quantity,
-      }, 
+        category: req.body.category,
+        description: req.body.description,
+        price: req.body.price,
+        // image: req.file.path,
+        delivery: req.body.delivery,
+        // image: req.body.image,
+        quantity: req.body.quantity,
+      },
     });
     console.log("REQQ  BODY IDDD", req.params.id);
     res.status(200).json({ message: "Product has been updated", findProduct });
@@ -131,8 +129,9 @@ allProductControllers.deleteProduct = async (req, res) => {
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
-}
+};
 allProductControllers.getCheckout = async (req, res) => {
+  //console.log(req.id);
   //we will get it from front end as obj  once the payment is done
   //const placedOrder = true;
   try {
@@ -143,42 +142,43 @@ allProductControllers.getCheckout = async (req, res) => {
         $in: user.basket,
       },
     });
+   // console.log("product", product);
     // we count the amount of each purcashed product by counting the numbers of the same ids
-     const quantityCounter ={}
-    user.basket.forEach(function(item){
-        quantityCounter[item._id] = quantityCounter[item._id] ? quantityCounter[item._id]-1 : 1;
-      })
-      // we update the quantity in our inventory
- product.forEach((item) => {
-
-  item.quantity = item.quantity -quantityCounter[item._id];
-  item.save();
- 
-});
-const updatedProduct = await Product.updateMany(
-  {
-    _id: {
-      $in: user.basket,
-    },
-  },
-  {
-    $set: {
-      quantity: this.quantity,
-     // quantity: 100,
-    },
-  }
-);
-// keep them for testing
- //616ec6feb7d4def05aa683d0 only 94 left ', - should become 88'
- //616ed198dd2ebe480b74bae7 only 95 left', - should become 90
- //61712743bc5b07cecabd00c9 only 92 left', - should become 84
- //617180bcf69f58df9e12c0c5 only 97 left ', - should become 95'
-//  console.log(quantityCounter);
-//  console.log( product.map(item=>item.quantity))
-//  console.log(product.map((el)=> `${el._id} only ${el.quantity} left`));
+    const quantityCounter = {};
+    user.basket.forEach(function (item) {
+      quantityCounter[item._id] = quantityCounter[item._id]
+        ? quantityCounter[item._id] - 1
+        : 1;
+    });
+    // we update the quantity in our inventory
+    product.forEach((item) => {
+      item.quantity = item.quantity - quantityCounter[item._id];
+      item.save();
+    });
+    const updatedProduct = await Product.updateMany(
+      {
+        _id: {
+          $in: user.basket,
+        },
+      },
+      {
+        $set: {
+          quantity: this.quantity,
+          // quantity: 100,
+        },
+      }
+    );
+    // keep them for testing
+    //616ec6feb7d4def05aa683d0 only 94 left ', - should become 88'
+    //616ed198dd2ebe480b74bae7 only 95 left', - should become 90
+    //61712743bc5b07cecabd00c9 only 92 left', - should become 84
+    //617180bcf69f58df9e12c0c5 only 97 left ', - should become 95'
+    //  console.log(quantityCounter);
+    //  console.log( product.map(item=>item.quantity))
+    //  console.log(product.map((el)=> `${el._id} only ${el.quantity} left`));
 
     // we empty the basket
-    const basketupdater = await User.findByIdAndUpdate(req.params.id, {
+    const basketupdater = await User.findByIdAndUpdate(req.id, {
       $set: {
         basket: [],
       },
@@ -186,7 +186,7 @@ const updatedProduct = await Product.updateMany(
     // update the db
     res.status(200).json({
       message:
-        "inventory updated, thank u for ur purchase we hope to see u again ",
+        "inventory updated, thank u for ur purchase we hope to see u again ",basketupdater
     });
   } catch (err) {
     res.status(err.status).json({
@@ -207,15 +207,19 @@ allProductControllers.getAllProducts = async (req, res) => {
 
 allProductControllers.getOneByID = async (req, res) => {
   try {
-    const user = await User.findById(req.id).populate("basket");
+    const user = await User.findById(req.id).populate("basket")
     // res.status(200).json(user);
 
     await res.status(200).json({
       basket: user.basket.map((item) => item.toObject()),
+      wishlist:user.wishlist,
+      username:user.username,
+     
     });
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }
 };
+
 
 module.exports = allProductControllers;
