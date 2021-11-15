@@ -62,17 +62,6 @@ header nav {
   transition: 0.2s;
 }
 
-// Ul display none
-.none {
-  display: none;
-  delay: .7s;
-}
-
-.scale-down-tr {
-	-webkit-animation: scale-down-tr 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
-	        animation: scale-down-tr 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
-}
-
 // Show nav setup
 .show {
   width: 100vw;
@@ -102,8 +91,12 @@ header nav {
   }
 
   // Animation for open the navigation
-  animation: scale-up-tr 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  
+  animation: scale-up-tr 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+}
+
+// Ul display none
+.none {
+  animation: scale-down-tr 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) backwards;
 }
 
 
