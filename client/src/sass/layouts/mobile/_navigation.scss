@@ -64,9 +64,13 @@ header nav {
 
 // Ul display none
 .none {
-  height: 0;
   display: none;
+  delay: .7s;
+}
 
+.scale-down-tr {
+	-webkit-animation: scale-down-tr 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+	        animation: scale-down-tr 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
 }
 
 // Show nav setup
@@ -96,11 +100,8 @@ header nav {
     text-decoration: none;
     text-align: center;
   }
- 
-  // .scale-up-tr {
-  //   -webkit-animation: scale-up-tr 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  //           animation: scale-up-tr 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  // }
+
+  // Animation for open the navigation
   animation: scale-up-tr 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   
 }
@@ -211,8 +212,8 @@ header nav {
             transform-origin: 100% 0%;
   }
   100% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    -webkit-transform: scale(0);
+            transform: scale(0);
     -webkit-transform-origin: 100% 0%;
             transform-origin: 100% 0%;
   }
@@ -225,8 +226,8 @@ header nav {
             transform-origin: 100% 0%;
   }
   100% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    -webkit-transform: scale(0);
+            transform: scale(0);
     -webkit-transform-origin: 100% 0%;
             transform-origin: 100% 0%;
   }

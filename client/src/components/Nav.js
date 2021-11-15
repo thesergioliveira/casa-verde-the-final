@@ -146,7 +146,7 @@ const Nav = ({ logo }) => {
             <div className="menu-bottom"></div>
           </div>
         </div>
-        <ul className={none ? "none" : "show"} onClick={showMenu}>
+        <ul className={none ? "scale-down-tr" : "show"} onClick={showMenu}>
           {navMenu}
         </ul>
       </nav>
