@@ -48,7 +48,21 @@ const Home = () => {
         </div>
         <p>{description}</p>
         <img src={img} alt="site images" />
-        <div className="container-bottom-btn">
+        <div
+          className={
+            name === "Shop"
+              ? "container-bottom-btn bg-shop"
+              : name === "Decoration Services"
+              ? "container-bottom-btn bg-deco"
+              : name === "Events"
+              ? "container-bottom-btn bg-events"
+              : name === "Rental Services"
+              ? "container-bottom-btn bg-rental"
+              : name === "Ballet/Pilates"
+              ? "container-bottom-btn bg-ballet"
+              : "container-bottom-btn bg-technical"
+          }
+        >
           <Link to={path}>
             <button>Go to {name}</button>
           </Link>
