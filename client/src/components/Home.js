@@ -39,6 +39,9 @@ const Home = () => {
 
   return (
     <div className="home">
+      <div className="bg-home">
+        <img src="../images/bg-barrels.png" />
+      </div>
       <div className="home-top">
         <div className="roof"></div>
         <h1>Casa Verde</h1>

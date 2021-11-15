@@ -8,6 +8,21 @@
   @include flex;
   flex-direction: column;
 
+  // Background image
+  .bg-home {
+    width: 100vw;
+    height: 70vh;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
   // Top div which includes the roof div, h1 and the p tag
   .home-top {
     width: 100%;
