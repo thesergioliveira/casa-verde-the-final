@@ -36,7 +36,7 @@ const Basket = () => {
       <span>
         <h1> welcome {data?.username} </h1>
         <h2> Shopping Basket</h2>
-        <p>please take a note that not articles can be send !</p>
+        <p>Please take a note that not articles can be send !</p>
       </span>
       <div className="lists-container">
         <ul className="basket-list">
