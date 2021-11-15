@@ -9,11 +9,16 @@ const Register = () => {
   const [passwordConf, setPasswordConf] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [houseNumber,setHouseNumber]=useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode ,setPostalCode] = useState("");
   const [registerMessage, setRegisterMessage] = useState("");
   axios.defaults.withCredentials = true;
 
   const handleSubmit = () => {
-    const data = { username, password, passwordConf, email,address,phone };
+    const data = { username, password, passwordConf, email,address,phone,city,country,state,postalCode ,houseNumber };
 
     axios
       .post("user/register", data, {
@@ -78,7 +83,44 @@ const Register = () => {
         name="address"
         onChange={(e) => setAddress(e.target.value)}
         placeholder="enter your address"
+      /> 
+         <input
+        type="houseNumber"
+        value={houseNumber}
+        name="houseNumber"
+        onChange={(e) => setHouseNumber(e.target.value)}
+        placeholder="enter your houseNumber"
+      /> 
+      <input
+        type="country"
+        value={country}
+        name="country"
+        onChange={(e) => setCountry(e.target.value)}
+        placeholder="enter your Country Name"
       />
+      <input
+        type="state"
+        value={state}
+        name="state"
+        onChange={(e) => setState(e.target.value)}
+        placeholder="enter your State Name"
+      />
+      <input
+        type="city"
+        value={city}
+        name="city"
+        onChange={(e) => setCity(e.target.value)}
+        placeholder="enter your City Name"
+      />
+     
+      <input
+        type="postalCode"
+        value={postalCode}
+        name="postalCode"
+        onChange={(e) => setPostalCode(e.target.value)}
+        placeholder="enter your postalCode"
+      />
+      
 
       <button onClick={handleSubmit}>Register</button>
 

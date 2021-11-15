@@ -15,6 +15,7 @@ const Login = ({ history }) => {
       .post("user/login", {
         username,
         password,
+        
       })
       .then((res) => {
         if (!res.data.token) {
@@ -38,7 +39,7 @@ const Login = ({ history }) => {
         value={username}
         name="username"
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="choose your username"
+        placeholder="enter your username or your email"
       />
       <input
         type="password"

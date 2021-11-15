@@ -20,6 +20,7 @@ import EditUser from "./components/Settings/EditUser"
 import {DataProvider}  from "./components/UserContext";
 import {AuthContextProvider}  from "./components/AuthContext";
 import AdminDash from "./components/AdminDash";
+import Checkout from "./components/Shop/Checkout";
 
 function App() {
   // Logo setup
@@ -41,7 +42,7 @@ function App() {
           <Switch>
             {/* Need to add public.env */}
             <Route path="/" exact render={Home}></Route>
-            <Route path="/admindash" exact component={AdminDash}></Route>
+            <Route path="/adminDash" exact component={AdminDash}></Route>
             <Route path="/shop" exact component={Shop}></Route>
             <Route path="/services" exact component={Services}></Route>
             <Route path="/events" exact render={Events}></Route>
@@ -57,6 +58,7 @@ function App() {
             <Route path="/login" exact component={Login}></Route>
             <Route path="/register" exact component={Register}></Route>
             <Route path="/basket" exact component={Basket}></Route>
+            <Route path="/basket/checkout" exact component={Checkout}></Route>
             <Route path="/settings" exact component={EditUser}></Route>
           </Switch>
         </main>
