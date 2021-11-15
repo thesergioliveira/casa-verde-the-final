@@ -11,9 +11,9 @@
   // Background image
   .bg-home {
     width: 100vw;
-    height: 75vh;
+    height: 80vh;
     position: absolute;
-    top: 3rem;
+    top: 0;
     z-index: -1;
 
     img {
@@ -24,11 +24,10 @@
 
     div {
       width: 90%;
-      height: 90%;
-      background-color: rgba(255, 255, 255, 0.3);
-      filter: blur(5px);
+      height: 100%;
+      background-color: rgba(255, 231, 180, 0.4);
       position: absolute;
-      top: 2rem;
+      top: 0;
       margin-left: auto;
       margin-right: auto;
       left: 0;
@@ -49,7 +48,7 @@
       height: 0;
       border-style: solid;
       border-width: 0 40vw 10vh;
-      border-color: transparent transparent $orange;
+      border-color: transparent transparent rgb(204, 204, 204);
       margin: 1em 0;
     }
 
@@ -58,6 +57,8 @@
       position: absolute;
       margin-right: 1.5em;
       z-index: 1;
+      color: white;
+      font-size: 2.25rem;
     }
 
     // First p tag after h1 (RAUM FÜR IDEEN - Casa Verde Motto)
@@ -147,6 +148,7 @@
         border-radius: 1rem;
         border: none;
         font-size: 0.9rem;
+        opacity: 85%;
       }
 
       // Colors for Buttons
