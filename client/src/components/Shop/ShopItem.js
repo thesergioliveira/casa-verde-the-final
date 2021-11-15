@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
+import { FiMinusCircle, FiPlusCircle, FiTrash2 } from "react-icons/fi";
 
 function ShopItem(props) {
   // console.log(props.obj);
@@ -94,33 +95,46 @@ function ShopItem(props) {
     }
   };
   return (
-    <div key={props.obj._id} className="product">
+    <div key={props.obj._id} className="product-basket">
       {/* <img src={props.obj.image} alt="logo" />*/}
-      <img
-        src="https://s3.amazonaws.com/mentoring.redesign/s3fs-public/900product.jpg"
-        alt="product img"
-      />
-      <p>{props.obj.category}</p>
-      <p>name: {props.obj.name}</p>
-      <p>description: {props.obj.description}</p>
-      <p>only {props.obj.quantity - count} left</p>
-      <p>price: {props.obj.price} $</p>
-      <button
-        disabled={count >= props.obj.quantity}
-        onClick={() => addToBasket(props.obj._id)}
-      >
-        Add (+)to basket
-      </button>{" "}
-      {count}{" "}
-      <button
-        disabled={count === 0}
-        onClick={() => removeFromBasket(props.obj._id)}
-      >
-        remove(-) from basket
-      </button>
-      <button onClick={() => addToWishlist(props.obj._id)}>
-        {wishlist ? `🤍` : `❤️`} wishlist
-      </button>
+      <div className="product-box">
+        <img
+          src="https://i.aquarelle.com/14/images/produits/duftender-strau%C3%9F-400x400-38034.jpg"
+          alt="product img"
+        />
+        <div className="product-infos">
+          <p>{props.obj.name}</p>
+          <p>{props.obj.category}</p>
+          <p>{props.obj.price} $</p>
+          <p>description: {props.obj.description}</p>
+          <p>only {props.obj.quantity - count} left</p>
+          <span>
+            <button
+              disabled={count >= props.obj.quantity}
+              onClick={() => addToBasket(props.obj._id)}
+            >
+              <FiPlusCircle />
+            </button>{" "}
+            {count}{" "}
+            <button
+              disabled={count === 0}
+              onClick={() => removeFromBasket(props.obj._id)}
+            >
+              <FiMinusCircle />
+            </button>
+            <button onClick={() => addToWishlist(props.obj._id)}>
+              {wishlist ? `🤍` : `❤️`}
+            </button>
+            <button onClick={() => removeFromBasket(props.obj_id)}>
+              <FiTrash2 />
+            </button>
+          </span>
+        </div>
+      </div>
+      <div className="total-price">
+        <h2>{props.obj.price * count} $</h2>&nbsp;
+        <p>incl.VAT</p>
+      </div>
     </div>
   );
 }

@@ -17,7 +17,7 @@ const AdminDash = () => {
   // axios.defaults.withCredentials = true;
   const [data, setData] = useState([]);
   const [productData, setProductData] = useState([]);
-  const [userdata, setUserdata] = useContext(DataContext);
+  //const [userdata, setUserdata] = useContext(DataContext);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Gift baskets");
   const [price, setPrice] = useState(0);
@@ -71,12 +71,10 @@ const getAllProducts = () => {
   };
   useEffect(() => {
     displayUsers();
+    getAllProducts();
     
   }, []);
-
-
-
-  // add a product
+ // add a product
   const handleSubmit = () => {
     const newProductData = {
       name,
