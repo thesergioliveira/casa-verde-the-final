@@ -79,11 +79,10 @@ header nav {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: $cream;
-  transition: 2s;
+ 
 
   // Li setup
   li {
-    border: 2px solid yellow;
     width: 100%;
     padding-left: 1em;
     list-style: none;
@@ -115,7 +114,6 @@ header nav {
 
   // Li setup
   li {
-    border: 2px solid yellow;
     width: 100%;
     padding-left: 1em;
     list-style: none;
