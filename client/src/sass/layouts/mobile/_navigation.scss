@@ -10,6 +10,10 @@ header nav {
     justify-content: space-between;
     height: 4rem;
   }
+  .none {
+    transition-delay: 1s;
+    // display: none;
+  }
 }
 
 // Logo setup
@@ -62,6 +66,7 @@ header nav {
   transition: 0.2s;
 }
 
+
 // Show nav setup
 .show {
   width: 100vw;
@@ -95,7 +100,32 @@ header nav {
 }
 
 // Ul display none
-.none {
+.hide {
+  width: 100vw;
+  height: 93vh;
+  position: relative;
+  float: right;
+  @include flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: $cream;
+  transition: .7s;
+
+  // Li setup
+  li {
+    border: 2px solid yellow;
+    width: 100%;
+    padding-left: 1em;
+    list-style: none;
+  }
+
+  // Link's setup
+  a {
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+  }
   animation: scale-down-tr 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) backwards;
 }
 
@@ -158,6 +188,10 @@ header nav {
  */
  @-webkit-keyframes scale-up-tr {
   0% {
+    display: none;
+  }
+  1% {
+    display: flex;
     -webkit-transform: scale(0);
             transform: scale(0);
     -webkit-transform-origin: 100% 0%;
@@ -172,6 +206,10 @@ header nav {
 }
 @keyframes scale-up-tr {
   0% {
+    display: none;
+  }
+  1% {
+    display: flex;
     -webkit-transform: scale(0);
             transform: scale(0);
     -webkit-transform-origin: 100% 0%;
@@ -199,29 +237,37 @@ header nav {
  */
  @-webkit-keyframes scale-down-tr {
   0% {
+    display: flexbox;
     -webkit-transform: scale(1);
             transform: scale(1);
     -webkit-transform-origin: 100% 0%;
             transform-origin: 100% 0%;
   }
-  100% {
+  99% {
     -webkit-transform: scale(0);
             transform: scale(0);
     -webkit-transform-origin: 100% 0%;
             transform-origin: 100% 0%;
+  }
+  100% {
+    display: none;
   }
 }
 @keyframes scale-down-tr {
   0% {
+    display: flexbox;
     -webkit-transform: scale(1);
             transform: scale(1);
     -webkit-transform-origin: 100% 0%;
             transform-origin: 100% 0%;
   }
-  100% {
+  99% {
     -webkit-transform: scale(0);
             transform: scale(0);
     -webkit-transform-origin: 100% 0%;
             transform-origin: 100% 0%;
+  }
+  100% {
+    display: none;
   }
 }
