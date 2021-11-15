@@ -11,8 +11,9 @@ header nav {
     height: 4rem;
   }
   .none {
-    transition-delay: 1s;
-    // display: none;
+    width: 0;
+    height: 0;
+    transition: .7s;
   }
 }
 
