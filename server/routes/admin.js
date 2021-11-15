@@ -3,8 +3,12 @@ var router = express.Router();
 const allControllers = require("../controllers/controller");
 const allProductControllers = require("../controllers/productsController");
 const middleware = require("../middlewares/middleware");
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 /* add new Product. */
-router.post("/product/",middleware.checkToken, allProductControllers.addProduct);
+router.post("/product/",middleware.checkToken, 
+ upload.single('avatar'), 
+allProductControllers.addProduct);
 
 // get all users
 // getAll http://localhost:5005/admin/users

@@ -6,18 +6,18 @@ const allProductControllers = {};
 
 // Add new Product from admin
 allProductControllers.addProduct = async (req, res) => {
-  User.findById(req.id)
-    .then((user) => {
-      if (user && user.admin) {
+  console.log("req.body", req.body);
+  User.findById(req.id).then((user) => {
+    
+      if (user) {
         const product = new Product({
           _id: new mongoose.Types.ObjectId(),
           name: req.body.name,
           category: req.body.category,
           description: req.body.description,
           price: req.body.price,
-          // image: req.file.path,
+           image: req.file.path,
           delivery: req.body.delivery,
-          // image: req.body.image,
           quantity: req.body.quantity,
         });
         product.save();
