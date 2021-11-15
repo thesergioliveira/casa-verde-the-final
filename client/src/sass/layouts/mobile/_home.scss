@@ -11,7 +11,7 @@
   // Background image
   .bg-home {
     width: 100vw;
-    height: 80vh;
+    height: 85vh;
     position: absolute;
     top: 0;
     z-index: -1;
@@ -20,18 +20,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    div {
-      width: 90%;
-      height: 100%;
-      background-color: rgba(255, 231, 180, 0.4);
-      position: absolute;
-      top: 0;
-      margin-left: auto;
-      margin-right: auto;
-      left: 0;
-      right: 0;
     }
   }
 
@@ -106,6 +94,7 @@
     text-align: center;
     border: 2px solid salmon;
     border-radius: 1em;
+    position: relative;
 
     // Card image setup
     img {
@@ -121,13 +110,71 @@
       position: relative;
       left: 3em;
     }
-  }
+    // Top of the card including the name and logo
+    .card-top {
+      width: 100%;
+      @include flex;
+      justify-content: space-between;
 
-  // Top of the card including the name and logo
-  .card-top {
-    width: 100%;
-    @include flex;
-    justify-content: space-around;
+      h3 {
+        padding-left: 1rem;
+      }
+
+      .container-card-logo {
+        width: 5.4rem;
+        height: 3.35rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        .logo-colors {
+          position: absolute;
+          bottom: 0;
+          width: 2.25rem;
+          height: 0.9rem;
+          border-radius: 100%;
+          background-color: $orange;
+          opacity: 60%;
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+        }
+
+        .orange {
+          left: -2.2rem;
+        }
+
+        .violet {
+          transform: rotate(45deg);
+          bottom: 0.75rem;
+          left: -1.5rem;
+          background-color: $violet;
+          z-index: 1;
+        }
+
+        .green {
+          transform: rotate(90deg);
+          bottom: 1.3rem;
+          background-color: $green;
+          z-index: 2;
+        }
+
+        .blue {
+          transform: rotate(-45deg);
+          bottom: 0.75rem;
+          left: 1.5rem;
+          background-color: $blue;
+          z-index: 3;
+        }
+
+        .red {
+          left: 2.2rem;
+          background-color: $red;
+          z-index: 4;
+        }
+      }
+    }
   }
 
   // House -> Buttons

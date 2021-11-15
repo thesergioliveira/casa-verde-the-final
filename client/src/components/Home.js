@@ -32,19 +32,23 @@ const Home = () => {
   });
 
   const cardElements = HomeData.map((obj) => {
-    const { id, name, path, img } = obj;
+    const { name, path, img, description } = obj;
     return (
-      <div key={id} className="card-element">
+      <div key={uuidv4()} className="card-element">
         <div className="card-top">
           <h3>{name}</h3>
-          <div>logo</div>
+          {/* Card Logo */}
+          <div className="container-card-logo">
+            <div className="logo-colors orange"></div>
+            <div className="logo-colors violet"></div>
+            <div className="logo-colors green"></div>
+            <div className="logo-colors blue"></div>
+            <div className="logo-colors red"></div>
+          </div>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p>{description}</p>
         <img src={img} alt="site images" />
-        <div>
+        <div className="container-bottom-btn">
           <Link to={path}>
             <button>Go to {name}</button>
           </Link>
@@ -56,8 +60,10 @@ const Home = () => {
   return (
     <div className="home">
       <div className="bg-home">
-        <img src="../images/bg-barrels.png" />
-        <div></div>
+        <img
+          src={process.env.PUBLIC_URL + "../images/bg-barrels.png"}
+          alt="barrels"
+        />
       </div>
       <div className="home-top">
         <div className="roof"></div>
