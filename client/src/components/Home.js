@@ -9,7 +9,23 @@ const Home = () => {
     return (
       <div key={uuidv4()} className="container-btn-house">
         <Link to={path}>
-          <button>{name}</button>
+          <button
+            className={
+              name === "Shop"
+                ? "btn-shop"
+                : name === "Decoration Services"
+                ? "btn-deco"
+                : name === "Events"
+                ? "btn-events"
+                : name === "Rental Services"
+                ? "btn-rental"
+                : name === "Ballet/Pilates"
+                ? "btn-ballet"
+                : "btn-technical"
+            }
+          >
+            {name}
+          </button>
         </Link>
       </div>
     );
@@ -41,6 +57,7 @@ const Home = () => {
     <div className="home">
       <div className="bg-home">
         <img src="../images/bg-barrels.png" />
+        <div></div>
       </div>
       <div className="home-top">
         <div className="roof"></div>

@@ -11,15 +11,28 @@
   // Background image
   .bg-home {
     width: 100vw;
-    height: 70vh;
+    height: 75vh;
     position: absolute;
-    top: 0;
+    top: 3rem;
     z-index: -1;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    div {
+      width: 90%;
+      height: 90%;
+      background-color: rgba(255, 255, 255, 0.3);
+      filter: blur(5px);
+      position: absolute;
+      top: 2rem;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
     }
   }
 
@@ -118,21 +131,46 @@
 
   // House -> Buttons
   .wrapper-btn-house {
-    border: 1px solid red;
-    width: 75vw;
-    height: 45vh;
+    width: 80vw;
+    height: 60vh;
     @include flex;
     flex-direction: column;
     justify-content: space-evenly;
 
     .container-btn-house {
-      border: 1px solid blue;
       width: 100%;
       height: 10%;
+
       button {
         width: 100%;
-        height: 100%;
+        height: 80%;
         border-radius: 1rem;
+        border: none;
+        font-size: 0.9rem;
+      }
+
+      // Colors for Buttons
+      .btn-shop {
+        background-color: $green;
+      }
+
+      .btn-deco {
+        background-color: $red;
+      }
+
+      .btn-events {
+        background-color: $cream;
+      }
+
+      .btn-rental {
+        background-color: $orange;
+      }
+
+      .btn-ballet {
+        background-color: $violet;
+      }
+      .btn-technical {
+        background-color: $blue;
       }
     }
   }
