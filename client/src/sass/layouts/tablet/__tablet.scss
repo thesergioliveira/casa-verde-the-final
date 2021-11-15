@@ -1,6 +1,7 @@
 // Import style components
 /* Media Query for Mobile Devices */
 @media (min-width: 481px) {
+  @import "./navigation";
   @import "./contactInformation.scss";
   @import "./contactForm";
   @import "./map";
