@@ -25,9 +25,11 @@ const Nav = ({ logo }) => {
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
     return (
+      <Link to={path}>
       <li key={id}>
-        <Link to={path}>{name}</Link>
+        {name}
       </li>
+      </Link>
     );
   });
   //userMenu

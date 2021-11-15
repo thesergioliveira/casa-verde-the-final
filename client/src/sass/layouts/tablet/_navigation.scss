@@ -1,32 +1,17 @@
 // Navigation setup for tablet
 
 header nav {
-    height: 4.5rem;
+    font-size: 1.7rem;
+    padding: 1.5rem;
    
     .nav-top {
-        padding: 0 1.5rem;
+        padding: 2rem 1.5rem;
     }
 }
 .logo {
-    width: 7rem;
-    height: 7rem;
+    width: 8rem;
+    height: 8rem;
 }
-
 .show {
-    width: 40vw;
-    height: 50vh;
-    position: absolute;
-    
-    @include flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    flex-direction: column;
-    background-color: $cream;
-    transition: 2s;
-  
-    // Li setup
-    li {
-      padding-left: 1em;
-    }
-  }
-  
+    height: 96vh;
+}

@@ -72,7 +72,7 @@ header nav {
 // Show nav setup
 .show {
   width: 100vw;
-  height: 95vh;
+  height: 94vh;
   position: relative;
   float: right;
   @include flex;
@@ -84,13 +84,17 @@ header nav {
 
   // Li setup
   li {
+    border: 2px solid yellow;
+    width: 100%;
     padding-left: 1em;
     list-style: none;
   }
 
   // Link's setup
   a {
+    width: 100%;
     text-decoration: none;
+    text-align: center;
   }
 }
 
