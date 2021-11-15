@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { DataContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
 import axios from "axios";
@@ -6,7 +6,7 @@ function EditUser({ history }) {
   //use the context
   const [data] = useContext(DataContext);
   const userData = data.user;
-  console.log(userData);
+  //console.log(userData);
   const [token, setToken] = useContext(AuthContext);
   const config = {
     headers: {
@@ -14,7 +14,7 @@ function EditUser({ history }) {
     },
   };
   const [username, setUsername] = useState(userData?.username);
-  const [email, setEmail] = useState(userData?.email);
+  const [email, setEmail] = useState(() => userData?.email);
   const [password, setPassword] = useState(null);
   const [passwordToD, setPasswordToD] = useState(null);
   const [passwordConf, setPasswordConf] = useState("");
