@@ -1,11 +1,11 @@
 // Navigation setup for tablet
 
 header nav {
-    font-size: 1.7rem;
-    padding: 1.5rem;
+    font-size: 1.5rem;
+    padding: .5rem;
    
     .nav-top {
-        padding: 2rem 1.5rem;
+        padding: 0 1.5rem;
     }
 }
 .logo {
@@ -13,5 +13,5 @@ header nav {
     height: 8rem;
 }
 .show {
-    height: 96vh;
+    height: 95vh;
 }
