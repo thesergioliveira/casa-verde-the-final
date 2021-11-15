@@ -17,7 +17,7 @@ const Nav = ({ logo }) => {
   //use the context
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
- 
+
   // get the userName
   const userName = data?.user?.username.toUpperCase();
 
@@ -58,7 +58,7 @@ const Nav = ({ logo }) => {
   const logOut = () => {
     localStorage.clear();
     setData("");
-    setToken("")
+    setToken("");
     closeMenu();
     redirect();
   };
@@ -77,7 +77,7 @@ const Nav = ({ logo }) => {
             {logo}
           </div>
           <div className="nav-user">
-            {token ?(
+            {token ? (
               <>
                 <Link to="/basket">
                   <li id="basket" key="50">
