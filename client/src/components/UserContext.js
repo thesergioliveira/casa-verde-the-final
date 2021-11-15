@@ -17,6 +17,7 @@ export const DataProvider = (props) => {
     axios("/user/checkAuth", config)
       .then((res) => {
         setData(res.data);
+        
       })
       .catch((err) => {
         console.log(err?.response?.data.message);

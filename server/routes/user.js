@@ -4,7 +4,7 @@ const allControllers = require("../controllers/controller");
 const middleware = require("../middlewares/middleware");
 const allProductControllers = require("../controllers/productsController");
 //user route
-// get all productss
+// get all products
 router.get("/products", allProductControllers.getAllProducts);
 // register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);

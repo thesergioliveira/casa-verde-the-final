@@ -17,7 +17,7 @@ const Nav = ({ logo }) => {
   //use the context
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
- 
+
   // get the userName
   const userName = data?.user?.username.toUpperCase();
 
@@ -25,9 +25,11 @@ const Nav = ({ logo }) => {
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
     return (
+      <Link to={path}>
       <li key={id}>
-        <Link to={path}>{name}</Link>
+        {name}
       </li>
+      </Link>
     );
   });
   //userMenu
@@ -35,6 +37,7 @@ const Nav = ({ logo }) => {
     setOpenUser(openUser);
     setCloseUser(!closeUser);
     setShow(!show);
+   closeMenu();
   };
   const closeUserMenu = () => {
     setCloseUser(true);
@@ -56,7 +59,7 @@ const Nav = ({ logo }) => {
   const logOut = () => {
     localStorage.clear();
     setData("");
-    setToken("")
+    setToken("");
     closeMenu();
     redirect();
   };
@@ -71,15 +74,14 @@ const Nav = ({ logo }) => {
     <header>
       <nav>
         <div className="nav-top">
-          <div className="logo-container" onClick={closeMenu}>
+          <div  className="logo-container" onClick={closeMenu}>
             {logo}
           </div>
           <div className="nav-user">
-            {token ?(
+            {token ? (
               <>
-                {" "}
                 <Link to="/basket">
-                  <li id="basket">
+                  <li id="basket" key="50">
                     <FaShoppingBasket />
                   </li>
                 </Link>
@@ -87,24 +89,22 @@ const Nav = ({ logo }) => {
                   className={closeUser ? "hamburger close" : "hamburger open"}
                   onClick={showEditUser}
                 >
-                  <li>
+                  <li key="51">
                     <FaUser />
                   </li>
                 </div>
                 <ul
-                  className={show ? "userNone" : "userShow"}
+                  className={show ? "user-none" : "user-show"}
                   onClick={showEditUser}
                 >
-                  <li> WELCOME: {userName}</li>
+                  <li key="52"> WELCOME: {userName}</li>
 
                   <Link to="/settings">
-                    <li>
-                      {" "}
+                    <li key="53">
                       Settings <FiSettings />
                     </li>
                   </Link>
-
-                  <li onClick={logOut} alt="logout">
+                  <li key="54" onClick={logOut} alt="logout">
                     Logout <FiLogOut />
                   </li>
                 </ul>
@@ -122,7 +122,6 @@ const Nav = ({ logo }) => {
                 >
                   sign in
                 </Link>
-                {"  "}
                 <Link
                   style={{
                     color: "black",
@@ -148,7 +147,7 @@ const Nav = ({ logo }) => {
             <div className="menu-bottom"></div>
           </div>
         </div>
-        <ul className={none ? "none" : "show"} onClick={showMenu}>
+        <ul className={none ? "none hide" : "show"} onClick={showMenu}>
           {navMenu}
         </ul>
       </nav>

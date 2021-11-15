@@ -4,14 +4,14 @@ import { useState, useEffect, useContext } from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 
-export default function Checkout({history}) {
+export default function Checkout() {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [phone, setPhone] = useState();
-  const [houseNumber, setHouseNumber] = useState("")
+  const [houseNumber, setHouseNumber] = useState("");
 
   //
   const [data, setData] = useState([]);
@@ -44,21 +44,28 @@ export default function Checkout({history}) {
           console.log("SOS SOS SOS SOS", err.message);
         });
     };
-    
-    
+
     GetUserData();
     displayBasket();
   }, []);
+
   // update user Address
   const updateUserAddress = () => {
-    const data = { address,phone,city,country,state,postalCode ,houseNumber };
+    const data = {
+      address,
+      phone,
+      city,
+      country,
+      state,
+      postalCode,
+      houseNumber,
+    };
 
     axios
-      .put("user/updateAddress", data,config)
+      .put("user/updateAddress", data, config)
       .then((res) => {
         console.log(res.data);
-        history.push("/basket/checkout")
-        
+        window.location.reload(false);
       })
       .catch((err) => {
         console.log(err.response.data.message);
@@ -140,7 +147,6 @@ export default function Checkout({history}) {
           onChange={(e) => setCountry(e.target.value)}
           placeholder="country"
         />
-        
         <p>postalCode:</p>
         <input
           type="text"

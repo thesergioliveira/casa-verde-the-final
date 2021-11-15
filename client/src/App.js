@@ -16,7 +16,7 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Basket from "./components/Shop/Basket";
-import EditUser from "./components/Settings/EditUser"
+import EditUser from "./components/EditUser";
 import {DataProvider}  from "./components/UserContext";
 import {AuthContextProvider}  from "./components/AuthContext";
 import AdminDash from "./components/AdminDash";

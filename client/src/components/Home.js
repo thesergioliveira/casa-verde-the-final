@@ -1,31 +1,68 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HomeData from "../JSON/home.json";
+import { v4 as uuidv4 } from "uuid";
 
 const Home = () => {
   const homeElements = HomeData.map((obj) => {
-    const { id, name, path } = obj;
+    const { name, path } = obj;
     return (
-      <li key={id}>
-        <Link to={path}>{name}</Link>
-      </li>
+      <div key={uuidv4()} className="container-btn-house">
+        <Link to={path}>
+          <button
+            className={
+              name === "Shop"
+                ? "btn-shop"
+                : name === "Decoration Services"
+                ? "btn-deco"
+                : name === "Events"
+                ? "btn-events"
+                : name === "Rental Services"
+                ? "btn-rental"
+                : name === "Ballet/Pilates"
+                ? "btn-ballet"
+                : "btn-technical"
+            }
+          >
+            {name}
+          </button>
+        </Link>
+      </div>
     );
   });
 
   const cardElements = HomeData.map((obj) => {
-    const { id, name, path, img } = obj;
+    const { name, path, img, description } = obj;
     return (
-      <div key={id} className="card-element">
+      <div key={uuidv4()} className="card-element">
         <div className="card-top">
           <h3>{name}</h3>
-          <div>logo</div>
+          {/* Card Logo */}
+          <div className="container-card-logo">
+            <div className="logo-colors orange"></div>
+            <div className="logo-colors violet"></div>
+            <div className="logo-colors green"></div>
+            <div className="logo-colors blue"></div>
+            <div className="logo-colors red"></div>
+          </div>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p>{description}</p>
         <img src={img} alt="site images" />
-        <div>
+        <div
+          className={
+            name === "Shop"
+              ? "container-bottom-btn bg-shop"
+              : name === "Decoration Services"
+              ? "container-bottom-btn bg-deco"
+              : name === "Events"
+              ? "container-bottom-btn bg-events"
+              : name === "Rental Services"
+              ? "container-bottom-btn bg-rental"
+              : name === "Ballet/Pilates"
+              ? "container-bottom-btn bg-ballet"
+              : "container-bottom-btn bg-technical"
+          }
+        >
           <Link to={path}>
             <button>Go to {name}</button>
           </Link>
@@ -36,12 +73,18 @@ const Home = () => {
 
   return (
     <div className="home">
+      <div className="bg-home">
+        <img
+          src={process.env.PUBLIC_URL + "../images/bg-barrels.png"}
+          alt="barrels"
+        />
+      </div>
       <div className="home-top">
         <div className="roof"></div>
         <h1>Casa Verde</h1>
         <p>RAUM FÜR IDEEN</p>
       </div>
-      <ul>{homeElements}</ul>
+      <div className="wrapper-btn-house">{homeElements}</div>
       <div>{cardElements}</div>
     </div>
   );

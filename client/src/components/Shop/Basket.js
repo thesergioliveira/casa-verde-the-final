@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../AuthContext";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import ShopItem from "./ShopItem";
 const Basket = () => {
   //
@@ -15,7 +15,7 @@ const Basket = () => {
     headers: {
       authorization: token,
     },
-  }; 
+  };
   useEffect(() => {
     const displayData = async () => {
       await axios
@@ -31,45 +31,46 @@ const Basket = () => {
     displayData();
   }, []);
 
-  
- return (
+  return (
     <div className="main-basket-container">
       <span>
-      <h1> welcome {data?.username} </h1>
-      <h2> Shopping Basket</h2>
-     </span>
-     <Link className="checkout-link" to="/basket/checkout">
+        <h1> welcome {data?.username} </h1>
+        <h2> Shopping Basket</h2>
+        <p>Please take a note that not articles can be send !</p>
+      </span>
+      <div className="lists-container">
+        <ul className="basket-list">
+          <li>
+            {" "}
+            <h3> Basket </h3>
+          </li>
+          {data.basket?.map((obj, index) => (
+            <li key={index}>
+              <ShopItem obj={obj} />
+            </li>
+          ))}
+        </ul>
+
+        <ul className="wishlist-list">
+          <li>
+            {" "}
+            <h3> Wishlist </h3>
+          </li>
+
+          {data.wishlist?.map((obj, index) => (
+            <li key={index}>
+              <ShopItem obj={obj} />
+            </li>
+          ))}
+        </ul>
+      </div>{" "}
+      <Link className="checkout-link" to="/basket/checkout">
         <h3>
           Total:
           {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
         </h3>
-        proceed to Checkout </Link>
-      <div className="lists-container">
-      
-        
-        <ul className="basket-list">
-        <li> <h3> basket </h3></li>
-          {data.basket?.map((obj, index) => (
-            
-            <li key={index}>
-              
-           <ShopItem obj={obj}/>
-
-            </li>
-          ))}
-        </ul>
-       
-        <ul className="wishlist-list">
-          <li> <h3> wishlist </h3></li>
-          
-          {data.wishlist?.map((obj, index) => (
-            <li key={index}>
-            <ShopItem obj={obj}/>
-            </li>
-          ))}
-        </ul>
-       
-      </div>
+        proceed to Checkout{" "}
+      </Link>
     </div>
   );
 };

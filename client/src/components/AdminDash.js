@@ -17,16 +17,41 @@ const AdminDash = () => {
   // axios.defaults.withCredentials = true;
   const [data, setData] = useState([]);
   const [productData, setProductData] = useState([]);
-  const [userdata, setUserdata] = useContext(DataContext);
+  //const [userdata, setUserdata] = useContext(DataContext);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Gift baskets");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [description, setDescription] = useState("");
   const [delivery, setDelivery] = useState(false);
+ 
+    //control
+
+ //userdata?.user.admin ? allow="none": allow="flex";
+ 
+
+
+// get all products WE CAN GET THEM WITH USECONTEXT
+const getAllProducts = () => {
+ axios
+    .get("user/products", config)
+    .then((res) => {
+      if (res.data) {
+        setProductData(res.data);
+        localStorage.setItem("product", JSON.stringify(res.data));
+      } else {
+        setProductData({ auth: false });
+      }
+    })
+    .catch((err) => {
+      console.log("here", err.response?.data);
+    });
+};
+
+
 
   //control
-  let allow;
+  //let allow;
   //!userdata?.user.admin ? allow="none": allow="flex";
   const obj = { name, category, price, quantity, description, delivery };
   //find users
@@ -46,29 +71,10 @@ const AdminDash = () => {
   };
   useEffect(() => {
     displayUsers();
-  }, []);
-  // get all products WE CAN GET THEM WITH USECONTEXT
-  const getAllProducts = () => {
-    axios
-      .get("user/products", config)
-      .then((res) => {
-        if (res.data) {
-          setProductData(res.data);
-          localStorage.setItem("product", JSON.stringify(res.data));
-        } else {
-          setProductData({ auth: false });
-        }
-      })
-      .catch((err) => {
-        console.log("here", err.response?.data);
-      });
-  };
-
-  useEffect(() => {
     getAllProducts();
+    
   }, []);
-
-  // add a product
+ // add a product
   const handleSubmit = () => {
     const newProductData = {
       name,

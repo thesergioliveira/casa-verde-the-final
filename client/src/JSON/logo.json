@@ -3,6 +3,6 @@
         "id": "001",
         "name": "logo",
         "path": "/",
-        "img": "./logo/logo.png"
+        "img": "/logo/logo.png"
     }
 ]
