@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import "./sass/main.scss";
 import LogoData from "./JSON/logo.json";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
