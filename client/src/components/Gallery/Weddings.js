@@ -32,7 +32,7 @@ const Weddings = () => {
                 // active-img-inner -------------------------------- onClick Image
                 <div key={uuidv4()} className="container-img-inner ">
                   <IoMdClose className="img-close" />
-                  <img src={img} alt={linkId} />
+                  <img src={process.env.PUBLIC_URL + img} alt={linkId} />
                 </div>
               );
             }
