@@ -15,6 +15,13 @@ const Rent = () => {
         <p>Rental Services</p>
       </div>
 
+      <div className="container-room-rental">
+        <img
+          src={process.env.PUBLIC_URL + "../images/room-rental.jpg"}
+          alt="Aussenansicht Raumvermietung"
+        />
+      </div>
+
       <RoomRental />
       {/* to do- adding calendar */}
       <ContactInformation />

@@ -1,4 +1,18 @@
 .home {
+  // main image
+  .container-room-rental {
+    width: 75vw;
+    height: 45vh;
+    margin-bottom: 2rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Gallery
   .wrapper-img-services {
     @include flex;
 
