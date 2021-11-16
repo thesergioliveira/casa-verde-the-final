@@ -50,6 +50,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
@@ -64,6 +65,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
   const addToWishlist = (id) => {
@@ -79,6 +81,7 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res.data.message);
+          window.location.reload(false);
         });
     } else {
       axios
@@ -108,7 +111,7 @@ function ShopItem(props) {
           <p>{props.obj.price} $</p>
           <p>description: {props.obj.description}</p>
           <p>only {props.obj.quantity - count} left</p>
-          <span>
+          <div>
             <button
               disabled={count >= props.obj.quantity}
               onClick={() => addToBasket(props.obj._id)}
@@ -128,7 +131,7 @@ function ShopItem(props) {
             <button onClick={() => removeFromBasket(props.obj_id)}>
               <FiTrash2 />
             </button>
-          </span>
+          </div>
         </div>
       </div>
       <div className="total-price">
