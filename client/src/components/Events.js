@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import EventsData from "../JSON/events.json";
 import Workshops from "./Gallery/Workshops";
+import Seminaries from "./Gallery/Seminaries";
 import ContactInformation from "./ContactInformation";
 import ContactForm from "./ContactForm";
 import Map from "./Map";
@@ -62,6 +63,7 @@ const Events = () => {
         <button>Contact Now!</button>
       </a>
       <Workshops />
+      <Seminaries />
       <ContactInformation />
       <div className="form-map">
         <ContactForm />
