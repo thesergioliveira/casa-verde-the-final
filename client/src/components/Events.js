@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EventsData from "../JSON/events.json";
+import Workshops from "./Gallery/Workshops";
 import ContactInformation from "./ContactInformation";
-import ContactForm from './ContactForm';
+import ContactForm from "./ContactForm";
 import Map from "./Map";
 
 const Events = () => {
@@ -22,7 +23,7 @@ const Events = () => {
     // tried to put the images into an array and map them, is not working for the  moment
     // const img = images.map((image) => {
     //   return (<img src={image} alt="details" width="100" height="100" />
-        
+
     //   )
     //});
     //console.log(img);
@@ -30,19 +31,21 @@ const Events = () => {
       <li key={id}>
         <h2 id={linkId}>{name}</h2>
         <div>
-        <img src={img1} alt="details" width="100" height="100" />
-        <img src={img2} alt="details" width="100" height="100" />
+          <img src={img1} alt="details" width="100" height="100" />
+          <img src={img2} alt="details" width="100" height="100" />
         </div>
         <div>
-        <img src={img3} alt="details" width="100" height="100" />
-        <img src={img4} alt="details" width="100" height="100" />
+          <img src={img3} alt="details" width="100" height="100" />
+          <img src={img4} alt="details" width="100" height="100" />
         </div>
         <div>
-        <img src={img5} alt="details" width="100" height="100" />
-        <img src={img6} alt="details" width="100" height="100" />
+          <img src={img5} alt="details" width="100" height="100" />
+          <img src={img6} alt="details" width="100" height="100" />
         </div>
         {/* to do- create pages and adding links to them */}
-        <Link to="/{linkId}"><button>Show more</button></Link>
+        <Link to="/{linkId}">
+          <button>Show more</button>
+        </Link>
       </li>
     );
   });
@@ -55,10 +58,10 @@ const Events = () => {
         <p>Events</p>
       </div>
       <ul>{eventsMenu}</ul>
-      <a href="#contact"><button>Contact Now!</button></a>
-      <div>
-        {componentsMenu}
-      </div>
+      <a href="#contact">
+        <button>Contact Now!</button>
+      </a>
+      <Workshops />
       <ContactInformation />
       <div className="form-map">
         <ContactForm />
