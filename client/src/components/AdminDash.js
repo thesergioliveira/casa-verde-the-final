@@ -24,7 +24,7 @@ const AdminDash = () => {
   const [quantity, setQuantity] = useState(0);
   const [description, setDescription] = useState("");
   const [delivery, setDelivery] = useState(false);
- 
+  const [image, setImage] = useState("");
     //control
 
  //userdata?.user.admin ? allow="none": allow="flex";
@@ -52,7 +52,7 @@ const getAllProducts = () => {
 
   //control
   //let allow;
-  //!userdata?.user.admin ? allow="none": allow="flex";
+  //!userData?.user.admin ? allow="none": allow="flex";
   const obj = { name, category, price, quantity, description, delivery };
   //find users
   const displayUsers = () => {
@@ -75,33 +75,40 @@ const getAllProducts = () => {
     
   }, []);
  // add a product
-  const handleSubmit = () => {
-    const newProductData = {
-      name,
-      category,
-      description,
-      price,
-      delivery,
-      quantity,
-    };
+ const handleUpload = (e) => {
+  
+    setImage(e.target.files[0])
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    axios
-      .post(
-        `admin/product/`,
-        newProductData,
-        config
-        // , {
-        //   header: {
-        //     "Content-Type": "multipart/form-data",
-        //   },
-        // }
-      )
-      .then((res) => {
-        console.log(res.newProductData);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+
+    const newProductData = new FormData();
+    newProductData.append("name", name);
+    newProductData.append("category", category);
+    newProductData.append("price", price);
+    newProductData.append("quantity", quantity);
+    newProductData.append("description", description);
+    newProductData.append("delivery", delivery);
+    newProductData.append("image", image);
+   try {
+const result = await axios
+.post(
+  `admin/product/`,
+  newProductData,
+  config
+  , {
+    header: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+)
+console.log(result);
+   }catch (err) {
+    console.log("error", err.response.data.message);
+  }
+    
+      
   };
   const handleSubmitForUpdate = () => {
     const updatedProductData = {
@@ -203,8 +210,11 @@ const getAllProducts = () => {
       <div className="admin-dash-add-products-container">
      
         <div className="add-product-wrapper">
-          {" "}
+        
+        
           <h2>ADD A PRODUCT</h2>
+          <form onSubmit={handleSubmit}>
+          <input type="file" id="file" onChange={ handleUpload} />
           <p>name it:</p>
           <input
             type="text"
@@ -262,10 +272,14 @@ const getAllProducts = () => {
             <option value={true}> deliverable </option>
             <option value={false}> not deliverable </option>
           </select>
+          <input className="button-dash" type="submit" value="Add me" />
+          </form>
         </div>
+        
         <div className="preview">
           <p>preview</p>
-          <button className="button-dash" onClick={handleSubmit}>ADD ME</button>
+          {/* <button className="button-dash" onClick={handleSubmit}>ADD ME</button> */}
+          
 
           <ShopItem obj={obj} />
         </div>
@@ -274,6 +288,7 @@ const getAllProducts = () => {
       <div className="admin-dash-add-products-container">
         
         <div>
+        
         <h2>MODIFY PRODUCT</h2>
           <p>name of the product:</p>
 

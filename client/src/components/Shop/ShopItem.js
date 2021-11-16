@@ -99,11 +99,11 @@ function ShopItem(props) {
   };
   return (
     <div key={props.obj._id} className="product-basket">
-      {/* <img src={props.obj.image} alt="logo" />*/}
+     
       <div className="product-box">
         <img
-          src="https://i.aquarelle.com/14/images/produits/duftender-strau%C3%9F-400x400-38034.jpg"
-          alt="product img"
+          src={`http://localhost:5005/${props.obj.image}`}
+          alt={`img of ${props.obj.name}`}
         />
         <div className="product-infos">
           <p>{props.obj.name}</p>
