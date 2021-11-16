@@ -6,35 +6,30 @@ const allProductControllers = {};
 
 // Add new Product from admin
 allProductControllers.addProduct = async (req, res) => {
-  User.findById(req.id)
-    .then((user) => {
-      if (user && user.admin) {
+  console.log("req.body", req.body);
+  User.findById(req.id).then((user) => {
+    try {
+      if (user) {
         const product = new Product({
           _id: new mongoose.Types.ObjectId(),
           name: req.body.name,
           category: req.body.category,
           description: req.body.description,
           price: req.body.price,
-          // image: req.file.path,
+          image: req.file.path,
           delivery: req.body.delivery,
-          // image: req.body.image,
           quantity: req.body.quantity,
         });
         product.save();
-        console.log(product);
-        // user.basket.push(product);
-
-        // user.save();
+        
         res
           .status(201)
-          .json({ message: "New product being added ✅", product });
-      } else {
-        return res.status(404).json({ message: "user NOT Found" });
+          .json({ message: "New product has been added ✅", product });
       }
-    })
-    .catch((err) => {
+    } catch (err) {
       res.status(400).json({ message: err.message });
-    });
+    }
+  });
 };
 // update a product
 allProductControllers.updateProduct = async (req, res) => {
@@ -142,14 +137,14 @@ allProductControllers.getCheckout = async (req, res) => {
         $in: user.basket,
       },
     });
-   // console.log("product", product);
+    // console.log("product", product);
     // we count the amount of each purcashed product by counting the numbers of the same ids
     const quantityCounter = {};
     user.basket.forEach(function (item) {
       quantityCounter[item._id] = quantityCounter[item._id]
         ? quantityCounter[item._id] - 1
         : 1;
-    }); 
+    });
     // we update the quantity in our inventory
     product.forEach((item) => {
       item.quantity = item.quantity - quantityCounter[item._id];
@@ -186,7 +181,8 @@ allProductControllers.getCheckout = async (req, res) => {
     // update the db
     res.status(200).json({
       message:
-        "inventory updated, thank u for ur purchase we hope to see u again ",basketupdater
+        "inventory updated, thank u for ur purchase we hope to see u again ",
+      basketupdater,
     });
   } catch (err) {
     res.status(err.status).json({
@@ -207,19 +203,17 @@ allProductControllers.getAllProducts = async (req, res) => {
 
 allProductControllers.getOneByID = async (req, res) => {
   try {
-    const user = await User.findById(req.id).populate("basket")
+    const user = await User.findById(req.id).populate("basket");
     // res.status(200).json(user);
 
     await res.status(200).json({
       basket: user.basket.map((item) => item.toObject()),
-      wishlist:user.wishlist,
-      username:user.username,
-     
+      wishlist: user.wishlist,
+      username: user.username,
     });
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }
 };
-
 
 module.exports = allProductControllers;
