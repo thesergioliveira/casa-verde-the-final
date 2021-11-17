@@ -7,8 +7,8 @@ function Booking() {
   return (
     <div>
       <DateTimePicker
-        onChange={onChange}
         value={value}
+        onChange={onChange}
       />
     </div>
   );
