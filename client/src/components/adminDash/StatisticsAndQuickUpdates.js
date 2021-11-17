@@ -16,7 +16,7 @@ export default function StatisticsAndQuickUpdates(props) {
   const [productData, setProductData] = useState([]);
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
-
+  const [count, setCount] = useState(0);
   const getAllProducts = () => {
     axios
       .get("user/products", config)
@@ -53,43 +53,31 @@ export default function StatisticsAndQuickUpdates(props) {
       console.log("Twe didnt delete it.");
     }
   };
-  let detectproduct = 0
-  detectproduct = productData.map(item => item._id).indexOf(id)
-console.log(productData[detectproduct]?.quantity);
+  //detect quantity from id
+  let detectproduct = 0;
+  detectproduct = productData.map((item) => item._id).indexOf(id);
   const handleStockplus = () => {
-    
-    setQuantity(productData[detectproduct]?.quantity + 1);
-    const updatedProductData = {quantity };
-    console.log(id);
-    axios
-      .put(`admin/product/quantitycheck/${id}`, updatedProductData, config)
-      .then((res) => {
-        console.log(res.updatedProductData);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    setCount(count + 1);
   };
-  
   const handleStockminus = () => {
-    let detectproduct = 0
-  detectproduct = productData.map(item => item._id).indexOf(id)
-console.log(productData[detectproduct]?.quantity);
-setQuantity(productData[detectproduct]?.quantity);
-    setQuantity(quantity - 1);
-    const updatedProductData = {quantity };
-    console.log(id);
-    axios
-      .put(`admin/product/quantitycheck/${id}`, updatedProductData, config)
-      .then((res) => {
-        console.log(res.updatedProductData);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    setCount(count - 1);
   };
   //console.log(productData.map(item => item._id))
-  
+  const updateStock = () => {
+    const updatedProductData = {
+      quantity: productData[detectproduct]?.quantity + count,
+    };
+    
+    axios
+      .put(`admin/product/quantitycheck/${id}`, updatedProductData, config)
+      .then((res) => {
+        console.log(res.updatedProductData);
+        alert("Stock updated, please refresh the page");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
   return (
     <div className="admin-dash-statistics-container">
@@ -120,7 +108,6 @@ setQuantity(productData[detectproduct]?.quantity);
             <option value={item._id}> {item.name} </option>
           ))}
         </select>
-
         <button className="button-dash" onClick={() => handleDelete(name)}>
           DELETE THE PRODUCT
         </button>
@@ -129,19 +116,30 @@ setQuantity(productData[detectproduct]?.quantity);
           id="name"
           onChange={(e) => {
             setId(e.target.value);
-            
           }}
         >
           {productData.map((item) => (
             <option value={item._id}> {item.name} </option>
           ))}
         </select>
-        <button className="button-dash" onClick={handleStockminus}>
-          MINUS ONE
-        </button>
-        {productData[detectproduct]?.quantity}
+        <div className="quick-update-view">
+        <p>you have: {productData[detectproduct]?.quantity} from {productData[detectproduct]?.name}</p>
+        <img src={`http://localhost:5005/${productData[detectproduct]?.image}`} alt="product" />
+        
+        </div>
+        <button
+          disabled={productData[detectproduct]?.quantity + count < 1}
+          className="button-dash"
+          onClick={handleStockminus}
+        >
+          MINUS {count}
+        </button> 
         <button className="button-dash" onClick={handleStockplus}>
-          PLUS ONE
+          PLUS {count}
+        </button>
+        <button className="button-dash" onClick={() => updateStock()}>
+          {" "}
+          UPDATE IT{" "}
         </button>
       </span>
     </div>

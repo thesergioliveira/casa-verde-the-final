@@ -75,12 +75,6 @@ export default function UpdateProduct() {
       console.log("error", err.response.data.message);
     }
   };
-  
-  
-
-   
-  
-    
    
   return (
     <div className="admin-dash-add-products-container">
