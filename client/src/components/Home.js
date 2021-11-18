@@ -9,6 +9,7 @@ const Home = () => {
     return (
       <div key={uuidv4()} className="container-btn-house">
         <Link to={path}>
+          <div className="container-btn-blur"></div>
           <button
             className={
               name === "Shop"
@@ -24,8 +25,8 @@ const Home = () => {
                 : "btn-technical"
             }
           ></button>
-          <div className="container-btn-blur"></div>
-          <div>{name}</div>
+
+          <div className="container-categorys">{name}</div>
         </Link>
       </div>
     );
