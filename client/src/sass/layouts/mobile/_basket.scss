@@ -28,9 +28,10 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    
+     border: 3px solid green;
 
     .basket-list {
-      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -38,15 +39,47 @@
       flex-wrap: wrap;
       margin: 5px;
     }
-    .checkout-link {
-      width: 10%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-top: 2px solid $cream;
+    text-align: center;
+    p {
+      font-size: 1.5rem;
+      background-color: $blue;
+      padding: 1rem;
+      color: white;
+      border-radius: 6px;
     }
   }
+  aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0 1rem 0;
+    h4 {
+      margin: 1rem;
+    }
+    ul {
+      width: 80%;
+      // border: gray 2px solid;
+      li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+h1 {
+  text-align: center;
+  padding-bottom: 1rem;
 }
 ul {
   list-style: none;
@@ -104,6 +137,10 @@ ul {
     align-items: center;
     // border: 1px solid black;
     height: 3rem;
+  }
+  h4, h3 {
+    font-weight: bold;
+
   }
 }
 h3 {

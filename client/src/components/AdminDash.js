@@ -24,22 +24,32 @@ const AdminDash = () => {
         if (res.data) {
           setData(res.data);
         } else {
-          setData({ message: "user NOT Authenticated" });
+          setData(res.data.message);
         }
       })
       .catch((err) => {
-        console.log("SOS SOS SOS SOS", err.message);
+        console.log(err.response.data.message);
       });
   };
   useEffect(() => {
     displayUsers();
+
     //getAllProducts();
   }, []);
+
   return (
-    <div className="main-admin-dash-container">
-      <StatisticsAndQuickUpdates data={data} />
-      <AddProduct />
-      <UpdateProduct />
+    <div>
+      {data?.length === 0 ? (
+        <h3 style={{ color:"red" }}>
+          what are you doing here , NOT Allowed
+        </h3>
+      ) : (
+        <div className="main-admin-dash-container">
+          <StatisticsAndQuickUpdates data={data} />
+          <AddProduct />
+          <UpdateProduct />
+        </div>
+      )}
     </div>
   );
 };

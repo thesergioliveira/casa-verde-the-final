@@ -94,18 +94,19 @@ export default function Checkout() {
   let shipping = 5;
 
   return (
-    <div>
+    <div className="main-checkout-container">
       <div>
-        <p> hello {UserData?.user?.username}, your order will be sent to:</p>
+        <h3> hello {UserData?.user?.username}, your order will be sent to:</h3>
         your current address:
         <p>
-          ..{UserData.user?.address},{UserData.user?.houseNumber}
+          {UserData.user?.address ? UserData.user?.address : "add address..."},{UserData.user?.houseNumber ? UserData.user?.houseNumber : "add address..."}
         </p>
-        <p>..{UserData.user?.city}</p>
-        <p>..{UserData.user?.state}</p>
-        <p>..{UserData.user?.country}</p>
-        <p>..{UserData.user?.postalCode}</p>
-        <p>..{UserData.user?.phone}</p>
+        <p>{UserData.user?.city ? UserData.user?.city : "add City..."}</p>
+        <p>{UserData.user?.state ? UserData.user?.state : "add state..."}</p>
+        <p>{UserData.user?.country ? UserData.user?.country : "add Country..."}</p>
+        <p>{UserData.user?.postalCode ? UserData.user?.postalCode : "add Postal code..."}</p>
+        <p>{UserData.user?.phone ? UserData.user?.phone : "add Phone..."}</p>
+
         <h3>Do you have a new address? fill up the form</h3>
         <p>Address:</p>
         <input
@@ -113,7 +114,7 @@ export default function Checkout() {
           value={address}
           name="address"
           onChange={(e) => setAddress(e.target.value)}
-          placeholder="address"
+          placeholder="address..."
         />
         <p>HouseNumber:</p>
         <input
@@ -121,7 +122,7 @@ export default function Checkout() {
           value={houseNumber}
           name="houseNumber"
           onChange={(e) => setHouseNumber(e.target.value)}
-          placeholder="HouseNumber"
+          placeholder="HouseNumber..."
         />
         <p>City:</p>
         <input
@@ -129,7 +130,7 @@ export default function Checkout() {
           value={city}
           name="city"
           onChange={(e) => setCity(e.target.value)}
-          placeholder="city"
+          placeholder="city..."
         />
         <p>state:</p>
         <input
@@ -137,7 +138,7 @@ export default function Checkout() {
           value={state}
           name="state"
           onChange={(e) => setState(e.target.value)}
-          placeholder="state"
+          placeholder="state..."
         />
         <p>Country:</p>
         <input
@@ -145,7 +146,7 @@ export default function Checkout() {
           value={country}
           name="country"
           onChange={(e) => setCountry(e.target.value)}
-          placeholder="country"
+          placeholder="country..."
         />
         <p>postalCode:</p>
         <input
@@ -153,7 +154,7 @@ export default function Checkout() {
           value={postalCode}
           name="postalCode"
           onChange={(e) => setPostalCode(e.target.value)}
-          placeholder="postalCode"
+          placeholder="postalCode..."
         />
         <p>phone:</p>
         <input
@@ -161,22 +162,22 @@ export default function Checkout() {
           value={phone}
           name="phone"
           onChange={(e) => setPhone(e.target.value)}
-          placeholder="phone"
+          placeholder="phone..."
         />
-        <button onClick={updateUserAddress}>Update Address</button>
+        <button className="button-dash"onClick={updateUserAddress}>Update Address</button>
       </div>
       <h3>
-        items:{" "}
-        {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)}${" "}
-        <h4>shipping: {shipping}$ </h4>
+      Zwischensumme: 
+        {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)}$
+        <h4>Versand: {shipping}$ </h4>
         <h3>
-          Total :
+        Gesamt:
           {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0) +
             shipping}
           $
         </h3>
       </h3>
-      <button
+      <button className="button-dash"
         disabled={
           !UserData.user?.address ||
           !UserData.user?.city ||

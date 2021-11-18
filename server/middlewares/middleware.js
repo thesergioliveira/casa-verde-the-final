@@ -44,6 +44,13 @@ middleware.checkToken = async (req, res, next) => {
       }
     });
   }
-}
-
+};
+middleware.allowAdmin = async (req, res, next) => {
+  const user = await User.findById(req.id);
+   if(user.admin==undefined || user.admin==false){
+   return res.status(404).send({message:"Not Allowed"})
+  }else{
+  console.log("Allowed");
+  next();}
+};
 module.exports = middleware;
