@@ -96,95 +96,124 @@ export default function Checkout() {
   return (
     <div className="main-checkout-container">
       <div>
+        <p className="shipping-msg">
+          ❗ Please take a note that not articles can be send !
+        </p>
         <h3> hello {UserData?.user?.username}, your order will be sent to:</h3>
         your current address:
         <p>
-          {UserData.user?.address ? UserData.user?.address : "add address..."},{UserData.user?.houseNumber ? UserData.user?.houseNumber : "add address..."}
+          {UserData.user?.address ? UserData.user?.address : "add address..."},
+          {UserData.user?.houseNumber
+            ? UserData.user?.houseNumber
+            : "add address..."}
         </p>
         <p>{UserData.user?.city ? UserData.user?.city : "add City..."}</p>
         <p>{UserData.user?.state ? UserData.user?.state : "add state..."}</p>
-        <p>{UserData.user?.country ? UserData.user?.country : "add Country..."}</p>
-        <p>{UserData.user?.postalCode ? UserData.user?.postalCode : "add Postal code..."}</p>
+        <p>
+          {UserData.user?.country ? UserData.user?.country : "add Country..."}
+        </p>
+        <p>
+          {UserData.user?.postalCode
+            ? UserData.user?.postalCode
+            : "add Postal code..."}
+        </p>
         <p>{UserData.user?.phone ? UserData.user?.phone : "add Phone..."}</p>
-
         <h3>Do you have a new address? fill up the form</h3>
-        <p>Address:</p>
-        <input
-          type="text"
-          value={address}
-          name="address"
-          onChange={(e) => setAddress(e.target.value)}
-          placeholder="address..."
-        />
-        <p>HouseNumber:</p>
-        <input
-          type="text"
-          value={houseNumber}
-          name="houseNumber"
-          onChange={(e) => setHouseNumber(e.target.value)}
-          placeholder="HouseNumber..."
-        />
-        <p>City:</p>
-        <input
-          type="text"
-          value={city}
-          name="city"
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="city..."
-        />
-        <p>state:</p>
-        <input
-          type="text"
-          value={state}
-          name="state"
-          onChange={(e) => setState(e.target.value)}
-          placeholder="state..."
-        />
-        <p>Country:</p>
-        <input
-          type="text"
-          value={country}
-          name="country"
-          onChange={(e) => setCountry(e.target.value)}
-          placeholder="country..."
-        />
-        <p>postalCode:</p>
-        <input
-          type="text"
-          value={postalCode}
-          name="postalCode"
-          onChange={(e) => setPostalCode(e.target.value)}
-          placeholder="postalCode..."
-        />
-        <p>phone:</p>
-        <input
-          type="text"
-          value={phone}
-          name="phone"
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="phone..."
-        />
-        <button className="button-dash"onClick={updateUserAddress}>Update Address</button>
+        <p>
+          <aside>Address*</aside>
+          <input
+            type="text"
+            value={address}
+            name="address"
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="address..."
+          />
+        </p>
+        <p>
+          <aside>HouseNumber*</aside>
+          <input
+            type="text"
+            value={houseNumber}
+            name="houseNumber"
+            onChange={(e) => setHouseNumber(e.target.value)}
+            placeholder="HouseNumber..."
+          />
+        </p>
+        <p>
+          <aside>City*</aside>
+          <input
+            type="text"
+            value={city}
+            name="city"
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="city..."
+          />
+        </p>
+        <p>
+          <aside>state*</aside>
+          <input
+            type="text"
+            value={state}
+            name="state"
+            onChange={(e) => setState(e.target.value)}
+            placeholder="state..."
+          />
+        </p>
+        <p>
+          <aside>Country*</aside>
+          <input
+            type="text"
+            value={country}
+            name="country"
+            onChange={(e) => setCountry(e.target.value)}
+            placeholder="country..."
+          />
+        </p>
+        <p>
+          <aside>postalCode*</aside>
+          <input
+            type="text"
+            value={postalCode}
+            name="postalCode"
+            onChange={(e) => setPostalCode(e.target.value)}
+            placeholder="postalCode..."
+          />
+        </p>
+        <p>
+          <aside>phone:</aside>
+          <input
+            type="text"
+            value={phone}
+            name="phone"
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="phone..."
+          />
+        </p>
+        <button className="button-dash" onClick={updateUserAddress}>
+          Update Address
+        </button>
       </div>
-      <h3>
-      Zwischensumme: 
-        {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)}$
-        <h4>Versand: {shipping}$ </h4>
-        <h3>
-        Gesamt:
+      <ul>
+        <li>
+          Zwischensumme:
+          {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)}$
+        </li>
+        <li>Versand: {shipping}$ </li>
+        <li>
+          Gesamt:
           {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0) +
             shipping}
           $
-        </h3>
-      </h3>
-      <button className="button-dash"
+        </li>
+      </ul>
+      <button
+        className="button-dash"
         disabled={
           !UserData.user?.address ||
           !UserData.user?.city ||
           !UserData.user?.state ||
           !UserData.user?.country ||
           !UserData.user?.postalCode
-          
         }
         onClick={checkout}
       >

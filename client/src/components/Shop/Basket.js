@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../AuthContext";
 import { Link } from "react-router-dom";
 import ShopItem from "./ShopItem";
+
 const Basket = () => {
   //
   // console.log(UserData.token)
@@ -67,14 +68,38 @@ const Basket = () => {
             </li>
           ))}
         </ul>
-      </div>{" "}
-      <h3>
-        Total:
-        {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
-      </h3>
-      <Link className="checkout-link" to="/basket/checkout">
-        Proceed to Checkout{" "}
-      </Link>
+      </div>
+      <aside>
+        <h4>Abholung</h4>
+
+        <ul>
+          <li>
+            <p>Mo. - Fr. </p> <p>8:00 - 18:00Uhr</p>
+          </li>
+          <li>
+            <p>Sa. </p> <p>9:00 - 14:00Uhr</p>
+          </li>
+          <li>
+            <p>So./Feiertage</p> <p> 9:00 - 13:00Uhr</p>
+          </li>
+        </ul>
+      </aside>
+      <aside>
+        <h4>Adresse</h4>
+
+        <p>Casa Verde</p>
+        <p>Hauptstr. 253 12345 Stadt</p>
+      </aside>
+      
+      <Link  to="/basket/checkout">
+        
+        <h3>
+          Total:
+          {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
+        </h3>
+       <p> proceed to Checkout</p>
+       
+      </Link> 
     </div>
   );
 };

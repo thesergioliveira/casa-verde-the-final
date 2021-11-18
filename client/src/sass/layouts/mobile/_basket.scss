@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   width: 100%;
   height: 100%;
   background-color: #fff;
@@ -16,7 +15,7 @@
   }
   .shipping-msg {
     background-color: rgb(243, 156, 156);
-    padding: 2px;
+    padding: 3px 0px 3px 0px;
     width: 100%;
     text-align: center;
   }
@@ -28,8 +27,6 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    
-     border: 3px solid green;
 
     .basket-list {
       display: flex;
@@ -86,72 +83,18 @@ ul {
   padding: 0;
   margin: 0;
 }
-.product-basket {
-  width: 20rem;
-  height: 15rem;
-  border-bottom: 2px solid rgb(207, 201, 201);
 
-  //border: gray 2px solid;
+.total-price {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  .product-box {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    height: 10rem;
-    width: 100%;
-    //border: 1px solid yellow;
-  }
- 
-  img {
-    width: 7rem;
-    height: 8rem;
-    //border: red 1px solid;
-  }
-  .product-infos {
-    // border: 1px solid blue;
-    height: 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 80%;
-  }
-  .product-infos div {
-    //border: 1px solid black;
-    width: 90%;
-    display: flex;
-    justify-content: space-evenly;
-
-    button {
-      font-size: 20px;
-      border: none;
-    }
-  }
-
-  .total-price {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // border: 1px solid black;
-    height: 3rem;
-  }
-  h4, h3 {
-    font-weight: bold;
-
-  }
+  align-items: center;
+  // border: 1px solid black;
+  height: 3rem;
+}
+h4,
+h3 {
+  font-weight: bold;
 }
 h3 {
-  margin: 10px;
-}
-.checkout-link {
-  color: white;
-  width: 70%;
-  padding: 6px;
-  background-color: rgb(3, 124, 194);
-  text-decoration: none;
-  text-align: center;
   margin: 10px;
 }
