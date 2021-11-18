@@ -182,8 +182,8 @@ export default function Checkout() {
           !UserData.user?.city ||
           !UserData.user?.state ||
           !UserData.user?.country ||
-          !UserData.user?.postalCode ||
-          !UserData.user?.phone
+          !UserData.user?.postalCode
+          
         }
         onClick={checkout}
       >

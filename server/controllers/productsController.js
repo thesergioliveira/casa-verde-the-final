@@ -6,7 +6,7 @@ const allProductControllers = {};
 
 // Add new Product from admin
 allProductControllers.addProduct = async (req, res) => {
-  console.log("req.body", req.body);
+ 
   User.findById(req.id).then((user) => {
     try {
       if (user) {
@@ -39,18 +39,35 @@ allProductControllers.updateProduct = async (req, res) => {
         category: req.body.category,
         description: req.body.description,
         price: req.body.price,
-        // image: req.file.path,
+         image: req.file.path,
         delivery: req.body.delivery,
-        // image: req.body.image,
         quantity: req.body.quantity,
       },
     });
-    console.log("REQQ  BODY IDDD", req.params.id);
+    console.log("REQQ BODY IDDD", req.params.id);
     res.status(200).json({ message: "Product has been updated", findProduct });
   } catch (error) {
     res.status(400).json({ message: err.message });
   }
 };
+
+allProductControllers.updateQuantity = async (req, res) => {
+  try {
+    const findProduct = await Product.findByIdAndUpdate(req.params.id, {
+      $set: {
+       
+        quantity: req.body.quantity,
+      },
+    });
+    
+    res.status(200).json({ message: "Quantity has been updated", findProduct });
+  } catch (error) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+
+
 // Add new Product to the basket from users
 //616ec638b7d4def05aa683c5 bs for product id
 //

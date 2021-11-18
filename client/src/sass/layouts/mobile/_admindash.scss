@@ -56,6 +56,7 @@
     color: black;
   }
  
+ 
   .admin-dash-modify-products-container {
     width: 70%;
     display: flex;
@@ -89,5 +90,22 @@
     justify-content: space-evenly;
     align-items: left;
     flex-wrap: wrap;
+    .quick-update-view {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 150px;
+      border: 1px solid black;
+    }
+    button:disabled {
+      background-color: red;
+      color: black;
+    }
+    img{
+      width: 100px;
+      height: 100px;
+    }
   }
 }

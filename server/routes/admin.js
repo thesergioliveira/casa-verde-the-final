@@ -39,13 +39,10 @@ allProductControllers.addProduct);
 // getAll http://localhost:5005/admin/users
 router.get("/users",middleware.checkToken, allControllers.getAllUsers);
 // update Product.
-router.put("/product/:id", allProductControllers.updateProduct);
-// delete Product.
+router.put("/product/:id", upload.single('image'),  allProductControllers.updateProduct);
 router.delete("/product/:id", allProductControllers.deleteProduct);
-// allow admin 
-
-
-
+router.put("/product/quantitycheck/:id",  middleware.checkToken, allProductControllers.updateQuantity);
+// delete Product.
 
 
 
