@@ -29,6 +29,12 @@
   .wrapper-img-services {
     @include flex;
 
+    .container-description {
+      width: 75vw;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
     .container-gallery {
       position: relative;
       width: 100vw;

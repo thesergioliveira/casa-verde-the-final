@@ -14,7 +14,7 @@ const Funerals = () => {
 
   // Category --> heading, images and button
   const funeralsGallery = funerals.map((obj) => {
-    const { name, linkId, imgs } = obj;
+    const { name, linkId, imgs, description } = obj;
 
     return (
       <div key={uuidv4()} className="container-gallery">
@@ -22,6 +22,10 @@ const Funerals = () => {
         <h3 id={linkId} key={uuidv4()}>
           {name}
         </h3>
+
+        <div className="container-description">
+          <p>{description}</p>
+        </div>
 
         {/* Images gallery */}
         <div key={uuidv4()} className="container-img-outer">
