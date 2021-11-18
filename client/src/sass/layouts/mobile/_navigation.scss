@@ -113,6 +113,7 @@ header nav {
   flex-direction: column;
   background-color: $cream;
   transition: .7s;
+  overflow: hidden;
 
   // Li setup
   li {
@@ -136,6 +137,7 @@ header nav {
   height: 0;
   display: none;
   transition: 2s;
+  overflow: hidden;
 }
 
 // Show nav setup

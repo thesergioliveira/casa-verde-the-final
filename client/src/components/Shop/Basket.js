@@ -33,12 +33,11 @@ const Basket = () => {
 
   return (
     <div className="main-basket-container">
-      <span>
-        <h1> welcome {data?.username} </h1>
-        <h2> Shopping Basket</h2>
-        <p>Please take a note that not articles can be send !</p>
-      </span>
+      <h1>Shopping Basket</h1>
       <div className="lists-container">
+        <p className="shipping-msg">
+          ❗ Please take a note that not articles can be send !
+        </p>
         <ul className="basket-list">
           <li>
             {" "}
@@ -64,12 +63,12 @@ const Basket = () => {
           ))}
         </ul>
       </div>{" "}
+      <h3>
+        Total:
+        {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
+      </h3>
       <Link className="checkout-link" to="/basket/checkout">
-        <h3>
-          Total:
-          {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
-        </h3>
-        proceed to Checkout{" "}
+        Proceed to Checkout{" "}
       </Link>
     </div>
   );

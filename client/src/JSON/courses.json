@@ -1,26 +1,34 @@
 [
-    {
-        "id": 0,
-        "name": "Ballet",
-        "link": "#ballet",
-        "linkId": "ballet",
-        "img1": "./images/website.jpg",
-        "img2": "./images/shop.png",
-        "img3": "./images/website.jpg",
-        "img4": "./images/shop.png",
-        "img5": "./images/website.jpg",
-        "img6": "./images/shop.png"
-      },
-      {
-        "id": 1,
-        "name": "Pilates",
-        "link": "#pilates",
-        "linkId": "pilates",
-        "img1": "./images/website.jpg",
-        "img2": "./images/shop.png",
-        "img3": "./images/website.jpg",
-        "img4": "./images/shop.png",
-        "img5": "./images/website.jpg",
-        "img6": "./images/shop.png"
-      }
+  {
+    "id": 0,
+    "name": "Ballet",
+    "link": "#ballet",
+    "linkId": "ballet",
+    "imgs": [
+      "./images/ballet-pilates/ballet/ballet-1.png",
+      "./images/ballet-pilates/ballet/ballet-2.png",
+      "./images/ballet-pilates/ballet/ballet-3.png",
+      "./images/ballet-pilates/ballet/ballet-4.png",
+      "./images/ballet-pilates/ballet/ballet-5.png",
+      "./images/ballet-pilates/ballet/ballet-6.png",
+      "./images/ballet-pilates/ballet/ballet-7.png",
+      "./images/ballet-pilates/ballet/ballet-8.png"
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Pilates",
+    "link": "#pilates",
+    "linkId": "pilates",
+    "imgs": [
+      "./images/ballet-pilates/pilates/pilates-1.png",
+      "./images/ballet-pilates/pilates/pilates-2.png",
+      "./images/ballet-pilates/pilates/pilates-3.png",
+      "./images/ballet-pilates/pilates/pilates-4.png",
+      "./images/ballet-pilates/pilates/pilates-5.png",
+      "./images/ballet-pilates/pilates/pilates-6.png",
+      "./images/ballet-pilates/pilates/pilates-7.png",
+      "./images/ballet-pilates/pilates/pilates-8.png"
+    ]
+  }
 ]
