@@ -39,6 +39,7 @@ const Basket = () => {
 
   return (
     <div className="main-basket-container">
+<<<<<<< HEAD
       <span>
         <h1> Shopping Basket</h1>
         <p className="popup-message">
@@ -48,7 +49,13 @@ const Basket = () => {
         </p>
         <h2> welcome {data?.username} </h2>
       </span>
+=======
+      <h1>Shopping Basket</h1>
+>>>>>>> cd274e9fce30fdf01da27766eea4155f9e24bf22
       <div className="lists-container">
+        <p className="shipping-msg">
+          ❗ Please take a note that not articles can be send !
+        </p>
         <ul className="basket-list">
           <li>
             <h3> Basket </h3>
@@ -72,6 +79,7 @@ const Basket = () => {
             </li>
           ))}
         </ul>
+<<<<<<< HEAD
       </div>
       <aside>
         <h4>Abholung</h4>
@@ -104,6 +112,16 @@ const Basket = () => {
        <p> proceed to Checkout</p>
        
       </Link> 
+=======
+      </div>{" "}
+      <h3>
+        Total:
+        {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
+      </h3>
+      <Link className="checkout-link" to="/basket/checkout">
+        Proceed to Checkout{" "}
+      </Link>
+>>>>>>> cd274e9fce30fdf01da27766eea4155f9e24bf22
     </div>
   );
 };

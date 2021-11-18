@@ -21,7 +21,7 @@ allProductControllers.addProduct = async (req, res) => {
           quantity: req.body.quantity,
         });
         product.save();
-        
+
         res
           .status(201)
           .json({ message: "New product has been added ✅", product });
@@ -106,6 +106,7 @@ allProductControllers.addToWishlist = async (req, res) => {
 allProductControllers.removeFromWishlist = async (req, res) => {
   try {
     const user = await User.findById(req.id);
+    
     const product = await Product.findById(req.body.productId);
     if (user && product) {
       user.wishlist.pull(product);
