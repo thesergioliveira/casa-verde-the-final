@@ -50,7 +50,6 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
-        //window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
@@ -65,7 +64,6 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
-        window.location.reload(false);
       });
   };
   const addToWishlist = (id) => {
@@ -84,7 +82,7 @@ function ShopItem(props) {
         });
     } else {
       axios
-        .put(
+        .delete(
           "user/wishlist",
           {
             productId: id,
@@ -92,15 +90,17 @@ function ShopItem(props) {
           config
         )
         .then((res) => {
-          console.log(res.data.message);
+          console.log(res);
         });
     }
   };
   return (
     <div key={props.obj._id} className="product-basket">
+     
       <div className="product-box">
         <img
-          src={`${process.env.PUBLIC_URL}/${props.obj.image}`}
+        // ${process.env.PUBLIC_URL}
+          src={`http://localhost:5005/${props.obj.image}`}
           alt={`img of ${props.obj.name}`}
         />
         <div className="product-infos">
@@ -109,7 +109,7 @@ function ShopItem(props) {
           <p>{props.obj.price} $</p>
           <p>description: {props.obj.description}</p>
           <p>only {props.obj.quantity - count} left</p>
-          <div>
+          <span>
             <button
               disabled={count >= props.obj.quantity}
               onClick={() => addToBasket(props.obj._id)}
@@ -129,7 +129,7 @@ function ShopItem(props) {
             <button onClick={() => removeFromBasket(props.obj_id)}>
               <FiTrash2 />
             </button>
-          </div>
+          </span>
         </div>
       </div>
       <div className="total-price">
