@@ -1,7 +1,19 @@
 header {
+    width: 100vw;
     background-color: $cream;
-    @include flex;
+   
 }
+
+.hamburger {
+    animation-play-state: paused;
+   
+}
+ .open {
+    display: none;
+ }
+ .show {
+     height: 100%;
+ }
 
 .laptop-setup {
     width: 100vw;
@@ -10,10 +22,12 @@ header {
     padding: 0;
     background-color: $cream;
     @include flex;
+    animation-play-state: paused;
     
  
  ul {
      width: 75vw;
+     animation-play-state: paused;
     
  }
  li {
@@ -23,6 +37,10 @@ header {
     margin-right: 1rem;
      
  }
+}
+.reverse {
+    @include flex;
+    flex-direction: row-reverse;
 }
 .nav-top {
     @include flex;
@@ -38,11 +56,10 @@ header {
   
   // Show nav setup
   .user-show {
-    z-index: 13;
-    width: 40vw;
+    z-index: 2;
+    width: 10vw;
     height: 20vh;
-    top: 4rem;
-    right: 0px;
+    top: 8rem;
     position: absolute;
     float: right;
     @include flex;

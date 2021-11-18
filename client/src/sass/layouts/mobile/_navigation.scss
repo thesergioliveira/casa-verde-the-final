@@ -2,12 +2,15 @@
 
 // Nav setup
 header nav {
+  width: 100vw;
+  height: 100%;
   background-color: $cream;
+  @include flex;
 
   .nav-top {
     padding: 0 .7rem;
     @include flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 4rem;
   }
   .none {
