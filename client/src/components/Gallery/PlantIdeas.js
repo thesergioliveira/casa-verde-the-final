@@ -29,7 +29,7 @@ const PlantIdeas = () => {
             if (imgs.indexOf(img) <= images) {
               return (
                 <div key={uuidv4()} className="container-img-inner">
-                  <img src={img} alt={linkId} />
+                  <img src={process.env.PUBLIC_URL + img} alt={linkId} />
                 </div>
               );
             }
