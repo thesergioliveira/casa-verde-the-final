@@ -50,7 +50,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
-        window.location.reload(false);
+        //window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
@@ -81,11 +81,10 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res.data.message);
-          window.location.reload(false);
         });
     } else {
       axios
-        .delete(
+        .put(
           "user/wishlist",
           {
             productId: id,
@@ -93,13 +92,12 @@ function ShopItem(props) {
           config
         )
         .then((res) => {
-          console.log(res);
+          console.log(res.data.message);
         });
     }
   };
   return (
     <div key={props.obj._id} className="product-basket">
-     
       <div className="product-box">
         <img
           src={`http://localhost:5005/${props.obj.image}`}

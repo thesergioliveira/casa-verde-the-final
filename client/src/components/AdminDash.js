@@ -25,7 +25,7 @@ const AdminDash = () => {
   const [description, setDescription] = useState("");
   const [delivery, setDelivery] = useState(false);
   const [image, setImage] = useState("");
-    //control
+ //control
 
  //userdata?.user.admin ? allow="none": allow="flex";
  

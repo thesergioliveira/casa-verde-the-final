@@ -40,9 +40,12 @@ allProductControllers.addProduct);
 router.get("/users",middleware.checkToken, allControllers.getAllUsers);
 // update Product.
 router.put("/product/:id", allProductControllers.updateProduct);
-router.delete("/product/:id", allProductControllers.deleteProduct);
-
 // delete Product.
+router.delete("/product/:id", allProductControllers.deleteProduct);
+// allow admin 
+
+
+
 
 
 
