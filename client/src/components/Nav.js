@@ -71,10 +71,11 @@ const Nav = ({ logo }) => {
   return (
     <header>
       <nav className="laptop-setup">
-        <div className="nav-top">
-          <div className="logo-container" onClick={closeMenu}>
+      <div className="logo-container" onClick={closeMenu}>
             {logo}
           </div>
+        <div className="nav-top">
+          
           <div className="nav-user">
             {token ? (
               <>

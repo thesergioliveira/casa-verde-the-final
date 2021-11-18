@@ -1,3 +1,8 @@
+header {
+    background-color: $cream;
+    @include flex;
+}
+
 .laptop-setup {
     width: 100vw;
     height: auto;
@@ -7,11 +12,16 @@
     @include flex;
     
  
- ul li {
+ ul {
+     width: 75vw;
+    
+ }
+ li {
      display: inline;
      color: red;
      font-size: 1rem;
-     flex-direction: wrap;
+    margin-right: 1rem;
+     
  }
 }
 .nav-top {
