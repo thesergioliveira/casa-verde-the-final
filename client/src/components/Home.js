@@ -23,9 +23,9 @@ const Home = () => {
                 ? "btn-ballet"
                 : "btn-technical"
             }
-          >
-            {name}
-          </button>
+          ></button>
+          <div className="container-btn-blur"></div>
+          <div>{name}</div>
         </Link>
       </div>
     );

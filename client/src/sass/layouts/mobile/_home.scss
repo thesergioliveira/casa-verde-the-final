@@ -11,7 +11,7 @@
   // Background image
   .bg-home {
     width: 100vw;
-    height: 150vh;
+    height: 130vh;
     position: fixed;
     top: 0;
     z-index: -1;
@@ -20,7 +20,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(50%);
+      filter: grayscale(50%) opacity(95%);
     }
   }
 
@@ -231,15 +231,42 @@
 
     .container-btn-house {
       width: 100%;
-      height: 12%;
+      height: 10%;
+      position: relative;
 
       button {
         width: 100%;
-        height: 80%;
+        height: 100%;
         border-radius: 1rem;
         border: none;
         font-size: 0.9rem;
-        opacity: 75%;
+        opacity: 80%;
+        position: absolute;
+      }
+
+      .container-btn-blur {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(105, 105, 105, 0.6);
+        filter: blur(10px);
+        border-radius: 1rem;
+      }
+
+      div {
+        color: rgb(255, 255, 255);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+        @include flex;
+      }
+
+      &:hover {
+        .container-btn-blur {
+          display: none;
+        }
       }
 
       // Colors for Buttons
