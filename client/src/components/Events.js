@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EventsData from "../JSON/events.json";
-import Booking from "./Shop/Booking";
 import ContactInformation from "./ContactInformation";
 import ContactForm from './ContactForm';
 import Map from "./Map";
@@ -60,10 +59,7 @@ const Events = () => {
       <div>
         {componentsMenu}
       </div>
-    
-      <Booking />
       <ContactInformation />
-      
       <div className="form-map">
         <ContactForm />
         <Map />

@@ -99,7 +99,7 @@ function ShopItem(props) {
      
       <div className="product-box">
         <img
-          src={`${process.env.PUBLIC_URL}/./${props.obj.image}`}
+          src={`${process.env.PUBLIC_URL}/${props.obj.image}`}
           alt={`img of ${props.obj.name}`}
         />
         <div className="product-infos">
