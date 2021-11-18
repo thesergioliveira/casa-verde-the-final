@@ -224,14 +224,14 @@
   // House -> Buttons
   .wrapper-btn-house {
     width: 80vw;
-    height: 60vh;
+    height: 50vh;
     @include flex;
     flex-direction: column;
     justify-content: space-evenly;
 
     .container-btn-house {
       width: 100%;
-      height: 10%;
+      height: 12%;
 
       button {
         width: 100%;
@@ -239,20 +239,20 @@
         border-radius: 1rem;
         border: none;
         font-size: 0.9rem;
-        opacity: 85%;
+        opacity: 75%;
       }
 
       // Colors for Buttons
       .btn-shop {
-        background-color: $green;
+        background-color: $violet;
       }
 
       .btn-deco {
-        background-color: $red;
+        background-color: $green;
       }
 
       .btn-events {
-        background-color: $cream;
+        background-color: $dark-green;
       }
 
       .btn-rental {
@@ -260,7 +260,7 @@
       }
 
       .btn-ballet {
-        background-color: $violet;
+        background-color: $red;
       }
       .btn-technical {
         background-color: $blue;
