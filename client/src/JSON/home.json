@@ -3,28 +3,28 @@
     "id": 0,
     "name": "Decoration Services",
     "path": "/services",
-    "img": "./images/shop.png",
+    "img": "./images/deco-service.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "id": 1,
     "name": "Shop",
     "path": "/shop",
-    "img": "./images/shop.png",
+    "img": "./images/online-shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "id": 2,
     "name": "Rental Services",
     "path": "/rent",
-    "img": "./images/shop.png",
+    "img": "./images/rental.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "id": 3,
     "name": "Ballet/Pilates",
     "path": "/ballet-pilates",
-    "img": "./images/shop.png",
+    "img": "./images/courses.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {

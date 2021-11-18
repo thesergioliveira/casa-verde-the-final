@@ -49,8 +49,16 @@ const Home = () => {
             <div className="logo-colors red"></div>
           </div>
         </div>
-        <p>{description}</p>
-        <img src={img} alt="site images" />
+        {/* Description */}
+        <div className="container-description">
+          <p>{description}</p>
+        </div>
+
+        {/* Image */}
+        <div className="container-image">
+          <img src={img} alt="site images" />
+        </div>
+
         <div
           className={
             name === "Shop"
