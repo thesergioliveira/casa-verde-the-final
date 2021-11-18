@@ -5,7 +5,7 @@ const ContactInformation = () => {
     <div className="info-container">
       {/* Header */}
       <div className="info-header">
-        <h4>Kontakt</h4>
+        <h4 id="contact">Kontakt</h4>
       </div>
 
       {/* Phone && Mail */}
