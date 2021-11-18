@@ -1,11 +1,58 @@
 .laptop-setup {
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    padding: 0;
     background-color: $cream;
-    // @include flex;
+    @include flex;
     
  
  ul li {
      display: inline;
      color: red;
+     font-size: 1rem;
+     flex-direction: wrap;
  }
 }
+.nav-top {
+    @include flex;
+}
 
+// Ul display none
+.user-none {
+    height: 0;
+    display: none;
+    transition: 2s;
+    overflow: hidden;
+  }
+  
+  // Show nav setup
+  .user-show {
+    z-index: 13;
+    width: 40vw;
+    height: 20vh;
+    top: 4rem;
+    right: 0px;
+    position: absolute;
+    float: right;
+    @include flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: $cream;
+    transition: 2s;
+  }
+  .nav-user {
+    @include flex;
+    justify-content: space-evenly;
+   
+  
+     // Li setup
+    li {
+      padding-left: 1em;
+      list-style: none;
+      color: black;
+      font-weight: bold;
+      text-decoration: none; 
+    }
+  }
