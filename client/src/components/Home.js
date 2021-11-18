@@ -75,7 +75,7 @@ const Home = () => {
     <div className="home">
       <div className="bg-home">
         <img
-          src={process.env.PUBLIC_URL + "../images/bg-barrels.png"}
+          src={process.env.PUBLIC_URL + "../images/bg-barrels.jpg"}
           alt="barrels"
         />
       </div>

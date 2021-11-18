@@ -11,8 +11,8 @@
   // Background image
   .bg-home {
     width: 100vw;
-    height: 85vh;
-    position: absolute;
+    height: 150vh;
+    position: fixed;
     top: 0;
     z-index: -1;
 
@@ -20,6 +20,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: grayscale(50%);
     }
   }
 
