@@ -1,43 +1,43 @@
 [
   {
     "id": 0,
-    "name": "Shop",
-    "path": "/shop",
-    "img": "./images/shop.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-  },
-  {
-    "id": 1,
     "name": "Decoration Services",
     "path": "/services",
     "img": "./images/shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
-    "id": 2,
-    "name": "Events",
-    "path": "/events",
+    "id": 1,
+    "name": "Shop",
+    "path": "/shop",
     "img": "./images/shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
-    "id": 3,
+    "id": 2,
     "name": "Rental Services",
     "path": "/rent",
     "img": "./images/shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
-    "id": 4,
+    "id": 3,
     "name": "Ballet/Pilates",
     "path": "/ballet-pilates",
     "img": "./images/shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
-    "id": 5,
+    "id": 4,
     "name": "Technical Services",
     "path": "/technic",
+    "img": "./images/shop.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    "id": 5,
+    "name": "Events",
+    "path": "/events",
     "img": "./images/shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   }
