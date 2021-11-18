@@ -1,9 +1,11 @@
 // Import style components
-/* Media Query for Mobile Devices */
-// @media (max-width: 480px) {
+// Setup for Mobile Devices
 @import "./home";
 @import "./footer";
-@import "./navigation";
+// Media Query for navigation
+@media (max-width: 1023px) {
+    @import "./navigation";
+}
 @import "./contactForm";
 @import "./map";
 @import "./contactInformation";
@@ -12,4 +14,3 @@
 @import "./shop";
 @import "./basket";
 @import "./_admindash";
-// }

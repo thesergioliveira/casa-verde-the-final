@@ -70,7 +70,7 @@ const Nav = ({ logo }) => {
 
   return (
     <header>
-      <nav>
+      <nav className="laptop-setup">
         <div className="nav-top">
           <div className="logo-container" onClick={closeMenu}>
             {logo}
@@ -145,7 +145,7 @@ const Nav = ({ logo }) => {
             <div className="menu-bottom"></div>
           </div>
         </div>
-        <ul className={none ? "none hide" : "show"} onClick={showMenu}>
+        <ul className={none ? "none hide" : "show"} id="laptop" onClick={showMenu}>
           {navMenu}
         </ul>
       </nav>
