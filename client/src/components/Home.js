@@ -35,6 +35,9 @@ const Home = () => {
     const { name, path, img, description } = obj;
     return (
       <div key={uuidv4()} className="card-element">
+        {/* blur effect */}
+        <div className="container-blur"></div>
+        {/* card top */}
         <div className="card-top">
           <h3>{name}</h3>
           {/* Card Logo */}
@@ -64,7 +67,7 @@ const Home = () => {
           }
         >
           <Link to={path}>
-            <button>Go to {name}</button>
+            <button>{name}</button>
           </Link>
         </div>
       </div>

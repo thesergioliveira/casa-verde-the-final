@@ -93,9 +93,19 @@
     flex-direction: column;
     margin: 1em;
     text-align: center;
-    background-color: rgba(128, 128, 128, 0.7);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 1em;
     position: relative;
+
+    .container-blur {
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(3px);
+      background-color: rgba(255, 255, 255, 0.3);
+      position: absolute;
+      z-index: -1;
+      border-radius: 1em;
+    }
 
     // Card image setup
     img {
@@ -174,9 +184,9 @@
     .container-bottom-btn {
       width: 100%;
       height: 15%;
-      background-color: greenyellow;
       border-radius: 0 0 1em 1em;
       position: relative;
+      opacity: 80%;
 
       // Card button setup
       button {
@@ -197,15 +207,15 @@
 
     // Colors for Card Bottom
     .bg-shop {
-      background-color: $green;
+      background-color: $violet;
     }
 
     .bg-deco {
-      background-color: $red;
+      background-color: $green;
     }
 
     .bg-events {
-      background-color: $cream;
+      background-color: $dark-green;
     }
 
     .bg-rental {
@@ -213,7 +223,7 @@
     }
 
     .bg-ballet {
-      background-color: $violet;
+      background-color: $red;
     }
 
     .bg-technical {
@@ -250,7 +260,7 @@
         width: 100%;
         height: 100%;
         background-color: rgba(105, 105, 105, 0.6);
-        filter: blur(10px);
+        backdrop-filter: blur(10px);
         border-radius: 1rem;
       }
 
