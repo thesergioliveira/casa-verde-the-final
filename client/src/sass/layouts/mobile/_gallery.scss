@@ -1,6 +1,19 @@
 .home {
-  // main image
+  // main image for room rental
   .container-room-rental {
+    width: 75vw;
+    height: 45vh;
+    margin-bottom: 2rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // main image for courses
+  .container-courses {
     width: 75vw;
     height: 45vh;
     margin-bottom: 2rem;

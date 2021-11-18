@@ -1,23 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CoursesData from "../JSON/courses.json";
 import Ballet from "./Gallery/Ballet";
+import Pilates from "./Gallery/Pilates";
 import ContactForm from "./ContactForm";
 import ContactInformation from "./ContactInformation";
 import Map from "./Map";
 
 const BalletAndPilates = () => {
-  const coursesMenu = CoursesData.map((obj) => {
-    const { id, name, link } = obj;
-    return (
-      <li key={id}>
-        {/* the link is working only using anchor in this example */}
-        {/* <Link to={link}>{name}</Link> */}
-        <a href={link}>{name}</a>
-      </li>
-    );
-  });
-
   return (
     <div className="home">
       <div className="home-top">
@@ -25,11 +14,16 @@ const BalletAndPilates = () => {
         <h1>Casa Verde</h1>
         <p>Courses</p>
       </div>
-      <ul>{coursesMenu}</ul>
-      <a href="#contact">
-        <button>Contact Now!</button>
-      </a>
+
+      <div className="container-courses">
+        <img
+          src={process.env.PUBLIC_URL + "../images/ballet_pilates.png"}
+          alt="Aussenansicht Raumvermietung"
+        />
+      </div>
+
       <Ballet />
+      <Pilates />
       <ContactInformation />
       <div className="form-map">
         <ContactForm />
