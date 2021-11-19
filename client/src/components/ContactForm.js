@@ -21,8 +21,10 @@ const ContactForm = () => {
             <h5>Tel</h5>
             <input type="tel" name="phone" />
           </label>
+          <fieldset>
+            <h5>Date/Time</h5>
           <Booking />
-
+          </fieldset>
           <label>
             <h5>Nachricht</h5>
             <textarea name="message"></textarea>
