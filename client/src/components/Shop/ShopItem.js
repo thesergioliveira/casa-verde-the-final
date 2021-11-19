@@ -50,6 +50,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        //window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
@@ -64,6 +65,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
   const addToWishlist = (id) => {
@@ -82,7 +84,7 @@ function ShopItem(props) {
         });
     } else {
       axios
-        .delete(
+        .put(
           "user/wishlist",
           {
             productId: id,
@@ -90,13 +92,12 @@ function ShopItem(props) {
           config
         )
         .then((res) => {
-          console.log(res);
+          console.log(res.data.message);
         });
     }
   };
   return (
-    <div key={props.obj._id} className="product-basket">
-     
+    <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">
         <img
           src={`http://localhost:5005/${props.obj.image}`}
@@ -107,28 +108,29 @@ function ShopItem(props) {
           <p>{props.obj.category}</p>
           <p>{props.obj.price} $</p>
           <p>description: {props.obj.description}</p>
+          
           <p>only {props.obj.quantity - count} left</p>
-          <span>
+          <div className="product-buttons">
             <button
               disabled={count >= props.obj.quantity}
               onClick={() => addToBasket(props.obj._id)}
             >
-              <FiPlusCircle />
+              <FiPlusCircle style={{backgroundColor:"white"}}/>
             </button>{" "}
             {count}{" "}
             <button
               disabled={count === 0}
               onClick={() => removeFromBasket(props.obj._id)}
             >
-              <FiMinusCircle />
+              <FiMinusCircle style={{backgroundColor:"white"}}/>
             </button>
             <button onClick={() => addToWishlist(props.obj._id)}>
-              {wishlist ? `🤍` : `❤️`}
+              {wishlist ? `💛` : `❤️`}
             </button>
             <button onClick={() => removeFromBasket(props.obj_id)}>
-              <FiTrash2 />
+              <FiTrash2 style={{backgroundColor:"white"}}/>
             </button>
-          </span>
+          </div>
         </div>
       </div>
       <div className="total-price">
