@@ -9,6 +9,7 @@ const Home = () => {
     return (
       <div key={uuidv4()} className="container-btn-house">
         <Link to={path}>
+          <div className="container-btn-blur"></div>
           <button
             className={
               name === "Shop"
@@ -23,9 +24,9 @@ const Home = () => {
                 ? "btn-ballet"
                 : "btn-technical"
             }
-          >
-            {name}
-          </button>
+          ></button>
+
+          <div className="container-categorys">{name}</div>
         </Link>
       </div>
     );
@@ -35,6 +36,9 @@ const Home = () => {
     const { name, path, img, description } = obj;
     return (
       <div key={uuidv4()} className="card-element">
+        {/* blur effect */}
+        <div className="container-blur"></div>
+        {/* card top */}
         <div className="card-top">
           <h3>{name}</h3>
           {/* Card Logo */}
@@ -46,8 +50,16 @@ const Home = () => {
             <div className="logo-colors red"></div>
           </div>
         </div>
-        <p>{description}</p>
-        <img src={img} alt="site images" />
+        {/* Description */}
+        <div className="container-description">
+          <p>{description}</p>
+        </div>
+
+        {/* Image */}
+        <div className="container-image">
+          <img src={img} alt="site images" />
+        </div>
+
         <div
           className={
             name === "Shop"
@@ -64,7 +76,7 @@ const Home = () => {
           }
         >
           <Link to={path}>
-            <button>Go to {name}</button>
+            <button>{name}</button>
           </Link>
         </div>
       </div>
@@ -75,7 +87,7 @@ const Home = () => {
     <div className="home">
       <div className="bg-home">
         <img
-          src={process.env.PUBLIC_URL + "../images/bg-barrels.png"}
+          src={process.env.PUBLIC_URL + "../images/bg-barrels.jpg"}
           alt="barrels"
         />
       </div>

@@ -11,7 +11,22 @@
   // Background image
   .bg-home {
     width: 100vw;
-    height: 85vh;
+    height: 130vh;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(50%) opacity(95%);
+    }
+  }
+
+  .bg-services {
+    width: 100vw;
+    height: 65vh;
     position: absolute;
     top: 0;
     z-index: -1;
@@ -20,6 +35,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: grayscale(50%) opacity(95%);
     }
   }
 
@@ -88,13 +104,22 @@
     width: 75vw;
     height: 50vh;
     @include flex;
-    justify-content: space-between;
     flex-direction: column;
-    margin: 1em;
+    margin: 2rem;
     text-align: center;
-    background-color: rgba(128, 128, 128, 0.7);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 1em;
     position: relative;
+
+    .container-blur {
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(3px);
+      background-color: rgba(255, 255, 255, 0.3);
+      position: absolute;
+      z-index: -1;
+      border-radius: 1em;
+    }
 
     // Card image setup
     img {
@@ -105,11 +130,11 @@
     // Top of the card including the name and logo
     .card-top {
       width: 100%;
+      height: 20%;
       @include flex;
       justify-content: space-between;
 
       h3 {
-        margin-top: 1rem;
         padding-left: 1rem;
       }
 
@@ -169,13 +194,37 @@
       }
     }
 
+    .container-description {
+      width: 85%;
+      height: 35%;
+
+      p {
+        text-align: justify;
+      }
+    }
+
+    .container-image {
+      width: 85%;
+      height: 30%;
+      position: relative;
+
+      img {
+        float: right;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: auto;
+        height: 100%;
+      }
+    }
+
     // Card Bottom (Button)
     .container-bottom-btn {
       width: 100%;
       height: 15%;
-      background-color: greenyellow;
       border-radius: 0 0 1em 1em;
       position: relative;
+      opacity: 80%;
 
       // Card button setup
       button {
@@ -196,15 +245,15 @@
 
     // Colors for Card Bottom
     .bg-shop {
-      background-color: $green;
+      background-color: $violet;
     }
 
     .bg-deco {
-      background-color: $red;
+      background-color: $green;
     }
 
     .bg-events {
-      background-color: $cream;
+      background-color: $dark-green;
     }
 
     .bg-rental {
@@ -212,7 +261,7 @@
     }
 
     .bg-ballet {
-      background-color: $violet;
+      background-color: $red;
     }
 
     .bg-technical {
@@ -220,10 +269,10 @@
     }
   }
 
-  // House -> Buttons
+  // House -> Buttons -> Home
   .wrapper-btn-house {
     width: 80vw;
-    height: 60vh;
+    height: 50vh;
     @include flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -231,27 +280,53 @@
     .container-btn-house {
       width: 100%;
       height: 10%;
+      position: relative;
 
       button {
         width: 100%;
-        height: 80%;
+        height: 100%;
         border-radius: 1rem;
         border: none;
         font-size: 0.9rem;
-        opacity: 85%;
+        opacity: 55%;
+        position: absolute;
+      }
+
+      .container-btn-blur {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(190, 190, 190, 0.05);
+        backdrop-filter: blur(3px);
+        border-radius: 1rem;
+      }
+
+      .container-categorys {
+        color: rgb(255, 255, 255);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        @include flex;
+      }
+
+      &:hover {
+        .container-btn-blur {
+          display: none;
+        }
       }
 
       // Colors for Buttons
       .btn-shop {
-        background-color: $green;
+        background-color: $violet;
       }
 
       .btn-deco {
-        background-color: $red;
+        background-color: $green;
       }
 
       .btn-events {
-        background-color: $cream;
+        background-color: $dark-green;
       }
 
       .btn-rental {
@@ -259,11 +334,33 @@
       }
 
       .btn-ballet {
-        background-color: $violet;
+        background-color: $red;
       }
       .btn-technical {
         background-color: $blue;
       }
+    }
+  }
+
+  // House -> Buttons -> Deco-Services
+  .deco-services {
+    height: 35vh;
+
+    .container-deco-services {
+      height: 12%;
+    }
+  }
+
+  .container-contact-btn {
+    width: 80%;
+    height: 2rem;
+    margin-bottom: 4rem;
+
+    button {
+      width: 100%;
+      height: 100%;
+      opacity: 90%;
+      border: none;
     }
   }
 }

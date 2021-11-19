@@ -4,6 +4,7 @@
     "name": "Weddings",
     "link": "#weddings",
     "linkId": "weddings",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/deco-services/weddings/weddings-1.png",
       "./images/deco-services/weddings/weddings-2.png",
@@ -20,6 +21,7 @@
     "name": "Plant ideas",
     "link": "#plant",
     "linkId": "plant",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/deco-services/plant ideas/plants-1.png",
       "./images/deco-services/plant ideas/plants-2.png",
@@ -36,6 +38,7 @@
     "name": "Gift ideas",
     "link": "#gift",
     "linkId": "gift",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/deco-services/gift ideas/gifts-1.png",
       "./images/deco-services/gift ideas/gifts-2.png",
@@ -52,6 +55,7 @@
     "name": "Funerals",
     "link": "#funerals",
     "linkId": "funerals",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/deco-services/funerals/funerals-1.png",
       "./images/deco-services/funerals/funerals-2.png",

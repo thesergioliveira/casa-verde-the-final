@@ -3,7 +3,7 @@ import Booking from "./Shop/Booking";
 
 const ContactForm = () => {
   return (
-    <div id="contact" className="wrapper-contact">
+    <div className="wrapper-contact">
       {/* Form */}
       <div className="form-container">
         <form>
