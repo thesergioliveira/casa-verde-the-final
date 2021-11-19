@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../AuthContext";
 import { Link } from "react-router-dom";
 import ShopItem from "./ShopItem";
+import ContactInformation from "../ContactInformation";
 const Basket = () => {
   //
   // console.log(UserData.token)
@@ -29,21 +30,41 @@ const Basket = () => {
 
     displayData();
   }, []);
+  // already bought from someone else
+  let notAvailablecartItems = data.basket?.filter((item) => item.quantity <= 0);
+
   //no dublicated items
   let cartItems = data.basket?.map((item) => {
     return [item._id, item];
   });
   let maparr = new Map(cartItems);
 
-  let result = [...maparr.values()];
+  let result = [...maparr.values()].filter((item) => item.quantity > 0);
 
+  // not delieverable items
+  let notDeliverable = result?.filter((item) => item.delivery == false);
+  console.log(notDeliverable);
+  let displa = "none";
+
+  //count total and allow checkout button
+  let total = result?.map((item) => item.price).reduce((a, b) => a + b, 0);
+  {
+    total > 0 ? (displa = "inline") : (displa = "none");
+  }
   return (
     <div className="main-basket-container">
       <h1>Shopping Basket</h1>
       <div className="lists-container">
         <p className="shipping-msg">
           ❗ Please take a note that not articles can be send !
+          {notAvailablecartItems?.length ? (
+            <h4>
+              the {notAvailablecartItems?.map((item) => `${item.name}, `)} are
+              unfortunately already sold out and not available anymore !
+            </h4>
+          ) : null}
         </p>
+
         <ul className="basket-list">
           <li>
             <h3> Basket </h3>
@@ -57,7 +78,6 @@ const Basket = () => {
 
         <ul className="wishlist-list">
           <li>
-            
             <h3> Wishlist </h3>
           </li>
 
@@ -69,6 +89,13 @@ const Basket = () => {
         </ul>
       </div>
       <aside>
+        {notDeliverable?.length ? (
+          <h4>
+            the {notDeliverable?.map((item) => `${item.name}, `)} are too
+            sensitive to be delivered. Feel free to come from our shop
+          </h4>
+        ) : null}
+
         <h4>Abholung</h4>
 
         <ul>
@@ -84,21 +111,20 @@ const Basket = () => {
         </ul>
       </aside>
       <aside>
-        <h4>Adresse</h4>
+        <ContactInformation/>
+        {/* <h4>Adresse</h4>
 
         <p>Casa Verde</p>
-        <p>Hauptstr. 253 12345 Stadt</p>
+        <p>Hauptstr. 253 12345 Stadt</p> */}
       </aside>
-      
-      <Link  to="/basket/checkout">
-        
+
+      <Link style={{ display: `${displa}` }} to="/basket/checkout">
         <h3>
           Total:
-          {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)} $
+          {total} $
         </h3>
-       <p> proceed to Checkout</p>
-       
-      </Link> 
+        <p> proceed to Checkout</p>
+      </Link>
     </div>
   );
 };

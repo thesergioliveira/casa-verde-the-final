@@ -122,7 +122,7 @@ const Register = () => {
       />
       
 
-      <button onClick={handleSubmit}>Register</button>
+      <button className="button-dash" onClick={handleSubmit}>Register</button>
 
       <h4>OR</h4>
       <Link to="/login">Login</Link>
