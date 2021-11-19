@@ -34,24 +34,29 @@ const Events = () => {
 
   return (
     <div className="home">
-      <div className="bg-events">
-        <img
-          src={process.env.PUBLIC_URL + "../images/bg-barrels.jpg"}
-          alt="barrels"
-        />
-      </div>
-      <div className="home-top">
-        <div className="roof"></div>
-        <h1>Casa Verde</h1>
-        <p>Events</p>
-      </div>
-      <div className="wrapper-btn-house events">{eventsMenu}</div>
+      <div className="wrapper-event-section">
+        <div className="bg-events">
+          <img
+            src={process.env.PUBLIC_URL + "../images/bg-barrels.jpg"}
+            alt="barrels"
+          />
+        </div>
 
-      {/* Contact Button */}
-      <div className="container-contact-btn">
-        <a href="#contact">
-          <button>Contact Now!</button>
-        </a>
+        <div className="container-buttons-roof">
+          <div className="home-top">
+            <div className="roof"></div>
+            <h1>Casa Verde</h1>
+            <p>Events</p>
+          </div>
+          <div className="wrapper-btn-house events">{eventsMenu}</div>
+
+          {/* Contact Button */}
+          <div className="container-contact-btn">
+            <a href="#contact">
+              <button>Contact Now!</button>
+            </a>
+          </div>
+        </div>
       </div>
       <Workshops />
       <Seminaries />

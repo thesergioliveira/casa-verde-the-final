@@ -351,41 +351,61 @@
     }
   }
 
-  .container-contact-btn {
-    width: 80%;
-    height: 2rem;
-    margin-bottom: 4rem;
-
-    button {
-      width: 100%;
-      height: 100%;
-      opacity: 90%;
-      border: none;
-    }
-  }
-
   // Background Image Events
-  .bg-events {
-    width: 100vw;
-    height: 65vh;
-    position: absolute;
-    top: 0;
-    z-index: -1;
 
-    img {
+  // Wrapper Home Section
+  .wrapper-event-section {
+    width: 100vw;
+    height: 60vh;
+    position: relative;
+    @include flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .bg-events {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      filter: grayscale(50%) opacity(95%);
-    }
-  }
+      position: absolute;
+      top: 0;
+      z-index: -1;
 
-  .events {
-    height: 35vh;
-    justify-content: flex-start;
-    .container-events {
-      margin-bottom: 2rem;
-      height: 13%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(50%) opacity(95%);
+      }
+    }
+
+    .container-buttons-roof {
+      height: 100%;
+      width: 100%;
+      max-width: 500px;
+      @include flex;
+      flex-direction: column;
+
+      .events {
+        height: 60%;
+        width: 80%;
+        justify-content: flex-start;
+        .container-events {
+          margin-bottom: 1rem;
+          height: 13%;
+        }
+      }
+
+      .container-contact-btn {
+        width: 80%;
+        height: 7%;
+        justify-self: flex-end;
+
+        button {
+          width: 100%;
+          height: 100%;
+          opacity: 90%;
+          border: none;
+        }
+      }
     }
   }
 }
