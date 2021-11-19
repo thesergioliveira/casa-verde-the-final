@@ -18,12 +18,12 @@ header {
     height: auto;
     background-color: $cream;
     @include flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     animation-play-state: paused;
     
  
  ul {
-    width: 70vw;
+    width: 65vw;
      animation-play-state: paused;
     
  }
@@ -32,14 +32,14 @@ header {
      color: black;
      font-weight: bold;
      font-size: 1.2rem;
-     margin-right: 1rem;
+     margin-right: 1.3rem;
      list-style: none;
  }
 
  a {
     text-decoration: none;
     :hover {
-        color: red;
+        color: $dark-green;
     }
  }
 
@@ -83,7 +83,7 @@ header {
   }
   .nav-user {
     position: relative;
-    left: 70vw;
+    left: 66vw;
     @include flex;
     justify-content: space-evenly;
    
@@ -98,6 +98,6 @@ header {
       cursor: pointer;
     }
     :hover {
-        color: red;
+        color: $violet;
     }
   }

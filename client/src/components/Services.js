@@ -41,24 +41,29 @@ const Services = () => {
 
   return (
     <div className="home">
-      <div className="bg-services">
-        <img
-          src={process.env.PUBLIC_URL + "../images/bg-barrels.jpg"}
-          alt="barrels"
-        />
-      </div>
-      <div className="home-top">
-        <div className="roof"></div>
-        <h1>Casa Verde</h1>
-        <p>Decoration Services</p>
-      </div>
+      <div className="wrapper-event-section">
+        <div className="bg-services">
+          <img
+            src={process.env.PUBLIC_URL + "../images/bg-barrels.jpg"}
+            alt="barrels"
+          />
+        </div>
 
-      <div className="wrapper-btn-house deco-services">{servicesMenu}</div>
+        <div className="container-buttons-roof">
+          <div className="home-top">
+            <div className="roof"></div>
+            <h1>Casa Verde</h1>
+            <p>Decoration Services</p>
+          </div>
 
-      <div className="container-contact-btn">
-        <a href="#contact">
-          <button>Contact Now!</button>
-        </a>
+          <div className="wrapper-btn-house deco-services">{servicesMenu}</div>
+
+          <div className="container-contact-btn">
+            <a href="#contact">
+              <button>Contact Now!</button>
+            </a>
+          </div>
+        </div>
       </div>
       {/* Weddings */}
       <Weddings />
