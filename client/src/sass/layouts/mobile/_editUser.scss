@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.edit-user-container{
+    @include flex;
+    width: 100vw;
+    height: auto;
+    flex-direction: column;
+    border:1px solid $cream;
+    h3 ,h1 {font-style:italic; }
+    button {
+        background-color:$cream;
+        border:none;
+        border-radius: 7px;
+        padding:7px;
+        margin:10px;
+        
+    }
+    input {
+        outline: transparent;
+        border:1px solid $cream;
+        width: 98%;
+        padding:5px;
+        border-radius: 7px;
+    }
+    div {
+        @include flex;
+        flex-direction: column;
+        justify-content: left;
+        //border: 1px solid red;
+        width: 100%;
+
+    }
+}
