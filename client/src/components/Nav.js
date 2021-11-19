@@ -71,89 +71,87 @@ const Nav = ({ logo }) => {
   return (
     <header>
       <nav className="laptop-setup">
-        <div className="logo-container" onClick={closeMenu}>
-          {logo}
-        </div>
-        <div className="reverse">
-          <div className="nav-top">
-            <div className="nav-user">
-              {token ? (
-                <>
-                  <Link to="/basket">
-                    <li id="basket" key="50" onClick={closeMenu}>
-                      <FaShoppingBasket />
-                    </li>
-                  </Link>
-                  <div
-                    className={closeUser ? "hamburger close" : "hamburger open"}
-                    onClick={showEditUser}
-                  >
-                    <li key="51">
-                      <FaUser />
-                    </li>
-                  </div>
-                  <ul
-                    className={show ? "user-none" : "user-show"}
-                    onClick={showEditUser}
-                  >
-                    <li key="52"> WELCOME: {userName}</li>
-
-                    <Link to="/settings">
-                      <li key="53">
-                        Settings <FiSettings />
-                      </li>
-                    </Link>
-                    <li key="54" onClick={logOut} alt="logout">
-                      Logout <FiLogOut />
-                    </li>
-                  </ul>
-                </>
-              ) : (
-                <>
-                  <Link
-                    style={{
-                      color: "black",
-                      fontWeight: "bold",
-                      textDecoration: "none",
-                    }}
-                    onClick={closeMenu}
-                    to="/login"
-                  >
-                    sign in
-                  </Link>
-                  <Link
-                    style={{
-                      color: "black",
-                      fontWeight: "bold",
-                      textDecoration: "none",
-                    }}
-                    onClick={closeMenu}
-                    to="/register"
-                  >
-                    sign up
-                  </Link>
-                </>
-              )}
-            </div>
-
-            <div
-              className={close ? "hamburger close" : "hamburger open"}
-              onClick={showMenu}
-            >
-              <div className="menu-roof"></div>
-              <div className="menu-top"></div>
-              <div className="menu-center"></div>
-              <div className="menu-bottom"></div>
-            </div>
+        <div className="nav-top">
+          <div className="logo-container" onClick={closeMenu}>
+            {logo}
           </div>
-          <ul
-            className={none ? "none hide" : "show"}
-            id="laptop"
+          <div className="nav-user">
+            {token ? (
+              <>
+                <Link to="/basket">
+                  <li id="basket" key="50" onClick={closeMenu}>
+                    <FaShoppingBasket />
+                  </li>
+                </Link>
+                <div
+                  className={closeUser ? "hamburger close" : "hamburger open"}
+                  onClick={showEditUser}
+                >
+                  <li key="51">
+                    <FaUser />
+                  </li>
+                </div>
+                <ul
+                  className={show ? "user-none" : "user-show"}
+                  onClick={showEditUser}
+                >
+                  <li key="52"> WELCOME: {userName}</li>
+
+                  <Link to="/settings">
+                    <li key="53">
+                      Settings <FiSettings />
+                    </li>
+                  </Link>
+                  <li key="54" onClick={logOut} alt="logout">
+                    Logout <FiLogOut />
+                  </li>
+                </ul>
+              </>
+            ) : (
+              <>
+                <Link
+                  style={{
+                    color: "black",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                  }}
+                  onClick={closeMenu}
+                  to="/login"
+                >
+                  sign in
+                </Link>
+                <Link
+                  style={{
+                    color: "black",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                  }}
+                  onClick={closeMenu}
+                  to="/register"
+                >
+                  sign up
+                </Link>
+              </>
+            )}
+          </div>
+
+          <div
+            className={close ? "hamburger close" : "hamburger open"}
             onClick={showMenu}
           >
-            {navMenu}
-          </ul>
+            <div className="menu-roof"></div>
+            <div className="menu-top"></div>
+            <div className="menu-center"></div>
+            <div className="menu-bottom"></div>
+          </div>
         </div>
+        <ul
+          className={none ? "none hide" : "show"}
+          id="laptop"
+          onClick={showMenu}
+        >
+          {navMenu}
+        </ul>
       </nav>
     </header>
   );
