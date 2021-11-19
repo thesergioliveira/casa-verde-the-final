@@ -1,0 +1,31 @@
+.shop {
+.search-bar {
+  width: 50%;
+  @include flex();
+  flex-direction: row;
+  input {
+      margin-left: 5px;
+  }
+  margin-bottom: 15px
+}
+
+
+.search-container {
+  @include flex();
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 50%;
+    div {
+        @include flex();
+        
+        display: flex;
+        flex-direction: row;
+    }
+}
+}

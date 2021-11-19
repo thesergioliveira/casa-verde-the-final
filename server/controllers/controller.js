@@ -6,8 +6,8 @@ const { createToken } = require("../JWT-check");
 const { sign, verify } = require("jsonwebtoken");
 const _ = require("lodash");
 const mailGun = require("mailgun-js");
-var API_KEY = "3e876f711c37a032dbbd53cda52d4322-adf6de59-aafd2d92";
-var DOMAIN = "sandbox1b67686ac8ac4900a41f0214726a4b26.mailgun.org";
+var API_KEY = process.env.API_KEY;
+var DOMAIN = process.env.DOMAIN;
 const mg = mailGun({ apiKey: API_KEY, domain: DOMAIN });
 
 const allControllers = {};

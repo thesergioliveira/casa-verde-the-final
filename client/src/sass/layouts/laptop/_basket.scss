@@ -1,5 +1,4 @@
 .main-basket-container {
-  
   .lists-container {
     width: 100%;
     display: flex;
@@ -10,15 +9,21 @@
   }
 }
 aside {
-  width: 40%!important;
+  width: 40% !important;
   border: $cream 2px solid;
-  ul{
-    width: 70%!important;
+  ul {
+    width: 70% !important;
   }
-  
+  .contact-info {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+  .info-container {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
 }
 
 .productCard-main-container {
- 
-  margin:10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
 }

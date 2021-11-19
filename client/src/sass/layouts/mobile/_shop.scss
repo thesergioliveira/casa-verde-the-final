@@ -1,22 +1,93 @@
 .shop {
-   h1 {
-       text-align: center;
-   }
+  h1 {
+    text-align: center;
+  }
+  input, select{
+    @include input();
+    max-width: 80vw;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+  select {
+    appearance: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+   padding: 0 1em 0 0;
+    margin: 0;
+    max-width: 30vw;
+    @include selectthing();
+  }
+  select::-ms-expand {
+    display: none;
+  }
+
+
+
 }
 
-.products{
-    @include flex;
-    flex-wrap: wrap;
+.products {
+  @include flex;
+  flex-wrap: wrap;
 }
 
-.product {
-    width:9.6rem;
-    height: 21rem;
-    margin: 1rem;
-    border: blue 1px solid;
-    img {
-        width: 9.5rem;
-        height: 9.5rem;
-        border: red 1px solid;
+// .product {
+//     width:9.6rem;
+//     height: 21rem;
+//     margin: 1rem;
+//     border: blue 1px solid;
+//     img {
+//         width: 9.5rem;
+//         height: 9.5rem;
+//         border: red 1px solid;
+//     }
+// }
+.search-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.space-for-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.search-bar {
+  width: 90%;
+  @include flex();
+  flex-direction: row;
+  input {
+      margin-left: 5px;
+  }
+  margin-bottom: 15px
+}
+
+
+.search-container {
+  @include flex();
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 95%;
+    div {
+        @include flex();
+        
+        display: flex;
+        flex-direction: row;
     }
+    div:nth-child(1) {
+       
+        width: 50%;
+        padding-right: 15px;
+    }
+    // div:nth-child(2) {
+       
+    //     width: 50%;
+    // }
 }

@@ -116,7 +116,6 @@ function EditUser({ history }) {
       <h1>Profile</h1>
       <div>
         <h3> User Information</h3>
-
         <input
           type="text"
           value={username}
@@ -173,7 +172,6 @@ function EditUser({ history }) {
           onChange={(e) => setCity(e.target.value)}
           placeholder="enter your City Name"
         />
-
         <input
           type="postalCode"
           value={postalCode}
@@ -192,7 +190,6 @@ function EditUser({ history }) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="enter your current password"
         />
-
         <input
           type="password"
           value={NewPassword}
