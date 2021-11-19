@@ -1,4 +1,5 @@
 import React from "react";
+import Booking from "./Shop/Booking";
 
 const ContactForm = () => {
   return (
@@ -20,6 +21,7 @@ const ContactForm = () => {
             <h5>Tel</h5>
             <input type="tel" name="phone" />
           </label>
+          <Booking />
 
           <label>
             <h5>Nachricht</h5>

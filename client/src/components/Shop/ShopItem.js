@@ -50,7 +50,6 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
-        //window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
@@ -65,7 +64,6 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
-        window.location.reload(false);
       });
   };
   const addToWishlist = (id) => {
@@ -84,7 +82,7 @@ function ShopItem(props) {
         });
     } else {
       axios
-        .put(
+        .delete(
           "user/wishlist",
           {
             productId: id,
@@ -92,7 +90,7 @@ function ShopItem(props) {
           config
         )
         .then((res) => {
-          console.log(res.data.message);
+          console.log(res);
         });
     }
   };
@@ -100,6 +98,7 @@ function ShopItem(props) {
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">
         <img
+        // ${process.env.PUBLIC_URL}
           src={`http://localhost:5005/${props.obj.image}`}
           alt={`img of ${props.obj.name}`}
         />
