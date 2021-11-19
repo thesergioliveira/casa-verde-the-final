@@ -26,9 +26,7 @@ const Nav = ({ logo }) => {
     const { id, name, path } = obj;
     return (
       <Link to={path}>
-      <li key={id}>
-        {name}
-      </li>
+        <li key={id}>{name}</li>
       </Link>
     );
   });
@@ -37,7 +35,7 @@ const Nav = ({ logo }) => {
     setOpenUser(openUser);
     setCloseUser(!closeUser);
     setShow(!show);
-   closeMenu();
+    closeMenu();
   };
   const closeUserMenu = () => {
     setCloseUser(true);
@@ -72,16 +70,16 @@ const Nav = ({ logo }) => {
 
   return (
     <header>
-      <nav>
+      <nav className="laptop-setup">
         <div className="nav-top">
-          <div  className="logo-container" onClick={closeMenu}>
+          <div className="logo-container" onClick={closeMenu}>
             {logo}
           </div>
           <div className="nav-user">
             {token ? (
               <>
                 <Link to="/basket">
-                  <li id="basket" key="50">
+                  <li id="basket" key="50" onClick={closeMenu}>
                     <FaShoppingBasket />
                   </li>
                 </Link>
@@ -147,7 +145,11 @@ const Nav = ({ logo }) => {
             <div className="menu-bottom"></div>
           </div>
         </div>
-        <ul className={none ? "none hide" : "show"} onClick={showMenu}>
+        <ul
+          className={none ? "none hide" : "show"}
+          id="laptop"
+          onClick={showMenu}
+        >
           {navMenu}
         </ul>
       </nav>

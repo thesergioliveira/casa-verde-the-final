@@ -19,14 +19,7 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-a {
-  text-decoration: inherit;
-  background-color: transparent;
-  padding: 1rem;
-  margin: 1rem;
-  color: #000;
-  border-radius: 7px;
-}
+
 
 input:focus,
 input:active,
@@ -47,11 +40,14 @@ a:hover {
   justify-content: space-evenly;
 }
 .register-container {
+  a {
+    @include linkbutton;
+  }
   width: 100%;
   height: 100%;
   max-width: 400px;
   margin: auto;
-  padding: 0vw 0 30vw 0;
+  padding: 5vw 0 0vw 0;
   @include flex();
   flex-direction: column;
   //box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
@@ -61,6 +57,9 @@ a:hover {
   }
 }
 .login-container {
+  a {
+    @include linkbutton;
+  }
   @include flex();
   flex-direction: column;
   width: 97%;
@@ -68,7 +67,7 @@ a:hover {
   max-width: 400px;
   border-radius: 0;
   margin: auto;
-  padding: 10vw 0 30vw 0;
+  padding: 10vw 0 4vw 0;
   input {
     margin: 10px 0 10px 0;
     @include input();

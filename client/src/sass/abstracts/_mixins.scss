@@ -20,3 +20,18 @@
     outline: transparent;
     
 }
+@mixin linkbutton {
+    text-decoration: inherit;
+    background-color: transparent;
+    padding: 1rem;
+    margin: 1rem;
+    color: #000;
+    border-radius: 7px;
+}
+@mixin selectthing {
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+}
