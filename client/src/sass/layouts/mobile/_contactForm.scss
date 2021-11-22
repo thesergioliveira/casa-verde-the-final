@@ -1,3 +1,4 @@
+// Contact form container
 .wrapper-contact {
   @include flex;
   flex-direction: column;
@@ -91,4 +92,12 @@
 .calendar {
   width: 14.8rem;
   border-radius: 5px;
+}
+
+// Response message setup
+.form-response {
+  width: 100vw;
+  margin: 1rem;
+  text-align: center;
+  font-weight: bold;
 }
