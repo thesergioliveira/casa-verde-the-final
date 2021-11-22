@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TechnicData from "../JSON/technic.json";
+import Technical from "./Gallery/Technical";
 import ContactInformation from "./ContactInformation";
 import ContactForm from "./ContactForm";
 import Map from "./Map";
 
 const TechnicalConsulting = () => {
-
   const technicMenu = TechnicData.map((obj) => {
     // const { id, name, link, img } = obj;
     const { img } = obj;
@@ -25,7 +25,7 @@ const TechnicalConsulting = () => {
     // tried to put the images into an array and map them, is not working for the  moment
     // const img = images.map((image) => {
     //   return (<img src={image} alt="details" width="100" height="100" />
-        
+
     //   )
     //});
     //console.log(img);
@@ -33,19 +33,21 @@ const TechnicalConsulting = () => {
       <li key={id}>
         <h2 id={linkId}>{name}</h2>
         <div>
-        <img src={img1} alt="details" width="100" height="100" />
-        <img src={img2} alt="details" width="100" height="100" />
+          <img src={img1} alt="details" width="100" height="100" />
+          <img src={img2} alt="details" width="100" height="100" />
         </div>
         <div>
-        <img src={img3} alt="details" width="100" height="100" />
-        <img src={img4} alt="details" width="100" height="100" />
+          <img src={img3} alt="details" width="100" height="100" />
+          <img src={img4} alt="details" width="100" height="100" />
         </div>
         <div>
-        <img src={img5} alt="details" width="100" height="100" />
-        <img src={img6} alt="details" width="100" height="100" />
+          <img src={img5} alt="details" width="100" height="100" />
+          <img src={img6} alt="details" width="100" height="100" />
         </div>
         {/* to do- create pages and adding links to them */}
-        <Link to="/{linkId}"><button>Show more</button></Link>
+        <Link to="/{linkId}">
+          <button>Show more</button>
+        </Link>
       </li>
     );
   });
@@ -58,10 +60,12 @@ const TechnicalConsulting = () => {
         <p>Technical Consulting</p>
       </div>
       <ul>{technicMenu}</ul>
-      <a href="#contact"><button>Contact Now!</button></a>
-      <div>
-        {componentsMenu}
-      </div>
+      <a href="#contact">
+        <button>Contact Now!</button>
+      </a>
+
+      <Technical />
+
       {/* to do- adding calendar and address */}
       {/* Info, Form && Map */}
       <ContactInformation />
