@@ -1,8 +1,13 @@
 // Normalize
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+}
+
+// Body setup
+body {
+  width: 100vw;
+  height: auto;
 }
