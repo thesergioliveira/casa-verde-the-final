@@ -219,7 +219,12 @@ allControllers.forgotPassword = async (req, res) => {
 };
 //reset password
 allControllers.resetPassword = async (req, res) => {
-  const { resetLink, newPassword } = req.body;
+  const { resetLink, newPassword, passwordConf } = req.body;
+  if (newPassword!==passwordConf){
+    return res
+          .status(401)
+          .json({ error: "False Password Confirmation please repeat" });
+  }
   
   if (resetLink) {
     verify(resetLink, process.env.RESET_PASSWORD_KEY, (err, decodedData) => {
