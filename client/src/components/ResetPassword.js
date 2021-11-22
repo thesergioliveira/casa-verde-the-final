@@ -15,6 +15,7 @@ const ResetPassword = ({ history }) => {
       .put("user/resetPassword", {
         resetLink,
         newPassword,
+        passwordConf,
       })
       .then((res) => {
         setMessage(res.data.message)
@@ -25,8 +26,8 @@ const ResetPassword = ({ history }) => {
         console.log(res.data.message);
       })
       .catch((error) => {
-        setMessage(error.data.message)
-        console.log(error.response.data);
+       setMessage(error.response.data.error)
+        console.log(error.response.data.error);
       });
   };
   return (
