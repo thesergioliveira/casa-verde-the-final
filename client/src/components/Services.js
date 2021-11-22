@@ -65,17 +65,20 @@ const Services = () => {
           </div>
         </div>
       </div>
-      {/* Weddings */}
-      <Weddings />
 
-      {/* Plant Ideas */}
-      <PlantIdeas />
+      <div className="wrapper-gallery">
+        {/* Weddings */}
+        <Weddings />
 
-      {/* Gift Ideas */}
-      <GiftIdeas />
+        {/* Plant Ideas */}
+        <PlantIdeas />
 
-      {/* Funerals */}
-      <Funerals />
+        {/* Gift Ideas */}
+        <GiftIdeas />
+
+        {/* Funerals */}
+        <Funerals />
+      </div>
 
       {/* Info, Form && Map */}
       <ContactInformation />

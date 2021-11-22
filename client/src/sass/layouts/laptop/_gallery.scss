@@ -1,28 +1,43 @@
 .home {
-  .wrapper-img-services {
-    .container-gallery {
-      width: 85vw;
-      max-width: 70rem;
-      h3 {
-        font-size: 2.5rem;
-      }
+  .wrapper-gallery {
+    @include flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
 
-      .container-img-outer {
-        .container-img-inner {
-          width: 30%;
-          height: 30%;
-          margin-bottom: 3%;
-          @include flex;
+    .wrapper-img-services {
+      width: 50%;
+
+      .container-gallery {
+        width: 100%;
+
+        .container-description {
+          width: 70%;
+          p {
+            font-size: 1rem;
+          }
         }
-      }
 
-      button {
-        width: 45%;
-        height: 2.2rem;
-        bottom: 3.2rem;
-        border-radius: 0.5rem;
-        font-size: 1rem;
-        box-shadow: 0.3rem 0.3rem 0.8rem black;
+        h3 {
+          font-size: 2rem;
+        }
+
+        .container-img-outer {
+          .container-img-inner {
+            width: 30%;
+            height: 30%;
+            margin-bottom: 3%;
+            @include flex;
+          }
+        }
+
+        button {
+          width: 40%;
+          height: 2.2rem;
+          bottom: 2rem;
+          border-radius: 0.5rem;
+          font-size: 1rem;
+          box-shadow: 0.3rem 0.3rem 0.8rem black;
+        }
       }
     }
   }
