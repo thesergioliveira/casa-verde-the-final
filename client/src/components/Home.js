@@ -97,7 +97,7 @@ const Home = () => {
         <p>RAUM FÜR IDEEN</p>
       </div>
       <div className="wrapper-btn-house">{homeElements}</div>
-      <div>{cardElements}</div>
+      <div className="wrapper-cards">{cardElements}</div>
     </div>
   );
 };
