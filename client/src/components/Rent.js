@@ -10,7 +10,7 @@ const Rent = () => {
     <div className="home">
       {/* Roof */}
       <div className="home-top absolut">
-        <div className="roof"></div>
+        {/* <div className="roof"></div> */}
         <h1>Casa Verde</h1>
         <p>Rental Services</p>
       </div>
