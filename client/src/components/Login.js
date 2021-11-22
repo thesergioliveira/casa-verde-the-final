@@ -49,6 +49,7 @@ const Login = ({ history }) => {
         placeholder="confirm your password"
       />
       <button className="button-dash" onClick={loginUser}>Login</button>
+      <Link to="/forgetPassword">Forget Password?</Link>
       <h4>OR</h4>
       <Link to="/register">Register</Link>
       <h2>{loginMessage}</h2>

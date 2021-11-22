@@ -5,11 +5,7 @@ const bcrypt = require("bcrypt");
 const { createToken } = require("../JWT-check");
 const { sign, verify } = require("jsonwebtoken");
 const _ = require("lodash");
-const mailGun = require("mailgun-js");
-var API_KEY = process.env.API_KEY;
-var DOMAIN = process.env.DOMAIN;
-const mg = mailGun({ apiKey: API_KEY, domain: DOMAIN });
-
+const nodemailer = require("nodemailer");
 const allControllers = {};
 
 // Add new User
@@ -179,11 +175,10 @@ allControllers.getDate = async (req, res) => {
   res.status(200).json(req.id);
 };
 
-
 //forget password
 allControllers.forgotPassword = async (req, res) => {
   const email = req.body.email;
-  User.findOne({ email }, (err, user) => {
+  User.findOne({ email }, async (err, user) => {
     if (err || !user) {
       return res
         .status(400)
@@ -192,25 +187,31 @@ allControllers.forgotPassword = async (req, res) => {
     const token = sign({ _id: user._id }, process.env.RESET_PASSWORD_KEY, {
       expiresIn: "20m",
     });
-    console.log(token);
+    await user.updateOne({ resetLink: token });
+    let testAccount = await nodemailer.createTestAccount();
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL, // generated ethereal user
+        pass: process.env.PASSWORD, // generated ethereal password
+      },
+    });
     const data = {
-      from: "noreply@hello.com",
+      from: "CasaVerde@gmail.de",
       to: email,
       subject: "Reset Your Password",
-      html: `<h2>Please click on given link to reset your password</h2
-      <p>${process.env.CLIENT_URL}/resetPassword/${token}</p>`,
+      html: `<html>
+        <h2>Please click on given link to reset your password</h2
+        <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
+      </html>`,
     };
-    return user.updateOne({ resetLink: token }, function (err, success) {
+
+    await transporter.sendMail(data, function (err, success) {
       if (err) {
         return res.status(400).json({ error: "reset password link error" });
       } else {
-        mg.messages().send(data, function (error, body) {
-          if (error) {
-            return res.status(400).json({ error: "Cannot sent" });
-          }
-          return res.status(200).json({
-            message: "Email has been sent ,kindly follow the instructions",
-          });
+        res.status(200).json({
+          message: "Email has been sent ,Check your Email",
         });
       }
     });
@@ -218,7 +219,7 @@ allControllers.forgotPassword = async (req, res) => {
 };
 //reset password
 allControllers.resetPassword = async (req, res) => {
-  const { resetLink, newPass } = req.body;
+  const { resetLink, newPassword } = req.body;
   if (resetLink) {
     verify(resetLink, process.env.RESET_PASSWORD_KEY, (err, decodedData) => {
       if (err) {
@@ -233,7 +234,7 @@ allControllers.resetPassword = async (req, res) => {
           .status(400)
           .json({ error: "user with this token does not exist" });
       }
-      const hashedPassword = await bcrypt.hash(newPass, 10);
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
       const obj = { password: hashedPassword };
       user = _.extend(user, obj);
       user.save();
