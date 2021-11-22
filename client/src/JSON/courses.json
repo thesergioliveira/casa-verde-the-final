@@ -4,6 +4,7 @@
     "name": "Ballet",
     "link": "#ballet",
     "linkId": "ballet",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/ballet-pilates/ballet/ballet-1.png",
       "./images/ballet-pilates/ballet/ballet-2.png",
@@ -20,6 +21,7 @@
     "name": "Pilates",
     "link": "#pilates",
     "linkId": "pilates",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/ballet-pilates/pilates/pilates-1.png",
       "./images/ballet-pilates/pilates/pilates-2.png",
