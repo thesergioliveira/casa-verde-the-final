@@ -48,7 +48,8 @@ const Login = ({ history }) => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="confirm your password"
       />
-      <button onClick={loginUser}>Login</button>
+      <button className="button-dash" onClick={loginUser}>Login</button>
+      <Link to="/forgetPassword">Forget Password?</Link>
       <h4>OR</h4>
       <Link to="/register">Register</Link>
       <h2>{loginMessage}</h2>

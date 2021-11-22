@@ -5,6 +5,7 @@ import React from "react";
 //import { get } from "mongoose";
 import ShopItem from "./ShopItem";
 import ShopSlider from "./ShopSlider";
+import { FaSearch } from "react-icons/fa";
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -12,12 +13,6 @@ function Shop() {
   const [deliveryInput, setDeliveryInput] = useState(1);
   //to get all products
   const getAllProducts = () => {
-    // the config will use it when add to the basket to check if its the right user or not
-    /*const config = {
-      headers: {
-        authorization: localStorage.getItem("token"),
-      },
-    };*/
     axios
       .get("user/products")
       .then((res) => {
@@ -47,128 +42,94 @@ function Shop() {
   let searchResult = productFromStorage
     ?.filter(
       (el) =>
-        el.name.includes(userText) ||
-        el.description.includes(userText) ||
-        el.category.includes(userText)
+        el.name.toLocaleLowerCase().includes(userText) ||
+        el.description.toLocaleLowerCase().includes(userText) ||
+        el.category.toLocaleLowerCase().includes(userText)
     )
     .map((obj) => {
-      // const {
-      //   id,
-      //   category,
-      //   name,
-      //   price,
-      //   description,
-      //   delivery,
-      //   image,
-      //   quantity,
-      // } = obj;
       return <ShopItem obj={obj} />;
     });
   // products price filter
   priceInput === "high"
     ? data.sort((a, b) => b.price - a.price)
     : data.sort((a, b) => a.price - b.price);
-  //delivery filter  WE NEED NEW SCHEMA PLZ DONT DELETE
-  // if (deliveryInput=="yes"){
-  // data && setData(data.filter(el => el.delivery === true))
-  // }else if (deliveryInput=="no"){
-  //   data && setData(data.filter(el => el.delivery === false))
-  // }
-  //console.log(priceInput , deliveryInput)
-  //getFlowerAndPlantsPots
+
   const getFlowerAndPlantsPots = data
     ?.filter((el) => el.category === "Flower and plants pots")
     .map((obj) => {
-      // const { id, category, name, price, description, quantity } = obj;
       return <ShopItem obj={obj} />;
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
     ?.filter((el) => el.category === "Bouquet of flowers")
     .map((obj) => {
-      // const { id, category, name, price, description, quantity } = obj;
       return <ShopItem obj={obj} />;
     });
   //getGiftBaskets
   const getGiftBaskets = data
     ?.filter((el) => el.category === "Gift baskets")
     .map((obj) => {
-      // const { id, category, name, price, description, quantity } = obj;
       return <ShopItem obj={obj} />;
     });
   //italianProducts
   const italianProducts = data
     ?.filter((el) => el.category === "Italian Products")
     .map((obj) => {
-      // const { id, category, name, price, description, quantity } = obj;
       return <ShopItem obj={obj} />;
     });
   // get all products
   const getProducts = data?.map((obj) => {
-    // const { _id, category, name, price, description, quantity } = obj;
-    // version with ul
-    // return <li><ShopItem obj ={obj} /></li>
     return <ShopItem obj={obj} />;
   });
   return (
     <div className="shop">
       <h1>WELCOME TO OUR CASA VERDE SHOP</h1>
-      <input
-        type="search"
-        name="search"
-        onChange={changeHandle}
-        value={userInput}
-        className="searchInput"
-        placeholder="search ..."
-      />
-      price:{" "}
-      <select
-        id="price"
-        onChange={(e) => {
-          setPriceInput(e.target.value);
-        }}
-      >
-        <option value="low"> low to high </option>
-        <option value="high"> high to low </option>
-      </select>
-      delivery method:{" "}
-      <select
-        id="delivery"
-        onChange={(e) => {
-          // setDeliveryInput(e.target.value)
-          setDeliveryInput(deliveryInput + 1);
-          let newdata = data.filter(
-            (el) => el.delivery.toString() === e.target.value
-          );
-          setData(newdata);
-          console.log(typeof e.target.value, e.target.value);
-          console.log(newdata);
-          //
-        }}
-      >
-        <option value={true}> pick up from store </option>
-        <option value={false}> shipping </option>
-        <option value={null}> all </option>
-      </select>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          flexWrap: "wrap",
-        }}
-      >
-        <div
-          className="space-for-results"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            backgroundColor: "red",
-          }}
-        >
+      <div className="search-container">
+        <div className="search-bar">
+          <FaSearch />
+          <input
+            type="search"
+            name="search"
+            onChange={changeHandle}
+            value={userInput}
+            className="searchInput"
+            placeholder="search ..."
+          />
+        </div>{" "}
+        <div className="filters">
+          <div>price:
+          <select
+            id="price"
+            onChange={(e) => {
+              setPriceInput(e.target.value);
+            }}
+          >
+            <option value="low"> low to high </option>
+            <option value="high"> high to low </option>
+          </select></div>
+          <div> delivery method:
+          <select
+            id="delivery"
+            onChange={(e) => {
+              // setDeliveryInput(e.target.value)
+              setDeliveryInput(deliveryInput + 1);
+              let newdata = data.filter(
+                (el) => el.delivery.toString() === e.target.value
+              );
+              setData(newdata);
+              console.log(typeof e.target.value, e.target.value);
+
+              //
+            }}
+          >
+            <option value={true}> pick up from store </option>
+            <option value={false}> shipping </option>
+            <option value={null}> all </option>
+          </select></div>
+        </div>
+      </div>
+      <div className="search-result">
+        <div className="space-for-results">
           {userInput.length ? searchResult : null}
         </div>
         {/* Slider */}

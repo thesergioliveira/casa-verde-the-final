@@ -11,6 +11,9 @@ router.post("/register", middleware.validator, allControllers.addUser);
 
 // login http://localhost:5005/user/login
 router.post("/login", allControllers.login);
+//forget password
+router.put("/forgotPassword", allControllers.forgotPassword);
+router.put("/resetPassword", allControllers.resetPassword);
 // update user infos && password && delete
 router
   .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)

@@ -13,6 +13,7 @@ function EditUser({ history }) {
       authorization: token,
     },
   };
+
   const [username, setUsername] = useState(userData?.username);
   const [email, setEmail] = useState(() => userData?.email);
   const [password, setPassword] = useState(null);
@@ -111,11 +112,10 @@ function EditUser({ history }) {
   };
 
   return (
-    <div style={{ height: "50vh" }}>
+    <div className="edit-user-container">
       <h1>Profile</h1>
       <div>
         <h3> User Information</h3>
-
         <input
           type="text"
           value={username}
@@ -172,7 +172,6 @@ function EditUser({ history }) {
           onChange={(e) => setCity(e.target.value)}
           placeholder="enter your City Name"
         />
-
         <input
           type="postalCode"
           value={postalCode}
@@ -180,7 +179,7 @@ function EditUser({ history }) {
           onChange={(e) => setPostalCode(e.target.value)}
           placeholder="enter your postalCode"
         />
-        <button onClick={updateUserInfo}>update Your Profile</button>
+        <button onClick={updateUserInfo}>Update Your Profile</button>
       </div>
       <div>
         <h3> User Password</h3>
@@ -191,7 +190,6 @@ function EditUser({ history }) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="enter your current password"
         />
-
         <input
           type="password"
           value={NewPassword}
@@ -206,7 +204,7 @@ function EditUser({ history }) {
           onChange={(e) => setPasswordConf(e.target.value)}
           placeholder="confirm your password"
         />
-        <button onClick={changePassword}>change your password</button>
+        <button onClick={changePassword}>Change Your Password</button>
       </div>
       <div>
         <h3>Delete your account</h3>

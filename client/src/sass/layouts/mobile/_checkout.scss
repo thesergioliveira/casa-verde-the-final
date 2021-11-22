@@ -5,36 +5,26 @@
 }
 
 .main-checkout-container {
-  display: flex;
+  @include flex();
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  padding: 0;
+   padding: 0;
   margin: 0;
   border-radius: 0;
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
-  h2{
-    font-style:italic; 
+  h2 {
+    font-style: italic;
   }
- h3{
-    font-style:italic; 
-    padding: 1.5rem; 
+  h3 {
+    font-style: italic;
+    padding: 1.5rem;
+  }
 
-  }
-  
-  input, p {
-    display: flex;
-   justify-content: left;
-    align-items: center;
-   width: 100%;
-    height: 30px;
-    border-radius: 7px;
-   border: 1px solid $cream;
+  input,
+  p {
+    @include input();
     padding-left: 5px;
-    outline: transparent;
   }
 
   .button-dash {
@@ -47,7 +37,6 @@
     color: black;
     flex-direction: column;
     justify-content: space-evenly;
-    
   }
 
   .shipping-msg {
@@ -69,8 +58,7 @@
       font-size: 1.5rem;
     }
     li:nth-child(3) {
-      
-      border-top:2px solid $cream;
+      border-top: 2px solid $cream;
     }
   }
 }

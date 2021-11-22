@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HomeData from "../JSON/home.json";
 import { v4 as uuidv4 } from "uuid";
+import TextMe from "./TextMe";
 
 const Home = () => {
   const homeElements = HomeData.map((obj) => {
@@ -98,6 +99,7 @@ const Home = () => {
       </div>
       <div className="wrapper-btn-house">{homeElements}</div>
       <div className="wrapper-cards">{cardElements}</div>
+      <TextMe />
     </div>
   );
 };

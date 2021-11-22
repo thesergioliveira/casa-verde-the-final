@@ -5,7 +5,7 @@ function Booking() {
   const [value, onChange] = useState(new Date());
 
   return (
-    <div>
+    <div className="calendar">
       <DateTimePicker
         value={value}
         onChange={onChange}

@@ -3,7 +3,9 @@ const { User } = require("../model/casaverdeModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../JWT-check");
-
+const { sign, verify } = require("jsonwebtoken");
+const _ = require("lodash");
+const nodemailer = require("nodemailer");
 const allControllers = {};
 
 // Add new User
@@ -24,6 +26,7 @@ allControllers.addUser = async (req, res) => {
       country: req.body.country,
       houseNumber: req.body.houseNumber,
       postalCode: req.body.postalCode,
+      resetLink: {},
     });
 
     await user.save();
@@ -170,5 +173,81 @@ allControllers.updatePassword = async (req, res) => {
 // test landing page
 allControllers.getDate = async (req, res) => {
   res.status(200).json(req.id);
+};
+
+//forget password
+allControllers.forgotPassword = async (req, res) => {
+  const email = req.body.email;
+  User.findOne({ email }, async (err, user) => {
+    if (err || !user) {
+      return res
+        .status(400)
+        .json({ error: "user with this email does not exist" });
+    }
+    const token = sign({ _id: user._id }, process.env.RESET_PASSWORD_KEY, {
+      expiresIn: "20m",
+    });
+    await user.updateOne({ resetLink: token });
+    let testAccount = await nodemailer.createTestAccount();
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL, // generated ethereal user
+        pass: process.env.PASSWORD, // generated ethereal password
+      },
+    });
+    const data = {
+      from: process.env.EMAIL,
+      to: email,
+      subject: "Reset Your Password",
+      html: `<html>
+        <h2>Please click on given link to reset your password</h2
+        <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
+      </html>`,
+    };
+
+    await transporter.sendMail(data, function (err, success) {
+      if (err) {
+        return res.status(400).json({ error: "reset password link error" });
+      } else {
+        res.status(200).json({
+          message: "Email has been sent ,Check your Email",
+        });
+      }
+    });
+  });
+};
+//reset password
+allControllers.resetPassword = async (req, res) => {
+  const { resetLink, newPassword, passwordConf } = req.body;
+  if (newPassword!==passwordConf){
+    return res
+          .status(401)
+          .json({ error: "False Password Confirmation please repeat" });
+  }
+  
+  if (resetLink) {
+    verify(resetLink, process.env.RESET_PASSWORD_KEY, (err, decodedData) => {
+      if (err) {
+        return res
+          .status(401)
+          .json({ error: "Incorrect token or it is expired" });
+      }
+    });
+    User.findOne({ resetLink }, async (err, user) => {
+      if (err || !user) {
+        return res
+          .status(400)
+          .json({ error: "user with this token does not exist" });
+      }
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      const obj = { password: hashedPassword };
+      user = _.extend(user, obj);
+      user.save();
+      res.status(200).json({ message: "Your password has been changed" });
+    });
+  } else {
+    return res.status(401).json({ error: "Authentication error!!!" });
+  }
 };
 module.exports = allControllers;
