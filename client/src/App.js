@@ -20,8 +20,8 @@ import { DataProvider } from "./components/UserContext";
 import { AuthContextProvider } from "./components/AuthContext";
 import AdminDash from "./components/AdminDash";
 import Checkout from "./components/Shop/Checkout";
-import ForgetPassword from "./components/ForgetPassword"
-import ResetPassword from "./components/ResetPassword"
+import ForgetPassword from "./components/ForgetPassword";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
   // Logo setup
