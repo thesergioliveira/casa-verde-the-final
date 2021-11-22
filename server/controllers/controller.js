@@ -26,7 +26,36 @@ allControllers.addUser = async (req, res) => {
       country: req.body.country,
       houseNumber: req.body.houseNumber,
       postalCode: req.body.postalCode,
-      resetLink: {},
+    });
+    const token = await sign({ _id: user._id }, process.env.EMAIL_VERIFY_KEY, {
+      expiresIn: "20m",
+    });
+
+    let testAccount = nodemailer.createTestAccount();
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
+      },
+    });
+    const data = {
+      from: process.env.EMAIL,
+      to: req.body.email,
+      subject: "Verify Your Email",
+      html: `<html>
+        <h2>Please click on given link to Verify your Account</h2
+        <a href="${process.env.CLIENT_URL}/verifyEmail/${token}">Verify your Email</a>
+      </html>`,
+    };
+    await transporter.sendMail(data, function (err, success) {
+      if (err) {
+        return res.status(400).json({ error: "verify Email link error" });
+      } else {
+        res.status(200).json({
+          message: "Email has been sent ,Check your Email",
+        });
+      }
     });
 
     await user.save();
@@ -220,12 +249,12 @@ allControllers.forgotPassword = async (req, res) => {
 //reset password
 allControllers.resetPassword = async (req, res) => {
   const { resetLink, newPassword, passwordConf } = req.body;
-  if (newPassword!==passwordConf){
+  if (newPassword !== passwordConf) {
     return res
-          .status(401)
-          .json({ error: "False Password Confirmation please repeat" });
+      .status(401)
+      .json({ error: "False Password Confirmation please repeat" });
   }
-  
+
   if (resetLink) {
     verify(resetLink, process.env.RESET_PASSWORD_KEY, (err, decodedData) => {
       if (err) {
