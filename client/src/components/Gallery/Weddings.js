@@ -10,7 +10,7 @@ const Weddings = () => {
 
   // onClick show more images
   const showMoreImg = () => {
-    setImages(images + 6);
+    setImages(images + 4);
   };
 
   // Category --> heading, images and button
