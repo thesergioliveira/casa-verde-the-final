@@ -22,6 +22,8 @@ import AdminDash from "./components/AdminDash";
 import Checkout from "./components/Shop/Checkout";
 import ForgetPassword from "./components/ForgetPassword"
 import ResetPassword from "./components/ResetPassword"
+import ShopItem from "./components/Shop/ShopItem";
+import ItemDetails from "./components/Shop/ItemDetails";
 
 function App() {
   // Logo setup
@@ -63,6 +65,7 @@ function App() {
               <Route path="/basket" exact component={Basket}></Route>
               <Route path="/basket/checkout" exact component={Checkout}></Route>
               <Route path="/settings" exact component={EditUser}></Route>
+              <Route path="/shop/product/:id" exact component={ItemDetails}></Route>
             </Switch>
           </main>
           <Footer logo={logo} />

@@ -6,6 +6,7 @@ import React from "react";
 import ShopItem from "./ShopItem";
 import ShopSlider from "./ShopSlider";
 import { FaSearch } from "react-icons/fa";
+import ItemDetails from "./ItemDetails";
 function Shop() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -79,8 +80,9 @@ function Shop() {
     });
   // get all products
   const getProducts = data?.map((obj) => {
-    return <ShopItem obj={obj} />;
-  });
+     return <ShopItem obj={obj} />; 
+  
+  }); 
   return (
     <div className="shop">
       <h1>WELCOME TO OUR CASA VERDE SHOP</h1>
