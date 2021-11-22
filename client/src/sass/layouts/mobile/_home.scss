@@ -40,6 +40,7 @@
   }
 
   // Top div which includes the roof div, h1 and the p tag
+
   .home-top {
     width: 100%;
     height: auto;
@@ -76,6 +77,11 @@
       padding: 0.2em 0;
       text-align: center;
     }
+  }
+
+  .absolut {
+    position: absolute;
+    top: 4rem;
   }
 
   // Ul for the buttons/links
