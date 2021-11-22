@@ -41,7 +41,7 @@ const ResetPassword = ({ history }) => {
         placeholder="enter your password"
       />
        <input
-        type="passwordConf"
+        type="password"
         value={passwordConf}
         name="passwordConf"
         onChange={(e) => setPasswordConf(e.target.value)}

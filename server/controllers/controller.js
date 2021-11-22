@@ -197,7 +197,7 @@ allControllers.forgotPassword = async (req, res) => {
       },
     });
     const data = {
-      from: "CasaVerde@gmail.de",
+      from: process.env.EMAIL,
       to: email,
       subject: "Reset Your Password",
       html: `<html>
@@ -220,6 +220,7 @@ allControllers.forgotPassword = async (req, res) => {
 //reset password
 allControllers.resetPassword = async (req, res) => {
   const { resetLink, newPassword } = req.body;
+  
   if (resetLink) {
     verify(resetLink, process.env.RESET_PASSWORD_KEY, (err, decodedData) => {
       if (err) {
