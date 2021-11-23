@@ -1,4 +1,16 @@
 .home {
+  .home-top {
+    .header-rental {
+      font-size: 4.25rem;
+    }
+
+    .subheader-rental {
+      width: 18rem;
+      font-size: 1.6rem;
+      margin-top: 3.5rem;
+    }
+  }
+
   .wrapper-cards {
     @include flex;
     justify-content: space-evenly;
