@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import TextMe from "./TextMe";
 
 const Home = () => {
+
   const homeElements = HomeData.map((obj) => {
     const { name, path } = obj;
     return (
