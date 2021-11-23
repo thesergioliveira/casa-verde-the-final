@@ -11,8 +11,8 @@ const Rent = () => {
       {/* Roof */}
       <div className="home-top absolut">
         {/* <div className="roof"></div> */}
-        <h1>Casa Verde</h1>
-        <p>Rental Services</p>
+        <h1 className="header-rental">Casa Verde</h1>
+        <p className="subheader-rental">Rental Services</p>
       </div>
 
       <div className="container-room-rental">
