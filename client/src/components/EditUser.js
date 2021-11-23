@@ -108,6 +108,7 @@ function EditUser({ history }) {
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
+        setUpdateMessage(err?.response?.data.message);
       });
   };
 

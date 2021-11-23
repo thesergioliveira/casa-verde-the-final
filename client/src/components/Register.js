@@ -37,7 +37,7 @@ const Register = () => {
   // i used useHistory to redirect after registering to the login page
   let history = useHistory();
   const redirect = () => {
-    history.push("/");
+    history.push("/login");
   };
   return (
     <div className="register-container">

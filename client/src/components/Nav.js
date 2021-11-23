@@ -5,6 +5,7 @@ import { DataContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
+import { GoUnverified, GoVerified } from "react-icons/go";
 
 // set onClick for logo to close the menu - to do
 const Nav = ({ logo }) => {
@@ -18,8 +19,10 @@ const Nav = ({ logo }) => {
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
 
-  // get the userName
+  // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
+  const accountVerified = data?.user?.verifyAccount;
+  
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
@@ -102,10 +105,11 @@ const Nav = ({ logo }) => {
                       Settings <FiSettings />
                     </li>
                   </Link>
-                  <li key="54" onClick={logOut} alt="logout">
+                  <li key="54">Account: {accountVerified ? <GoVerified style={{"color":"green"}}/>:<GoUnverified style={{"color":"red"}}/>}</li> 
+                  <li key="55" onClick={logOut} alt="logout">
                     Logout <FiLogOut />
                   </li>
-                </ul>
+                </ul> 
               </>
             ) : (
               <>

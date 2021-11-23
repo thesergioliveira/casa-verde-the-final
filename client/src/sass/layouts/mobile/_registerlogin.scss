@@ -56,7 +56,7 @@ a:hover {
     @include input();
   }
 }
-.login-container,.reset-container ,.forget-container{
+.login-container,.reset-container ,.forget-container,.verify-container{
   a {
     @include linkbutton;
   }
