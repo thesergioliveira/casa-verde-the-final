@@ -13,7 +13,7 @@
         .container-description {
           width: 70%;
           p {
-            font-size: 1rem;
+            font-size: 1.1rem;
           }
         }
 
@@ -31,12 +31,18 @@
         }
 
         button {
-          // width: 40%;
-          // height: 2.2rem;
-          // bottom: 2rem;
-          // border-radius: 0.5rem;
-          // font-size: 1rem;
-          // box-shadow: 0.3rem 0.3rem 0.8rem black;
+          width: 40%;
+          height: 2rem;
+          bottom: 2rem;
+
+          font-size: 1rem;
+          box-shadow: 0.3rem 0.3rem 0.8rem black;
+        }
+
+        .container-more-blur {
+          width: 40%;
+          height: 2rem;
+          bottom: 2rem;
         }
       }
     }
