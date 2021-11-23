@@ -9,8 +9,8 @@ import Map from "./Map";
 const BalletAndPilates = () => {
   return (
     <div className="home">
-      <div className="home-top">
-        <div className="roof"></div>
+      <div className="home-top absolut">
+        {/* <div className="roof"></div> */}
         <h1>Casa Verde</h1>
         <p>Courses</p>
       </div>

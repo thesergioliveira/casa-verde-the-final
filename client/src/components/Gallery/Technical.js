@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import EventsData from "../../JSON/events.json";
+import TechnicalData from "../../JSON/technic.json";
 import { v4 as uuidv4 } from "uuid";
 
-const Seminaries = () => {
+const Technical = () => {
   const [images, setImages] = useState(5);
 
-  const seminaries = EventsData.filter((obj) => obj.name === "Seminaries");
+  const technicalConsulting = TechnicalData.filter(
+    (obj) => obj.name === "Technical Consulting"
+  );
 
   // onClick show more images
   const showMoreImg = () => {
@@ -13,7 +15,7 @@ const Seminaries = () => {
   };
 
   // Category --> heading, images and button
-  const seminariesGallery = seminaries.map((obj) => {
+  const technicalConsultingGallery = technicalConsulting.map((obj) => {
     const { name, linkId, imgs, description } = obj;
 
     return (
@@ -48,7 +50,9 @@ const Seminaries = () => {
     );
   });
 
-  return <div className="wrapper-img-services">{seminariesGallery}</div>;
+  return (
+    <div className="wrapper-img-services">{technicalConsultingGallery}</div>
+  );
 };
 
-export default Seminaries;
+export default Technical;

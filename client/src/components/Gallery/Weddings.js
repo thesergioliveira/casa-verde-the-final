@@ -10,7 +10,7 @@ const Weddings = () => {
 
   // onClick show more images
   const showMoreImg = () => {
-    setImages(images + 6);
+    setImages(images + 4);
   };
 
   // Category --> heading, images and button
@@ -35,7 +35,7 @@ const Weddings = () => {
               return (
                 // active-img-inner -------------------------------- onClick Image
                 <div key={uuidv4()} className="container-img-inner ">
-                  <IoMdClose className="img-close" />
+                  {/* <IoMdClose className="img-close" /> */}
                   <img src={process.env.PUBLIC_URL + img} alt={linkId} />
                 </div>
               );
