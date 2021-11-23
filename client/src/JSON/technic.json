@@ -1,15 +1,33 @@
 [
-    {
-        "id": 0,
-        "name": "Technical Consulting",
-        "link": "#technic",
-        "linkId": "technic",
-        "img": "./images/website.jpg",
-        "img1": "./images/website.jpg",
-        "img2": "./images/shop.png",
-        "img3": "./images/website.jpg",
-        "img4": "./images/shop.png",
-        "img5": "./images/website.jpg",
-        "img6": "./images/shop.png"
-      }
+  {
+    "id": 0,
+    "name": "Technical Consulting",
+    "link": "#technic",
+    "linkId": "technic",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imgs": [
+      "./images/technical-consulting/technical-1.png",
+      "./images/technical-consulting/technical-2.png",
+      "./images/technical-consulting/technical-3.png",
+      "./images/technical-consulting/technical-4.png",
+      "./images/technical-consulting/technical-5.png",
+      "./images/technical-consulting/technical-6.png",
+      "./images/technical-consulting/technical-7.png",
+      "./images/technical-consulting/technical-8.png",
+      "./images/technical-consulting/technical-9.png",
+      "./images/technical-consulting/technical-10.png",
+      "./images/technical-consulting/technical-11.png",
+      "./images/technical-consulting/technical-12.png",
+      "./images/technical-consulting/technical-13.png",
+      "./images/technical-consulting/technical-14.png",
+      "./images/technical-consulting/technical-15.png",
+      "./images/technical-consulting/technical-16.png",
+      "./images/technical-consulting/technical-17.png",
+      "./images/technical-consulting/technical-18.png",
+      "./images/technical-consulting/technical-19.png",
+      "./images/technical-consulting/technical-20.png",
+      "./images/technical-consulting/technical-21.png",
+      "./images/technical-consulting/technical-22.png"
+    ]
+  }
 ]
