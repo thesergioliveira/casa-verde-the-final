@@ -233,6 +233,14 @@ allProductControllers.getAllProducts = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+allProductControllers.getOne = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+}
 // get all products from a user upon the id
 
 allProductControllers.getOneByID = async (req, res) => {

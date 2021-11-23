@@ -10,7 +10,7 @@ const multer = require("multer");
 const { dir } = require("console");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads/");
+    cb(null, "../uploads/");
   },
   filename: function (req, file, cb) {
     cb(null, new Date().toISOString() + file.originalname);

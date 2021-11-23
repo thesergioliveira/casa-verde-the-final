@@ -30,6 +30,15 @@ const Basket = () => {
 
     displayData();
   }, []);
+
+  let displa = "none";
+
+  //count total and allow checkout button
+
+  let total = data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0);
+  {
+    total > 0 ? (displa = "inline") : (displa = "none");
+  }
   // already bought from someone else
   let notAvailablecartItems = data.basket?.filter((item) => item.quantity <= 0);
 
@@ -44,13 +53,26 @@ const Basket = () => {
   // not delieverable items
   let notDeliverable = result?.filter((item) => item.delivery == false);
   console.log(notDeliverable);
-  let displa = "none";
-
-  //count total and allow checkout button
-  let total = result?.map((item) => item.price).reduce((a, b) => a + b, 0);
-  {
-    total > 0 ? (displa = "inline") : (displa = "none");
-  }
+  const clearSoldout =async () => {
+    if (notAvailablecartItems.length > 0) {
+      await notAvailablecartItems?.map((item) => {
+        console.log("CHAO")
+        axios
+          .put(
+            "user/removeFromTheBasket",
+            {
+              productId: item.id,
+            },
+            config
+          )
+          .then((res) => {
+            console.log(res.data.message);
+          });
+      });
+    } else {
+      console.log("no items to remove");
+    }
+  };
   return (
     <div className="main-basket-container">
       <h1>Shopping Basket</h1>
@@ -90,7 +112,7 @@ const Basket = () => {
       </div>
       <aside>
         {notDeliverable?.length ? (
-          <h4>
+          <h4 className="shipping-msg">
             the {notDeliverable?.map((item) => `${item.name}, `)} are too
             sensitive to be delivered. Feel free to come from our shop
           </h4>
@@ -111,7 +133,7 @@ const Basket = () => {
         </ul>
       </aside>
       <aside>
-        <ContactInformation/>
+        <ContactInformation />
         {/* <h4>Adresse</h4>
 
         <p>Casa Verde</p>
@@ -123,7 +145,7 @@ const Basket = () => {
           Total:
           {total} $
         </h3>
-        <p> proceed to Checkout</p>
+        <p onClick={clearSoldout}> proceed to Checkout</p>
       </Link>
     </div>
   );
