@@ -19,12 +19,12 @@
     @include flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 100%;
+    width: 95%;
 
     .card-element {
-      width: 35%;
+      width: 40%;
       height: 50vh;
-      margin: 2rem 1rem;
+      margin: 2rem 0;
     }
 
     .card-top {
