@@ -40,6 +40,9 @@ const Workshops = () => {
           })}
         </div>
 
+        {/* blur effect */}
+        <div className="container-more-blur"></div>
+
         {/* Button --> Show more */}
         <button key={uuidv4()} onClick={showMoreImg}>
           Show more
