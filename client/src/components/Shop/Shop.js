@@ -153,8 +153,7 @@ function Shop({ history }) {
             </select>
           </div>
           <div>
-            {" "}
-            delivery method:
+            delivery:
             <select
               id="delivery"
               onChange={(e) => {
