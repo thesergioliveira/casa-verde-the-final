@@ -11,6 +11,10 @@
     }
   }
 
+  .wrapper-btn-house {
+      width: 80%;
+  }
+
   .wrapper-cards {
     @include flex;
     justify-content: space-evenly;
@@ -18,7 +22,7 @@
     width: 100%;
 
     .card-element {
-      width: 40%;
+      width: 35%;
       height: 50vh;
       margin: 2rem 1rem;
     }
