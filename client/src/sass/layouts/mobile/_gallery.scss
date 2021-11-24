@@ -97,14 +97,28 @@
 
       button {
         width: 50%;
-        height: 1.5rem;
+        height: 1.6rem;
         position: absolute;
         bottom: 1.8rem;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 0.6);
         border-radius: 0.75rem;
         border: none;
         font-size: 0.9rem;
         box-shadow: 0.2rem 0.2rem 0.6rem black;
+
+        &:hover {
+          background-color: rgba(128, 192, 139, 0.5);
+        }
+      }
+
+      .container-more-blur {
+        width: 50%;
+        height: 1.6rem;
+        position: absolute;
+        bottom: 1.8rem;
+        backdrop-filter: blur(3px);
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 0.75rem;
       }
     }
   }

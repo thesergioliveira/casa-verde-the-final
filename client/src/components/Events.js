@@ -53,6 +53,7 @@ const Events = () => {
           {/* Contact Button */}
           <div className="container-contact-btn">
             <a href="#contact">
+              <div className="container-contact-blur"></div>
               <button>Contact Now!</button>
             </a>
           </div>

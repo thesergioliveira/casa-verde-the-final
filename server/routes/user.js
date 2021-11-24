@@ -6,6 +6,7 @@ const allProductControllers = require("../controllers/productsController");
 //user route
 // get all products
 router.get("/products", allProductControllers.getAllProducts);
+router.get("/oneproduct/:id", allProductControllers.getOne)
 // register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
 // resent confirmation Email 
@@ -45,7 +46,7 @@ router
     middleware.checkToken,
     allProductControllers.removeFromBasket
   );
-
+router.put("/removeAll", middleware.checkToken, allProductControllers.removeAllfromBasket);
 router.put(
   "/checkout",
   middleware.checkToken,

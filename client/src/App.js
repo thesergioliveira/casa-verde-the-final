@@ -20,6 +20,7 @@ import { DataProvider } from "./components/UserContext";
 import { AuthContextProvider } from "./components/AuthContext";
 import AdminDash from "./components/AdminDash";
 import Checkout from "./components/Shop/Checkout";
+import ItemDetails from "./components/Shop/ItemDetails";
 import ForgetPassword from "./components/ForgetPassword";
 import ResetPassword from "./components/ResetPassword";
 import VerifyAccount from "./components/VerifyAccount";
@@ -65,6 +66,7 @@ function App() {
               <Route path="/basket" exact component={Basket}></Route>
               <Route path="/basket/checkout" exact component={Checkout}></Route>
               <Route path="/settings" exact component={EditUser}></Route>
+              <Route path="/shop/product/:id" exact component={ItemDetails}></Route>
             </Switch>
           </main>
           <Footer logo={logo} />
