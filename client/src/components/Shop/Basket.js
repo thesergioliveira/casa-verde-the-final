@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 import ShopItem from "./ShopItem";
 import ContactInformation from "../ContactInformation";
 const Basket = () => {
-  //
-  // console.log(UserData.token)
-  // console.log(userdata.user.wishlist.map(item => item._id))
+
   const [data, setData] = useState([]);
   const [token] = useContext(AuthContext);
   const config = {
@@ -33,14 +31,9 @@ const Basket = () => {
 
   let displa = "none";
 
-  //count total and allow checkout button
 
-  let total = data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0);
-  {
-    total > 0 ? (displa = "inline") : (displa = "none");
-  }
   // already bought from someone else
-  let notAvailablecartItems = data.basket?.filter((item) => item.quantity <= 0);
+  let notAvailableCartItems = data.basket?.filter((item) => item.quantity <= 0);
 
   //no dublicated items
   let cartItems = data.basket?.map((item) => {
@@ -49,19 +42,35 @@ const Basket = () => {
   let maparr = new Map(cartItems);
 
   let result = [...maparr.values()].filter((item) => item.quantity > 0);
+  //no dublicated not available items
+  let cartNotavAilableItems = notAvailableCartItems?.map((item) => {
+    return [item._id, item];
+  });
+  let maparr2 = new Map(cartNotavAilableItems);
+let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity == 0);
 
   // not delieverable items
   let notDeliverable = result?.filter((item) => item.delivery == false);
-  console.log(notDeliverable);
+
+ 
+  //count total and allow checkout button
+
+  let total = data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0) - cartNotavAilableItems?.map((item) => item[1].price).reduce((a, b) => a + b, 0)
+  {
+    total > 0 ? (displa = "inline") : (displa = "none");
+  }
+
+
   const clearSoldout =async () => {
-    if (notAvailablecartItems.length > 0) {
-      await notAvailablecartItems?.map((item) => {
+    if (notAvailableCartItems.length > 0) {
+      await notAvailableCartItems?.map((item) => {
         console.log("CHAO")
+
         axios
           .put(
             "user/removeFromTheBasket",
             {
-              productId: item.id,
+              productId: item._id,
             },
             config
           )
@@ -79,11 +88,11 @@ const Basket = () => {
       <div className="lists-container">
         <p className="shipping-msg">
           ❗ Please take a note that not articles can be send !
-          {notAvailablecartItems?.length ? (
-            <h4>
-              the {notAvailablecartItems?.map((item) => `${item.name}, `)} are
+          {notAvailableCartItems?.length ? (
+            <p>
+              the {notAvailableCartItems?.map((item) => `${item.name}, `)} are
               unfortunately already sold out and not available anymore !
-            </h4>
+            </p>
           ) : null}
         </p>
 
@@ -93,6 +102,11 @@ const Basket = () => {
           </li>
           {result?.map((obj, index) => (
             <li key={index}>
+              <ShopItem obj={obj} />
+            </li>
+          ))}
+          {resultNotAvailable?.map((obj, index) => (
+            <li style={{color: "red"}} key={index}>
               <ShopItem obj={obj} />
             </li>
           ))}
@@ -134,10 +148,6 @@ const Basket = () => {
       </aside>
       <aside>
         <ContactInformation />
-        {/* <h4>Adresse</h4>
-
-        <p>Casa Verde</p>
-        <p>Hauptstr. 253 12345 Stadt</p> */}
       </aside>
 
       <Link style={{ display: `${displa}` }} to="/basket/checkout">
@@ -145,7 +155,7 @@ const Basket = () => {
           Total:
           {total} $
         </h3>
-        <p onClick={clearSoldout}> proceed to Checkout</p>
+        <p onClick={() => clearSoldout()}> proceed to Checkout</p>
       </Link>
     </div>
   );
