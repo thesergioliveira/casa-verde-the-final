@@ -2,15 +2,16 @@
   h1 {
     text-align: center;
   }
-  input, select{
-    @include input();
+  input,
+  select {
+    @include input;
     max-width: 80vw;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
   }
   select {
     appearance: none;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-   padding: 0 1em 0 0;
+    // box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    padding: 0 1em 0 0;
     margin: 0;
     max-width: 30vw;
     @include selectthing();
@@ -18,9 +19,6 @@
   select::-ms-expand {
     display: none;
   }
-
-
-
 }
 
 .products {
@@ -53,41 +51,49 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.search-bar {
-  width: 90%;
-  @include flex();
-  flex-direction: row;
-  input {
-      margin-left: 5px;
-  }
-  margin-bottom: 15px
-}
-
 
 .search-container {
   @include flex();
   flex-direction: row;
   flex-wrap: wrap;
+  border: 1px dashed red;
+
+  .search-bar {
+    width: 80%;
+    height: auto;
+    @include flex;
+    border: 2px solid black;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+
+    .search-icon {
+      margin-left: 0.5rem;
+    }
+
+    input {
+      margin: 1px 0.5rem;
+      border: transparent;
+    }
+  }
 }
 .filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 95%;
+  div {
+    @include flex();
+
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     flex-direction: row;
-    width: 95%;
-    div {
-        @include flex();
-        
-        display: flex;
-        flex-direction: row;
-    }
-    div:nth-child(1) {
-       
-        width: 50%;
-        padding-right: 15px;
-    }
-    // div:nth-child(2) {
-       
-    //     width: 50%;
-    // }
+  }
+  div:nth-child(1) {
+    width: 50%;
+    padding-right: 15px;
+  }
+  // div:nth-child(2) {
+
+  //     width: 50%;
+  // }
 }

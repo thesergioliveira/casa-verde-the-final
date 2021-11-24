@@ -129,7 +129,7 @@ function Shop({ history }) {
 
       <div className="search-container">
         <div className="search-bar">
-          <FaSearch />
+          <FaSearch className="search-icon" />
           <input
             type="search"
             name="search"
@@ -138,7 +138,7 @@ function Shop({ history }) {
             className="searchInput"
             placeholder="search ..."
           />
-        </div>{" "}
+        </div>
         <div className="filters">
           <div>
             price:
