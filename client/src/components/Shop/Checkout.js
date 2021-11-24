@@ -194,6 +194,7 @@ export default function Checkout() {
         </button>
       </div>
       <ul>
+        <li>menge: {data.basket?.length} </li>
         <li>
           Zwischensumme:
           {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)}$

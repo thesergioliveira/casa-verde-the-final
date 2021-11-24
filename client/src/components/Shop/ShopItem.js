@@ -4,6 +4,14 @@ import React from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 import { FiMinusCircle, FiPlusCircle, FiTrash2 } from "react-icons/fi";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  useParams,
+} from "react-router-dom";
+import ItemDetails from "./ItemDetails";
 
 function ShopItem(props) {
   // console.log(props.obj);
@@ -53,7 +61,7 @@ function ShopItem(props) {
       });
   };
   const removeFromBasket = (id) => {
-    setCount(count - 1);
+    setCount(0);
     axios
       .put(
         "user/removeFromTheBasket",
@@ -66,6 +74,22 @@ function ShopItem(props) {
         console.log(res.data.message);
       });
   };
+  const removeAllFromBasket = (id) => {
+    setCount(0);
+
+    axios
+      .put(
+        "user/removeAll",
+        {
+          productId: id,
+        },
+        config
+      )
+      .then((res) => {
+        console.log(res.data.message);
+      });
+  };
+
   const addToWishlist = (id) => {
     setWishlist(!wishlist);
     if (wishlist) {
@@ -94,48 +118,52 @@ function ShopItem(props) {
         });
     }
   };
+  let skata = props.obj;
   return (
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">
         <img
-        // ${process.env.PUBLIC_URL}
+          // ${process.env.PUBLIC_URL}
           src={`http://localhost:5005/${props.obj.image}`}
           alt={`img of ${props.obj.name}`}
         />
         <div className="product-infos">
           <p>{props.obj.name}</p>
           <p>{props.obj.category}</p>
-          <p>{props.obj.price} $</p>
-          <p>description: {props.obj.description}</p>
-          
+          <p>{props.obj.price} € inkl. MwSt.</p>
+
+          <p>{props.obj.delivery ? "DELIEVERABLE" : " NOT DELIEVERABLE"}</p>
           <p>only {props.obj.quantity - count} left</p>
+          <p>
+            <span>Produktbeschreibung:</span> <span>{props.obj.description}</span>
+          </p>
           <div className="product-buttons">
             <button
               disabled={count >= props.obj.quantity}
               onClick={() => addToBasket(props.obj._id)}
             >
-              <FiPlusCircle style={{backgroundColor:"white"}}/>
-            </button>{" "}
-            {count}{" "}
+              <FiPlusCircle style={{ backgroundColor: "white" }} />
+            </button>
+            {count}
             <button
               disabled={count === 0}
               onClick={() => removeFromBasket(props.obj._id)}
             >
-              <FiMinusCircle style={{backgroundColor:"white"}}/>
+              <FiMinusCircle style={{ backgroundColor: "white" }} />
             </button>
             <button onClick={() => addToWishlist(props.obj._id)}>
               {wishlist ? `💛` : `❤️`}
             </button>
             <button onClick={() => removeFromBasket(props.obj_id)}>
-              <FiTrash2 style={{backgroundColor:"white"}}/>
+              <FiTrash2 style={{ backgroundColor: "white" }} />
             </button>
           </div>
         </div>
       </div>
-      <div className="total-price">
+      {/* <div className="total-price">
         <h2>{props.obj.price * count} $</h2>&nbsp;
         <p>incl.VAT</p>
-      </div>
+      </div> */}
     </div>
   );
 }

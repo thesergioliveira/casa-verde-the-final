@@ -6,7 +6,8 @@ import React from "react";
 import ShopItem from "./ShopItem";
 import ShopSlider from "./ShopSlider";
 import { FaSearch } from "react-icons/fa";
-function Shop() {
+import ItemDetails from "./ItemDetails";
+function Shop({history}) {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [priceInput, setPriceInput] = useState("");
@@ -57,30 +58,37 @@ function Shop() {
   const getFlowerAndPlantsPots = data
     ?.filter((el) => el.category === "Flower and plants pots")
     .map((obj) => {
-      return <ShopItem obj={obj} />;
+      return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
+      <ShopItem  obj={obj} /> </div>
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
     ?.filter((el) => el.category === "Bouquet of flowers")
     .map((obj) => {
-      return <ShopItem obj={obj} />;
+      return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
+      <ShopItem  obj={obj} /> </div>
     });
   //getGiftBaskets
   const getGiftBaskets = data
     ?.filter((el) => el.category === "Gift baskets")
     .map((obj) => {
-      return <ShopItem obj={obj} />;
+      return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
+      <ShopItem  obj={obj} /> </div>
     });
   //italianProducts
   const italianProducts = data
     ?.filter((el) => el.category === "Italian Products")
     .map((obj) => {
-      return <ShopItem obj={obj} />;
+      return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
+      <ShopItem  obj={obj} /> </div>
     });
   // get all products
   const getProducts = data?.map((obj) => {
-    return <ShopItem obj={obj} />;
-  });
+    return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
+      <ShopItem  obj={obj} /> </div>
+     
+  
+  }); 
   return (
     <div className="shop">
       <h1>WELCOME TO OUR CASA VERDE SHOP</h1>

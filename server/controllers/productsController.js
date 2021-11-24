@@ -135,6 +135,22 @@ allProductControllers.removeFromBasket = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+allProductControllers.removeAllfromBasket = async (req, res) => {
+
+  try {
+    const user = await User.findById(req.id);
+    if (user) {
+      user.basket = [];
+      user.save();
+      res.status(200).json({ message: "Basket emptied ✅" });
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+
+};
 allProductControllers.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
@@ -217,6 +233,14 @@ allProductControllers.getAllProducts = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+allProductControllers.getOne = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+}
 // get all products from a user upon the id
 
 allProductControllers.getOneByID = async (req, res) => {
