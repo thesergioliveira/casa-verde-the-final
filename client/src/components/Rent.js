@@ -22,7 +22,10 @@ const Rent = () => {
         />
       </div>
 
-      <RoomRental />
+      <div className="wrapper-gallery">
+        <RoomRental />
+      </div>
+
       {/* to do- adding calendar */}
       <ContactInformation />
       <div className="form-map">
