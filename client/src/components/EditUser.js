@@ -123,7 +123,6 @@ function EditUser({ history }) {
       <h1>Profile</h1>
       <div>
         <h3> User Information</h3>
-
         <p>{userData?.username}</p>
         <p>{userData?.email}</p>
         <p>{userData?.phone}</p>
