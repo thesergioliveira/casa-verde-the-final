@@ -111,7 +111,7 @@ const Basket = () => {
         </ul>
       </aside>
       <aside>
-        <ContactInformation/>
+        <ContactInformation />
         {/* <h4>Adresse</h4>
 
         <p>Casa Verde</p>

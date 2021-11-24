@@ -22,6 +22,7 @@ import AdminDash from "./components/AdminDash";
 import Checkout from "./components/Shop/Checkout";
 import ForgetPassword from "./components/ForgetPassword";
 import ResetPassword from "./components/ResetPassword";
+import VerifyAccount from "./components/VerifyAccount";
 
 function App() {
   // Logo setup
@@ -59,6 +60,7 @@ function App() {
               <Route path="/login" exact component={Login}></Route>
               <Route path="/forgetPassword" exact component={ForgetPassword}></Route>
               <Route path="/resetPassword/:id" exact component={ResetPassword}></Route>
+              <Route path="/verifyAccount/:id" exact component={VerifyAccount}></Route>
               <Route path="/register" exact component={Register}></Route>
               <Route path="/basket" exact component={Basket}></Route>
               <Route path="/basket/checkout" exact component={Checkout}></Route>

@@ -8,6 +8,10 @@ const allProductControllers = require("../controllers/productsController");
 router.get("/products", allProductControllers.getAllProducts);
 // register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
+// resent confirmation Email 
+router.put("/resentConfirmation", allControllers.confirmationEmail);
+// verify account
+router.put("/verifyAccount", allControllers.verifyAccount);
 
 // login http://localhost:5005/user/login
 router.post("/login", allControllers.login);

@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
+import config  from "../config.json";
 import { ElfsightWidget } from 'react-elfsight-widget';
 
 const TextMe = () => {
-  return <ElfsightWidget widgetID="193d7038-28ff-4667-bfa4-306461f947a0" />;
+  return <ElfsightWidget widgetID={config.APP_ID} />;
 }
 export default TextMe;

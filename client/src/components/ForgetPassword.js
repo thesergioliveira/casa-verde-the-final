@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ForgetPassword = ({ history }) => {
+const ForgetPassword = () => {
   // const [data, setData] = useContext(DataContext);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
