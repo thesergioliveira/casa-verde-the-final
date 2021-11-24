@@ -63,7 +63,7 @@
 
   .container-btn-slider {
     width: 90%;
-    height: 60%;
+    height: 70%;
     position: absolute;
     @include flex;
     flex-direction: column;
@@ -79,7 +79,26 @@
       background-color: rgba(255, 255, 255, 0.75);
       border: none;
       border-radius: 1.2rem;
-      font-size: 1.05rem;
+      font-size: 1rem;
+    }
+
+    .container-shop-header {
+      width: 100%;
+      @include flex;
+      flex-direction: column;
+      h1,
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      h1 {
+        padding: 0;
+        align-self: flex-start;
+      }
+
+      h2 {
+        align-self: flex-end;
+      }
     }
   }
 }
