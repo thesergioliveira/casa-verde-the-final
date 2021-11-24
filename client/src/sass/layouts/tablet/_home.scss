@@ -1,5 +1,16 @@
 .home {
   .home-top {
+  
+    .roof {
+      border-width: 0 40vw 10vh;
+      margin: 1rem 0;
+    }
+
+    .tablet-width {
+      border-width: 0 30vw 8vh;
+      margin-bottom: 2rem;
+    }
+    
     .header-rental {
       font-size: 4.25rem;
     }
