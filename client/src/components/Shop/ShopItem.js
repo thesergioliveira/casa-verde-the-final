@@ -130,32 +130,48 @@ function ShopItem(props) {
         <div className="product-infos">
           <p>{props.obj.name}</p>
           <p>{props.obj.category}</p>
-          <p>{props.obj.price} € inkl. MwSt.</p>
-
-          <p>{props.obj.delivery ? "DELIEVERABLE" : " NOT DELIEVERABLE"}</p>
-          <p>only {props.obj.quantity - count} left</p>
           <p>
-            <span>Produktbeschreibung:</span> <span>{props.obj.description}</span>
+            {props.obj.price} € <span>inkl. MwSt.</span>
+          </p>
+
+          <p>
+            in Stock:{" "}
+            <span
+              className={props.obj.quantity <= 0 ? "product" : "product green"}
+            >
+              {props.obj.quantity - count}
+            </span>
+          </p>
+
+          <p>{props.obj.delivery ? "DELIEVERABLE" : "NOT DELIEVERABLE"}</p>
+
+          <p>
+            <span>Produktbeschreibung:</span>{" "}
+            <span>{props.obj.description}</span>
           </p>
           <div className="product-buttons">
             <button
               disabled={count >= props.obj.quantity}
               onClick={() => addToBasket(props.obj._id)}
             >
-              <FiPlusCircle style={{ backgroundColor: "white" }} />
+              <FiPlusCircle className="icon" />
             </button>
-            {count}
+
+            <p className={count === 0 ? "counter" : "counter counter-green"}>
+              {count}
+            </p>
+
             <button
               disabled={count === 0}
               onClick={() => removeFromBasket(props.obj._id)}
             >
-              <FiMinusCircle style={{ backgroundColor: "white" }} />
+              <FiMinusCircle className="icon" />
             </button>
             <button onClick={() => addToWishlist(props.obj._id)}>
-              {wishlist ? `💛` : `❤️`}
+              <p>{wishlist ? `💛` : `❤️`}</p>
             </button>
             <button onClick={() => removeFromBasket(props.obj_id)}>
-              <FiTrash2 style={{ backgroundColor: "white" }} />
+              <FiTrash2 className="icon" />
             </button>
           </div>
         </div>

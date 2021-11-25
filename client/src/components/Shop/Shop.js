@@ -60,7 +60,7 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div
-          className="test-div"
+          className="container-product"
           onClick={() => {
             history.push(`/shop/product/${obj._id}`);
           }}
@@ -75,7 +75,7 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div
-          className="test-div"
+          className="container-product"
           onClick={() => {
             history.push(`/shop/product/${obj._id}`);
           }}
@@ -90,7 +90,7 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div
-          className="test-div"
+          className="container-product"
           onClick={() => {
             history.push(`/shop/product/${obj._id}`);
           }}
@@ -105,7 +105,7 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div
-          className="test-div"
+          className="container-product"
           onClick={() => {
             history.push(`/shop/product/${obj._id}`);
           }}
@@ -118,7 +118,7 @@ function Shop({ history }) {
   const getProducts = data?.map((obj) => {
     return (
       <div
-        className="test-div"
+        className="container-product"
         onClick={() => {
           history.push(`/shop/product/${obj._id}`);
         }}
