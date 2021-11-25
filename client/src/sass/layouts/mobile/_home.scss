@@ -4,7 +4,7 @@
 .home {
   width: 100vw;
   height: auto;
-  // border: red solid 1px;
+  margin-top: 4rem;
   @include flex;
   flex-direction: column;
 
@@ -410,7 +410,7 @@
 
       .events {
         height: 50%;
-        width: 60%;
+        width: 80%;
         max-width: 80%;
         justify-content: flex-start;
         .container-events {
@@ -420,7 +420,7 @@
       }
 
       .container-contact-btn {
-        width: 60%;
+        width: 80%;
         max-width: 80%;
         height: 7%;
         justify-self: flex-end;
@@ -455,7 +455,7 @@
     // House -> Buttons -> Deco-Services
     .deco-services {
       height: 50%;
-      width: 60%;
+      width: 80%;
       max-width: 80%;
       justify-content: flex-start;
 
