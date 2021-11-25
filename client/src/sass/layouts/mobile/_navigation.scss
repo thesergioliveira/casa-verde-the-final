@@ -3,7 +3,6 @@
 // Nav setup
 header nav {
   background-color: $cream;
-  opacity: .85;
 
   .nav-top {
     padding: 0 .7rem;
@@ -82,7 +81,6 @@ header nav {
   flex-direction: column;
   background-color: $cream;
   transition: .7s;
-  z-index: 2;
  
 
   // Li setup
@@ -187,7 +185,7 @@ header nav {
   top: 0;
   transition-timing-function: ease-in;
   transition: .5s;
-  z-index: 2;
+  z-index: 6;
 }
 
 /* ----------------------------------------------
