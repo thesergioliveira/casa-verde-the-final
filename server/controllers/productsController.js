@@ -124,6 +124,7 @@ allProductControllers.removeFromBasket = async (req, res) => {
     const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
+      console.log("HHHHHHHHHEEEEEEEEEEEYYYYYYYYYYYY",product);
       user.basket.pull(product);
       user.save();
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
+import PayPal from "./PayPal";
 
 export default function Checkout() {
   const [city, setCity] = useState("");
@@ -12,6 +13,7 @@ export default function Checkout() {
   const [postalCode, setPostalCode] = useState("");
   const [phone, setPhone] = useState();
   const [houseNumber, setHouseNumber] = useState("");
+  const [checkout, setCheckout] = useState(false);
 
   //
   const [data, setData] = useState([]);
@@ -51,7 +53,7 @@ export default function Checkout() {
 
   // update user Address
   const updateUserAddress = () => {
-    const data = {
+    const newData = {
       address,
       phone,
       city,
@@ -62,7 +64,7 @@ export default function Checkout() {
     };
 
     axios
-      .put("user/updateAddress", data, config)
+      .put("user/updateUserInfos", newData, config)
       .then((res) => {
         console.log(res.data);
         window.location.reload(false);
@@ -71,23 +73,26 @@ export default function Checkout() {
         console.log(err.response.data.message);
       });
   };
-  const checkout = () => {
+  const handleCheckout = () => {
     console.log("checkout!!!!!!!!!!!!!!");
-    axios
-      .put(`user/checkout`, data, config)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data) {
-          console.log("front end works");
-          setTotal(res.data);
-          console.log(res.data);
-        } else {
-          setTotal({ message: "user NOT Authenticated" });
-        }
-      })
-      .catch((err) => {
-        console.log("failed checkout", err.message);
-      });
+    setCheckout(true);
+   
+
+    // axios
+    //   .put(`user/checkout`, data, config)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     if (res.data) {
+    //       console.log("front end works");
+    //       setTotal(res.data);
+    //       console.log(res.data);
+    //     } else {
+    //       setTotal({ message: "user NOT Authenticated" });
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("failed checkout", err.message);
+    //   });
   };
 
   //console.log(UserData?.user);
@@ -216,10 +221,18 @@ export default function Checkout() {
           !UserData.user?.country ||
           !UserData.user?.postalCode
         }
-        onClick={checkout}
+        onClick={handleCheckout}
       >
         PAY
       </button>
+
+{checkout ? (
+<PayPal/>
+
+) : (
+  <button onClick={() => setCheckout(true)}>checkout</button>
+)}
+
     </div>
   );
 }

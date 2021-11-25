@@ -10,7 +10,7 @@ router.get("/oneproduct/:id", allProductControllers.getOne)
 // register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
 // resent confirmation Email 
-router.put("/resentConfirmation", allControllers.confirmationEmail);
+router.put("/resentConf",middleware.checkToken, allControllers.confirmationEmail);
 // verify account
 router.put("/verifyAccount", allControllers.verifyAccount);
 
@@ -22,8 +22,7 @@ router.put("/resetPassword", allControllers.resetPassword);
 // update user infos && password && delete
 router
   .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)
-  .put("/update", middleware.checkToken, allControllers.updateUser)
-  .put("/updateAddress", middleware.checkToken, allControllers.updateAddress)
+  .put("/updateUserInfos", middleware.checkToken,middleware.handleUpdate, allControllers.updateUserInfos)
   .put("/updatePassword", middleware.checkToken, allControllers.updatePassword)
   .delete("/deleteUser", middleware.checkToken, allControllers.deleteUser);
 

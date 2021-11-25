@@ -61,7 +61,8 @@ function ShopItem(props) {
       });
   };
   const removeFromBasket = (id) => {
-    setCount(0);
+    setCount(count - 1);
+    console.log(id);
     axios
       .put(
         "user/removeFromTheBasket",
@@ -74,21 +75,7 @@ function ShopItem(props) {
         console.log(res.data.message);
       });
   };
-  const removeAllFromBasket = (id) => {
-    setCount(0);
 
-    axios
-      .put(
-        "user/removeAll",
-        {
-          productId: id,
-        },
-        config
-      )
-      .then((res) => {
-        console.log(res.data.message);
-      });
-  };
 
   const addToWishlist = (id) => {
     setWishlist(!wishlist);
@@ -118,7 +105,7 @@ function ShopItem(props) {
         });
     }
   };
-  let skata = props.obj;
+  
   return (
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">
@@ -154,7 +141,10 @@ function ShopItem(props) {
             <button onClick={() => addToWishlist(props.obj._id)}>
               {wishlist ? `💛` : `❤️`}
             </button>
-            <button onClick={() => removeFromBasket(props.obj_id)}>
+            <button
+              disabled={count === 0}
+              onClick={() => removeFromBasket(props.obj._id)}
+            >
               <FiTrash2 style={{ backgroundColor: "white" }} />
             </button>
           </div>
