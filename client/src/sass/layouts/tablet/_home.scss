@@ -1,5 +1,16 @@
 .home {
   .home-top {
+  
+    .roof {
+      border-width: 0 40vw 10vh;
+      margin: 1rem 0;
+    }
+
+    .tablet-width {
+      border-width: 0 30vw 10vh;
+      margin-bottom: 2rem;
+    }
+    
     .header-rental {
       font-size: 4.25rem;
     }
@@ -11,16 +22,20 @@
     }
   }
 
+  .wrapper-btn-house {
+      width: 80%;
+  }
+
   .wrapper-cards {
     @include flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 100%;
+    width: 95%;
 
     .card-element {
       width: 40%;
       height: 50vh;
-      margin: 2rem 1rem;
+      margin: 2rem 0;
     }
 
     .card-top {
@@ -43,6 +58,16 @@
       img {
         width: 8rem;
         height: 8rem;
+      }
+    }
+  }
+
+  .wrapper-event-section {
+    .container-buttons-roof {
+      .container-contact-btn,
+      .events,
+      .deco-services {
+        width: 60%;
       }
     }
   }

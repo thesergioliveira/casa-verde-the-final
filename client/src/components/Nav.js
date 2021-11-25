@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
 import axios from "axios";
@@ -40,6 +40,21 @@ const Nav = ({ logo }) => {
   // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
   const accountVerified = data?.user?.verifyAccount;
+
+  // on scroll function to animate the nav menu
+  const [showOnScroll, setShowOnScroll] = useState("animate");
+  const controlNav = () => {
+    if (window.scrollY > 100) {
+      setShowOnScroll("animate");
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNav);
+    return () => {
+      window.removeEventListener('scroll', controlNav);
+    }
+  },[]);
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
@@ -91,7 +106,7 @@ const Nav = ({ logo }) => {
 
   return (
     <header>
-      <nav className="laptop-setup">
+      <nav className={`laptop-setup animate ${showOnScroll}`}>
         <div className="nav-top">
           <div className="logo-container" onClick={closeMenu}>
             {logo}

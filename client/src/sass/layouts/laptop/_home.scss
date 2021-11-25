@@ -1,10 +1,21 @@
 .home {
+
+  .home-top {
+  .roof {
+    border-width: 0 28vw 10vh;
+  }
+}
+
+  .wrapper-btn-house {
+    width: 55vw;
+  }
+
   .wrapper-cards {
     @include flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 1400px;
+    max-width: 60vw;
 
     .card-element {
       width: 25%;
@@ -33,4 +44,14 @@
       }
     }
   }
+
+  .wrapper-event-section {
+  .container-buttons-roof {
+    .events,
+    .container-contact-btn,
+    .deco-services {
+      width: 55vw;
+    }
+  }
+ }
 }

@@ -44,7 +44,7 @@ const Events = () => {
 
         <div className="container-buttons-roof">
           <div className="home-top">
-            <div className="roof"></div>
+            <div className="roof tablet-width"></div>
             <h1>Casa Verde</h1>
             <p>Events</p>
           </div>
