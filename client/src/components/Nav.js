@@ -37,7 +37,7 @@ const Nav = ({ logo }) => {
     return () => {
       window.removeEventListener('scroll', controlNav);
     }
-  }, [])
+  })
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
