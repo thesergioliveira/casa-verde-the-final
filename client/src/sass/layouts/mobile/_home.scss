@@ -405,13 +405,13 @@
     .container-buttons-roof {
       height: 100%;
       width: 100%;
-      max-width: 550px;
       @include flex;
       flex-direction: column;
 
       .events {
         height: 50%;
-        width: 80%;
+        width: 60%;
+        max-width: 80%;
         justify-content: flex-start;
         .container-events {
           height: 13%;
@@ -420,7 +420,8 @@
       }
 
       .container-contact-btn {
-        width: 80%;
+        width: 60%;
+        max-width: 80%;
         height: 7%;
         justify-self: flex-end;
         position: relative;
@@ -454,7 +455,8 @@
     // House -> Buttons -> Deco-Services
     .deco-services {
       height: 50%;
-      width: 80%;
+      width: 60%;
+      max-width: 80%;
       justify-content: flex-start;
 
       .container-deco-services {
