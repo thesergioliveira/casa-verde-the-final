@@ -6,11 +6,11 @@ const allProductControllers = require("../controllers/productsController");
 //user route
 // get all products
 router.get("/products", allProductControllers.getAllProducts);
-router.get("/oneproduct/:id", allProductControllers.getOne)
+router.get("/oneproduct/:id", allProductControllers.getOne);
 // register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
-// resent confirmation Email 
-router.put("/resentConf",middleware.checkToken, allControllers.confirmationEmail);
+// resent confirmation Email
+router.get("/resentConf", middleware.checkToken, allControllers.confirmationEmail);
 // verify account
 router.put("/verifyAccount", allControllers.verifyAccount);
 
@@ -22,10 +22,15 @@ router.put("/resetPassword", allControllers.resetPassword);
 // update user infos && password && delete
 router
   .get("/checkAuth", middleware.checkToken, allControllers.getOneUser)
-  .put("/updateUserInfos", middleware.checkToken,middleware.handleUpdate, allControllers.updateUserInfos)
+  .put(
+    "/updateUserInfos",
+    middleware.checkToken,
+    middleware.handleUpdate,
+    allControllers.updateUserInfos
+  )
   .put("/updatePassword", middleware.checkToken, allControllers.updatePassword)
-  .delete("/deleteUser", middleware.checkToken, allControllers.deleteUser);
-
+  .delete("/deleteUser", middleware.checkToken, allControllers.deleteUser)
+  
 router
   .post("/wishlist", middleware.checkToken, allProductControllers.addToWishlist)
   .put(
@@ -45,7 +50,11 @@ router
     middleware.checkToken,
     allProductControllers.removeFromBasket
   );
-router.put("/removeAll", middleware.checkToken, allProductControllers.removeAllfromBasket);
+router.put(
+  "/removeAll",
+  middleware.checkToken,
+  allProductControllers.removeAllfromBasket
+);
 router.put(
   "/checkout",
   middleware.checkToken,

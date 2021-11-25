@@ -19,8 +19,6 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-
-
 input:focus,
 input:active,
 a:hover {
@@ -54,9 +52,13 @@ a:hover {
   input {
     margin: 10px 0 10px 0;
     @include input();
+    
   }
 }
-.login-container,.reset-container ,.forget-container,.verify-container{
+.login-container,
+.reset-container,
+.forget-container,
+.verify-container {
   a {
     @include linkbutton;
   }
@@ -75,5 +77,27 @@ a:hover {
 
   h3 {
     padding: 0.5rem;
+  }
+}
+//password eye hide and show
+
+.password {
+  width: 100%;
+  @include flex;
+background-color: $cream;
+  height: 30px;
+  border-radius: 7px;
+  margin: 2px 0 2px 0;
+  input {
+    @include input();
+    width: 90%;
+  }
+
+  .iconPass {
+    width: 10%;
+    height: 30px;
+    font-size: 18px;
+    @include flex;
+    
   }
 }

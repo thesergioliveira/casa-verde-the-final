@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
-import { DataContext } from "./UserContext";
+import axios from "axios";
 import { AuthContext } from "./AuthContext";
+import { DataContext } from "./UserContext";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
 import { GoUnverified, GoVerified, GoMailRead } from "react-icons/go";
@@ -19,6 +20,22 @@ const Nav = ({ logo }) => {
   //use the context
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
+  //get editUser data
+  const getData = () => {
+    const config = {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    };
+    axios("/user/checkAuth", config)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err?.response?.data.message);
+      });
+  };
+ 
 
   // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
@@ -54,9 +71,11 @@ const Nav = ({ logo }) => {
   //userMenu
   const showEditUser = () => {
     setOpenUser(openUser);
+    
     setCloseUser(!closeUser);
     setShow(!show);
     closeMenu();
+    if(show===true){getData();}
   };
   const closeUserMenu = () => {
     setCloseUser(true);
@@ -127,7 +146,7 @@ const Nav = ({ logo }) => {
                     {accountVerified ? (
                       <GoVerified style={{ color: "green" }} />
                     ) : (
-                      <span >
+                      <span>
                         <Link to="/ReVerifyAccount" style={{ color: "red" }}>
                           <GoUnverified /> <GoMailRead />
                         </Link>

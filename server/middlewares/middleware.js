@@ -56,8 +56,12 @@ middleware.allowAdmin = async (req, res, next) => {
 };
 // handleUpload don't allow to upload when the value is null
 middleware.handleUpdate = async (req, res, next) => {
-  const newData=req.body;
- if (await Object.values(newData).map((data) => data.length===0).includes(true)) {
+  const newData = req.body;
+  if (
+    await Object.values(newData)
+      .map((data) => data.length === 0)
+      .includes(true)
+  ) {
     return res
       .status(400)
       .json({ message: "Please fill out all the required fields" });
