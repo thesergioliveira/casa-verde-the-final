@@ -15,7 +15,7 @@ const Nav = ({ logo }) => {
   const [show, setShow] = useState(true);
   const [closeUser, setCloseUser] = useState(true);
   const [openUser, setOpenUser] = useState(false);
-  
+
   //use the context
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
@@ -109,8 +109,10 @@ const Nav = ({ logo }) => {
                     {accountVerified ? (
                       <GoVerified style={{ color: "green" }} />
                     ) : (
-                      <span style={{ color: "red" }}>
-                        <GoUnverified /> <GoMailRead />
+                      <span >
+                        <Link to="/ReVerifyAccount" style={{ color: "red" }}>
+                          <GoUnverified /> <GoMailRead />
+                        </Link>
                       </span>
                     )}
                   </li>

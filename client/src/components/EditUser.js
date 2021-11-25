@@ -16,7 +16,6 @@ function EditUser({ history }) {
   };
   const [closeUser, setCloseUser] = useState(true);
   const [show, setShow] = useState(true);
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState(null);
   const [passwordToD, setPasswordToD] = useState(null);
   const [passwordConf, setPasswordConf] = useState(null);
@@ -29,9 +28,9 @@ function EditUser({ history }) {
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const updateUserInfo = () => {
     const newData = {
-      email,
       address,
       phone,
       houseNumber,
@@ -43,7 +42,7 @@ function EditUser({ history }) {
 
     //edit user infos
     axios
-      .put("user/update", newData, config)
+      .put("user/updateUserInfos", newData, config)
       .then((res) => {
         console.log(res.data);
         setUpdateMessage(res.data.message);
@@ -51,6 +50,7 @@ function EditUser({ history }) {
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
+        setErrorMessage(err?.response?.data.message);
       });
   };
   //
@@ -60,7 +60,7 @@ function EditUser({ history }) {
   };
   //change password
   const changePassword = () => {
-    const newPassword = { passwordConf, NewPassword, password };
+    const newPasswordData = { passwordConf, NewPassword, password };
     const logoutAfterUpdate = () => {
       setTimeout(
         () =>
@@ -75,7 +75,7 @@ function EditUser({ history }) {
       );
     };
     axios
-      .put("user/updatePassword/", newPassword, config)
+      .put("user/updatePassword/", newPasswordData, config)
       .then((res) => {
         console.log(res.data);
         setUpdateMessage(res.data.message);
@@ -83,7 +83,7 @@ function EditUser({ history }) {
       })
       .catch((error) => {
         console.log(error?.response?.data.message);
-        setUpdateMessage(error.response.data.message);
+        setErrorMessage(error?.response?.data.message);
       });
   };
   // delete user
@@ -110,17 +110,17 @@ function EditUser({ history }) {
       .then((res) => {
         logoutAfterDelete();
         setUpdateMessage(res.data.message);
-        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err?.response?.data.message);
-        setUpdateMessage(err?.response?.data.message);
+        setErrorMessage(err?.response?.data.message);
       });
   };
 
   return (
     <div className="edit-user-container">
       <h1>Profile</h1>
+      <h2 style={{ color: "green" }}>{updateMessage}</h2>
+      <h3 style={{ color: "red" }}>{errorMessage}</h3>
       <div>
         <h3> User Information</h3>
         <p>{userData?.username}</p>
@@ -137,14 +137,7 @@ function EditUser({ history }) {
           <FaUserEdit />
         </div>
         <div className={show ? "edit-none" : "edit-show"}>
-          <input
-            type="email"
-            value={email}
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="your email"
-          />
-          <input
+         <input
             type="phone"
             value={phone}
             name="phone"
@@ -194,7 +187,9 @@ function EditUser({ history }) {
             placeholder="enter your postal Code"
           />
         </div>
-        <button onClick={updateUserInfo}>Update Your Profile</button>
+        <button className="button-dash" onClick={updateUserInfo}>
+          Update Your Profile
+        </button>
       </div>
       <div>
         <h3> User Password</h3>
@@ -232,7 +227,6 @@ function EditUser({ history }) {
         />
         <button onClick={deleteUser}>DELETE ACCOUNT</button>
       </div>
-      <h2 style={{ color: "green" }}>{updateMessage}</h2>
     </div>
   );
 }

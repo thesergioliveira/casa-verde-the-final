@@ -51,7 +51,7 @@ export default function Checkout() {
 
   // update user Address
   const updateUserAddress = () => {
-    const data = {
+    const newData = {
       address,
       phone,
       city,
@@ -62,7 +62,7 @@ export default function Checkout() {
     };
 
     axios
-      .put("user/updateAddress", data, config)
+      .put("user/updateUserInfos", newData, config)
       .then((res) => {
         console.log(res.data);
         window.location.reload(false);
