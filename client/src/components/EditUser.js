@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { DataContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
 import axios from "axios";
+import { FaUserEdit } from "react-icons/fa";
 function EditUser({ history }) {
   //use the context
   const [data] = useContext(DataContext);
@@ -13,24 +14,23 @@ function EditUser({ history }) {
       authorization: token,
     },
   };
-
-  const [username, setUsername] = useState(userData?.username);
-  const [email, setEmail] = useState(() => userData?.email);
+  const [closeUser, setCloseUser] = useState(true);
+  const [show, setShow] = useState(true);
   const [password, setPassword] = useState(null);
   const [passwordToD, setPasswordToD] = useState(null);
-  const [passwordConf, setPasswordConf] = useState("");
-  const [NewPassword, setNewPassword] = useState("");
-  const [phone, setPhone] = useState(userData?.phone);
-  const [address, setAddress] = useState(userData?.address);
-  const [houseNumber, setHouseNumber] = useState(userData?.houseNumber);
-  const [city, setCity] = useState(userData?.city);
-  const [state, setState] = useState(userData?.state);
-  const [country, setCountry] = useState(userData?.country);
-  const [postalCode, setPostalCode] = useState(userData?.postalCode);
+  const [passwordConf, setPasswordConf] = useState(null);
+  const [NewPassword, setNewPassword] = useState(null);
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [houseNumber, setHouseNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const updateUserInfo = () => {
     const newData = {
-      email,
       address,
       phone,
       houseNumber,
@@ -42,7 +42,7 @@ function EditUser({ history }) {
 
     //edit user infos
     axios
-      .put("user/update", newData, config)
+      .put("user/updateUserInfos", newData, config)
       .then((res) => {
         console.log(res.data);
         setUpdateMessage(res.data.message);
@@ -50,11 +50,17 @@ function EditUser({ history }) {
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
+        setErrorMessage(err?.response?.data.message);
       });
+  };
+  //
+  const showEditUser = () => {
+    setShow(!show);
+    setCloseUser(!closeUser);
   };
   //change password
   const changePassword = () => {
-    const newPassword = { passwordConf, NewPassword, password, username };
+    const newPasswordData = { passwordConf, NewPassword, password };
     const logoutAfterUpdate = () => {
       setTimeout(
         () =>
@@ -69,7 +75,7 @@ function EditUser({ history }) {
       );
     };
     axios
-      .put("user/updatePassword/", newPassword, config)
+      .put("user/updatePassword/", newPasswordData, config)
       .then((res) => {
         console.log(res.data);
         setUpdateMessage(res.data.message);
@@ -77,7 +83,7 @@ function EditUser({ history }) {
       })
       .catch((error) => {
         console.log(error?.response?.data.message);
-        setUpdateMessage(error.response.data.message);
+        setErrorMessage(error?.response?.data.message);
       });
   };
   // delete user
@@ -104,83 +110,86 @@ function EditUser({ history }) {
       .then((res) => {
         logoutAfterDelete();
         setUpdateMessage(res.data.message);
-        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err?.response?.data.message);
-        setUpdateMessage(err?.response?.data.message);
+        setErrorMessage(err?.response?.data.message);
       });
   };
 
   return (
     <div className="edit-user-container">
       <h1>Profile</h1>
+      <h2 style={{ color: "green" }}>{updateMessage}</h2>
+      <h3 style={{ color: "red" }}>{errorMessage}</h3>
       <div>
         <h3> User Information</h3>
-        <input
-          type="text"
-          value={username}
-          name="username"
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="choose your username"
-        />
-        <input
-          type="email"
-          value={email}
-          name="email"
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="your email"
-        />
-        <input
-          type="phone"
-          value={phone}
-          name="phone"
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="enter your phone number"
-        />
-        <input
-          type="address"
-          value={address}
-          name="address"
-          onChange={(e) => setAddress(e.target.value)}
-          placeholder="enter your address"
-        />
-        <input
-          type="houseNumber"
-          value={houseNumber}
-          name="houseNumber"
-          onChange={(e) => setHouseNumber(e.target.value)}
-          placeholder="enter your houseNumber"
-        />
-        <input
-          type="country"
-          value={country}
-          name="country"
-          onChange={(e) => setCountry(e.target.value)}
-          placeholder="enter your Country Name"
-        />
-        <input
-          type="state"
-          value={state}
-          name="state"
-          onChange={(e) => setState(e.target.value)}
-          placeholder="enter your State Name"
-        />
-        <input
-          type="city"
-          value={city}
-          name="city"
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="enter your City Name"
-        />
-        <input
-          type="postalCode"
-          value={postalCode}
-          name="postalCode"
-          onChange={(e) => setPostalCode(e.target.value)}
-          placeholder="enter your postalCode"
-        />
-        <button onClick={updateUserInfo}>Update Your Profile</button>
+        <p>{userData?.username}</p>
+        <p>{userData?.email}</p>
+        <p>{userData?.phone}</p>
+        <p>
+          {userData?.address} ,{userData?.houseNumber}
+        </p>
+        <p>{userData?.city}</p>
+        <p> {userData?.state}</p>
+        <p> {userData?.country}</p>
+        <p> {userData?.postalCode}</p>
+        <div className="editIcon" onClick={showEditUser}>
+          <FaUserEdit />
+        </div>
+        <div className={show ? "edit-none" : "edit-show"}>
+         <input
+            type="phone"
+            value={phone}
+            name="phone"
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="enter your phone number"
+          />
+          <input
+            type="address"
+            value={address}
+            name="address"
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="enter your address"
+          />
+          <input
+            type="houseNumber"
+            value={houseNumber}
+            name="houseNumber"
+            onChange={(e) => setHouseNumber(e.target.value)}
+            placeholder="enter your House Number"
+          />
+          <input
+            type="country"
+            value={country}
+            name="country"
+            onChange={(e) => setCountry(e.target.value)}
+            placeholder="enter your Country Name"
+          />
+          <input
+            type="state"
+            value={state}
+            name="state"
+            onChange={(e) => setState(e.target.value)}
+            placeholder="enter your State Name"
+          />
+          <input
+            type="city"
+            value={city}
+            name="city"
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="enter your City Name"
+          />
+          <input
+            type="postalCode"
+            value={postalCode}
+            name="postalCode"
+            onChange={(e) => setPostalCode(e.target.value)}
+            placeholder="enter your postal Code"
+          />
+        </div>
+        <button className="button-dash" onClick={updateUserInfo}>
+          Update Your Profile
+        </button>
       </div>
       <div>
         <h3> User Password</h3>
@@ -218,7 +227,6 @@ function EditUser({ history }) {
         />
         <button onClick={deleteUser}>DELETE ACCOUNT</button>
       </div>
-      <h2 style={{ color: "green" }}>{updateMessage}</h2>
     </div>
   );
 }

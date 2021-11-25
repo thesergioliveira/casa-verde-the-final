@@ -79,9 +79,10 @@ allControllers.getAllUsers = async (req, res) => {
 };
 //resent email confirmation
 allControllers.confirmationEmail = async (req, res) => {
-  console.log(req.body.email);
-  const token = await sign(
-    { email: req.body.email },
+ try{
+  console.log("user");
+  /*const token = await sign(
+    { email: user.email },
     process.env.EMAIL_VERIFY_KEY,
     {
       expiresIn: "20m",
@@ -113,7 +114,8 @@ allControllers.confirmationEmail = async (req, res) => {
         message: "Email has been sent ,Check your Email",
       });
     }
-  });
+  });*/}catch(err){ res.status(400).json({ message: err.message });}
+  
 };
 // verifyAccount
 allControllers.verifyAccount = async (req, res) => {
@@ -203,27 +205,7 @@ allControllers.getOneUser = async (req, res) => {
   }
 };
 // update userInfos
-allControllers.updateUser = async (req, res) => {
-  try {
-    await User.findByIdAndUpdate(req.id, {
-      $set: {
-        email: req.body.email,
-        phone: req.body.phone,
-        address: req.body.address,
-        houseNumber: req.body.houseNumber,
-        city: req.body.city,
-        country: req.body.country,
-        state: req.body.state,
-        postalCode: req.body.postalCode,
-      },
-    });
-    res.status(200).json({ message: "user been updated" });
-  } catch (error) {
-    res.status(400).json({ message: err.message });
-  }
-};
-//update user Address
-allControllers.updateAddress = async (req, res) => {
+allControllers.updateUserInfos = async (req, res) => {
   try {
     await User.findByIdAndUpdate(req.id, {
       $set: {
@@ -242,10 +224,8 @@ allControllers.updateAddress = async (req, res) => {
 };
 // change password
 allControllers.updatePassword = async (req, res) => {
-  let password = req.body.password;
-  let newPassword = req.body.NewPassword;
-  let passwordConf = req.body.passwordConf;
-  if (newPassword !== passwordConf) {
+  let {password,newPassword,passwordConf} = req.body;
+   if (newPassword !== passwordConf && newPassword == undefined) {
     return res
       .status(400)
       .json({ message: "your confirmation password failed ,please repeat" });

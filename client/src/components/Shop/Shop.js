@@ -7,7 +7,7 @@ import ShopItem from "./ShopItem";
 import ShopSlider from "./ShopSlider";
 import { FaSearch } from "react-icons/fa";
 import ItemDetails from "./ItemDetails";
-function Shop({history}) {
+function Shop({ history }) {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [priceInput, setPriceInput] = useState("");
@@ -58,43 +58,83 @@ function Shop({history}) {
   const getFlowerAndPlantsPots = data
     ?.filter((el) => el.category === "Flower and plants pots")
     .map((obj) => {
-      return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
-      <ShopItem  obj={obj} /> </div>
+      return (
+        <div
+          className="test-div"
+          onClick={() => {
+            history.push(`/shop/product/${obj._id}`);
+          }}
+        >
+          <ShopItem obj={obj} />{" "}
+        </div>
+      );
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
     ?.filter((el) => el.category === "Bouquet of flowers")
     .map((obj) => {
-      return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
-      <ShopItem  obj={obj} /> </div>
+      return (
+        <div
+          className="test-div"
+          onClick={() => {
+            history.push(`/shop/product/${obj._id}`);
+          }}
+        >
+          <ShopItem obj={obj} />{" "}
+        </div>
+      );
     });
   //getGiftBaskets
   const getGiftBaskets = data
     ?.filter((el) => el.category === "Gift baskets")
     .map((obj) => {
-      return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
-      <ShopItem  obj={obj} /> </div>
+      return (
+        <div
+          className="test-div"
+          onClick={() => {
+            history.push(`/shop/product/${obj._id}`);
+          }}
+        >
+          <ShopItem obj={obj} />{" "}
+        </div>
+      );
     });
   //italianProducts
   const italianProducts = data
     ?.filter((el) => el.category === "Italian Products")
     .map((obj) => {
-      return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
-      <ShopItem  obj={obj} /> </div>
+      return (
+        <div
+          className="test-div"
+          onClick={() => {
+            history.push(`/shop/product/${obj._id}`);
+          }}
+        >
+          <ShopItem obj={obj} />{" "}
+        </div>
+      );
     });
   // get all products
   const getProducts = data?.map((obj) => {
-    return <div onClick={()=>{ history.push(`/shop/product/${obj._id}`)}}>
-      <ShopItem  obj={obj} /> </div>
-     
-  
-  }); 
+    return (
+      <div
+        className="test-div"
+        onClick={() => {
+          history.push(`/shop/product/${obj._id}`);
+        }}
+      >
+        <ShopItem obj={obj} />{" "}
+      </div>
+    );
+  });
   return (
     <div className="shop">
-      <h1>WELCOME TO OUR CASA VERDE SHOP</h1>
+      {/* Slider */}
+      <ShopSlider />
+
       <div className="search-container">
         <div className="search-bar">
-          <FaSearch />
+          <FaSearch className="search-icon" />
           <input
             type="search"
             name="search"
@@ -103,45 +143,48 @@ function Shop({history}) {
             className="searchInput"
             placeholder="search ..."
           />
-        </div>{" "}
+        </div>
         <div className="filters">
-          <div>price:
-          <select
-            id="price"
-            onChange={(e) => {
-              setPriceInput(e.target.value);
-            }}
-          >
-            <option value="low"> low to high </option>
-            <option value="high"> high to low </option>
-          </select></div>
-          <div> delivery method:
-          <select
-            id="delivery"
-            onChange={(e) => {
-              // setDeliveryInput(e.target.value)
-              setDeliveryInput(deliveryInput + 1);
-              let newdata = data.filter(
-                (el) => el.delivery.toString() === e.target.value
-              );
-              setData(newdata);
-              console.log(typeof e.target.value, e.target.value);
+          <div>
+            price:
+            <select
+              id="price"
+              onChange={(e) => {
+                setPriceInput(e.target.value);
+              }}
+            >
+              <option value="low"> low to high </option>
+              <option value="high"> high to low </option>
+            </select>
+          </div>
+          <div>
+            delivery:
+            <select
+              id="delivery"
+              onChange={(e) => {
+                // setDeliveryInput(e.target.value)
+                setDeliveryInput(deliveryInput + 1);
+                let newdata = data.filter(
+                  (el) => el.delivery.toString() === e.target.value
+                );
+                setData(newdata);
+                console.log(typeof e.target.value, e.target.value);
 
-              //
-            }}
-          >
-            <option value={true}> pick up from store </option>
-            <option value={false}> shipping </option>
-            <option value={null}> all </option>
-          </select></div>
+                //
+              }}
+            >
+              <option value={true}> pick up from store </option>
+              <option value={false}> shipping </option>
+              <option value={null}> all </option>
+            </select>
+          </div>
         </div>
       </div>
       <div className="search-result">
         <div className="space-for-results">
           {userInput.length ? searchResult : null}
         </div>
-        {/* Slider */}
-        <ShopSlider />
+
         <div className="products-container">
           <h2>Flower and plants pots</h2>
           <div className="products">{getFlowerAndPlantsPots}</div>

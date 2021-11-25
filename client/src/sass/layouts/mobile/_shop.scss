@@ -2,15 +2,16 @@
   h1 {
     text-align: center;
   }
-  input, select{
-    @include input();
+  input,
+  select {
+    @include input;
     max-width: 80vw;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
   }
   select {
     appearance: none;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-   padding: 0 1em 0 0;
+    // box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    padding: 0 1em 0 0;
     margin: 0;
     max-width: 30vw;
     @include selectthing();
@@ -18,14 +19,27 @@
   select::-ms-expand {
     display: none;
   }
-
-
-
 }
 
-.products {
-  @include flex;
-  flex-wrap: wrap;
+.products-container {
+  width: 100%;
+
+  h2 {
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .products {
+    @include flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .test-div {
+      width: 50%;
+
+      margin-bottom: 1.5rem;
+    }
+  }
 }
 
 // .product {
@@ -53,41 +67,56 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.search-bar {
-  width: 90%;
-  @include flex();
-  flex-direction: row;
-  input {
-      margin-left: 5px;
-  }
-  margin-bottom: 15px
-}
-
 
 .search-container {
   @include flex();
   flex-direction: row;
   flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+
+  .search-bar {
+    width: 95%;
+    height: auto;
+    @include flex;
+    border: 2px solid black;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+
+    .search-icon {
+      margin-left: 0.5rem;
+    }
+
+    input {
+      margin: 1px 0.5rem;
+      border: transparent;
+    }
+  }
 }
 .filters {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 95%;
-    div {
-        @include flex();
-        
-        display: flex;
-        flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 95%;
+
+  div {
+    @include flex;
+
+    select {
+      border: 2px solid black;
+      border-radius: 1rem;
+      padding: 0 0.5rem;
+      text-overflow: ellipsis;
+      margin-left: 0.2rem;
+      width: 60%;
     }
-    div:nth-child(1) {
-       
-        width: 50%;
-        padding-right: 15px;
-    }
-    // div:nth-child(2) {
-       
-    //     width: 50%;
-    // }
+  }
+  // div:nth-child(1) {
+  //   width: 50%;
+  //   padding-right: 15px;
+  // }
+  // div:nth-child(2) {
+
+  //     width: 50%;
+  // }
 }
