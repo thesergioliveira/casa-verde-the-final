@@ -37,7 +37,7 @@ const Nav = ({ logo }) => {
     return () => {
       window.removeEventListener('scroll', controlNav);
     }
-  })
+  },[showOnScroll]);
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
@@ -86,8 +86,8 @@ const Nav = ({ logo }) => {
   };
 
   return (
-    <header className={`${showOnScroll}`}>
-      <nav className="laptop-setup">
+    <header>
+      <nav className={`laptop-setup animate ${showOnScroll}`}>
         <div className="nav-top">
           <div className="logo-container" onClick={closeMenu}>
             {logo}
