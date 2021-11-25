@@ -25,10 +25,13 @@ const Nav = ({ logo }) => {
   const accountVerified = data?.user?.verifyAccount;
 
   // on scroll function to animate the nav menu
-  const [showOnScroll, setShowOnScroll] = useState("animate");
+  const [showOnScroll, setShowOnScroll] = useState(localStorage.getItem("animate"));
   const controlNav = () => {
     if (window.scrollY > 100) {
-      setShowOnScroll("animate");
+      // setShowOnScroll("animate");
+      localStorage.setItem("animate", true);
+    } else {
+      localStorage.setItem("animate", false);
     }
   }
 
