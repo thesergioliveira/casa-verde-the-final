@@ -9,14 +9,14 @@ const ReVerify = () => {
   //use the context
   const [data] = useContext(DataContext);
   const [token] = useContext(AuthContext);
-  const verify = () => {
-    const config = {
-      headers: {
-        authorization: token,
-      },
-    };
-   
-    axios.put("user/resentConf", config)
+  const config = {
+    headers: {
+      authorization: token,
+    },
+  };
+  const resentConf = () => {
+    axios
+      .get("user/resentConf", config)
       .then((res) => {
         setMessage(res.data.message);
         console.log(res.data.message);
@@ -36,7 +36,7 @@ const ReVerify = () => {
         would like a new code, or you haven’t received the email, click on the
         button
       </p>
-      <button className="button-dash" onClick={verify}>
+      <button className="button-dash" onClick={resentConf}>
         Send a new One
       </button>
     </div>

@@ -3,6 +3,7 @@ import { DataContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
 import axios from "axios";
 import { FaUserEdit } from "react-icons/fa";
+import { HiOutlineEyeOff, HiOutlineEye } from "react-icons/hi";
 function EditUser({ history }) {
   //use the context
   const [data] = useContext(DataContext);
@@ -29,6 +30,8 @@ function EditUser({ history }) {
   const [postalCode, setPostalCode] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showEye, setShowEye] = useState(false);
+  const [showEyeConf, setShowEyeConf] = useState(false);
   const updateUserInfo = () => {
     const newData = {
       address,
@@ -51,6 +54,7 @@ function EditUser({ history }) {
       .catch((err) => {
         console.log(err?.response?.data.message);
         setErrorMessage(err?.response?.data.message);
+        setShow(false);
       });
   };
   //
@@ -137,7 +141,7 @@ function EditUser({ history }) {
           <FaUserEdit />
         </div>
         <div className={show ? "edit-none" : "edit-show"}>
-         <input
+          <input
             type="phone"
             value={phone}
             name="phone"
@@ -152,7 +156,7 @@ function EditUser({ history }) {
             placeholder="enter your address"
           />
           <input
-            type="houseNumber"
+            type="number"
             value={houseNumber}
             name="houseNumber"
             onChange={(e) => setHouseNumber(e.target.value)}
@@ -193,27 +197,44 @@ function EditUser({ history }) {
       </div>
       <div>
         <h3> User Password</h3>
+        <span className="password">
+          <input
+            type={showEye ? "text" : "password"}
+            value={password}
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="your password"
+          />
+          <span className="iconPass" onClick={() => setShowEye(!showEye)}>
+            {" "}
+            {showEye ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+          </span>
+        </span>
+        <span className="password">
+          <input
+            type={showEyeConf ? "text" : "password"}
+            value={NewPassword}
+            name="NewPassword"
+            onChange={(e) => setNewPassword(e.target.value)}
+            placeholder="enter your new password"
+          />
+          <span
+            className="iconPass"
+            onClick={() => setShowEyeConf(!showEyeConf)}
+          >
+            {" "}
+            {showEyeConf ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+          </span>
+        </span>
+
         <input
-          type="password"
-          value={password}
-          name="password"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="enter your current password"
-        />
-        <input
-          type="password"
-          value={NewPassword}
-          name="NewPassword"
-          onChange={(e) => setNewPassword(e.target.value)}
-          placeholder="enter your new password"
-        />
-        <input
-          type="password"
+          type={showEyeConf ? "text" : "password"}
           value={passwordConf}
           name="passwordConf"
           onChange={(e) => setPasswordConf(e.target.value)}
           placeholder="confirm your password"
         />
+
         <button onClick={changePassword}>Change Your Password</button>
       </div>
       <div>
