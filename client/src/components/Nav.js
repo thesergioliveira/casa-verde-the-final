@@ -41,23 +41,18 @@ const Nav = ({ logo }) => {
   const userName = data?.user?.username.toUpperCase();
   const accountVerified = data?.user?.verifyAccount;
 
-  // on scroll function to animate the nav menu
-  const [showOnScroll, setShowOnScroll] = useState(localStorage.getItem("animate"));
-  const controlNav = () => {
-    if (window.scrollY > 100) {
-      // setShowOnScroll("animate");
-      localStorage.setItem("animate", true);
-    } else {
-      localStorage.setItem("animate", false);
-    }
-  }
+  // Temporary removed
 
-  useEffect(() => {
-    window.addEventListener('scroll', controlNav);
-    return () => {
-      window.removeEventListener('scroll', controlNav);
-    }
-  },[]);
+  // on scroll function to animate the nav menu
+  // const [showOnScroll, setShowOnScroll] = useState("animate");
+  // const controlNav = () => {
+  //   if (window.scrollY > 100) {
+  //     setShowOnScroll("!animate");
+  //     window.removeEventListener('scroll', controlNav);
+  //   } else {
+  //     window.addEventListener('scroll', controlNav);
+  //   }
+  // }
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
@@ -109,7 +104,7 @@ const Nav = ({ logo }) => {
 
   return (
     <header>
-      <nav className={`laptop-setup animate ${showOnScroll}`}>
+      <nav className="laptop-setup">
         <div className="nav-top">
           <div className="logo-container" onClick={closeMenu}>
             {logo}
