@@ -224,14 +224,11 @@ export default function Checkout() {
         onClick={handleCheckout}
       >
         PAY
-      </button>
+      </button><PayPal/>
 
-{checkout ? (
-<PayPal/>
 
-) : (
-  <button onClick={() => setCheckout(true)}>checkout</button>
-)}
+
+
 
     </div>
   );

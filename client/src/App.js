@@ -25,6 +25,7 @@ import ForgetPassword from "./components/ForgetPassword";
 import ResetPassword from "./components/ResetPassword";
 import VerifyAccount from "./components/VerifyAccount";
 import ReVerifyAccount from "./components/ReVerifyAccount";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function App() {
   // Logo setup
@@ -36,9 +37,17 @@ function App() {
       </Link>
     );
   });
-
+  const initialOptions = {
+    "client-id": "ASHvIIsd34uvS4b7vwdgtcxY7NXGyzyOuXa7YJaZj4cHpZpUtIfK13SCEntdkvK6o26tmNJ73BgDN6R3",
+    currency: "EUR",
+    intent: "capture",
+    "data-client-token": "abc123xyz==",
+};
   return (
-    <DataProvider>
+   
+    <PayPalScriptProvider deferLoading={true}  options={{ initialOptions}}>
+     
+  <DataProvider>
       <AuthContextProvider>
         <Router>
           <Nav logo={logo} />
@@ -74,7 +83,7 @@ function App() {
           <Footer logo={logo} />
         </Router>
       </AuthContextProvider>
-    </DataProvider>
+    </DataProvider> </PayPalScriptProvider>
   );
 }
 
