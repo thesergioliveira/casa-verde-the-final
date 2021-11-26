@@ -3,11 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { DataContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
+import { HiOutlineEyeOff,HiOutlineEye} from "react-icons/hi";
+
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
+  const [showEye,setShowEye]=useState(false);
   const [loginMessage, setLoginMessage] = useState("");
   axios.defaults.withCredentials = true;
   const loginUser = () => {
@@ -32,6 +35,7 @@ const Login = ({ history }) => {
         setLoginMessage(error.response.data.message);
       });
   };
+  
   return (
     <div className="login-container">
       <input
@@ -41,13 +45,19 @@ const Login = ({ history }) => {
         onChange={(e) => setUsername(e.target.value)}
         placeholder="enter your username or your email"
       />
-      <input
-        type="password"
-        value={password}
-        name="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="confirm your password"
-      />
+      <div className="password">
+        <input
+          type={showEye ? "text" :"password"}
+          value={password}
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="confirm your password"
+          
+        />
+        <span className="iconPass" onClick={()=>(setShowEye(!showEye))} > { showEye ? <HiOutlineEye />:<HiOutlineEyeOff />}</span>
+       
+      </div>
+      
       <button className="button-dash"  onClick={loginUser}>Login</button>
       <Link to="/forgetPassword">Forget Password?</Link>
       <h4>OR</h4>

@@ -79,41 +79,45 @@ allControllers.getAllUsers = async (req, res) => {
 };
 //resent email confirmation
 allControllers.confirmationEmail = async (req, res) => {
-  console.log(req.body.email);
-  const token = await sign(
-    { email: req.body.email },
-    process.env.EMAIL_VERIFY_KEY,
-    {
-      expiresIn: "20m",
-    }
-  );
+  try {
+    const user = await User.findById(req.id);
+    const token = await sign(
+      { email: user.email },
+      process.env.EMAIL_VERIFY_KEY,
+      {
+        expiresIn: "20m",
+      }
+    );
 
-  let testAccount = nodemailer.createTestAccount();
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASSWORD,
-    },
-  });
-  const data = {
-    from: process.env.EMAIL,
-    to: req.body.email,
-    subject: "Verify Your Email",
-    html: `<html>
+    let testAccount = nodemailer.createTestAccount();
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
+      },
+    });
+    const data = {
+      from: process.env.EMAIL,
+      to: user.email,
+      subject: "Verify Your Email",
+      html: `<html>
       <h2>Please click on given link to Verify your Account</h2
       <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
     </html>`,
-  };
-  await transporter.sendMail(data, function (err, success) {
-    if (err) {
-      return res.status(400).json({ error: "verify Email link error" });
-    } else {
-      res.status(200).json({
-        message: "Email has been sent ,Check your Email",
-      });
-    }
-  });
+    };
+    await transporter.sendMail(data, function (err, success) {
+      if (err) {
+        return res.status(400).json({ error: "verify Email link error" });
+      } else {
+        res.status(200).json({
+          message: "Email has been sent ,Check your Email",
+        });
+      }
+    });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 };
 // verifyAccount
 allControllers.verifyAccount = async (req, res) => {
@@ -203,31 +207,12 @@ allControllers.getOneUser = async (req, res) => {
   }
 };
 // update userInfos
-allControllers.updateUser = async (req, res) => {
+allControllers.updateUserInfos = async (req, res) => {
   try {
     await User.findByIdAndUpdate(req.id, {
       $set: {
-        email: req.body.email,
+        address: req.body.address,
         phone: req.body.phone,
-        address: req.body.address,
-        houseNumber: req.body.houseNumber,
-        city: req.body.city,
-        country: req.body.country,
-        state: req.body.state,
-        postalCode: req.body.postalCode,
-      },
-    });
-    res.status(200).json({ message: "user been updated" });
-  } catch (error) {
-    res.status(400).json({ message: err.message });
-  }
-};
-//update user Address
-allControllers.updateAddress = async (req, res) => {
-  try {
-    await User.findByIdAndUpdate(req.id, {
-      $set: {
-        address: req.body.address,
         houseNumber: req.body.houseNumber,
         city: req.body.city,
         country: req.body.country,
@@ -242,10 +227,8 @@ allControllers.updateAddress = async (req, res) => {
 };
 // change password
 allControllers.updatePassword = async (req, res) => {
-  let password = req.body.password;
-  let newPassword = req.body.NewPassword;
-  let passwordConf = req.body.passwordConf;
-  if (newPassword !== passwordConf) {
+  let { password, newPassword, passwordConf } = req.body;
+  if (newPassword !== passwordConf && newPassword == undefined) {
     return res
       .status(400)
       .json({ message: "your confirmation password failed ,please repeat" });

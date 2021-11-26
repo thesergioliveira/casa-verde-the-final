@@ -61,25 +61,11 @@ function ShopItem(props) {
       });
   };
   const removeFromBasket = (id) => {
-    setCount(0);
+    setCount(count - 1);
+    console.log(id);
     axios
       .put(
         "user/removeFromTheBasket",
-        {
-          productId: id,
-        },
-        config
-      )
-      .then((res) => {
-        console.log(res.data.message);
-      });
-  };
-  const removeAllFromBasket = (id) => {
-    setCount(0);
-
-    axios
-      .put(
-        "user/removeAll",
         {
           productId: id,
         },
@@ -118,7 +104,7 @@ function ShopItem(props) {
         });
     }
   };
-  let skata = props.obj;
+
   return (
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">

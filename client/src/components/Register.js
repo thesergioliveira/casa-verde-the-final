@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
+import { HiOutlineEyeOff, HiOutlineEye } from "react-icons/hi";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -9,16 +10,30 @@ const Register = () => {
   const [passwordConf, setPasswordConf] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [houseNumber,setHouseNumber]=useState("");
+  const [houseNumber, setHouseNumber] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  const [postalCode ,setPostalCode] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [registerMessage, setRegisterMessage] = useState("");
+  const [showEye, setShowEye] = useState(false);
+  const [showEyeConf, setShowEyeConf] = useState(false);
   axios.defaults.withCredentials = true;
 
   const handleSubmit = () => {
-    const data = { username, password, passwordConf, email,address,phone,city,country,state,postalCode ,houseNumber };
+    const data = {
+      username,
+      password,
+      passwordConf,
+      email,
+      address,
+      phone,
+      city,
+      country,
+      state,
+      postalCode,
+      houseNumber,
+    };
 
     axios
       .post("user/register", data, {
@@ -56,41 +71,54 @@ const Register = () => {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your email"
       />
-      <input
-        type="password"
-        value={password}
-        name="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
-      />
-      <input
-        type="password"
-        value={passwordConf}
-        name="passwordConf"
-        onChange={(e) => setPasswordConf(e.target.value)}
-        placeholder="confirm your password"
-      />
+      <div className="password">
         <input
+          type={showEye ? "text" : "password"}
+          value={password}
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="your password"
+        />
+        <span className="iconPass" onClick={() => setShowEye(!showEye)}>
+          {" "}
+          {showEye ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+        </span>
+      </div>
+      <div className="password">
+        <input
+          type={showEyeConf ? "text" : "password"}
+          value={passwordConf}
+          name="passwordConf"
+          onChange={(e) => setPasswordConf(e.target.value)}
+          placeholder="confirm your password"
+        />
+        <span className="iconPass" onClick={() => setShowEyeConf(!showEyeConf)}>
+          {" "}
+          {showEyeConf ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+        </span>
+      </div>
+
+      <input
         type="phone"
         value={phone}
         name="phone"
         onChange={(e) => setPhone(e.target.value)}
         placeholder="enter your phone number"
       />
-       <input
+      <input
         type="address"
         value={address}
         name="address"
         onChange={(e) => setAddress(e.target.value)}
         placeholder="enter your address"
-      /> 
-         <input
+      />
+      <input
         type="houseNumber"
         value={houseNumber}
         name="houseNumber"
         onChange={(e) => setHouseNumber(e.target.value)}
         placeholder="enter your houseNumber"
-      /> 
+      />
       <input
         type="country"
         value={country}
@@ -112,7 +140,7 @@ const Register = () => {
         onChange={(e) => setCity(e.target.value)}
         placeholder="enter your City Name"
       />
-     
+
       <input
         type="postalCode"
         value={postalCode}
@@ -120,9 +148,10 @@ const Register = () => {
         onChange={(e) => setPostalCode(e.target.value)}
         placeholder="enter your postalCode"
       />
-      
 
-      <button className="button-dash" onClick={handleSubmit}>Register</button>
+      <button className="button-dash" onClick={handleSubmit}>
+        Register
+      </button>
 
       <h4>OR</h4>
       <Link to="/login">Login</Link>

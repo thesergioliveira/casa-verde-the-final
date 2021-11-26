@@ -7,17 +7,14 @@ export const DataProvider = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // the config will use it when add to the basket to check if its the right user or not
     const config = {
       headers: {
         authorization: localStorage.getItem("token"),
       },
     };
-
     axios("/user/checkAuth", config)
       .then((res) => {
         setData(res.data);
-        
       })
       .catch((err) => {
         console.log(err?.response?.data.message);

@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
-import { DataContext } from "./UserContext";
+import axios from "axios";
 import { AuthContext } from "./AuthContext";
+import { DataContext } from "./UserContext";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
 import { GoUnverified, GoVerified, GoMailRead } from "react-icons/go";
@@ -15,14 +16,45 @@ const Nav = ({ logo }) => {
   const [show, setShow] = useState(true);
   const [closeUser, setCloseUser] = useState(true);
   const [openUser, setOpenUser] = useState(false);
-  
+
   //use the context
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
+  //get editUser data
+  const getData = () => {
+    const config = {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    };
+    axios("/user/checkAuth", config)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err?.response?.data.message);
+      });
+  };
+ 
 
   // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
   const accountVerified = data?.user?.verifyAccount;
+
+  // on scroll function to animate the nav menu
+  const [showOnScroll, setShowOnScroll] = useState("animate");
+  const controlNav = () => {
+    if (window.scrollY > 100) {
+      setShowOnScroll("animate");
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNav);
+    return () => {
+      window.removeEventListener('scroll', controlNav);
+    }
+  },[]);
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
@@ -36,9 +68,11 @@ const Nav = ({ logo }) => {
   //userMenu
   const showEditUser = () => {
     setOpenUser(openUser);
+    
     setCloseUser(!closeUser);
     setShow(!show);
     closeMenu();
+    if(show===true){getData();}
   };
   const closeUserMenu = () => {
     setCloseUser(true);
@@ -72,7 +106,7 @@ const Nav = ({ logo }) => {
 
   return (
     <header>
-      <nav className="laptop-setup">
+      <nav className={`laptop-setup animate ${showOnScroll}`}>
         <div className="nav-top">
           <div className="logo-container" onClick={closeMenu}>
             {logo}
@@ -109,8 +143,10 @@ const Nav = ({ logo }) => {
                     {accountVerified ? (
                       <GoVerified style={{ color: "green" }} />
                     ) : (
-                      <span style={{ color: "red" }}>
-                        <GoUnverified /> <GoMailRead />
+                      <span>
+                        <Link to="/ReVerifyAccount" style={{ color: "red" }}>
+                          <GoUnverified /> <GoMailRead />
+                        </Link>
                       </span>
                     )}
                   </li>

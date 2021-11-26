@@ -3,6 +3,7 @@ import { DataContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
 import axios from "axios";
 import { FaUserEdit } from "react-icons/fa";
+import { HiOutlineEyeOff, HiOutlineEye } from "react-icons/hi";
 function EditUser({ history }) {
   //use the context
   const [data] = useContext(DataContext);
@@ -16,7 +17,6 @@ function EditUser({ history }) {
   };
   const [closeUser, setCloseUser] = useState(true);
   const [show, setShow] = useState(true);
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState(null);
   const [passwordToD, setPasswordToD] = useState(null);
   const [passwordConf, setPasswordConf] = useState(null);
@@ -29,9 +29,11 @@ function EditUser({ history }) {
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showEye, setShowEye] = useState(false);
+  const [showEyeConf, setShowEyeConf] = useState(false);
   const updateUserInfo = () => {
     const newData = {
-      email,
       address,
       phone,
       houseNumber,
@@ -43,7 +45,7 @@ function EditUser({ history }) {
 
     //edit user infos
     axios
-      .put("user/update", newData, config)
+      .put("user/updateUserInfos", newData, config)
       .then((res) => {
         console.log(res.data);
         setUpdateMessage(res.data.message);
@@ -51,6 +53,8 @@ function EditUser({ history }) {
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
+        setErrorMessage(err?.response?.data.message);
+        setShow(false);
       });
   };
   //
@@ -60,7 +64,7 @@ function EditUser({ history }) {
   };
   //change password
   const changePassword = () => {
-    const newPassword = { passwordConf, NewPassword, password };
+    const newPasswordData = { passwordConf, NewPassword, password };
     const logoutAfterUpdate = () => {
       setTimeout(
         () =>
@@ -75,7 +79,7 @@ function EditUser({ history }) {
       );
     };
     axios
-      .put("user/updatePassword/", newPassword, config)
+      .put("user/updatePassword/", newPasswordData, config)
       .then((res) => {
         console.log(res.data);
         setUpdateMessage(res.data.message);
@@ -83,7 +87,7 @@ function EditUser({ history }) {
       })
       .catch((error) => {
         console.log(error?.response?.data.message);
-        setUpdateMessage(error.response.data.message);
+        setErrorMessage(error?.response?.data.message);
       });
   };
   // delete user
@@ -110,17 +114,17 @@ function EditUser({ history }) {
       .then((res) => {
         logoutAfterDelete();
         setUpdateMessage(res.data.message);
-        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err?.response?.data.message);
-        setUpdateMessage(err?.response?.data.message);
+        setErrorMessage(err?.response?.data.message);
       });
   };
 
   return (
     <div className="edit-user-container">
       <h1>Profile</h1>
+      <h2 style={{ color: "green" }}>{updateMessage}</h2>
+      <h3 style={{ color: "red" }}>{errorMessage}</h3>
       <div>
         <h3> User Information</h3>
         <p>{userData?.username}</p>
@@ -138,13 +142,6 @@ function EditUser({ history }) {
         </div>
         <div className={show ? "edit-none" : "edit-show"}>
           <input
-            type="email"
-            value={email}
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="your email"
-          />
-          <input
             type="phone"
             value={phone}
             name="phone"
@@ -159,7 +156,7 @@ function EditUser({ history }) {
             placeholder="enter your address"
           />
           <input
-            type="houseNumber"
+            type="number"
             value={houseNumber}
             name="houseNumber"
             onChange={(e) => setHouseNumber(e.target.value)}
@@ -194,31 +191,50 @@ function EditUser({ history }) {
             placeholder="enter your postal Code"
           />
         </div>
-        <button onClick={updateUserInfo}>Update Your Profile</button>
+        <button className="button-dash" onClick={updateUserInfo}>
+          Update Your Profile
+        </button>
       </div>
       <div>
         <h3> User Password</h3>
+        <span className="password">
+          <input
+            type={showEye ? "text" : "password"}
+            value={password}
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="your password"
+          />
+          <span className="iconPass" onClick={() => setShowEye(!showEye)}>
+            {" "}
+            {showEye ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+          </span>
+        </span>
+        <span className="password">
+          <input
+            type={showEyeConf ? "text" : "password"}
+            value={NewPassword}
+            name="NewPassword"
+            onChange={(e) => setNewPassword(e.target.value)}
+            placeholder="enter your new password"
+          />
+          <span
+            className="iconPass"
+            onClick={() => setShowEyeConf(!showEyeConf)}
+          >
+            {" "}
+            {showEyeConf ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+          </span>
+        </span>
+
         <input
-          type="password"
-          value={password}
-          name="password"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="enter your current password"
-        />
-        <input
-          type="password"
-          value={NewPassword}
-          name="NewPassword"
-          onChange={(e) => setNewPassword(e.target.value)}
-          placeholder="enter your new password"
-        />
-        <input
-          type="password"
+          type={showEyeConf ? "text" : "password"}
           value={passwordConf}
           name="passwordConf"
           onChange={(e) => setPasswordConf(e.target.value)}
           placeholder="confirm your password"
         />
+
         <button onClick={changePassword}>Change Your Password</button>
       </div>
       <div>
@@ -232,7 +248,6 @@ function EditUser({ history }) {
         />
         <button onClick={deleteUser}>DELETE ACCOUNT</button>
       </div>
-      <h2 style={{ color: "green" }}>{updateMessage}</h2>
     </div>
   );
 }

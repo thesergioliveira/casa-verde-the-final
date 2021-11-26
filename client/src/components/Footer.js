@@ -30,7 +30,7 @@ const Footer = ({logo}) => {
       </ul>
       <p>Social Media (???)</p>
       <div className="footer-main">
-        Made with ❤️ by team Casa Verde
+        Made by "Team Casa Verde"
       </div>
       <div className="footer-secondary">
         Copyrights reserved Ⓒ {year} Casa Verde
