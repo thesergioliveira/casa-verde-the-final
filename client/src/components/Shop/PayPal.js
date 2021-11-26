@@ -21,27 +21,26 @@ export default function PayPal() {
     });
   }
 
-  return (
-    <>
-      {/* {isPending ? <div className="spinner" /> : null} */}
-      {/*   
-        <BraintreePayPalButtons
-                createOrder={(data, actions) => {
-                    return actions.braintree.createPayment({
-                        flow: "checkout",
-                        amount: "0.01",
-                        currency: "USD",
-                        intent: "capture",
-                    });
-                }}
-                onApprove={(data, actions) => {
-                    return actions.braintree
-                        .tokenizePayment(data)
-                        .then((payload) => {
-                            // call server-side endpoint to finish the sale
-                        });
-                }}
-            /> */}
-    </>
-  );
+
+  return <>
+  {/* {isPending ? <div className="spinner" /> : null} */}
+  <PayPalButtons
+        options={{
+          clientId: "ASHvIIsd34uvS4b7vwdgtcxY7NXGyzyOuXa7YJaZj4cHpZpUtIfK13SCEntdkvK6o26tmNJ73BgDN6R3",
+          currency: "EUR",
+        }}
+        amount="0.02"
+        onSuccess={(details, data) => {
+          alert("Transaction completed by " + details.payer.name.given_name);
+
+          console.log({ details, data });
+        }}
+      />
+
+
+</> ;
+            
+        
+ 
+
 }
