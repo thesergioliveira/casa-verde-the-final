@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 import PayPal from "./PayPal";
+import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
 export default function Checkout() {
   const [city, setCity] = useState("");
@@ -20,6 +21,7 @@ export default function Checkout() {
   const [total, setTotal] = useState(0);
   const [UserData, setUserData] = useState([]);
   const [token] = useContext(AuthContext);
+ 
   const config = {
     headers: {
       authorization: token,
@@ -95,10 +97,17 @@ export default function Checkout() {
     //   });
   };
 
+
+const initialOptions = {
+  "client-id": "ASHvIIsd34uvS4b7vwdgtcxY7NXGyzyOuXa7YJaZj4cHpZpUtIfK13SCEntdkvK6o26tmNJ73BgDN6R3",
+  currency: "EUR",
+  intent: "capture",
+  "data-client-token": `abc123xyz==`,
+};
   //console.log(UserData?.user);
   let shipping = 5;
 
-  return (
+  return (<PayPalScriptProvider deferLoading={true}  options={{ initialOptions}}>
     <div className="main-checkout-container">
       <div>
         <p className="shipping-msg">
@@ -231,5 +240,5 @@ export default function Checkout() {
 
 
     </div>
-  );
+    </PayPalScriptProvider>);
 }

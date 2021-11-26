@@ -118,10 +118,7 @@ function Shop({ history }) {
   const getProducts = data?.map((obj) => {
     return (
       <div
-        className="container-product"
-        onClick={() => {
-          history.push(`/shop/product/${obj._id}`);
-        }}
+       
       >
         <ShopItem obj={obj} />{" "}
       </div>

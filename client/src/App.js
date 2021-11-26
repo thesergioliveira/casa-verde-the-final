@@ -37,15 +37,11 @@ function App() {
       </Link>
     );
   });
-  const initialOptions = {
-    "client-id": "ASHvIIsd34uvS4b7vwdgtcxY7NXGyzyOuXa7YJaZj4cHpZpUtIfK13SCEntdkvK6o26tmNJ73BgDN6R3",
-    currency: "EUR",
-    intent: "capture",
-    "data-client-token": "abc123xyz==",
-};
+  
+
   return (
    
-    <PayPalScriptProvider deferLoading={true}  options={{ initialOptions}}>
+    
      
   <DataProvider>
       <AuthContextProvider>
@@ -83,7 +79,7 @@ function App() {
           <Footer logo={logo} />
         </Router>
       </AuthContextProvider>
-    </DataProvider> </PayPalScriptProvider>
+    </DataProvider> 
   );
 }
 
