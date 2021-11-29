@@ -10,4 +10,22 @@
       width: 30%;
     }
   }
+
+  .products-container {
+    h2 {
+      padding-left: 2rem;
+    }
+    .products {
+      justify-content: space-evenly;
+
+      .container-product {
+        width: 25%;
+
+        .product-icon {
+          top: 1.5rem;
+          right: 1.5rem;
+        }
+      }
+    }
+  }
 }
