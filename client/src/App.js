@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import "./sass/main.scss";
 import LogoData from "./JSON/logo.json";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
@@ -21,6 +20,12 @@ import { DataProvider } from "./components/UserContext";
 import { AuthContextProvider } from "./components/AuthContext";
 import AdminDash from "./components/AdminDash";
 import Checkout from "./components/Shop/Checkout";
+import ItemDetails from "./components/Shop/ItemDetails";
+import ForgetPassword from "./components/ForgetPassword";
+import ResetPassword from "./components/ResetPassword";
+import VerifyAccount from "./components/VerifyAccount";
+import ReVerifyAccount from "./components/ReVerifyAccount";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function App() {
   // Logo setup
@@ -32,9 +37,13 @@ function App() {
       </Link>
     );
   });
+  
 
   return (
-    <DataProvider>
+   
+    
+     
+  <DataProvider>
       <AuthContextProvider>
         <Router>
           <Nav logo={logo} />
@@ -56,16 +65,21 @@ function App() {
               <Route path="/about" exact render={About}></Route>
               <Route path="/contact" exact render={Contact}></Route>
               <Route path="/login" exact component={Login}></Route>
+              <Route path="/forgetPassword" exact component={ForgetPassword}></Route>
+              <Route path="/resetPassword/:id" exact component={ResetPassword}></Route>
+              <Route path="/verifyAccount/:id" exact component={VerifyAccount}></Route>
+              <Route path="/ReVerifyAccount" exact component={ReVerifyAccount}></Route>
               <Route path="/register" exact component={Register}></Route>
               <Route path="/basket" exact component={Basket}></Route>
               <Route path="/basket/checkout" exact component={Checkout}></Route>
               <Route path="/settings" exact component={EditUser}></Route>
+              <Route path="/shop/product/:id" exact component={ItemDetails}></Route>
             </Switch>
           </main>
           <Footer logo={logo} />
         </Router>
       </AuthContextProvider>
-    </DataProvider>
+    </DataProvider> 
   );
 }
 

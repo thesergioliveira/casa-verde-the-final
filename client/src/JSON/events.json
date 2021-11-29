@@ -4,6 +4,7 @@
     "name": "Workshops",
     "link": "#workshops",
     "linkId": "workshops",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/events/workshops/workshops-1.png",
       "./images/events/workshops/workshops-2.png",
@@ -20,6 +21,7 @@
     "name": "Seminaries",
     "link": "#seminaries",
     "linkId": "seminaries",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/events/seminaries/seminaries-1.png",
       "./images/events/seminaries/seminaries-2.png",
@@ -36,6 +38,7 @@
     "name": "Art Market",
     "link": "#art",
     "linkId": "art",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/events/art-market/artmarket-1.png",
       "./images/events/art-market/artmarket-2.png",

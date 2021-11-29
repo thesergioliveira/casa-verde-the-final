@@ -79,6 +79,10 @@ const ShopSlider = () => {
 
       {/* Buttons */}
       <div className="container-btn-slider">
+        <div className="container-shop-header">
+          <h1>WILLKOMMEN IM</h1>
+          <h2>CASA VERDE SHOP</h2>
+        </div>
         {/* React-Router is missing */}
         <button>Blumensträuße</button>
         <button>Deko nach Jahreszeit</button>

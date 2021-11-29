@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.edit-user-container {
+  @include flex();
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  border: 1px solid $cream;
+  overflow: hidden;
+  h3,
+  h1 {
+    font-style: italic;
+  }
+  button {
+    background-color: $cream;
+    border: none;
+    border-radius: 7px;
+    padding: 7px;
+    margin: 10px;
+  }
+  input  {
+    @include input();
+    margin: 2px;
+    z-index: 1;
+  }
+  div {
+    @include flex;
+    flex-direction: column;
+    justify-content: left;
+    //border: 1px solid red;
+    width: 100%;
+  }
+  // Ul display none
+  .edit-none {
+    height: 0;
+    display: none;
+    transition: 2s;
+    overflow: hidden;
+  }
+
+  // Show nav setup
+  .edit-show {
+    z-index: 0;
+    width: 100vw;
+    height: 30vh;
+    @include flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: $cream;
+    transition: 2s;
+  }
+  .editIcon {
+    padding: 15px;
+  }
+  p {
+    @include input();
+    padding-left: 5px;
+  }
+}

@@ -4,14 +4,30 @@
 .home {
   width: 100vw;
   height: auto;
-  // border: red solid 1px;
+  margin-top: 4rem;
   @include flex;
   flex-direction: column;
 
   // Background image
   .bg-home {
     width: 100vw;
-    height: 85vh;
+    height: 130vh;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(50%) opacity(95%);
+      position: fixed;
+    }
+  }
+
+  .bg-services {
+    width: 100vw;
+    height: 65vh;
     position: absolute;
     top: 0;
     z-index: -1;
@@ -20,10 +36,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: grayscale(50%) opacity(95%);
     }
   }
 
   // Top div which includes the roof div, h1 and the p tag
+
   .home-top {
     width: 100%;
     height: auto;
@@ -38,6 +56,7 @@
       border-width: 0 40vw 10vh;
       border-color: transparent transparent rgb(204, 204, 204);
       margin: 1em 0;
+      opacity: .7;
     }
 
     // h1 (Casa Verde title)
@@ -47,6 +66,27 @@
       z-index: 1;
       color: white;
       font-size: 2.25rem;
+    }
+
+    .header-rental {
+      font-size: 2.5rem;
+      //   background: linear-gradient(
+      //     90deg,
+      //     $orange,
+      //     $violet,
+      //     $green,
+      //     $blue,
+      //     $red,
+      //     $dark-green
+      //   );
+      //   background-clip: text;
+      //   -webkit-text-fill-color: transparent;
+    }
+
+    .subheader-rental {
+      width: 12rem;
+      font-size: 1.1rem;
+      margin-top: 2rem;
     }
 
     // First p tag after h1 (RAUM FÜR IDEEN - Casa Verde Motto)
@@ -60,6 +100,11 @@
       padding: 0.2em 0;
       text-align: center;
     }
+  }
+
+  .absolut {
+    position: relative;
+    top: 4rem;
   }
 
   // Ul for the buttons/links
@@ -88,13 +133,22 @@
     width: 75vw;
     height: 50vh;
     @include flex;
-    justify-content: space-between;
     flex-direction: column;
-    margin: 1em;
+    margin: 2rem;
     text-align: center;
-    background-color: rgba(128, 128, 128, 0.7);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 1em;
     position: relative;
+
+    .container-blur {
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(3px);
+      background-color: rgba(255, 255, 255, 0.3);
+      position: absolute;
+      z-index: -1;
+      border-radius: 1em;
+    }
 
     // Card image setup
     img {
@@ -105,12 +159,13 @@
     // Top of the card including the name and logo
     .card-top {
       width: 100%;
+      height: 20%;
       @include flex;
       justify-content: space-between;
 
       h3 {
-        margin-top: 1rem;
         padding-left: 1rem;
+        z-index: 5;
       }
 
       .container-card-logo {
@@ -169,13 +224,37 @@
       }
     }
 
+    .container-description {
+      width: 85%;
+      height: 35%;
+
+      p {
+        text-align: justify;
+      }
+    }
+
+    .container-image {
+      width: 85%;
+      height: 30%;
+      position: relative;
+
+      img {
+        float: right;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: auto;
+        height: 100%;
+      }
+    }
+
     // Card Bottom (Button)
     .container-bottom-btn {
       width: 100%;
       height: 15%;
-      background-color: greenyellow;
       border-radius: 0 0 1em 1em;
       position: relative;
+      opacity: 80%;
 
       // Card button setup
       button {
@@ -196,15 +275,15 @@
 
     // Colors for Card Bottom
     .bg-shop {
-      background-color: $green;
+      background-color: $violet;
     }
 
     .bg-deco {
-      background-color: $red;
+      background-color: $green;
     }
 
     .bg-events {
-      background-color: $cream;
+      background-color: $dark-green;
     }
 
     .bg-rental {
@@ -212,7 +291,7 @@
     }
 
     .bg-ballet {
-      background-color: $violet;
+      background-color: $red;
     }
 
     .bg-technical {
@@ -220,10 +299,10 @@
     }
   }
 
-  // House -> Buttons
+  // House -> Buttons -> Home
   .wrapper-btn-house {
     width: 80vw;
-    height: 60vh;
+    height: 50vh;
     @include flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -231,27 +310,55 @@
     .container-btn-house {
       width: 100%;
       height: 10%;
+      position: relative;
+      margin-top: .4rem;
 
       button {
         width: 100%;
-        height: 80%;
+        height: 100%;
         border-radius: 1rem;
         border: none;
         font-size: 0.9rem;
-        opacity: 85%;
+        opacity: 50%;
+        position: absolute;
+        
+      }
+
+      .container-btn-blur {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(190, 190, 190, 0.05);
+        backdrop-filter: blur(3px);
+        border-radius: 1rem;
+      }
+
+      .container-categorys {
+        color: rgb(255, 255, 255);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        @include flex;
+      }
+
+      &:hover {
+        .container-btn-blur {
+          display: none;
+        }
       }
 
       // Colors for Buttons
       .btn-shop {
-        background-color: $green;
+        background-color: $violet;
       }
 
       .btn-deco {
-        background-color: $red;
+        background-color: $green;
       }
 
       .btn-events {
-        background-color: $cream;
+        background-color: $dark-green;
       }
 
       .btn-rental {
@@ -259,10 +366,102 @@
       }
 
       .btn-ballet {
-        background-color: $violet;
+        background-color: $red;
       }
       .btn-technical {
         background-color: $blue;
+      }
+    }
+  }
+
+  // Background Image Events
+
+  // Wrapper Home Section
+  .wrapper-event-section {
+    width: 100vw;
+    height: 60vh;
+    position: relative;
+    @include flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+
+    .bg-events,
+    .bg-services {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      z-index: -1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(50%) opacity(95%);
+      }
+    }
+
+    .container-buttons-roof {
+      height: 100%;
+      width: 100%;
+      @include flex;
+      flex-direction: column;
+
+      .events {
+        height: 50%;
+        width: 80%;
+        max-width: 80%;
+        justify-content: flex-start;
+        .container-events {
+          height: 13%;
+          margin: 1rem 0;
+        }
+      }
+
+      .container-contact-btn {
+        width: 80%;
+        max-width: 80%;
+        height: 7%;
+        justify-self: flex-end;
+        position: relative;
+
+        .container-contact-blur {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(190, 190, 190, 0.05);
+          backdrop-filter: blur(3px);
+          border-radius: 1rem;
+          z-index: -1;
+        }
+
+        &:hover {
+          .container-contact-blur {
+            display: none;
+          }
+        }
+        button {
+          width: 100%;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0.7);
+          border: none;
+          border-radius: 1rem;
+        }
+      }
+    }
+
+    // House -> Buttons -> Deco-Services
+    .deco-services {
+      height: 50%;
+      width: 80%;
+      max-width: 80%;
+      justify-content: flex-start;
+
+      .container-deco-services {
+        height: 13%;
+        margin-bottom: 1rem;
       }
     }
   }

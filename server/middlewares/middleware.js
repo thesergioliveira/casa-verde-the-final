@@ -45,4 +45,27 @@ middleware.checkToken = async (req, res, next) => {
     });
   }
 };
+middleware.allowAdmin = async (req, res, next) => {
+  const user = await User.findById(req.id);
+  if (user.admin == undefined || user.admin == false) {
+    return res.status(404).send({ message: "Not Allowed" });
+  } else {
+    console.log("Allowed");
+    next();
+  }
+};
+// handleUpload don't allow to upload when the value is null
+middleware.handleUpdate = async (req, res, next) => {
+  const newData = req.body;
+  if (
+    await Object.values(newData)
+      .map((data) => data.length === 0)
+      .includes(true)
+  ) {
+    return res
+      .status(400)
+      .json({ message: "Please fill out all the required fields" });
+  }
+  next();
+};
 module.exports = middleware;

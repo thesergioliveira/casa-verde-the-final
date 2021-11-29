@@ -7,6 +7,7 @@ var bodyParser = require("body-parser");
 const session = require("express-session");
 var app = express();
 // Initialize && Use Cors
+const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
 const cors = require("cors");
 
 app.use(
@@ -53,12 +54,13 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/user");
 var adminRouter = require("./routes/admin");
 var ProductRouter = require("./routes/product");
-
+//import middleware
+const middleware = require("./middlewares/middleware");
 // use routes
 
 app.use("/", indexRouter);
 app.use("/user", usersRouter);
-app.use("/admin", adminRouter);
+app.use("/admin", middleware.checkToken, middleware.allowAdmin, adminRouter);
 app.use("/product", ProductRouter);
 
 app.all("*", (req, res, next) => {

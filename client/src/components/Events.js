@@ -7,30 +7,58 @@ import Artmarket from "./Gallery/Artmarket";
 import ContactInformation from "./ContactInformation";
 import ContactForm from "./ContactForm";
 import Map from "./Map";
+import { v4 as uuidv4 } from "uuid";
 
 const Events = () => {
   const eventsMenu = EventsData.map((obj) => {
     const { id, name, link } = obj;
     return (
-      <li key={id}>
-        {/* the link is working only using anchor in this example */}
-        {/* <Link to={link}>{name}</Link> */}
-        <a href={link}>{name}</a>
-      </li>
+      <div key={uuidv4()} className="container-btn-house container-events">
+        <div className="container-btn-blur"></div>
+        <button
+          className={
+            name === "Workshops"
+              ? "btn-rental"
+              : name === "Seminaries"
+              ? "btn-events"
+              : "btn-ballet"
+          }
+        ></button>
+
+        <a href={link}>
+          <div className="container-categorys">{name}</div>
+        </a>
+      </div>
     );
   });
 
   return (
     <div className="home">
-      <div className="home-top">
-        <div className="roof"></div>
-        <h1>Casa Verde</h1>
-        <p>Events</p>
+      <div className="wrapper-event-section">
+        <div className="bg-events">
+          <img
+            src={process.env.PUBLIC_URL + "../images/bg-barrels.jpg"}
+            alt="barrels"
+          />
+        </div>
+
+        <div className="container-buttons-roof">
+          <div className="home-top">
+            <div className="roof tablet-width"></div>
+            <h1>Casa Verde</h1>
+            <p>Events</p>
+          </div>
+          <div className="wrapper-btn-house events">{eventsMenu}</div>
+
+          {/* Contact Button */}
+          <div className="container-contact-btn">
+            <a href="#contact">
+              <div className="container-contact-blur"></div>
+              <button>Contact Now!</button>
+            </a>
+          </div>
+        </div>
       </div>
-      <ul>{eventsMenu}</ul>
-      <a href="#contact">
-        <button>Contact Now!</button>
-      </a>
       <Workshops />
       <Seminaries />
       <Artmarket />

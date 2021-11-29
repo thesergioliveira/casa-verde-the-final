@@ -1,10 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
-import { DataContext } from "./UserContext";
+import axios from "axios";
 import { AuthContext } from "./AuthContext";
+import { DataContext } from "./UserContext";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
+import { GoUnverified, GoVerified, GoMailRead } from "react-icons/go";
 
 // set onClick for logo to close the menu - to do
 const Nav = ({ logo }) => {
@@ -14,30 +16,63 @@ const Nav = ({ logo }) => {
   const [show, setShow] = useState(true);
   const [closeUser, setCloseUser] = useState(true);
   const [openUser, setOpenUser] = useState(false);
+
   //use the context
   const [data, setData] = useContext(DataContext);
   const [token, setToken] = useContext(AuthContext);
+  //get editUser data
+  const getData = () => {
+    const config = {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    };
+    axios("/user/checkAuth", config)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err?.response?.data.message);
+      });
+  };
+ 
 
-  // get the userName
+  // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
+  const accountVerified = data?.user?.verifyAccount;
+
+  // on scroll function to animate the nav menu
+  const [showOnScroll, setShowOnScroll] = useState("animate");
+  const controlNav = () => {
+    if (window.scrollY > 100) {
+      setShowOnScroll("animate");
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNav);
+    return () => {
+      window.removeEventListener('scroll', controlNav);
+    }
+  },[]);
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
     return (
       <Link to={path}>
-      <li key={id}>
-        {name}
-      </li>
+        <li key={id}>{name}</li>
       </Link>
     );
   });
   //userMenu
   const showEditUser = () => {
     setOpenUser(openUser);
+    
     setCloseUser(!closeUser);
     setShow(!show);
-   closeMenu();
+    closeMenu();
+    if(show===true){getData();}
   };
   const closeUserMenu = () => {
     setCloseUser(true);
@@ -68,20 +103,19 @@ const Nav = ({ logo }) => {
   const redirect = () => {
     history.push("/login");
   };
-  //
 
   return (
     <header>
-      <nav>
+      <nav className={`laptop-setup animate ${showOnScroll}`}>
         <div className="nav-top">
-          <div  className="logo-container" onClick={closeMenu}>
+          <div className="logo-container" onClick={closeMenu}>
             {logo}
           </div>
           <div className="nav-user">
             {token ? (
               <>
                 <Link to="/basket">
-                  <li id="basket" key="50">
+                  <li id="basket" key="50" onClick={closeMenu}>
                     <FaShoppingBasket />
                   </li>
                 </Link>
@@ -104,7 +138,19 @@ const Nav = ({ logo }) => {
                       Settings <FiSettings />
                     </li>
                   </Link>
-                  <li key="54" onClick={logOut} alt="logout">
+                  <li key="54">
+                    Account:{" "}
+                    {accountVerified ? (
+                      <GoVerified style={{ color: "green" }} />
+                    ) : (
+                      <span>
+                        <Link to="/ReVerifyAccount" style={{ color: "red" }}>
+                          <GoUnverified /> <GoMailRead />
+                        </Link>
+                      </span>
+                    )}
+                  </li>
+                  <li key="55" onClick={logOut} alt="logout">
                     Logout <FiLogOut />
                   </li>
                 </ul>
@@ -147,7 +193,11 @@ const Nav = ({ logo }) => {
             <div className="menu-bottom"></div>
           </div>
         </div>
-        <ul className={none ? "none hide" : "show"} onClick={showMenu}>
+        <ul
+          className={none ? "none hide" : "show"}
+          id="laptop"
+          onClick={showMenu}
+        >
           {navMenu}
         </ul>
       </nav>

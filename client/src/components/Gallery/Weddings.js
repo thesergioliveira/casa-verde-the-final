@@ -10,12 +10,12 @@ const Weddings = () => {
 
   // onClick show more images
   const showMoreImg = () => {
-    setImages(images + 6);
+    setImages(images + 4);
   };
 
   // Category --> heading, images and button
   const weddingGallery = weddings.map((obj) => {
-    const { name, linkId, imgs } = obj;
+    const { name, linkId, imgs, description } = obj;
 
     return (
       <div key={uuidv4()} className="container-gallery">
@@ -24,6 +24,10 @@ const Weddings = () => {
           {name}
         </h3>
 
+        <div className="container-description">
+          <p>{description}</p>
+        </div>
+
         {/* Images gallery */}
         <div key={uuidv4()} className="container-img-outer">
           {imgs.map((img) => {
@@ -31,13 +35,16 @@ const Weddings = () => {
               return (
                 // active-img-inner -------------------------------- onClick Image
                 <div key={uuidv4()} className="container-img-inner ">
-                  <IoMdClose className="img-close" />
+                  {/* <IoMdClose className="img-close" /> */}
                   <img src={process.env.PUBLIC_URL + img} alt={linkId} />
                 </div>
               );
             }
           })}
         </div>
+
+        {/* blur effect */}
+        <div className="container-more-blur"></div>
 
         {/* Button --> Show more */}
         <button key={uuidv4()} onClick={showMoreImg}>

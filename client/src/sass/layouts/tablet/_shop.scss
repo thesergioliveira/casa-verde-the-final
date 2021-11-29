@@ -1,0 +1,47 @@
+.products-container {
+  h2 {
+    padding-left: 2rem;
+  }
+  .products {
+    justify-content: space-evenly;
+
+    .container-product {
+      width: 33%;
+    }
+  }
+}
+
+.search-container {
+  @include flex;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+
+  .search-bar {
+    width: 40%;
+
+    margin-bottom: 0;
+
+    .search-icon {
+      margin-left: 0.5rem;
+    }
+
+    input {
+      margin: 1px 0.5rem;
+      border: transparent;
+    }
+  }
+}
+
+.filters {
+  justify-content: space-evenly;
+
+  width: 50%;
+
+  div {
+    padding-left: 0.5rem;
+
+    select {
+      width: 60%;
+    }
+  }
+}

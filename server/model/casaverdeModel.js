@@ -15,6 +15,7 @@ const userSchema = new Schema({
   },
   admin: Boolean,
   // the role ADMIN will have always a full basket with all the products
+  verifyAccount: Boolean,
   password: { type: String, required: true },
   email: {
     trim: true,
@@ -26,6 +27,7 @@ const userSchema = new Schema({
   avatar: String,
   phone: { type: Number },
   address: { type: String },
+  resetLink: { data: String, default: "" },
   houseNumber: { type: Number },
   city: { type: String },
   state: { type: String },

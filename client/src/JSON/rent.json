@@ -4,6 +4,7 @@
     "name": "Room Rental",
     "link": "#room",
     "linkId": "room",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
       "./images/rental/room-1.png",
       "./images/rental/room-2.png",

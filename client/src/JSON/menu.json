@@ -1,42 +1,35 @@
 [
-  
   {
     "id": 1,
-    "position": "center",
-    "name": "Shop",
-    "path": "/shop"
-  },
-  {
-    "id": 2,
-    "position": "center",
     "name": "Decoration Services",
     "path": "/services"
   },
   {
-    "id": 3,
-    "position": "center",
-    "name": "Events",
-    "path": "/events"
+    "id": 2,
+    "name": "Shop",
+    "path": "/shop"
   },
   {
-    "id": 4,
-    "position": "center",
+    "id": 3,
     "name": "Rental Services",
     "path": "/rent"
   },
   {
-    "id": 5,
-    "position": "center",
+    "id": 4,
     "name": "Ballet/Pilates",
     "path": "/ballet-pilates"
   },
   {
-    "id": 6,
-    "position": "center",
+    "id": 5,
     "name": "Technical Services",
     "path": "/technic"
   },
-{
+  {
+    "id": 6,
+    "name": "Events",
+    "path": "/events"
+  },
+  {
     "id": 7,
     "position": "left",
     "name": "About",
@@ -44,9 +37,8 @@
   },
   {
     "id": 8,
-    "position": "left",
+
     "name": "Contact",
     "path": "/contact"
   }
-
 ]

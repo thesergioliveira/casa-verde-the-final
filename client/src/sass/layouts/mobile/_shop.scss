@@ -1,22 +1,131 @@
 .shop {
-   h1 {
-       text-align: center;
-   }
+  h1 {
+    text-align: center;
+  }
+  input,
+  select {
+    @include input;
+    max-width: 80vw;
+    // box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+  select {
+    appearance: none;
+    // box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    padding: 0 1em 0 0;
+    margin: 0;
+    max-width: 30vw;
+    @include selectthing();
+  }
+  select::-ms-expand {
+    display: none;
+  }
 }
 
-.products{
+.products-container {
+  width: 100%;
+
+  h2 {
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .products {
     @include flex;
     flex-wrap: wrap;
+    width: 100%;
+
+    .container-product {
+      width: 50%;
+      margin-bottom: 1.5rem;
+      position: relative;
+
+      .product-icon {
+        position: absolute;
+        top: 0.5rem;
+        right: 1.25rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
 }
 
-.product {
-    width:9.6rem;
-    height: 21rem;
-    margin: 1rem;
-    border: blue 1px solid;
-    img {
-        width: 9.5rem;
-        height: 9.5rem;
-        border: red 1px solid;
+// .product {
+//     width:9.6rem;
+//     height: 21rem;
+//     margin: 1rem;
+//     border: blue 1px solid;
+//     img {
+//         width: 9.5rem;
+//         height: 9.5rem;
+//         border: red 1px solid;
+//     }
+// }
+
+// Products for Search (need some work)
+.search-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.space-for-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.search-container {
+  @include flex();
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+
+  .search-bar {
+    width: 95%;
+    height: auto;
+    @include flex;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+
+    .search-icon {
+      margin-left: 0.5rem;
     }
+
+    input {
+      margin: 1px 0.5rem;
+      border: transparent;
+    }
+  }
+}
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 95%;
+
+  div {
+    @include flex;
+
+    select {
+      border: 1px solid black;
+      border-radius: 1rem;
+      padding: 0 0.5rem;
+      text-overflow: ellipsis;
+      margin-left: 0.2rem;
+      width: 60%;
+    }
+  }
+  // div:nth-child(1) {
+  //   width: 50%;
+  //   padding-right: 15px;
+  // }
+  // div:nth-child(2) {
+
+  //     width: 50%;
+  // }
 }

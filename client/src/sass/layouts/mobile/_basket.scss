@@ -1,98 +1,88 @@
 .main-basket-container {
-  display: flex;
+  @include flex();
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
+  width: 95%;
   height: 100%;
-  background-color: #fff;
+
   padding: 0;
   margin: 0;
   border-radius: 0;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 
-  .lists-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .shipping-msg {
+    background-color: rgb(243, 156, 156);
+    padding: 3px 3px 3px 0px;
+    width: 98%;
+
+    text-align: center;
     align-items: center;
+  }
+  & h1 {
+    margin: 10px;
+  }
+
+  .lists-container,
+  .wishlist-list {
+    width: 100%;
+    @include flex();
+    flex-direction: column;
     flex-wrap: wrap;
 
-    .wishlist-list {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      //border: 1px solid red;
-    }
     .basket-list {
-      width: 100%;
-      display: flex;
+      @include flex();
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       flex-wrap: wrap;
-      //border: 1px solid green;
-    }
-    .checkout-link {
-      width: 10%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+      margin: 5px;
     }
   }
+
+  a {
+    color: black;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-top: 2px solid $cream;
+    text-align: center;
+    p {
+      font-size: 1.5rem;
+      background-color: $blue;
+      padding: 1rem;
+      color: white;
+      border-radius: 6px;
+    }
+  }
+  aside {
+    @include flex();
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0 1rem 0;
+    h4 {
+      margin: 1rem;
+    }
+    ul {
+      width: 80%;
+      // border: gray 2px solid;
+      li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+h1 {
+  text-align: center;
+  padding-bottom: 1rem;
 }
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.product-basket {
-  width: 20rem;
-  height: 15rem;
-  
-  //border: gray 2px solid;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  .product-box {
-    display: flex;
-    flex-direction: row;
-    height: 10rem;
-    width: 100%;
-    //border: 1px solid yellow;
-  }
-  img {
-    width: 6rem;
-    height: 10rem;
-    //border: red 1px solid;
-  }
-  .product-infos {
-   // border: 1px solid blue;
-    height: 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 80%;
-  }
-  .product-infos span {
-    border: 1px solid black;
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-  }
-  .total-price {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   // border: 1px solid black;
-    height: 3rem;
-  }
+
+h4,
+h3 {
+  font-weight: bold;
+}
+h3 {
+  margin: 10px;
 }
