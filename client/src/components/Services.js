@@ -22,11 +22,11 @@ const Services = () => {
         <div className="container-btn-blur"></div>
         <button
           className={
-            name === "Weddings"
+            name === "Hochzeiten"
               ? "btn-rental"
-              : name === "Plant ideas"
+              : name === "Pflanzungen"
               ? "btn-events"
-              : name === "Gift ideas"
+              : name === "Geschenkideen"
               ? "btn-ballet"
               : "btn-deco"
           }
