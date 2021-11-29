@@ -16,10 +16,11 @@
       padding-left: 2rem;
     }
     .products {
-      justify-content: space-evenly;
+      justify-content: flex-start;
 
       .container-product {
         width: 25%;
+        max-width: 250px;
 
         .product-icon {
           top: 1.5rem;
