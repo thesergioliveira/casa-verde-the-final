@@ -1,42 +1,42 @@
 [
   {
     "id": 0,
-    "name": "Decoration Services",
+    "name": "Dekorationen und Auftragsarbeiten",
     "path": "/services",
     "img": "./images/deco-service.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "id": 1,
-    "name": "Shop",
+    "name": "Blumenstation und Bestellungen",
     "path": "/shop",
     "img": "./images/online-shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "id": 2,
-    "name": "Rental Services",
+    "name": "Raumvermietung",
     "path": "/rent",
     "img": "./images/rental.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "id": 3,
-    "name": "Ballet/Pilates",
+    "name": "Ballett/Pilates",
     "path": "/ballet-pilates",
     "img": "./images/courses.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "id": 4,
-    "name": "Technical Services",
+    "name": "Technische Beratung",
     "path": "/technic",
     "img": "./images/shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "id": 5,
-    "name": "Events",
+    "name": "Veranstaltungen",
     "path": "/events",
     "img": "./images/shop.png",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."

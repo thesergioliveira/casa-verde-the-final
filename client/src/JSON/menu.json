@@ -1,44 +1,44 @@
 [
   {
     "id": 1,
-    "name": "Decoration Services",
+    "name": "Deko",
     "path": "/services"
   },
   {
     "id": 2,
-    "name": "Shop",
+    "name": "Bestellungen",
     "path": "/shop"
   },
   {
     "id": 3,
-    "name": "Rental Services",
+    "name": "Raum",
     "path": "/rent"
   },
   {
     "id": 4,
-    "name": "Ballet/Pilates",
+    "name": "Ballett/Pilates",
     "path": "/ballet-pilates"
   },
   {
     "id": 5,
-    "name": "Technical Services",
+    "name": "Tech. Beratung",
     "path": "/technic"
   },
   {
     "id": 6,
-    "name": "Events",
+    "name": "Veranstaltungen",
     "path": "/events"
   },
   {
     "id": 7,
     "position": "left",
-    "name": "About",
+    "name": "Über uns",
     "path": "/about"
   },
   {
     "id": 8,
 
-    "name": "Contact",
+    "name": "Kontakt",
     "path": "/contact"
   }
 ]
