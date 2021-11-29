@@ -6,6 +6,7 @@ import React from "react";
 import ShopItem from "./ShopItem";
 import ShopSlider from "./ShopSlider";
 import { FaSearch } from "react-icons/fa";
+import { ImEnlarge } from "react-icons/im";
 import ItemDetails from "./ItemDetails";
 function Shop({ history }) {
   const [data, setData] = useState([]);
@@ -59,13 +60,15 @@ function Shop({ history }) {
     ?.filter((el) => el.category === "Flower and plants pots")
     .map((obj) => {
       return (
-        <div
-          className="container-product"
-          onClick={() => {
-            history.push(`/shop/product/${obj._id}`);
-          }}
-        >
-          <ShopItem obj={obj} />{" "}
+        <div className="container-product">
+          <ImEnlarge
+            className="product-icon"
+            onClick={() => {
+              history.push(`/shop/product/${obj._id}`);
+            }}
+          />
+
+          <ShopItem obj={obj} />
         </div>
       );
     });
@@ -74,12 +77,13 @@ function Shop({ history }) {
     ?.filter((el) => el.category === "Bouquet of flowers")
     .map((obj) => {
       return (
-        <div
-          className="container-product"
-          onClick={() => {
-            history.push(`/shop/product/${obj._id}`);
-          }}
-        >
+        <div className="container-product">
+          <ImEnlarge
+            className="product-icon"
+            onClick={() => {
+              history.push(`/shop/product/${obj._id}`);
+            }}
+          />
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -89,12 +93,13 @@ function Shop({ history }) {
     ?.filter((el) => el.category === "Gift baskets")
     .map((obj) => {
       return (
-        <div
-          className="container-product"
-          onClick={() => {
-            history.push(`/shop/product/${obj._id}`);
-          }}
-        >
+        <div className="container-product">
+          <ImEnlarge
+            className="product-icon"
+            onClick={() => {
+              history.push(`/shop/product/${obj._id}`);
+            }}
+          />
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -104,12 +109,13 @@ function Shop({ history }) {
     ?.filter((el) => el.category === "Italian Products")
     .map((obj) => {
       return (
-        <div
-          className="container-product"
-          onClick={() => {
-            history.push(`/shop/product/${obj._id}`);
-          }}
-        >
+        <div className="container-product">
+          <ImEnlarge
+            className="product-icon"
+            onClick={() => {
+              history.push(`/shop/product/${obj._id}`);
+            }}
+          />
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -117,9 +123,13 @@ function Shop({ history }) {
   // get all products
   const getProducts = data?.map((obj) => {
     return (
-      <div
-       
-      >
+      <div className="container-product">
+        <ImEnlarge
+          className="product-icon"
+          onClick={() => {
+            history.push(`/shop/product/${obj._id}`);
+          }}
+        />
         <ShopItem obj={obj} />{" "}
       </div>
     );
