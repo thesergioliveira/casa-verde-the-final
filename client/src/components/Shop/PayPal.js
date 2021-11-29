@@ -26,7 +26,8 @@ export default function PayPal() {
   {/* {isPending ? <div className="spinner" /> : null} */}
   <PayPalButtons
         options={{
-          clientId: "ASHvIIsd34uvS4b7vwdgtcxY7NXGyzyOuXa7YJaZj4cHpZpUtIfK13SCEntdkvK6o26tmNJ73BgDN6R3",
+          clientId:
+            "ASHvIIsd34uvS4b7vwdgtcxY7NXGyzyOuXa7YJaZj4cHpZpUtIfK13SCEntdkvK6o26tmNJ73BgDN6R3",
           currency: "EUR",
         }}
         amount="0.02"
