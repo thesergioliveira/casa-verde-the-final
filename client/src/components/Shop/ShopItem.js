@@ -132,7 +132,7 @@ function ShopItem(props) {
           <p>{props.obj.delivery ? "DELIEVERABLE" : "NOT DELIEVERABLE"}</p>
 
           <p>
-            <span>Produktbeschreibung:</span>{" "}
+            <span>Produktbeschreibung:</span> <br />
             <span>{props.obj.description}</span>
           </p>
           <div className="product-buttons">
