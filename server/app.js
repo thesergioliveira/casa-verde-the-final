@@ -7,6 +7,7 @@ var bodyParser = require("body-parser");
 const session = require("express-session");
 var app = express();
 // Initialize && Use Cors
+const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
 const cors = require("cors");
 
 app.use(
