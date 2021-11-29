@@ -6,12 +6,12 @@
   },
   {
     "id": 2,
-    "name": "Bestellungen",
+    "name": "Blumenstation",
     "path": "/shop"
   },
   {
     "id": 3,
-    "name": "Raum",
+    "name": "Vermietung",
     "path": "/rent"
   },
   {

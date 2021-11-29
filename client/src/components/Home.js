@@ -63,15 +63,15 @@ const Home = () => {
 
         <div
           className={
-            name === "Shop"
+            name === "Blumenstation und Bestellungen"
               ? "container-bottom-btn bg-shop"
-              : name === "Decoration Services"
+              : name === "Dekorationen und Auftragsarbeiten"
               ? "container-bottom-btn bg-deco"
-              : name === "Events"
+              : name === "Veranstaltungen"
               ? "container-bottom-btn bg-events"
-              : name === "Rental Services"
+              : name === "Raumvermietung"
               ? "container-bottom-btn bg-rental"
-              : name === "Ballet/Pilates"
+              : name === "Ballett/Pilates"
               ? "container-bottom-btn bg-ballet"
               : "container-bottom-btn bg-technical"
           }

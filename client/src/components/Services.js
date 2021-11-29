@@ -53,7 +53,7 @@ const Services = () => {
           <div className="home-top">
             <div className="roof tablet-width"></div>
             <h1>Casa Verde</h1>
-            <p>Decoration Services</p>
+            <p>Dekorationen</p>
           </div>
 
           <div className="wrapper-btn-house deco-services">{servicesMenu}</div>
@@ -66,7 +66,10 @@ const Services = () => {
           </div>
         </div>
       </div>
-
+      <h3>
+        Blumen sind die schönsten Worte der Natur, diese für Ihre wichtigen
+        Anlässe persönlich abzustimmen liegt uns am Herzen.
+      </h3>
       <div className="wrapper-gallery">
         {/* Weddings */}
         <Weddings />

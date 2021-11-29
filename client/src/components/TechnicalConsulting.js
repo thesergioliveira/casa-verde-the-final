@@ -12,7 +12,7 @@ const TechnicalConsulting = () => {
       <div className="home-top absolut">
         {/* <div className="roof"></div> */}
         <h1>Casa Verde</h1>
-        <p>Technical Consulting</p>
+        <p>Technische Beratung</p>
       </div>
 
       <div className="container-room-rental">
