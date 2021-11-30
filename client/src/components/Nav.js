@@ -35,7 +35,6 @@ const Nav = ({ logo }) => {
         console.log(err?.response?.data.message);
       });
   };
- 
 
   // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
@@ -47,14 +46,14 @@ const Nav = ({ logo }) => {
     if (window.scrollY > 100) {
       setShowOnScroll("animate");
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', controlNav);
+    window.addEventListener("scroll", controlNav);
     return () => {
-      window.removeEventListener('scroll', controlNav);
-    }
-  },[]);
+      window.removeEventListener("scroll", controlNav);
+    };
+  }, []);
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
@@ -68,11 +67,13 @@ const Nav = ({ logo }) => {
   //userMenu
   const showEditUser = () => {
     setOpenUser(openUser);
-    
+
     setCloseUser(!closeUser);
     setShow(!show);
     closeMenu();
-    if(show===true){getData();}
+    if (show === true) {
+      getData();
+    }
   };
   const closeUserMenu = () => {
     setCloseUser(true);
@@ -138,14 +139,14 @@ const Nav = ({ logo }) => {
                       Settings <FiSettings />
                     </li>
                   </Link>
-                  <li key="54">
+                  <li key="54" style={{display:"flex", flexDirection: "row"}}>
                     Account:{" "}
                     {accountVerified ? (
                       <GoVerified style={{ color: "green" }} />
                     ) : (
-                      <span>
-                        <Link to="/ReVerifyAccount" style={{ color: "red" }}>
-                          <GoUnverified /> <GoMailRead />
+                      <span >
+                        <Link style={{display:"flex", flexDirection: "row", color: "red" ,justifyContent:"space-between", cursor:"pointer",width:"6rem"}} to="/ReVerifyAccount" >
+                          <GoUnverified />{""}<p>(Verify !)</p>
                         </Link>
                       </span>
                     )}

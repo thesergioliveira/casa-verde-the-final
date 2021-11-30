@@ -51,6 +51,7 @@ allControllers.addUser = async (req, res) => {
       html: `<html>
         <h2>Please click on given link to Verify your Account</h2
         <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
+        <p>${process.env.CLIENT_URL}/verifyAccount/${token}</p>
       </html>`,
     };
     await transporter.sendMail(data, function (err, success) {
@@ -104,6 +105,7 @@ allControllers.confirmationEmail = async (req, res) => {
       html: `<html>
       <h2>Please click on given link to Verify your Account</h2
       <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
+      <p>${process.env.CLIENT_URL}/verifyAccount/${token}</p>
     </html>`,
     };
     await transporter.sendMail(data, function (err, success) {
