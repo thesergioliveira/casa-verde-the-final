@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import TextMe from "./TextMe";
 
 const Home = () => {
-
   const homeElements = HomeData.map((obj) => {
     const { name, path } = obj;
     return (
@@ -14,15 +13,15 @@ const Home = () => {
           <div className="container-btn-blur"></div>
           <button
             className={
-              name === "Shop"
+              name === "Blumenstation und Bestellungen"
                 ? "btn-shop"
-                : name === "Decoration Services"
+                : name === "Dekorationen und Auftragsarbeiten"
                 ? "btn-deco"
-                : name === "Events"
+                : name === "Veranstaltungen"
                 ? "btn-events"
-                : name === "Rental Services"
+                : name === "Raumvermietung"
                 ? "btn-rental"
-                : name === "Ballet/Pilates"
+                : name === "Ballett/Pilates"
                 ? "btn-ballet"
                 : "btn-technical"
             }
@@ -64,15 +63,15 @@ const Home = () => {
 
         <div
           className={
-            name === "Shop"
+            name === "Blumenstation und Bestellungen"
               ? "container-bottom-btn bg-shop"
-              : name === "Decoration Services"
+              : name === "Dekorationen und Auftragsarbeiten"
               ? "container-bottom-btn bg-deco"
-              : name === "Events"
+              : name === "Veranstaltungen"
               ? "container-bottom-btn bg-events"
-              : name === "Rental Services"
+              : name === "Raumvermietung"
               ? "container-bottom-btn bg-rental"
-              : name === "Ballet/Pilates"
+              : name === "Ballett/Pilates"
               ? "container-bottom-btn bg-ballet"
               : "container-bottom-btn bg-technical"
           }

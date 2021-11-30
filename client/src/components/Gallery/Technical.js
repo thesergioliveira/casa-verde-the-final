@@ -6,7 +6,7 @@ const Technical = () => {
   const [images, setImages] = useState(5);
 
   const technicalConsulting = TechnicalData.filter(
-    (obj) => obj.name === "Technical Consulting"
+    (obj) => obj.name === "Technische Beratung"
   );
 
   // onClick show more images

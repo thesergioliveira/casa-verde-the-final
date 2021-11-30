@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const PlantIdeas = () => {
   const [images, setImages] = useState(5);
 
-  const plantIdeas = ServicesData.filter((obj) => obj.name === "Plant ideas");
+  const plantIdeas = ServicesData.filter((obj) => obj.name === "Pflanzungen");
 
   // onClick show more images
   const showMoreImg = () => {
