@@ -46,7 +46,7 @@ const Events = () => {
           <div className="home-top">
             <div className="roof tablet-width"></div>
             <h1>Casa Verde</h1>
-            <p>Events</p>
+            <p>Veranstaltungen</p>
           </div>
           <div className="wrapper-btn-house events">{eventsMenu}</div>
 
@@ -54,7 +54,7 @@ const Events = () => {
           <div className="container-contact-btn">
             <a href="#contact">
               <div className="container-contact-blur"></div>
-              <button>Contact Now!</button>
+              <button>Kontaktieren Sie uns!</button>
             </a>
           </div>
         </div>
