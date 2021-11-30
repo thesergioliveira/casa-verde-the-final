@@ -131,7 +131,7 @@ function EditUser({ history }) {
         <p>{userData?.email}</p>
         <p>{userData?.phone}</p>
         <p>
-          {userData?.address} ,{userData?.houseNumber}
+          {userData?.address} {userData?.houseNumber}
         </p>
         <p>{userData?.city}</p>
         <p> {userData?.state}</p>

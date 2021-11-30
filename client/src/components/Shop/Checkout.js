@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../AuthContext";
 import PayPal from "./PayPal";
 import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-
+require("dotenv").config();
 export default function Checkout() {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
@@ -96,10 +96,10 @@ export default function Checkout() {
     //     console.log("failed checkout", err.message);
     //   });
   };
-
-
+const {REACT_APP_CLIENT_ID} = process.env;
+  
 const initialOptions = {
-  "client-id": "ASHvIIsd34uvS4b7vwdgtcxY7NXGyzyOuXa7YJaZj4cHpZpUtIfK13SCEntdkvK6o26tmNJ73BgDN6R3",
+  "clientId": REACT_APP_CLIENT_ID,
   currency: "EUR",
   intent: "capture",
   "data-client-token": `abc123xyz==`,

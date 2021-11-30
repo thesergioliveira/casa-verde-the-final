@@ -5,7 +5,6 @@ import {
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 import { useState, useEffect } from "react";
-import { PayPalButton } from "react-paypal-button-v2";
 
 export default function PayPal() {
   const [{ options }, dispatch] = usePayPalScriptReducer();
@@ -19,16 +18,19 @@ export default function PayPal() {
         ...options,
         currency: value,
       },
-    });
-  }
+  });
+}
 
-  return (
-    <>
-      {/* {isPending ? <div className="spinner" /> : null} */}
-      <PayPalButton
+const {REACT_APP_CLIENT_ID} = process.env;
+
+  return <>
+  {/* {isPending ? <div className="spinner" /> : null} */}
+  <PayPalButtons
         options={{
-          clientId:
-            "ASHvIIsd34uvS4b7vwdgtcxY7NXGyzyOuXa7YJaZj4cHpZpUtIfK13SCEntdkvK6o26tmNJ73BgDN6R3",
+          "clientId": REACT_APP_CLIENT_ID,
+          currency: "EUR",
+          intent: "capture",
+           "data-client-token": `abc123xyz==`,
           currency: "EUR",
         }}
         amount="0.02"
@@ -38,6 +40,11 @@ export default function PayPal() {
           console.log({ details, data });
         }}
       />
-    </>
-  );
+
+
+</> ;
+            
+        
+ 
+
 }
