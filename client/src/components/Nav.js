@@ -6,7 +6,7 @@ import { AuthContext } from "./AuthContext";
 import { DataContext } from "./UserContext";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
-import { GoUnverified, GoVerified, GoMailRead } from "react-icons/go";
+import { GoUnverified, GoVerified } from "react-icons/go";
 
 // set onClick for logo to close the menu - to do
 const Nav = ({ logo }) => {
@@ -35,7 +35,6 @@ const Nav = ({ logo }) => {
         console.log(err?.response?.data.message);
       });
   };
- 
 
   // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
@@ -53,11 +52,13 @@ const Nav = ({ logo }) => {
   //userMenu
   const showEditUser = () => {
     setOpenUser(openUser);
-    
+
     setCloseUser(!closeUser);
     setShow(!show);
     closeMenu();
-    if(show===true){getData();}
+    if (show === true) {
+      getData();
+    }
   };
   const closeUserMenu = () => {
     setCloseUser(true);
@@ -123,14 +124,14 @@ const Nav = ({ logo }) => {
                       Settings <FiSettings />
                     </li>
                   </Link>
-                  <li key="54">
+                  <li key="54" style={{display:"flex", flexDirection: "row"}}>
                     Account:{" "}
                     {accountVerified ? (
                       <GoVerified style={{ color: "green" }} />
                     ) : (
-                      <span>
-                        <Link to="/ReVerifyAccount" style={{ color: "red" }}>
-                          <GoUnverified /> <GoMailRead />
+                      <span >
+                        <Link style={{display:"flex", flexDirection: "row", color: "red" ,justifyContent:"space-between", cursor:"pointer",width:"6rem"}} to="/ReVerifyAccount" >
+                          <GoUnverified />{""}<p>(Verify !)</p>
                         </Link>
                       </span>
                     )}

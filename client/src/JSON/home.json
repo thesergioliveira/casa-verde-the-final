@@ -1,44 +1,44 @@
 [
   {
     "id": 0,
-    "name": "Decoration Services",
+    "name": "Dekorationen und Auftragsarbeiten",
     "path": "/services",
     "img": "./images/deco-service.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "description": "Blumen sind die schönsten Worte der Natur, sie persönlich zu den wichtigsten Anlässen abzustimmen liegt uns am Herzen."
   },
   {
     "id": 1,
-    "name": "Shop",
+    "name": "Blumenstation und Bestellungen",
     "path": "/shop",
     "img": "./images/online-shop.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "description": "Unsere Blumenstation ist stets mit frischen Sträußen, Arrangements, Pflanzungen und passender Jahreszeitdekoration gefüllt. Gerne machen wir für Sie individuell und persönlich für Ihre Anlässe mit einem Tag Vorlaufzeit auf Bestellung."
   },
   {
     "id": 2,
-    "name": "Rental Services",
+    "name": "Raumvermietung",
     "path": "/rent",
     "img": "./images/rental.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "description": "Nach unserer längeren Renovierungsphase haben wir inzwischen Einiges zu bieten. Unser Multifunktionsraum läd zu Aktivitäten für Körper, Geist und Seele ein. Unsere Kaffeeküche und gemütliche Plätze im Hof runden das Ambiente ab. "
   },
   {
     "id": 3,
-    "name": "Ballet/Pilates",
+    "name": "Ballett/Pilates",
     "path": "/ballet-pilates",
     "img": "./images/courses.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "description": "Mit der hauptberuflichen Lehrerin Dr. Birgit Hemmer ist eine talentierte Ballett- und Pilatestrainerin in unsere Räumlichkeiten für drei Abende eingezogen. Schauen Sie doch einmal vorbei und überzeugen Sie sich selbst."
   },
   {
     "id": 4,
-    "name": "Technical Services",
+    "name": "Technische Beratung",
     "path": "/technic",
-    "img": "./images/shop.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "img": "./images/technical1.png",
+    "description": "Der Natur-, Gesundheit- und Pflanzenbegeisterte Dipl.-Ing.(FH) Sven Wacker greift auf einen großen naturwissenschaftlichen Erfahrungs-schatz zurück und bietet im Casa Verde freiberuflich seine technische Beratungen für Unternehmen und Privatpersonen an."
   },
   {
     "id": 5,
-    "name": "Events",
+    "name": "Veranstaltungen",
     "path": "/events",
-    "img": "./images/shop.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "img": "./images/events.png",
+    "description": "Das Casa Verde soll ebenfalls als neue Plattform für verschiedenste Ideen dienen und in Form von Workshops, Kunst- und Handwerker-märkte sowie Seminare und Vortröge ausgelebt werden."
   }
 ]

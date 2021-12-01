@@ -1,41 +1,41 @@
 [
   {
     "id": 0,
-    "name": "Weddings",
+    "name": "Hochzeiten",
     "link": "#weddings",
     "linkId": "weddings",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
-      "./images/deco-services/weddings/weddings-1.png",
-      "./images/deco-services/weddings/weddings-2.png",
-      "./images/deco-services/weddings/weddings-3.png",
-      "./images/deco-services/weddings/weddings-4.png",
-      "./images/deco-services/weddings/weddings-5.png",
-      "./images/deco-services/weddings/weddings-6.png",
-      "./images/deco-services/weddings/weddings-7.png",
-      "./images/deco-services/weddings/weddings-8.png"
+      "./images/deco-services/weddings/weddings-1.jpg",
+      "./images/deco-services/weddings/weddings-2.jpg",
+      "./images/deco-services/weddings/weddings-3.jpg",
+      "./images/deco-services/weddings/weddings-4.jpg",
+      "./images/deco-services/weddings/weddings-5.jpg",
+      "./images/deco-services/weddings/weddings-6.jpg",
+      "./images/deco-services/weddings/weddings-7.jpg",
+      "./images/deco-services/weddings/weddings-8.jpg"
     ]
   },
   {
     "id": 1,
-    "name": "Plant ideas",
+    "name": "Pflanzungen",
     "link": "#plant",
     "linkId": "plant",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
-      "./images/deco-services/plant ideas/plants-1.png",
-      "./images/deco-services/plant ideas/plants-2.png",
-      "./images/deco-services/plant ideas/plants-3.png",
-      "./images/deco-services/plant ideas/plants-4.png",
-      "./images/deco-services/plant ideas/plants-5.png",
-      "./images/deco-services/plant ideas/plants-6.png",
-      "./images/deco-services/plant ideas/plants-7.png",
-      "./images/deco-services/plant ideas/plants-8.png"
+      "./images/deco-services/plant ideas/plants-1.jpg",
+      "./images/deco-services/plant ideas/plants-2.jpg",
+      "./images/deco-services/plant ideas/plants-3.jpg",
+      "./images/deco-services/plant ideas/plants-4.jpg",
+      "./images/deco-services/plant ideas/plants-5.jpg",
+      "./images/deco-services/plant ideas/plants-6.jpg",
+      "./images/deco-services/plant ideas/plants-7.jpg",
+      "./images/deco-services/plant ideas/plants-8.jpg"
     ]
   },
   {
     "id": 2,
-    "name": "Gift ideas",
+    "name": "Geschenkideen",
     "link": "#gift",
     "linkId": "gift",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -52,19 +52,19 @@
   },
   {
     "id": 3,
-    "name": "Funerals",
+    "name": "Beerdigungen",
     "link": "#funerals",
     "linkId": "funerals",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
-      "./images/deco-services/funerals/funerals-1.png",
-      "./images/deco-services/funerals/funerals-2.png",
-      "./images/deco-services/funerals/funerals-3.png",
-      "./images/deco-services/funerals/funerals-4.png",
-      "./images/deco-services/funerals/funerals-5.png",
-      "./images/deco-services/funerals/funerals-6.png",
-      "./images/deco-services/funerals/funerals-7.png",
-      "./images/deco-services/funerals/funerals-8.png"
+      "./images/deco-services/funerals/funerals-1.jpg",
+      "./images/deco-services/funerals/funerals-2.jpg",
+      "./images/deco-services/funerals/funerals-3.jpg",
+      "./images/deco-services/funerals/funerals-4.jpg",
+      "./images/deco-services/funerals/funerals-5.jpg",
+      "./images/deco-services/funerals/funerals-6.jpg",
+      "./images/deco-services/funerals/funerals-7.jpg",
+      "./images/deco-services/funerals/funerals-8.jpg"
     ]
   }
 ]

@@ -1,0 +1,31 @@
+.single-page-product-details {
+  margin-top: 5rem;
+  border: none;
+  justify-content: center;
+  align-items: center;
+
+  .link-back {
+    font-size: 1.5rem;
+  }
+
+  .productCard-main-container {
+    margin: 0;
+    width: 65%;
+
+    .product-box {
+      margin: 2rem 0;
+
+      .product-infos {
+        padding: 0;
+
+        .product-buttons {
+          width: 80%;
+        }
+      }
+    }
+
+    img {
+      margin-top: 1rem;
+    }
+  }
+}

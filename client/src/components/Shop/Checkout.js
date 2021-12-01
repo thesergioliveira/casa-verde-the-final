@@ -4,7 +4,8 @@ import { useState, useEffect, useContext } from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 import PayPal from "./PayPal";
-
+import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+require("dotenv").config();
 export default function Checkout() {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
@@ -20,6 +21,7 @@ export default function Checkout() {
   const [total, setTotal] = useState(0);
   const [UserData, setUserData] = useState([]);
   const [token] = useContext(AuthContext);
+ 
   const config = {
     headers: {
       authorization: token,
@@ -94,11 +96,18 @@ export default function Checkout() {
     //     console.log("failed checkout", err.message);
     //   });
   };
-
+const {REACT_APP_CLIENT_ID} = process.env;
+  
+const initialOptions = {
+  "clientId": REACT_APP_CLIENT_ID,
+  currency: "EUR",
+  intent: "capture",
+  "data-client-token": `abc123xyz==`,
+};
   //console.log(UserData?.user);
   let shipping = 5;
 
-  return (
+  return (<PayPalScriptProvider deferLoading={true}  options={{ initialOptions}}>
     <div className="main-checkout-container">
       <div>
         <p className="shipping-msg">
@@ -224,15 +233,12 @@ export default function Checkout() {
         onClick={handleCheckout}
       >
         PAY
-      </button>
+      </button><PayPal/>
 
-{checkout ? (
-<PayPal/>
 
-) : (
-  <button onClick={() => setCheckout(true)}>checkout</button>
-)}
+
+
 
     </div>
-  );
+    </PayPalScriptProvider>);
 }

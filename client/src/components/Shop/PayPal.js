@@ -1,37 +1,50 @@
-import React, { useRef, useEffect } from "react";
+import {
+  BraintreePayPalButtons,
+  PayPalButtons,
+  PayPalScriptProvider,
+  usePayPalScriptReducer,
+} from "@paypal/react-paypal-js";
+import { useState, useEffect } from "react";
 
 export default function PayPal() {
-  const paypal = useRef();
-  useEffect(() => {
-    window.paypal
-      .Buttons({
-        createOrder: function (data, actions, err) {
-          return actions.order.create({
-              intent: "CAPTURE",
-              purchase_units: [
-                {
-                  description: "This is the payment transaction description.",
-                  amount: {
-                    total: "0.01",
-                    currency_code: "EUR",
-                  },
-                },
-              ],
+  const [{ options }, dispatch] = usePayPalScriptReducer();
+  const [currency, setCurrency] = useState(options.currency);
+
+  function onCurrencyChange({ target: { value } }) {
+    setCurrency(value);
+    dispatch({
+      type: "resetOptions",
+      value: {
+        ...options,
+        currency: value,
+      },
+  });
+}
+
+const {REACT_APP_CLIENT_ID} = process.env;
+
+  return <>
+  {/* {isPending ? <div className="spinner" /> : null} */}
+  <PayPalButtons
+        options={{
+          "clientId": REACT_APP_CLIENT_ID,
+          currency: "EUR",
+          intent: "capture",
+           "data-client-token": `abc123xyz==`,
+          currency: "EUR",
+        }}
+        amount="0.02"
+        onSuccess={(details, data) => {
+          alert("Transaction completed by " + details.payer.name.given_name);
+
+          console.log({ details, data });
+        }}
+      />
+
+
+</> ;
             
-          });
-        },
-        onApprove: async (data, actions)=>{
-          const order = await actions.order.capture();
-          console.log("succesuf ord",order);
-        }, 
-        onError: async (data, actions)=>{
-            console.log("error",data,actions);
-        }
-      }).render(paypal.current);
-      
-  }, []);
+        
+ 
 
-
-
-  return <div ref={paypal}></div>;
 }

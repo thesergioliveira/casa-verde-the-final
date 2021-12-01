@@ -25,6 +25,7 @@ import ForgetPassword from "./components/ForgetPassword";
 import ResetPassword from "./components/ResetPassword";
 import VerifyAccount from "./components/VerifyAccount";
 import ReVerifyAccount from "./components/ReVerifyAccount";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function App() {
   // Logo setup
@@ -36,9 +37,13 @@ function App() {
       </Link>
     );
   });
+  
 
   return (
-    <DataProvider>
+   
+    
+     
+  <DataProvider>
       <AuthContextProvider>
         <Router>
           <Nav logo={logo} />
@@ -74,7 +79,7 @@ function App() {
           <Footer logo={logo} />
         </Router>
       </AuthContextProvider>
-    </DataProvider>
+    </DataProvider> 
   );
 }
 

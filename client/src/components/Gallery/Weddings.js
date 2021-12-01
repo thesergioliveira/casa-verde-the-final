@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io";
 const Weddings = () => {
   const [images, setImages] = useState(5);
 
-  const weddings = ServicesData.filter((obj) => obj.name === "Weddings");
+  const weddings = ServicesData.filter((obj) => obj.name === "Hochzeiten");
 
   // onClick show more images
   const showMoreImg = () => {
