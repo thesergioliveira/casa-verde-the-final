@@ -7,8 +7,6 @@ import ShopItem from "./ShopItem";
 import ContactInformation from "../ContactInformation";
 
 
- // gmsouc   gmsouc
-// I NEED THE TOTAL FROM BASKET COMPONENT
 export const BillContext = React.createContext()
 
 export default function ProviderComponent({ children }){

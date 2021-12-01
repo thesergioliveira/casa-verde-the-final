@@ -92,12 +92,8 @@ allProductControllers.addToWishlist = async (req, res) => {
   try {
     const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
-  //   let checkfordublicates = user?.wishlist.filter((item) => item._id.toString() !== product._id.toString()).push(product);
-  // console.log("HHHHHHHHHEEEEEEEEEEEYYYYYYYYYYYY",checkfordublicates);
-  //console.log(product._id.toString());
-  
-
-  dublicationCheck = user?.wishlist.find(item => item._id.toString() === product._id.toString());
+ 
+    let dublicationCheck = user?.wishlist.find(item => item._id.toString() === product._id.toString());
     if (user && product && !dublicationCheck) {
       user.wishlist.push(product);
       user.save();
