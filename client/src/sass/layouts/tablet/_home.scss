@@ -1,4 +1,5 @@
 .home {
+  margin-top: 5.5rem;
   .home-top {
     .roof {
       border-width: 0 40vw 10vh;
@@ -29,30 +30,34 @@
     @include flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 100%;
+    width: 80%;
 
     .card-element {
-      width: 40%;
-      height: 50vh;
+      width: 100%;
+      min-width: 15rem;
+      height: 35vh;
       margin: 2rem 0;
     }
 
     .card-top {
       h3 {
-        font-size: 3.5vw;
-        padding-left: 0.5rem;
+        font-size: 4vw;
+        padding-left: 5%;
       }
     }
 
     .container-description {
       p {
-        font-size: 3vw;
+        font-size: 3.5vw;
       }
     }
 
     // Card Bottom (Button)
     .container-bottom-btn {
       a {
+        height: 60%;
+        width: 50%;
+
         button {
           font-size: 2.5vw;
         }
@@ -63,6 +68,25 @@
       img {
         width: 8rem;
         height: 8rem;
+      }
+    }
+
+    @media screen and (min-width: 700px) {
+      .container-description {
+        p {
+          font-size: 3vw;
+        }
+      }
+
+      .container-bottom-btn {
+        a {
+          height: 60%;
+          width: 50%;
+
+          button {
+            font-size: 2vw;
+          }
+        }
       }
     }
   }
