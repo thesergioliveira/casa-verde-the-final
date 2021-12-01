@@ -1,9 +1,13 @@
+// Import area
 import React from "react";
-
+// About function
 const About = () => {
   return (
-    <div>
+    <div className="about-container">
+      {/*Image of us*/}
+      <img className="about-us-picture" src="./images/about-us/wichtel.jpg" alt="Sven and Maria" />
       <h2>Über Uns und das Projekt</h2>
+      {/* Text */}
       <p>
         Das Casa Verde ist seit 2001 weithin bekannt für sein mediterranes
         Flair, außergewöhnliche Blumengestaltung sowie für stilvolle
