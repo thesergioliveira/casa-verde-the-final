@@ -40,14 +40,14 @@
     "linkId": "gift",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
-      "./images/deco-services/gift ideas/gifts-1.png",
-      "./images/deco-services/gift ideas/gifts-2.png",
-      "./images/deco-services/gift ideas/gifts-3.png",
-      "./images/deco-services/gift ideas/gifts-4.png",
-      "./images/deco-services/gift ideas/gifts-5.png",
-      "./images/deco-services/gift ideas/gifts-6.png",
-      "./images/deco-services/gift ideas/gifts-7.png",
-      "./images/deco-services/gift ideas/gifts-8.png"
+      "./images/deco-services/gift ideas/gifts-1.jpg",
+      "./images/deco-services/gift ideas/gifts-2.jpg",
+      "./images/deco-services/gift ideas/gifts-3.jpg",
+      "./images/deco-services/gift ideas/gifts-4.jpg",
+      "./images/deco-services/gift ideas/gifts-5.jpg",
+      "./images/deco-services/gift ideas/gifts-6.jpg",
+      "./images/deco-services/gift ideas/gifts-7.jpg",
+      "./images/deco-services/gift ideas/gifts-8.jpg"
     ]
   },
   {
