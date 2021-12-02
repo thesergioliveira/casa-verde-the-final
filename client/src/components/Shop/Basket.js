@@ -5,10 +5,13 @@ import { AuthContext } from "../AuthContext";
 import { Link } from "react-router-dom";
 import ShopItem from "./ShopItem";
 import ContactInformation from "../ContactInformation";
+import { BillContext } from "./TotalBillContext"
+
 const Basket = () => {
 
   const [data, setData] = useState([]);
   const [token] = useContext(AuthContext);
+  const value = useContext(BillContext);
   const config = {
     headers: {
       authorization: token,
@@ -42,6 +45,7 @@ const Basket = () => {
   let maparr = new Map(cartItems);
 
   let result = [...maparr.values()].filter((item) => item.quantity > 0);
+  
   //no dublicated not available items
   let cartNotavAilableItems = notAvailableCartItems?.map((item) => {
     return [item._id, item];
@@ -54,13 +58,13 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
 
  
   //count total and allow checkout button
-
+// PASS IT TO THE TOTALBILLCONTEXT
   let total = data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0) - cartNotavAilableItems?.map((item) => item[1].price).reduce((a, b) => a + b, 0)
   {
     total > 0 ? (displa = "inline") : (displa = "none");
   }
 
-
+  
   const clearSoldout =async () => {
     if (notAvailableCartItems.length > 0) {
       await notAvailableCartItems?.map((item) => {
@@ -89,10 +93,10 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
         <p className="shipping-msg">
           ❗ Please take a note that not articles can be send !
           {notAvailableCartItems?.length ? (
-            <p>
+            <h2>
               the {notAvailableCartItems?.map((item) => `${item.name}, `)} are
               unfortunately already sold out and not available anymore !
-            </p>
+            </h2>
           ) : null}
         </p>
 
@@ -126,10 +130,10 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
       </div>
       <aside>
         {notDeliverable?.length ? (
-          <h4 className="shipping-msg">
+          <h2 className="shipping-msg">
             the {notDeliverable?.map((item) => `${item.name}, `)} are too
             sensitive to be delivered. Feel free to come from our shop
-          </h4>
+          </h2>
         ) : null}
 
         <h4>Abholung</h4>
@@ -150,13 +154,15 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
         <ContactInformation />
       </aside>
 
-      <Link style={{ display: `${displa}` }} to="/basket/checkout">
+
+      <Link style={{ display: `${displa}` }} total ={total} to="/basket/checkout">
         <h3>
           Total:
           {total} $
         </h3>
-        <p onClick={() => clearSoldout()}> proceed to Checkout</p>
+        <p onClick={clearSoldout}> proceed to Checkout</p>
       </Link>
+      
     </div>
   );
 };

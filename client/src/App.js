@@ -26,6 +26,7 @@ import ResetPassword from "./components/ResetPassword";
 import VerifyAccount from "./components/VerifyAccount";
 import ReVerifyAccount from "./components/ReVerifyAccount";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import TotalBillProvider from "./components/Shop/TotalBillContext";
 
 function App() {
   // Logo setup
@@ -70,8 +71,9 @@ function App() {
               <Route path="/verifyAccount/:id" exact component={VerifyAccount}></Route>
               <Route path="/ReVerifyAccount" exact component={ReVerifyAccount}></Route>
               <Route path="/register" exact component={Register}></Route>
+              <TotalBillProvider> 
               <Route path="/basket" exact component={Basket}></Route>
-              <Route path="/basket/checkout" exact component={Checkout}></Route>
+              <Route path="/basket/checkout" exact component={Checkout}></Route> </TotalBillProvider>
               <Route path="/settings" exact component={EditUser}></Route>
               <Route path="/shop/product/:id" exact component={ItemDetails}></Route>
             </Switch>
