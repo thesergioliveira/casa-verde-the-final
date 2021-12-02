@@ -27,6 +27,7 @@ const Technical = () => {
 
         <div className="container-description">
           <p>{description}</p>
+          <h3>Services</h3>
         </div>
 
         {/* Images gallery */}
