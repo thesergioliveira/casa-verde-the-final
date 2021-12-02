@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "../JSON/menu.json";
 import axios from "axios";
@@ -6,7 +6,7 @@ import { AuthContext } from "./AuthContext";
 import { DataContext } from "./UserContext";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
-import { GoUnverified, GoVerified, GoMailRead } from "react-icons/go";
+import { GoUnverified, GoVerified } from "react-icons/go";
 
 // set onClick for logo to close the menu - to do
 const Nav = ({ logo }) => {
@@ -40,22 +40,7 @@ const Nav = ({ logo }) => {
   const userName = data?.user?.username.toUpperCase();
   const accountVerified = data?.user?.verifyAccount;
 
-  // on scroll function to animate the nav menu
-  const [showOnScroll, setShowOnScroll] = useState("animate");
-  const controlNav = () => {
-    if (window.scrollY > 100) {
-      setShowOnScroll("animate");
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", controlNav);
-    return () => {
-      window.removeEventListener("scroll", controlNav);
-    };
-  }, []);
-
-  //hamburgerMenu
+ //hamburgerMenu
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
     return (
@@ -107,7 +92,7 @@ const Nav = ({ logo }) => {
 
   return (
     <header>
-      <nav className={`laptop-setup animate ${showOnScroll}`}>
+      <nav className="laptop-setup">
         <div className="nav-top">
           <div className="logo-container" onClick={closeMenu}>
             {logo}
