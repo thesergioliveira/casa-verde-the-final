@@ -67,12 +67,13 @@ export default function StatisticsAndQuickUpdates(props) {
     const updatedProductData = {
       quantity: productData[detectproduct]?.quantity + count,
     };
-    
+
     axios
       .put(`admin/product/quantitycheck/${id}`, updatedProductData, config)
       .then((res) => {
         console.log(res.updatedProductData);
         alert("Stock updated, please refresh the page");
+        window.location.reload(false);
       })
       .catch((err) => {
         console.log(err.message);
@@ -123,9 +124,14 @@ export default function StatisticsAndQuickUpdates(props) {
           ))}
         </select>
         <div className="quick-update-view">
-        <p>you have: {productData[detectproduct]?.quantity} from {productData[detectproduct]?.name}</p>
-        <img src={`http://localhost:5005/${productData[detectproduct]?.image}`} alt="product" />
-        
+          <p>
+            you have: {productData[detectproduct]?.quantity} from{" "}
+            {productData[detectproduct]?.name}
+          </p>
+          <img
+            src={`http://localhost:5005/${productData[detectproduct]?.image}`}
+            alt="product"
+          />
         </div>
         <button
           disabled={productData[detectproduct]?.quantity + count < 1}
@@ -133,7 +139,7 @@ export default function StatisticsAndQuickUpdates(props) {
           onClick={handleStockminus}
         >
           MINUS {count}
-        </button> 
+        </button>
         <button className="button-dash" onClick={handleStockplus}>
           PLUS {count}
         </button>

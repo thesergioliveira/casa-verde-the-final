@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
+
 import { FiMinusCircle, FiPlusCircle, FiTrash2 } from "react-icons/fi";
 import {
   BrowserRouter as Router,
@@ -14,12 +15,11 @@ import {
 import ItemDetails from "./ItemDetails";
 
 function ShopItem(props) {
-  // console.log(props.obj);
   const [count, setCount] = useState(0);
 
   const [quantity, setQuantity] = useState(0);
   const [wishlist, setWishlist] = useState(true);
-  //const [userData, setUserData] = useContext(DataContext);
+
   useEffect(() => {
     const displayBasket = async () => {
       await axios
@@ -28,6 +28,11 @@ function ShopItem(props) {
           setCount(
             res.data.basket.filter((item) => item._id === props.obj._id).length
           );
+           let dublicationCheck = res.data.wishlist.find(item => item._id.toString() === props.obj._id.toString())
+           console.log(dublicationCheck)
+            if(dublicationCheck){
+                setWishlist(false)
+            }
         })
         .catch((err) => {
           console.log("SOS SOS SOS SOS", err.message);
@@ -61,8 +66,8 @@ function ShopItem(props) {
       });
   };
   const removeFromBasket = (id) => {
-    setCount(count - 1);
-    console.log(id);
+    //setCount(count - 1);
+    setCount(0);
     axios
       .put(
         "user/removeFromTheBasket",
@@ -77,6 +82,8 @@ function ShopItem(props) {
   };
 
   const addToWishlist = (id) => {
+   
+    // let dublicationCheck = user?.wishlist.find(item => item._id.toString() === id.toString())
     setWishlist(!wishlist);
     if (wishlist) {
       axios
@@ -92,7 +99,7 @@ function ShopItem(props) {
         });
     } else {
       axios
-        .delete(
+        .put(
           "user/wishlist",
           {
             productId: id,
@@ -156,16 +163,15 @@ function ShopItem(props) {
             <button onClick={() => addToWishlist(props.obj._id)}>
               <p>{wishlist ? `💛` : `❤️`}</p>
             </button>
-            <button onClick={() => removeFromBasket(props.obj_id)}>
+            <button
+              disabled={count === 0}
+              onClick={() => removeFromBasket(props.obj_id)}
+            >
               <FiTrash2 className="icon" />
             </button>
           </div>
         </div>
       </div>
-      {/* <div className="total-price">
-        <h2>{props.obj.price * count} $</h2>&nbsp;
-        <p>incl.VAT</p>
-      </div> */}
     </div>
   );
 }

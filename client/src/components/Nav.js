@@ -40,7 +40,7 @@ const Nav = ({ logo }) => {
   const userName = data?.user?.username.toUpperCase();
   const accountVerified = data?.user?.verifyAccount;
 
-  //hamburgerMenu
+ //hamburgerMenu
   const navMenu = Menu.map((obj) => {
     const { id, name, path } = obj;
     return (

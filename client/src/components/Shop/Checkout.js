@@ -5,7 +5,9 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../AuthContext";
 import PayPal from "./PayPal";
 import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { BillContext } from "./TotalBillContext"
 require("dotenv").config();
+
 export default function Checkout() {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
@@ -18,10 +20,12 @@ export default function Checkout() {
 
   //
   const [data, setData] = useState([]);
-  const [total, setTotal] = useState(0);
+  
   const [UserData, setUserData] = useState([]);
   const [token] = useContext(AuthContext);
  
+  const value = useContext(BillContext);
+  
   const config = {
     headers: {
       authorization: token,
@@ -208,18 +212,21 @@ const initialOptions = {
         </button>
       </div>
       <ul>
-        <li>menge: {data.basket?.length} </li>
+        <li>menge: {value?.menge?.length} </li>
         <li>
           Zwischensumme:
-          {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0)}$
+          {value?.total}$
         </li>
         <li>Versand: {shipping}$ </li>
         <li>
           Gesamt:
-          {data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0) +
+          {value.total +
             shipping}
           $
         </li>
+        
+      
+   
       </ul>
       <button
         className="button-dash"
