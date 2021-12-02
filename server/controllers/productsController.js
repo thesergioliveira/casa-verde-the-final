@@ -88,10 +88,13 @@ allProductControllers.addToBasket = async (req, res) => {
   }
 };
 allProductControllers.addToWishlist = async (req, res) => {
+  
   try {
     const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
-    if (user && product) {
+ 
+    let dublicationCheck = user?.wishlist.find(item => item._id.toString() === product._id.toString());
+    if (user && product && !dublicationCheck) {
       user.wishlist.push(product);
       user.save();
       res.status(201).json({ message: "Product added to wishlist ✅" });
@@ -108,8 +111,9 @@ allProductControllers.removeFromWishlist = async (req, res) => {
     const user = await User.findById(req.id);
     
     const product = await Product.findById(req.body.productId);
+   
     if (user && product) {
-      user.wishlist.pull(product);
+user.wishlist.pull(product);
       user.save();
       res.status(201).json({ message: "Product removed from wishlist ✅" });
     } else {
@@ -124,7 +128,7 @@ allProductControllers.removeFromBasket = async (req, res) => {
     const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
-      console.log("HHHHHHHHHEEEEEEEEEEEYYYYYYYYYYYY",product);
+      
       user.basket.pull(product);
       user.save();
 

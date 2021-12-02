@@ -1,14 +1,16 @@
 .single-page-product-details {
-  margin-top: 1rem;
+  margin-top: 5rem;
+  border: none;
+  justify-content: center;
+  align-items: center;
 
   .link-back {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .productCard-main-container {
     margin: 0;
-    width: 50%;
-    max-width: 600px;
+    width: 65%;
 
     .product-box {
       margin: 2rem 0;
@@ -17,7 +19,7 @@
         padding: 0;
 
         .product-buttons {
-          width: 70%;
+          width: 80%;
         }
       }
     }
