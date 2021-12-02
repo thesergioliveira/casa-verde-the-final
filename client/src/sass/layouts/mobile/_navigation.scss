@@ -79,7 +79,9 @@ header nav {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: $cream;
-  transition: 0.7s;
+  transition: .7s;
+  z-index: 10;
+ 
 
   // Li setup
   li {
@@ -173,16 +175,6 @@ header nav {
     font-weight: bold;
     text-decoration: none;
   }
-}
-
-// On scroll navbar animation
-.animate {
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  transition-timing-function: ease-in;
-  transition: 0.5s;
-  z-index: 6;
 }
 
 /* ----------------------------------------------
