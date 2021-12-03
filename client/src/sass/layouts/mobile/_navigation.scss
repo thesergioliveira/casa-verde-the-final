@@ -5,7 +5,7 @@ header nav {
   background-color: $cream;
 
   .nav-top {
-    padding: 0 .7rem;
+    padding: 0 0.7rem;
     @include flex;
     justify-content: space-between;
     height: 4rem;
@@ -13,15 +13,15 @@ header nav {
   .none {
     width: 0;
     height: 0;
-    transition: .7s;
+    transition: 0.7s;
     overflow: hidden;
   }
 }
 
 // Logo setup
 .logo {
-    width: 6.5rem;
-    height: 6.5rem;
+  width: 6.5rem;
+  height: 6.5rem;
 }
 
 // Hamburger menu setup
@@ -47,7 +47,7 @@ header nav {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 .8em .6em;
+  border-width: 0 0.8em 0.6em;
   border-color: transparent transparent black;
   margin-bottom: 0.1em;
 }
@@ -57,7 +57,7 @@ header nav {
   .menu-roof {
     position: relative;
     transform: rotate(30deg);
-    bottom: .2em;
+    bottom: 0.2em;
     right: -0.2em;
     transition: 0.2s;
   }
@@ -67,7 +67,6 @@ header nav {
 .close {
   transition: 0.2s;
 }
-
 
 // Show nav setup
 .show {
@@ -81,6 +80,7 @@ header nav {
   flex-direction: column;
   background-color: $cream;
   transition: .7s;
+  z-index: 10;
  
 
   // Li setup
@@ -98,7 +98,7 @@ header nav {
   }
 
   // Animation for open the navigation
-  animation: scale-up-tr 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
+  animation: scale-up-tr 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 }
 
 // Ul display none
@@ -112,7 +112,7 @@ header nav {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: $cream;
-  transition: .7s;
+  transition: 0.7s;
   overflow: hidden;
 
   // Li setup
@@ -128,9 +128,8 @@ header nav {
     text-decoration: none;
     text-align: center;
   }
-  animation: scale-down-tr 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) backwards;
+  animation: scale-down-tr 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
 }
-
 
 // Ul display none
 .user-none {
@@ -162,30 +161,20 @@ header nav {
     text-decoration: none;
   }
 }
-// added by me Hamza ,just at the moment to look nice we change it later 
+// added by me Hamza ,just at the moment to look nice we change it later
 .nav-user {
   @include flex;
   justify-content: space-evenly;
   width: 30vw;
 
-   // Li setup
+  // Li setup
   li {
     padding-left: 1em;
     list-style: none;
     color: black;
     font-weight: bold;
-    text-decoration: none; 
+    text-decoration: none;
   }
-}
-
-// On scroll navbar animation
-.animate {
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  transition-timing-function: ease-in;
-  transition: .5s;
-  z-index: 6;
 }
 
 /* ----------------------------------------------
@@ -200,22 +189,22 @@ header nav {
  * animation scale-up-tr
  * ----------------------------------------
  */
- @-webkit-keyframes scale-up-tr {
+@-webkit-keyframes scale-up-tr {
   0% {
     display: none;
   }
   1% {
     display: flex;
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
   100% {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
 }
 @keyframes scale-up-tr {
@@ -225,15 +214,15 @@ header nav {
   1% {
     display: flex;
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
   100% {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
 }
 
@@ -249,19 +238,19 @@ header nav {
  * animation scale-down-tr
  * ----------------------------------------
  */
- @-webkit-keyframes scale-down-tr {
+@-webkit-keyframes scale-down-tr {
   0% {
     display: flexbox;
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
   99% {
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
   100% {
     display: none;
@@ -271,15 +260,15 @@ header nav {
   0% {
     display: flexbox;
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
   99% {
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     -webkit-transform-origin: 100% 0%;
-            transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
   }
   100% {
     display: none;

@@ -51,6 +51,7 @@ allControllers.addUser = async (req, res) => {
       html: `<html>
         <h2>Please click on given link to Verify your Account</h2
         <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
+        
       </html>`,
     };
     await transporter.sendMail(data, function (err, success) {
@@ -285,7 +286,7 @@ allControllers.forgotPassword = async (req, res) => {
       subject: "Reset Your Password",
       html: `<html>
         <h2>Please click on given link to reset your password</h2
-        <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
+       <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
       </html>`,
     };
 
