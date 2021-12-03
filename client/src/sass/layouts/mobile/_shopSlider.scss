@@ -10,7 +10,7 @@
     opacity: 0;
     width: 100%;
     height: 100%;
-    transition: opacity ease-in-out 0.5s;
+    transition: opacity ease-in-out 0.8s;
 
     img {
       width: 100%;
@@ -37,6 +37,8 @@
 
     // Slider Dots
     .container-dots {
+      border-radius: 1rem;
+      background-color: #3279519f;
       @include flex;
       justify-content: space-evenly;
       // position: absolute;
@@ -63,45 +65,73 @@
   }
 
   .container-btn-slider {
-    width: 90%;
-    height: 70%;
-    position: absolute;
+    width: 100%;
+    height: 75%;
+    position: relative;
     @include flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
 
-    button {
+    .container-btn {
       width: 90%;
-      height: 2.3rem;
-      background-color: rgba(255, 255, 255, 0.75);
-      border: none;
+      @include flex;
       border-radius: 1.2rem;
-      font-size: 1rem;
-      color: white;
-    }
+      a {
+        width: 100%;
+        position: relative;
+        @include flex;
+        border-radius: 1.2rem;
+        button {
+          width: 100%;
+          height: 2.3rem;
+          background-color: rgba(255, 255, 255, 0.75);
+          border: none;
+          border-radius: 1.2rem;
+          font-size: 1rem;
+          color: white;
+          z-index: 1;
+        }
 
-    .flowers {
-      background-color: #327951c0;
-    }
+        .blur-btn {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 2.3rem;
+          border-radius: 1.2rem;
+          background-color: rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(3px);
+        }
 
-    .deco {
-      background-color: #ff5757c0;
-    }
+        &:hover {
+          button {
+            text-decoration: underline;
+          }
 
-    .plants {
-      background-color: #00c2cbc0;
-    }
+          .blur-btn {
+            display: none;
+          }
+        }
 
-    .gifts {
-      background-color: #ff66c4c0;
-    }
+        .flowers {
+          background-color: #3279519f;
+        }
 
-    .italy {
-      background-color: #ffb443c0;
+        .deco {
+          background-color: #ff57579f;
+        }
+
+        .plants {
+          background-color: #00c2cb9f;
+        }
+
+        .gifts {
+          background-color: #ff66c49f;
+        }
+
+        .italy {
+          background-color: #ffb4439f;
+        }
+      }
     }
 
     .container-shop-header {

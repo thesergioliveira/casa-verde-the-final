@@ -86,11 +86,38 @@ const ShopSlider = () => {
           <h2>CASA VERDE SHOP</h2>
         </div>
         {/* React-Router is missing */}
-        <button className="flowers">Blumensträuße</button>
-        <button className="deco">Deko nach Jahreszeit</button>
-        <button className="plants">Topfpflanzen</button>
-        <button className="gifts">Geschenkideen</button>
-        <button className="italy">Italienische Spezialitäten</button>
+        <div className="container-btn">
+          <a href="#flowers">
+            <div className="blur-btn"></div>
+            <button href="#flowers" className="flowers">
+              Blumensträuße
+            </button>
+          </a>
+        </div>
+        <div className="container-btn">
+          <a href="#gifts">
+            <div className="blur-btn"></div>
+            <button className="deco">Deko nach Jahreszeit</button>
+          </a>
+        </div>
+        <div className="container-btn">
+          <a href="#plants">
+            <div className="blur-btn"></div>
+            <button className="plants">Topfpflanzen</button>
+          </a>
+        </div>
+        <div className="container-btn">
+          <a href="#gifts">
+            <div className="blur-btn"></div>
+            <button className="gifts">Geschenkideen</button>
+          </a>
+        </div>
+        <div className="container-btn">
+          <a href="#italian">
+            <div className="blur-btn"></div>
+            <button className="italy">Italienische Spezialitäten</button>
+          </a>
+        </div>
       </div>
     </div>
   );

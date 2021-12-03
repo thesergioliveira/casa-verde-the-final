@@ -1,12 +1,17 @@
 .slider-wrapper {
   .container-btn-slider {
-    button {
-      height: 2.65rem;
+    .container-btn {
       width: 45%;
-      max-width: 600px;
-      font-size: 1.1rem;
+      button {
+        height: 2.65rem;
+        max-width: 600px;
+        font-size: 1.1rem;
+      }
+      .blur-btn {
+        height: 2.65rem;
+        max-width: 600px;
+      }
     }
-
     .container-shop-header {
       width: 35%;
       max-width: 400px;
