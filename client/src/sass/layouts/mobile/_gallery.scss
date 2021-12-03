@@ -91,37 +91,27 @@
 
       button {
         position: absolute;
-        bottom: 0.4rem;
-        width: 50%;
-        height: 1.6rem;
+        bottom: 0.25rem;
+        width: 15rem;
+        height: 3rem;
         background-color: rgba(255, 255, 255, 0.6);
-        border-radius: 0.75rem;
+        border-radius: 0.6rem;
         border: none;
         font-size: 0.8rem;
         box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.7);
         &:hover {
-          border-radius: 0;
+          background-color: rgba(255, 255, 255, 0.2);
         }
       }
 
       .container-more-blur {
         position: absolute;
-        bottom: 0.4rem;
-        width: 50%;
-        height: 1.6rem;
+        bottom: 0.25rem;
+        width: 15rem;
+        height: 3rem;
         backdrop-filter: blur(3px);
         background-color: rgba(255, 255, 255, 0.2);
-        border-radius: 0.75rem;
-
-        &:hover {
-          display: none;
-        }
-      }
-
-      &:hover {
-        .container-more-blur {
-          display: none;
-        }
+        border-radius: 0.6rem;
       }
     }
   }

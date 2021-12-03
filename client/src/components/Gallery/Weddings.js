@@ -34,7 +34,7 @@ const Weddings = () => {
             if (imgs.indexOf(img) <= images) {
               return (
                 // active-img-inner -------------------------------- onClick Image
-                <div key={uuidv4()} className="container-img-inner ">
+                <div key={uuidv4()} className="container-img-inner">
                   {/* <IoMdClose className="img-close" /> */}
                   <img src={process.env.PUBLIC_URL + img} alt={linkId} />
                 </div>

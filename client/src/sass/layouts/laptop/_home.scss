@@ -1,7 +1,15 @@
 .home {
+  .h3-description {
+    width: 80%;
+    h3 {
+      font-size: 1.3rem;
+      text-align: center;
+    }
+  }
+
   .home-top {
     .roof {
-      border-width: 0 25vw 12vh;
+      border-width: 0 20vw 12vh;
     }
   }
 
@@ -32,7 +40,8 @@
       .events,
       .container-contact-btn,
       .deco-services {
-        width: 55vw;
+        width: 40vw;
+        max-width: 550px;
       }
     }
   }
