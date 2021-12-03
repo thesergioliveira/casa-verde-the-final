@@ -78,6 +78,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
 
@@ -96,6 +97,7 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res.data.message);
+          window.location.reload(true);
         });
     } else {
       axios
@@ -108,6 +110,7 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res);
+          window.location.reload(true);
         });
     }
   };
