@@ -22,6 +22,10 @@ const BalletAndPilates = () => {
         />
       </div>
 
+      <div className="h3-description">
+        <h3>Text für Kurse hier</h3>
+      </div>
+
       <Ballet />
       <Pilates />
       <ContactInformation />

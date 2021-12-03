@@ -29,6 +29,34 @@
     }
   }
 
+  .wrapper-img-services {
+    .container-gallery {
+      h3 {
+        font-size: 1.8rem;
+      }
+
+      .container-img-outer {
+        .container-img-inner {
+          img {
+            width: 10rem;
+            height: 10rem;
+          }
+        }
+      }
+
+      button {
+        font-size: 0.9rem;
+        height: 4rem;
+        width: 15rem;
+      }
+
+      .container-more-blur {
+        height: 4rem;
+        width: 15rem;
+      }
+    }
+  }
+
   @media screen and (min-width: 750px) {
     .wrapper-gallery {
       .wrapper-img-services {
@@ -49,6 +77,26 @@
           button {
             font-size: 1rem;
           }
+        }
+      }
+    }
+    .wrapper-img-services {
+      .container-gallery {
+        h3 {
+          font-size: 2rem;
+        }
+
+        .container-img-outer {
+          .container-img-inner {
+            img {
+              width: 13rem;
+              height: 13rem;
+            }
+          }
+        }
+
+        button {
+          font-size: 1rem;
         }
       }
     }
