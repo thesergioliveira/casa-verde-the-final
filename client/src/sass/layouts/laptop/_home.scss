@@ -1,67 +1,54 @@
 .home {
   .home-top {
     .roof {
-      border-width: 0 28vw 12vh;
+      border-width: 0 25vw 12vh;
+    }
+  }
+
+  .wrapper-btn-house {
+    width: 48vw;
+  }
+
+  .wrapper-cards {
+    width: 48vw;
+
+    .card-element {
+      width: 45%;
+
+      box-shadow: 0.75rem 0.75rem 1.5rem rgba(0, 0, 0);
     }
 
-    .wrapper-btn-house {
-      width: 55vw;
+    .card-top {
+      h3 {
+      }
     }
 
-    .wrapper-cards {
-      @include flex;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 60vw;
-
-      .card-element {
-        width: 100%;
-        height: 45vh;
-        margin: 2rem;
-        box-shadow: 0.75rem 0.75rem 1.5rem rgba(0, 0, 0);
+    .container-description {
+      p {
       }
+    }
 
-      .card-top {
-        h3 {
-          font-size: 3vw;
-          padding-left: 5%;
-        }
-      }
-
-      .container-description {
-        p {
-          font-size: 2.5vw;
-        }
-      }
-
-      // Card Bottom (Button)
-      .container-bottom-btn {
-        a {
-          height: 50%;
-          width: 50%;
-
-          button {
-            font-size: 1.25vw;
-          }
-        }
-      }
-
-      .container-image {
-        img {
-          width: 10rem;
-          height: 10rem;
+    // Card Bottom (Button)
+    .container-bottom-btn {
+      a {
+        button {
+          font-size: 0.85rem;
         }
       }
     }
 
-    .wrapper-event-section {
-      .container-buttons-roof {
-        .events,
-        .container-contact-btn,
-        .deco-services {
-          width: 55vw;
-        }
+    .container-image {
+      img {
+      }
+    }
+  }
+
+  .wrapper-event-section {
+    .container-buttons-roof {
+      .events,
+      .container-contact-btn,
+      .deco-services {
+        width: 55vw;
       }
     }
   }
