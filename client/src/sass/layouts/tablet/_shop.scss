@@ -1,12 +1,8 @@
 .products-container {
-  h2 {
-    padding-left: 2rem;
-  }
   .products {
-    justify-content: flex-start;
-
     .container-product {
       width: 33%;
+      max-width: 16rem;
     }
   }
 }

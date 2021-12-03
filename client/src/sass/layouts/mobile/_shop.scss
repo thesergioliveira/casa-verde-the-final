@@ -55,14 +55,18 @@
   width: 100%;
 
   h2 {
-    padding-left: 0.5rem;
-    margin-bottom: 1rem;
+    background-color: #3279510c;
+    text-align: center;
+    padding-bottom: 1rem;
+    padding-top: 0.2rem;
+    margin-top: 0.5rem;
   }
 
   .products {
     @include flex;
     flex-wrap: wrap;
     width: 100%;
+    background-color: #3279510c;
 
     .container-product {
       width: 50%;
@@ -80,6 +84,10 @@
         right: 0.9rem;
         font-size: 0.6rem;
         color: white;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
