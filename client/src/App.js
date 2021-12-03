@@ -10,7 +10,12 @@ import Events from "./components/Events";
 import Rent from "./components/Rent";
 import BalletAndPilates from "./components/BalletAndPilates";
 import TechnicalConsulting from "./components/TechnicalConsulting";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
+import Impressum from "./components/Footer/Impressum";
+import Agb from "./components/Footer/Agb";
+import Datenschutz from "./components/Footer/Datenschutz";
+import Widerrufsbelehrung from "./components/Footer/Widerrufsbelehrung";
+import ZahlungAndVersand from "./components/Footer/ZahlungAndVersand";
 import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -65,6 +70,11 @@ function App() {
               <Route path="/technic" exact render={TechnicalConsulting}></Route>
               <Route path="/about" exact render={About}></Route>
               <Route path="/contact" exact render={Contact}></Route>
+              <Route path="/impressum" exact render={Impressum}></Route>
+              <Route path="/agb" exact render={Agb}></Route>
+              <Route path="/datenschutzerklaerung" exact render={Datenschutz}></Route>
+              <Route path="/widerrufsbelehrung" exact render={Widerrufsbelehrung}></Route>
+              <Route path="/zahlung-versand" exact render={ZahlungAndVersand}></Route>
               <Route path="/login" exact component={Login}></Route>
               <Route path="/forgetPassword" exact component={ForgetPassword}></Route>
               <Route path="/resetPassword/:id" exact component={ResetPassword}></Route>

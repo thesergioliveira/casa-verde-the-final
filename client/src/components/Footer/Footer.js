@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FooterData from "../JSON/footer.json";
+import FooterData from "../../JSON/footer.json";
 import Cookies from "./Cookies";
 
 // Only About and Contact pages links are working for the moment
@@ -24,8 +24,9 @@ const Footer = ({ logo }) => {
       <footer>
         {/* Need to add public.env */}
         <div className="logo-container">{logo}</div>
-        <ul>{footerMenu}</ul>
-        <p>Social Media</p>
+          <ul>
+          {footerMenu}
+          </ul>
         <div className="footer-main">Made by "Team Casa Verde"</div>
         <div className="footer-secondary">
           Copyrights reserved Ⓒ {year} Casa Verde
