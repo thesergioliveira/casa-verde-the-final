@@ -1,0 +1,26 @@
+// About Us page setup
+
+.about-container {
+width: 100vw;
+height: auto;
+@include flex;
+flex-direction: column;
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    width: 85%;
+    margin: 0 1rem 1rem;
+}
+}
+
+.about-us-picture {
+    width: 80%;
+    height: 80%;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+   
+}

@@ -29,7 +29,7 @@ function ShopItem(props) {
             res.data.basket.filter((item) => item._id === props.obj._id).length
           );
            let dublicationCheck = res.data.wishlist.find(item => item._id.toString() === props.obj._id.toString())
-           console.log(dublicationCheck)
+           //console.log(dublicationCheck)
             if(dublicationCheck){
                 setWishlist(false)
             }
