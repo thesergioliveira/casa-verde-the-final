@@ -15,6 +15,7 @@ export default function StatisticsAndQuickUpdates(props) {
   const [data, setData] = useState([]);
   const [productData, setProductData] = useState([]);
   const [name, setName] = useState("");
+  const [userData, setUserData] = useState([]);
   const [quantity, setQuantity] = useState(0);
   const [count, setCount] = useState(0);
   const getAllProducts = () => {
@@ -32,8 +33,25 @@ export default function StatisticsAndQuickUpdates(props) {
         console.log("here", err.response?.data);
       });
   };
+  const getAllUsers = () => {
+    axios
+      .get("admin/users", config)
+      .then((res) => {
+        if (res.data) {
+          setUserData(res.data);
+          
+          localStorage.setItem("product", JSON.stringify(res.data));
+        } else {
+          setProductData({ auth: false });
+        }
+      })
+      .catch((err) => {
+        console.log("here", err.response?.data);
+      });
+  };
   useEffect(() => {
     getAllProducts();
+    getAllUsers();
   }, []);
   const handleDelete = (id) => {
     if (
@@ -79,39 +97,35 @@ export default function StatisticsAndQuickUpdates(props) {
         console.log(err.message);
       });
   };
-
+  //securing the image 
+  let myimage;
+  productData[detectproduct]?.image
+    ? (myimage = `http://localhost:5005/${productData[detectproduct]?.image}`)
+    : (myimage = "https://via.placeholder.com/150");
+    console.log(userData.map(item => item.wishlist.length).reduce((a, b) => a + b, 0))
   return (
     <div className="admin-dash-statistics-container">
       {/* <h1> welcome {userdata?.user.name}</h1>  */}
       <span className="statistics">
         <p>statistics</p>
-        <h2>Total Users: 👨‍👩‍👧‍👧 {props.data?.length}</h2>
-        <h2>Total Products: 💐 {productData?.length}</h2>
         <h2>
-          Total items in wishlists: 💗
-          {data?.map((item) => item.wishlist.length).reduce((a, b) => a + b, 0)}
+          Total Users: <i style={{ fontStyle: "normal" }}>👨‍👩‍👧‍👧</i>{" "}
+          {props.data?.length}
         </h2>
         <h2>
-          Total items in baskets: 🛍
-          {data?.map((item) => item.basket.length).reduce((a, b) => a + b, 0)}
+          Total Products: <i style={{ fontStyle: "normal" }}>💐</i>{" "}
+          {productData?.length}
+        </h2>
+        <h2>
+          Total items in wishlists: <i style={{ fontStyle: "normal" }}>💗</i>
+          {userData.map(item => item.wishlist.length).reduce((a, b) => a + b, 0)}
+        </h2>
+        <h2>
+          Total items in baskets: <i style={{ fontStyle: "normal" }}> 🛍</i>
+          {userData?.map((item) => item.basket.length).reduce((a, b) => a + b, 0)}
         </h2>
       </span>
       <span>
-        <h2>DELETE A PRODUCT</h2>
-        <select
-          id="name"
-          onChange={(e) => {
-            setName(e.target.value);
-            console.log(name);
-          }}
-        >
-          {productData.map((item) => (
-            <option value={item._id}> {item.name} </option>
-          ))}
-        </select>
-        <button className="button-dash" onClick={() => handleDelete(name)}>
-          DELETE THE PRODUCT
-        </button>
         <h2>QUICK STOCK UPDATE</h2>
         <select
           id="name"
@@ -119,19 +133,18 @@ export default function StatisticsAndQuickUpdates(props) {
             setId(e.target.value);
           }}
         >
+          {/* 🎁/🪴/🌹/🍝 */}
+          <option value={null}>choose one</option>
           {productData.map((item) => (
             <option value={item._id}> {item.name} </option>
           ))}
         </select>
         <div className="quick-update-view">
           <p>
-            you have: {productData[detectproduct]?.quantity} from{" "}
+            you have: {productData[detectproduct]?.quantity} from
             {productData[detectproduct]?.name}
           </p>
-          <img
-            src={`http://localhost:5005/${productData[detectproduct]?.image}`}
-            alt="product"
-          />
+          <img src={myimage} alt="product" />
         </div>
         <button
           disabled={productData[detectproduct]?.quantity + count < 1}
@@ -144,8 +157,24 @@ export default function StatisticsAndQuickUpdates(props) {
           PLUS {count}
         </button>
         <button className="button-dash" onClick={() => updateStock()}>
+          UPDATE IT
+        </button>
+        <h2>DELETE A PRODUCT</h2>
+        <select
+          id="name"
+          onChange={(e) => {
+            setName(e.target.value);
+            console.log(name);
+          }}
+        >
           {" "}
-          UPDATE IT{" "}
+          <option value={null}> choose one</option>
+          {productData.map((item) => (
+            <option value={item._id}> {item.name} </option>
+          ))}
+        </select>
+        <button className="button-dash" onClick={() => handleDelete(name)}>
+          DELETE THE PRODUCT
         </button>
       </span>
     </div>

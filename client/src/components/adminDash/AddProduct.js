@@ -14,6 +14,7 @@ export default function AddProduct() {
   };
 
   const [productData, setProductData] = useState([]);
+  
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Gift baskets");
   const [price, setPrice] = useState(0);
@@ -38,10 +39,11 @@ export default function AddProduct() {
         console.log("here", err.response?.data);
       });
   };
-
+  
   const obj = { name, category, price, quantity, description, delivery, image };
   useEffect(() => {
     getAllProducts();
+   
   }, []);
 
   const handleUpload = (e) => {
@@ -81,7 +83,8 @@ export default function AddProduct() {
       <div className="add-product-wrapper">
         <h2>ADD A PRODUCT</h2>
         <form onSubmit={handleSubmit}>
-          <input type="file" id="file" onChange={handleUpload} />
+         
+          <input class="custom-file-input" type="file" id="file" onChange={handleUpload} />
           <p>name it:</p>
           <input
             type="text"

@@ -63,6 +63,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
@@ -94,6 +95,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
 
