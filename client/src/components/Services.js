@@ -67,7 +67,7 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="h3-wedding-description">
+      <div className="h3-description">
         <h3>
           Blumen sind die schönsten Worte der Natur, diese für Ihre wichtigen
           Anlässe persönlich abzustimmen liegt uns am Herzen.

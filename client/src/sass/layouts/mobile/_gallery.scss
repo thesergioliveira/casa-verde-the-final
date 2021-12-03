@@ -91,13 +91,13 @@
 
       button {
         position: absolute;
-        bottom: 0.3rem;
+        bottom: 0.4rem;
         width: 50%;
         height: 1.6rem;
         background-color: rgba(255, 255, 255, 0.6);
         border-radius: 0.75rem;
         border: none;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.7);
         &:hover {
           border-radius: 0;
@@ -106,7 +106,7 @@
 
       .container-more-blur {
         position: absolute;
-        bottom: 0.3rem;
+        bottom: 0.4rem;
         width: 50%;
         height: 1.6rem;
         backdrop-filter: blur(3px);
