@@ -1,13 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import FooterData from '../JSON/footer.json';
-import Cookies from './Cookies';
+import React from "react";
+import { Link } from "react-router-dom";
+import FooterData from "../JSON/footer.json";
+import Cookies from "./Cookies";
 
 // Only About and Contact pages links are working for the moment
 // The other are not created
 
-const Footer = ({logo}) => {
-
+const Footer = ({ logo }) => {
   let now = new Date();
   let year = now.getFullYear();
 
@@ -15,31 +14,26 @@ const Footer = ({logo}) => {
     const { id, name, path } = obj;
     return (
       <li key={id}>
-        <Link  to={path}>
-          {name}
-        </Link>
+        <Link to={path}>{name}</Link>
       </li>
     );
   });
 
-  return <> 
-    <footer>
-      {/* Need to add public.env */}
-      <div className="logo-container">{logo}</div>
-      <ul>
-        {footerMenu}
-      </ul>
-      <p>Social Media (???)</p>
-      <div className="footer-main">
-        Made by "Team Casa Verde"
-      </div>
-      <div className="footer-secondary">
-        Copyrights reserved Ⓒ {year} Casa Verde
-      </div>
-      
-    </footer> <Cookies />
-    
+  return (
+    <>
+      <footer>
+        {/* Need to add public.env */}
+        <div className="logo-container">{logo}</div>
+        <ul>{footerMenu}</ul>
+        <p>Social Media</p>
+        <div className="footer-main">Made by "Team Casa Verde"</div>
+        <div className="footer-secondary">
+          Copyrights reserved Ⓒ {year} Casa Verde
+        </div>
+      </footer>
+      <Cookies />
     </>
+  );
 };
 
 export default Footer;

@@ -3,9 +3,19 @@ import React from "react";
 // About function
 const About = () => {
   return (
-    <div className="about-container">
-      {/*Image of us*/}
-      <img className="about-us-picture" src="./images/about-us/wichtel.jpg" alt="Sven and Maria" />
+    <div className="home">
+      <div className="home-top absolut">
+        {/* <div className="roof"></div> */}
+        <h1>Casa Verde</h1>
+        <p>Über Uns</p>
+      </div>
+
+      <div className="container-room-rental">
+        <img
+          src={process.env.PUBLIC_URL + "../images/wir.png"}
+          alt="About Bild"
+        />
+      </div>
       <h2>Über Uns und das Projekt</h2>
       {/* Text */}
       <p>
@@ -23,6 +33,7 @@ const About = () => {
         es fertig in der neu entstandenen Blumenstation oder auf Bestellung und
         Abholung.
       </p>
+      <br></br>
     </div>
   );
 };

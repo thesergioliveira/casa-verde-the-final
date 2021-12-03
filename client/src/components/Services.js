@@ -61,7 +61,7 @@ const Services = () => {
           <div className="container-contact-btn">
             <a href="#contact">
               <div className="container-contact-blur"></div>
-              <button>Contact Now!</button>
+              <button>Kontakt</button>
             </a>
           </div>
         </div>

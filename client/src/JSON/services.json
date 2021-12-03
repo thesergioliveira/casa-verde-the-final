@@ -4,7 +4,7 @@
     "name": "Hochzeiten",
     "link": "#weddings",
     "linkId": "weddings",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Mit liebe zum Detail und individuell auf das Brautpaar und den Stil der Hochzeit abgestimmt, gehen wir auf Eure Wünsche ein und gestalten Eure Hochzeitsdekoration. Den Braut- und Standesamtstrauss, den Kirchenschmuck, den Fahrzeugschmuck, die Tischdeko und vieles mehr. Gerne verleihen wir Euch auch die passenden Glasgefäse, Kerzenleuchter und besondere Dekoartikel.",
     "imgs": [
       "./images/deco-services/weddings/weddings-1.jpg",
       "./images/deco-services/weddings/weddings-2.jpg",
@@ -21,16 +21,17 @@
     "name": "Pflanzungen",
     "link": "#plant",
     "linkId": "plant",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Ob für die Jahreszeit passende Kübel- und Topfbeflanzungen, die Verschönerung bei Ihnen zur Hause oder bei der Grabgestaltung und Pflege stehen wir Ihnen gerne beratend zur Seite und erfüllen Ihre individuellen Wünsche.",
     "imgs": [
-      "./images/deco-services/plant ideas/plants-1.jpg",
-      "./images/deco-services/plant ideas/plants-2.jpg",
-      "./images/deco-services/plant ideas/plants-3.jpg",
-      "./images/deco-services/plant ideas/plants-4.jpg",
-      "./images/deco-services/plant ideas/plants-5.jpg",
-      "./images/deco-services/plant ideas/plants-6.jpg",
-      "./images/deco-services/plant ideas/plants-7.jpg",
-      "./images/deco-services/plant ideas/plants-8.jpg"
+      "./images/deco-services/plant ideas/plants-1.png",
+      "./images/deco-services/plant ideas/plants-2.png",
+      "./images/deco-services/plant ideas/plants-3.png",
+      "./images/deco-services/plant ideas/plants-4.png",
+      "./images/deco-services/plant ideas/plants-5.png",
+      "./images/deco-services/plant ideas/plants-6.png",
+      "./images/deco-services/plant ideas/plants-7.png",
+      "./images/deco-services/plant ideas/plants-8.png",
+      "./images/deco-services/plant ideas/plants-9.png"
     ]
   },
   {
@@ -38,7 +39,7 @@
     "name": "Geschenkideen",
     "link": "#gift",
     "linkId": "gift",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Ihnen fehlt das passende Geschenk oder eine blumige Verpackung? Ausgewählte Dekoartikel, die perönliche Gestaltung mit den passenden Blumen, italienische Feinkost oder ganz individuell von uns besorgt... Setzen Sie sich mit uns in Verbindung, wir kümmern uns darum.",
     "imgs": [
       "./images/deco-services/gift ideas/gifts-1.png",
       "./images/deco-services/gift ideas/gifts-2.png",
@@ -55,16 +56,16 @@
     "name": "Beerdigungen",
     "link": "#funerals",
     "linkId": "funerals",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Blumen trösten und sind ein sichtbares Zeichen der Wertschätzung und Gedenken. Einfühlsamer Blumenschmuck begleitet das Abschiednehmen, es liegt uns besonders am Herzen diesen mit Ihnen abzustimmen und mit handgeschriebenen Botschaft zu versehen. Wir nehmen uns Zeit und stehen Ihnen gerne mitfühlend zur Seite.",
     "imgs": [
-      "./images/deco-services/funerals/funerals-1.jpg",
-      "./images/deco-services/funerals/funerals-2.jpg",
-      "./images/deco-services/funerals/funerals-3.jpg",
-      "./images/deco-services/funerals/funerals-4.jpg",
-      "./images/deco-services/funerals/funerals-5.jpg",
-      "./images/deco-services/funerals/funerals-6.jpg",
-      "./images/deco-services/funerals/funerals-7.jpg",
-      "./images/deco-services/funerals/funerals-8.jpg"
+      "./images/deco-services/funerals/funerals-1.png",
+      "./images/deco-services/funerals/funerals-2.png",
+      "./images/deco-services/funerals/funerals-3.png",
+      "./images/deco-services/funerals/funerals-4.png",
+      "./images/deco-services/funerals/funerals-5.png",
+      "./images/deco-services/funerals/funerals-6.png",
+      "./images/deco-services/funerals/funerals-7.png",
+      "./images/deco-services/funerals/funerals-8.png"
     ]
   }
 ]
