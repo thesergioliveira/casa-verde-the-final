@@ -3,7 +3,6 @@ import React from "react";
 // About function
 const About = () => {
   return (
-<<<<<<< HEAD
     <div className="home">
       <div className="home-top absolut">
         {/* <div className="roof"></div> */}
@@ -17,11 +16,6 @@ const About = () => {
           alt="About Bild"
         />
       </div>
-=======
-    <div className="about-container">
-      {/*Image of us*/}
-      <img className="about-us-picture" src="./images/about-us/wichtel.jpg" alt="Sven and Maria" />
->>>>>>> development
       <h2>Über Uns und das Projekt</h2>
       {/* Text */}
       <p>
