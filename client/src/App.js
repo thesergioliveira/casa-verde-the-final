@@ -82,11 +82,12 @@ function App() {
               <Route path="/ReVerifyAccount" exact component={ReVerifyAccount}></Route>
               <Route path="/register" exact component={Register}></Route>
               <Route path="/settings" exact component={EditUser}></Route>
+              <Route path="/shop/product/:id" exact component={ItemDetails}></Route>
               <TotalBillProvider> 
               <Route path="/basket" exact component={Basket}></Route>
               <Route path="/basket/checkout" exact component={Checkout}></Route> 
               </TotalBillProvider>
-              <Route path="/shop/product/:id" exact component={ItemDetails}></Route>
+              
             </Switch>
           </main>
           <Footer logo={logo} />
