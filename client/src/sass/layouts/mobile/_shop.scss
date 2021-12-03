@@ -66,14 +66,20 @@
 
     .container-product {
       width: 50%;
+      min-width: 11rem;
       margin-bottom: 1.5rem;
       position: relative;
 
       .product-icon {
+        cursor: pointer;
+        border-radius: 0.4rem;
+        background-color: #32795193;
+        padding: 0.4rem 0.6rem;
         position: absolute;
-        top: 0.5rem;
-        right: 1.25rem;
-        font-size: 1.5rem;
+        top: 0.3rem;
+        right: 0.9rem;
+        font-size: 0.6rem;
+        color: white;
       }
     }
   }

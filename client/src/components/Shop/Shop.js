@@ -61,12 +61,14 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div className="container-product">
-          <ImEnlarge
+          <div
             className="product-icon"
             onClick={() => {
               history.push(`/shop/product/${obj._id}`);
             }}
-          />
+          >
+            Zum Produkt
+          </div>
 
           <ShopItem obj={obj} />
         </div>
@@ -78,12 +80,14 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div className="container-product">
-          <ImEnlarge
+          <div
             className="product-icon"
             onClick={() => {
               history.push(`/shop/product/${obj._id}`);
             }}
-          />
+          >
+            Zum Produkt
+          </div>
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -94,12 +98,14 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div className="container-product">
-          <ImEnlarge
+          <div
             className="product-icon"
             onClick={() => {
               history.push(`/shop/product/${obj._id}`);
             }}
-          />
+          >
+            Zum Produkt
+          </div>
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -110,12 +116,14 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div className="container-product">
-          <ImEnlarge
+          <div
             className="product-icon"
             onClick={() => {
               history.push(`/shop/product/${obj._id}`);
             }}
-          />
+          >
+            Zum Produkt
+          </div>
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -124,12 +132,14 @@ function Shop({ history }) {
   const getProducts = data?.map((obj) => {
     return (
       <div className="container-product">
-        <ImEnlarge
+        <div
           className="product-icon"
           onClick={() => {
             history.push(`/shop/product/${obj._id}`);
           }}
-        />
+        >
+          Zum Produkt
+        </div>
         <ShopItem obj={obj} />{" "}
       </div>
     );
