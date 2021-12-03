@@ -66,10 +66,14 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <h3>
-        Blumen sind die schönsten Worte der Natur, diese für Ihre wichtigen
-        Anlässe persönlich abzustimmen liegt uns am Herzen.
-      </h3>
+
+      <div className="h3-wedding-description">
+        <h3>
+          Blumen sind die schönsten Worte der Natur, diese für Ihre wichtigen
+          Anlässe persönlich abzustimmen liegt uns am Herzen.
+        </h3>
+      </div>
+
       <div className="wrapper-gallery">
         {/* Weddings */}
         <Weddings />
