@@ -23,9 +23,9 @@ const Workshops = () => {
           {name}
         </h3>
 
-        <div className="container-description">
+        {/* <div className="container-description">
           <p>{description}</p>
-        </div>
+        </div> */}
 
         {/* Images gallery */}
         <div key={uuidv4()} className="container-img-outer">

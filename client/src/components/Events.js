@@ -59,6 +59,11 @@ const Events = () => {
           </div>
         </div>
       </div>
+
+      <div className="h3-description">
+        <h3>Text für Events hier</h3>
+      </div>
+
       <Workshops />
       <Seminaries />
       <Artmarket />
