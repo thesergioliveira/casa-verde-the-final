@@ -29,7 +29,7 @@ function ShopItem(props) {
             res.data.basket.filter((item) => item._id === props.obj._id).length
           );
            let dublicationCheck = res.data.wishlist.find(item => item._id.toString() === props.obj._id.toString())
-           
+           //console.log(dublicationCheck)
             if(dublicationCheck){
                 setWishlist(false)
             }
@@ -78,6 +78,7 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
   const removeAllfromBasket = (id) => {
@@ -111,6 +112,7 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res.data.message);
+          window.location.reload(true);
         });
     } else {
       axios
@@ -123,6 +125,7 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res);
+          window.location.reload(true);
         });
     }
   };
