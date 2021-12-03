@@ -9,6 +9,7 @@ import { BillContext } from "./TotalBillContext"
 require("dotenv").config();
 
 export default function Checkout() {
+ 
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [country, setCountry] = useState("");
@@ -81,7 +82,7 @@ export default function Checkout() {
   };
   const handleCheckout = () => {
     console.log("checkout!!!!!!!!!!!!!!");
-    setCheckout(true);
+    setCheckout(!checkout);
    
 
     // axios
@@ -228,7 +229,7 @@ const initialOptions = {
       
    
       </ul>
-      <button
+      <button 
         className="button-dash"
         disabled={
           !UserData.user?.address ||
@@ -240,8 +241,8 @@ const initialOptions = {
         onClick={handleCheckout}
       >
         PAY
-      </button><PayPal/>
-
+      </button >
+{checkout ? (<PayPal value={value}/> ): null}
 
 
 

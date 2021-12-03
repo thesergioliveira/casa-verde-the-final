@@ -64,7 +64,7 @@ const Login = ({ history }) => {
       <button className="button-dash" >
         <Link to="/register">Register</Link>
       </button>
-      <h2>{loginMessage}</h2>
+      <h2 style={{ color: "red" }}>{loginMessage}</h2>
     </div>
   );
 };

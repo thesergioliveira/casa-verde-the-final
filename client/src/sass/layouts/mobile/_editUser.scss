@@ -3,13 +3,18 @@
 *::after {
   box-sizing: border-box;
 }
-
-.edit-user-container {
+.edit-user-box{
   @include flex();
   width: 100%;
   height: auto;
-  flex-direction: column;
   border: 1px solid $cream;
+}
+.edit-user-container {
+  @include flex();
+  width: 80%;
+  height: auto;
+  flex-direction: column;
+  
   overflow: hidden;
   h3,
   h1 {
@@ -45,10 +50,10 @@
   // Show nav setup
   .edit-show {
     z-index: 0;
-    width: 100vw;
+    width: 100%;
     height: 30vh;
     @include flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
     background-color: $cream;
