@@ -20,7 +20,7 @@ allControllers.addUser = async (req, res) => {
       phone: req.body.phone,
       address: req.body.address,
       city: req.body.city,
-      admin: req.body.admin,
+      admin: true,
       state: req.body.state,
       zip: req.body.zip,
       country: req.body.country,
@@ -51,7 +51,7 @@ allControllers.addUser = async (req, res) => {
       html: `<html>
         <h2>Please click on given link to Verify your Account</h2
         <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
-        <p>${process.env.CLIENT_URL}/verifyAccount/${token}</p>
+        
       </html>`,
     };
     await transporter.sendMail(data, function (err, success) {
@@ -105,7 +105,6 @@ allControllers.confirmationEmail = async (req, res) => {
       html: `<html>
       <h2>Please click on given link to Verify your Account</h2
       <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
-      <p>${process.env.CLIENT_URL}/verifyAccount/${token}</p>
     </html>`,
     };
     await transporter.sendMail(data, function (err, success) {
@@ -190,7 +189,7 @@ allControllers.deleteUser = async (req, res) => {
   try {
     if (await bcrypt.compare(password, user.password)) {
       await User.findByIdAndDelete(req.id);
-      res.status(200).json({ message: "this user been deleted" });
+      res.status(200).json({ message: "this user has been deleted" });
     } else {
       res.status(400).json({ message: "false Password please repeat !" });
     }
@@ -287,7 +286,7 @@ allControllers.forgotPassword = async (req, res) => {
       subject: "Reset Your Password",
       html: `<html>
         <h2>Please click on given link to reset your password</h2
-        <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
+       <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
       </html>`,
     };
 

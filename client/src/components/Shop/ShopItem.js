@@ -29,7 +29,7 @@ function ShopItem(props) {
             res.data.basket.filter((item) => item._id === props.obj._id).length
           );
            let dublicationCheck = res.data.wishlist.find(item => item._id.toString() === props.obj._id.toString())
-           console.log(dublicationCheck)
+           //console.log(dublicationCheck)
             if(dublicationCheck){
                 setWishlist(false)
             }
@@ -63,11 +63,12 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
-    //setCount(count - 1);
-    setCount(0);
+    setCount(count - 1);
+    
     axios
       .put(
         "user/removeFromTheBasket",
@@ -78,6 +79,23 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
+      });
+  };
+  const removeAllfromBasket = (id) => {
+    
+    setCount(0);
+    axios
+      .put(
+        "user/toRemoveAll",
+        {
+          productId: id,
+        },
+        config
+      )
+      .then((res) => {
+        console.log(res.data.message);
+        window.location.reload(false);
       });
   };
 
@@ -96,6 +114,7 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res.data.message);
+          window.location.reload(true);
         });
     } else {
       axios
@@ -108,16 +127,18 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res);
+          window.location.reload(true);
         });
     }
   };
-
+  let myimage;
+  props.obj.image ? (myimage = `http://localhost:5005/${props.obj.image}`) : (myimage = "https://via.placeholder.com/150");
   return (
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">
         <img
           // ${process.env.PUBLIC_URL}
-          src={`http://localhost:5005/${props.obj.image}`}
+          src={myimage}
           alt={`img of ${props.obj.name}`}
         />
         <div className="product-infos">
@@ -165,7 +186,7 @@ function ShopItem(props) {
             </button>
             <button
               disabled={count === 0}
-              onClick={() => removeFromBasket(props.obj_id)}
+              onClick={() => removeAllfromBasket(props.obj._id)}
             >
               <FiTrash2 className="icon" />
             </button>

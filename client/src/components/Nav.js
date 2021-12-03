@@ -124,14 +124,29 @@ const Nav = ({ logo }) => {
                       Settings <FiSettings />
                     </li>
                   </Link>
-                  <li key="54" style={{display:"flex", flexDirection: "row"}}>
+                  <li
+                    key="54"
+                    style={{ display: "flex", flexDirection: "row" }}
+                  >
                     Account:{" "}
                     {accountVerified ? (
                       <GoVerified style={{ color: "green" }} />
                     ) : (
-                      <span >
-                        <Link style={{display:"flex", flexDirection: "row", color: "red" ,justifyContent:"space-between", cursor:"pointer",width:"6rem"}} to="/ReVerifyAccount" >
-                          <GoUnverified />{""}<p>(Verify !)</p>
+                      <span>
+                        <Link
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            color: "red",
+                            justifyContent: "space-between",
+                            cursor: "pointer",
+                            width: "6rem",
+                          }}
+                          to="/ReVerifyAccount"
+                        >
+                          <GoUnverified />
+                          {""}
+                          <p>(Verify !)</p>
                         </Link>
                       </span>
                     )}
@@ -148,6 +163,8 @@ const Nav = ({ logo }) => {
                     color: "black",
                     fontWeight: "bold",
                     textDecoration: "none",
+                    width: "5.5rem",
+                   
                   }}
                   onClick={closeMenu}
                   to="/login"
@@ -159,6 +176,7 @@ const Nav = ({ logo }) => {
                     color: "black",
                     fontWeight: "bold",
                     textDecoration: "none",
+                    width: "5.5rem",
                   }}
                   onClick={closeMenu}
                   to="/register"

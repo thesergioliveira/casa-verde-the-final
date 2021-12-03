@@ -21,7 +21,7 @@
     width: 48vw;
 
     .card-element {
-      width: 45%;
+      width: 100%;
       box-shadow: 0.75rem 0.75rem 1.5rem rgba(0, 0, 0);
     }
 
@@ -42,6 +42,14 @@
       .deco-services {
         width: 40vw;
         max-width: 550px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1420px) {
+    .wrapper-cards {
+      .card-element {
+        width: 45%;
       }
     }
   }

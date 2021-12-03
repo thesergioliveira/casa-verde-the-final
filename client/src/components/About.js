@@ -1,9 +1,23 @@
+// Import area
 import React from "react";
-
+// About function
 const About = () => {
   return (
-    <div>
+    <div className="home">
+      <div className="home-top absolut">
+        {/* <div className="roof"></div> */}
+        <h1>Casa Verde</h1>
+        <p>Über Uns</p>
+      </div>
+
+      <div className="container-room-rental">
+        <img
+          src={process.env.PUBLIC_URL + "../images/wir.png"}
+          alt="About Bild"
+        />
+      </div>
       <h2>Über Uns und das Projekt</h2>
+      {/* Text */}
       <p>
         Das Casa Verde ist seit 2001 weithin bekannt für sein mediterranes
         Flair, außergewöhnliche Blumengestaltung sowie für stilvolle
@@ -19,6 +33,7 @@ const About = () => {
         es fertig in der neu entstandenen Blumenstation oder auf Bestellung und
         Abholung.
       </p>
+      <br></br>
     </div>
   );
 };
