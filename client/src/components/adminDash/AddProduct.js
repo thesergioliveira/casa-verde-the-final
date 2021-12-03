@@ -77,7 +77,24 @@ export default function AddProduct() {
       console.log("error", err.response.data.message);
     }
   };
-
+  const handleDelete = (id) => {
+    if (
+      window.confirm(
+        "Are you sure you want to delete this thing from the database?"
+      )
+    ) {
+      axios
+        .delete(`admin/product/${id}`, config)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } else {
+      console.log("Twe didnt delete it.");
+    }
+  };
   return (
     <div className="admin-dash-add-products-container">
       <div className="add-product-wrapper">
@@ -144,7 +161,27 @@ export default function AddProduct() {
           </select>
           <input className="button-dash" type="submit" value="Add me" />
         </form>
+        <div className="delete-container">
+        <h2>DELETE A PRODUCT</h2>
+        <select
+          id="name"
+          onChange={(e) => {
+            setName(e.target.value);
+            console.log(name);
+          }}
+        >
+          {" "}
+          <option value={null}> choose one</option>
+          {productData.map((item) => (
+            <option value={item._id}> {item.name} </option>
+          ))}
+        </select>
+        <button className="button-dash" onClick={() => handleDelete(name)}>
+          DELETE THE PRODUCT
+        </button>
       </div>
+      </div>
+      
 
       <div className="preview">
         <p>preview</p>

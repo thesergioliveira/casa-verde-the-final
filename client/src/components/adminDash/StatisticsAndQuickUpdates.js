@@ -53,24 +53,7 @@ export default function StatisticsAndQuickUpdates(props) {
     getAllProducts();
     getAllUsers();
   }, []);
-  const handleDelete = (id) => {
-    if (
-      window.confirm(
-        "Are you sure you want to delete this thing from the database?"
-      )
-    ) {
-      axios
-        .delete(`admin/product/${id}`, config)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    } else {
-      console.log("Twe didnt delete it.");
-    }
-  };
+ 
   //detect quantity from id
   let detectproduct = 0;
   detectproduct = productData.map((item) => item._id).indexOf(id);
@@ -158,23 +141,6 @@ export default function StatisticsAndQuickUpdates(props) {
         </button>
         <button className="button-dash" onClick={() => updateStock()}>
           UPDATE IT
-        </button>
-        <h2>DELETE A PRODUCT</h2>
-        <select
-          id="name"
-          onChange={(e) => {
-            setName(e.target.value);
-            console.log(name);
-          }}
-        >
-          {" "}
-          <option value={null}> choose one</option>
-          {productData.map((item) => (
-            <option value={item._id}> {item.name} </option>
-          ))}
-        </select>
-        <button className="button-dash" onClick={() => handleDelete(name)}>
-          DELETE THE PRODUCT
         </button>
       </span>
     </div>

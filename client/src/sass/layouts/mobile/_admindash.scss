@@ -86,12 +86,16 @@
       background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
     }
     .add-product-wrapper {
-      // border: 2px red dashed;
+    
     }
     .preview {
       border: 2px black solid;
       padding: 2rem;
     }
+  }
+  .delete-container {
+    margin-top: 1rem;
+    border-top: 2px black solid;
   }
   .admin-dash-statistics-container {
     padding: 1rem;
