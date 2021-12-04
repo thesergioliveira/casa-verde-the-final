@@ -12,7 +12,7 @@
       }
 
       li {
-        width: 40%;
+        width: 25%;
         min-width: 14rem;
         margin-bottom: 0.75rem;
 
@@ -40,7 +40,7 @@
 
       li {
         @include flex;
-        width: 40%;
+        width: 25%;
         min-width: 14rem;
         margin-bottom: 0.75rem;
 
@@ -55,6 +55,10 @@
   aside {
     .shipping-msg {
       padding: 1rem 2rem;
+    }
+    ul {
+      width: 60%;
+      max-width: 400px;
     }
   }
 }
