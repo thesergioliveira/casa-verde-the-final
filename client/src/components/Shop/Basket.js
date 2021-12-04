@@ -92,7 +92,7 @@ const Basket = () => {
     <div className="main-basket-container">
       <div className="lists-container">
         <p className="shipping-msg">
-          ❗ Please take a note that not articles can be send ❗
+          ❗ Please take a note that not all articles can be send ❗
           {notAvailableCartItems?.length ? (
             <h2>
               the {notAvailableCartItems?.map((item) => `${item.name}, `)} are
