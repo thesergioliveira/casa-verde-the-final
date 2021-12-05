@@ -62,10 +62,13 @@
         width: 95%;
         height: 30px;
         border-radius: 7px;
-        border: none;
-        // background-color: rgb(74, 159, 255);
-        background-color: $blue;
-        color:$white;
+        color: $blue;
+        background-color: $white;
+        border: thin solid $blue;
+        -webkit-box-shadow: 5px 5px 15px 5px $blue; 
+          box-shadow: 5px 5px 15px 5px $blue;
+        font-size: large;
+        font-weight: bold;
       }
 
       // Fieldset with calendar setup
@@ -92,7 +95,6 @@
 // Calendar setup
 
 .calendar {
-  width: 100%;
   border-radius: 5px;
 }
 
