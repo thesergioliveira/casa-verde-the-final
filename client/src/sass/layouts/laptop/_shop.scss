@@ -1,16 +1,21 @@
+// Shop setup
 .shop {
+  // Search container
   .search-container {
     justify-content: center;
 
+    // Search bar
     .search-bar {
       width: 30%;
     }
 
+    // Filters
     .filters {
       width: 30%;
     }
   }
 
+  // Product container
   .products-container {
     h2 {
       padding-left: 2rem;
@@ -20,30 +25,25 @@
         width: 25%;
         max-width: 250px;
 
+        // Icon
         .product-icon {
           top: 1.5rem;
           right: 1.5rem;
         }
-
-        // :hover {
-        
-        // }
       }
     }
   }
 }
 
+// Product mouse animation 
 .card {
-  width: 45ch;
-  height: 45ch;
   border-radius: 5px;
   background-size: cover;
   background-position: center center;
   box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.5s;
   will-change: transform;
-  border: 15px solid white;
-  z-index: -10;
+  border: 1px solid white;
 }
 
 .card:hover {
