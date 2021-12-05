@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Datenschutz = () => {
-    return (
-        <div>
-            <p>Datenschutzerklärung Page</p>
-        </div>
-    )
-}
+  return (
+    <div>
+      <p>Datenschutzerklärung Page</p>
+    </div>
+  );
+};
 
 export default Datenschutz;
