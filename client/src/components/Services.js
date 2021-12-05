@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const Services = () => {
   const servicesMenu = ServicesData.map((obj) => {
-    const { id, name, link } = obj;
+    const { name, link } = obj;
 
     return (
       <div
@@ -51,7 +51,7 @@ const Services = () => {
 
         <div className="container-buttons-roof">
           <div className="home-top">
-            <div className="roof tablet-width"></div>
+            <div className="roof tablet-width laptop-width"></div>
             <h1>Casa Verde</h1>
             <p>Dekorationen</p>
           </div>
