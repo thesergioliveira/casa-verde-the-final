@@ -6,8 +6,15 @@ footer {
  
     // Ul setup
     ul {
-        padding: 0 0 1em;
+      
+        padding: 0 1em;
         text-align: center;
+        @include flex;
+        flex-wrap: wrap;
+
+        li {
+          margin-right: 1rem;
+        }
 
         // Link's setup
         a {
@@ -19,6 +26,11 @@ footer {
     p, div {
         text-align: center;
     }
+
+    .logo {
+      margin: none;
+      padding: none;
+  }
 }
 
 // Secondary div setup
