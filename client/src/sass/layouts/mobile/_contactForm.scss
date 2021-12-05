@@ -8,16 +8,10 @@
   // Contact Form
   .form-container {
     width: 90%;
-    height: 32rem;
+    height: 33rem;
     @include flex;
     flex-direction: column;
     position: relative;
-    background-color: rgba(
-      63,
-      63,
-      63,
-      0.5
-    ); // <- Change later (Color for Contact Form Background)
     border-radius: 20px;
 
     form {
@@ -35,7 +29,7 @@
 
         h5 {
           position: absolute;
-          top: -7px;
+          top: -16px;
           left: 10%;
           padding: 0 5px;
         }
@@ -44,9 +38,10 @@
           width: 95%;
           height: 30px;
           border-radius: 7px;
-          border: none;
+          border: thin solid $blue;
           padding-left: 5px;
-          // outline: transparent;
+          -webkit-box-shadow: 5px 5px 15px 5px $blue; 
+          box-shadow: 5px 5px 15px 5px $blue;
         }
 
         textarea {
@@ -56,7 +51,9 @@
           padding-left: 5px;
           resize: none;
           border-radius: 7px;
-          border: none;
+          border: thin solid $blue;
+          -webkit-box-shadow: 5px 5px 15px 5px $blue; 
+          box-shadow: 5px 5px 15px 5px $blue;
         }
       }
 
@@ -66,8 +63,9 @@
         height: 30px;
         border-radius: 7px;
         border: none;
-        background-color: rgb(74, 159, 255);
-        color: white;
+        // background-color: rgb(74, 159, 255);
+        background-color: $blue;
+        color:$white;
       }
 
       // Fieldset with calendar setup
@@ -75,11 +73,14 @@
         width: 95%;
         margin-bottom: 1rem;
         border-radius: 7px;
-        background-color: white;
+        background-color: $white;
+        border: thin solid $blue;
+        -webkit-box-shadow: 5px 5px 15px 5px $blue; 
+          box-shadow: 5px 5px 15px 5px $blue;
 
         h5 {
           position: absolute;
-          top: 8.5rem;
+          top: 8.4rem;
           left: 10%;
           padding: 0 5px;
         }
@@ -89,9 +90,16 @@
 }
 
 // Calendar setup
+
 .calendar {
-  width: 14.8rem;
+  width: 100%;
   border-radius: 5px;
+}
+
+.react-datetime-picker__wrapper {
+  display: flex;
+  border-radius: 5px;
+  border: none;
 }
 
 // Response message setup
