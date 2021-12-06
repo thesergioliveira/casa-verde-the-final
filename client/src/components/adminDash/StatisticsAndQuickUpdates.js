@@ -39,7 +39,7 @@ export default function StatisticsAndQuickUpdates(props) {
       .then((res) => {
         if (res.data) {
           setUserData(res.data);
-          
+
           localStorage.setItem("product", JSON.stringify(res.data));
         } else {
           setProductData({ auth: false });
@@ -53,7 +53,7 @@ export default function StatisticsAndQuickUpdates(props) {
     getAllProducts();
     getAllUsers();
   }, []);
- 
+
   //detect quantity from id
   let detectproduct = 0;
   detectproduct = productData.map((item) => item._id).indexOf(id);
@@ -73,43 +73,48 @@ export default function StatisticsAndQuickUpdates(props) {
       .put(`admin/product/quantitycheck/${id}`, updatedProductData, config)
       .then((res) => {
         console.log(res.updatedProductData);
-        alert("Stock updated, please refresh the page");
+        alert("Lager geändert, bitte die Seite neu laden");
         window.location.reload(false);
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
-  //securing the image 
+  //securing the image
   let myimage;
   productData[detectproduct]?.image
     ? (myimage = `http://localhost:5005/${productData[detectproduct]?.image}`)
     : (myimage = "https://via.placeholder.com/150");
-    console.log(userData.map(item => item.wishlist.length).reduce((a, b) => a + b, 0))
+  console.log(
+    userData.map((item) => item.wishlist.length).reduce((a, b) => a + b, 0)
+  );
   return (
     <div className="admin-dash-statistics-container">
       {/* <h1> welcome {userdata?.user.name}</h1>  */}
       <span className="statistics">
-        <p>statistics</p>
+        <p>Statistik</p>
         <h2>
-          Total Users: <i style={{ fontStyle: "normal" }}>👨‍👩‍👧‍👧</i>{" "}
-          {props.data?.length}
+          Nutzer: <i style={{ fontStyle: "normal" }}>👨‍👩‍👧‍👧</i> {props.data?.length}
         </h2>
         <h2>
-          Total Products: <i style={{ fontStyle: "normal" }}>💐</i>{" "}
+          Produkte: <i style={{ fontStyle: "normal" }}>💐</i>{" "}
           {productData?.length}
         </h2>
         <h2>
-          Total items in wishlists: <i style={{ fontStyle: "normal" }}>💗</i>
-          {userData.map(item => item.wishlist.length).reduce((a, b) => a + b, 0)}
+          Produkte auf der Wishlist: <i style={{ fontStyle: "normal" }}>💗</i>
+          {userData
+            .map((item) => item.wishlist.length)
+            .reduce((a, b) => a + b, 0)}
         </h2>
         <h2>
-          Total items in baskets: <i style={{ fontStyle: "normal" }}> 🛍</i>
-          {userData?.map((item) => item.basket.length).reduce((a, b) => a + b, 0)}
+          Produkte im Einkaufswagen: <i style={{ fontStyle: "normal" }}> 🛍</i>
+          {userData
+            ?.map((item) => item.basket.length)
+            .reduce((a, b) => a + b, 0)}
         </h2>
       </span>
       <span>
-        <h2>QUICK STOCK UPDATE</h2>
+        <h2>Lagerupdate</h2>
         <select
           id="name"
           onChange={(e) => {
@@ -117,14 +122,14 @@ export default function StatisticsAndQuickUpdates(props) {
           }}
         >
           {/* 🎁/🪴/🌹/🍝 */}
-          <option value={null}>choose one</option>
+          <option value={null}>Auswahl</option>
           {productData.map((item) => (
             <option value={item._id}> {item.name} </option>
           ))}
         </select>
         <div className="quick-update-view">
           <p>
-            you have: {productData[detectproduct]?.quantity} from
+            Wie haben {productData[detectproduct]?.quantity} Stück von:
             {productData[detectproduct]?.name}
           </p>
           <img src={myimage} alt="product" />
@@ -140,7 +145,7 @@ export default function StatisticsAndQuickUpdates(props) {
           PLUS {count}
         </button>
         <button className="button-dash" onClick={() => updateStock()}>
-          UPDATE IT
+          UPDATE
         </button>
       </span>
     </div>
