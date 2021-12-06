@@ -35,6 +35,7 @@ const Nav = () => {
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
+        setToken(null);
       });
   };
 
@@ -91,6 +92,7 @@ const Nav = () => {
   //logout
   const logOut = () => {
     localStorage.clear();
+    localStorage.removeItem("token");
     setData("");
     setToken("");
     closeMenu();

@@ -20,7 +20,6 @@ allControllers.addUser = async (req, res) => {
       phone: req.body.phone,
       address: req.body.address,
       city: req.body.city,
-      admin: true,
       state: req.body.state,
       zip: req.body.zip,
       country: req.body.country,
@@ -161,7 +160,7 @@ allControllers.login = async (req, res) => {
   const user =
     (await User.findOne({ username })) || (await User.findOne({ email }));
   if (user == null) {
-    return res.status(404).json({ message: "Cannot find user" });
+    return res.status(404).json({ message: "False Username or Email" });
   }
   try {
     if (await bcrypt.compare(password, user.password)) {
@@ -178,7 +177,7 @@ allControllers.login = async (req, res) => {
       });
     } else {
       res.json({
-        message: "Not Allowed, please check your username or password",
+        message: "False Password please Repeat!",
       });
     }
   } catch (err) {

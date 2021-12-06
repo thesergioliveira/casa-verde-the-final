@@ -15,6 +15,7 @@ function EditUser({ history }) {
       authorization: token,
     },
   };
+  if(token=== null){history.push("/login")}
   const [closeUser, setCloseUser] = useState(true);
   const [show, setShow] = useState(true);
   const [password, setPassword] = useState(null);
