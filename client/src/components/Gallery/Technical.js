@@ -25,10 +25,9 @@ const Technical = () => {
           {name}
         </h3>
 
-        <div className="container-description">
+        {/* <div className="container-description">
           <p>{description}</p>
-          <h3>Services</h3>
-        </div>
+        </div> */}
 
         {/* Images gallery */}
         <div key={uuidv4()} className="container-img-outer">

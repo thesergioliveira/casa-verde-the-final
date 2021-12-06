@@ -1,7 +1,6 @@
 .single-page-product-details {
   height: auto;
   width: 100vw;
-  margin-top: 6rem;
   @include flex;
   flex-direction: column;
 
@@ -42,6 +41,7 @@
       width: 100%;
       height: 25rem;
       object-fit: cover;
+      padding: 0 0.5rem;
     }
   }
 }

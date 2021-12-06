@@ -1,4 +1,11 @@
 .home {
+  .h3-description {
+    width: 75%;
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+
   .home-top {
     .roof {
       border-width: 0 40vw 10vh;
@@ -56,8 +63,14 @@
   @media screen and (min-width: 660px) {
     .wrapper-btn-house {
       .container-btn-house {
-        .container-categorys {
-          font-size: 1rem;
+        a {
+          button {
+            border-radius: 2rem;
+          }
+
+          .container-btn-blur {
+            border-radius: 2rem;
+          }
         }
       }
     }
@@ -89,11 +102,8 @@
             padding: 0 1.5rem;
             width: 13rem;
             height: 1.85rem;
-
             background-color: rgba(255, 255, 255, 0.8);
-
             font-size: 1rem;
-
             margin-right: 1rem;
           }
         }
@@ -105,13 +115,13 @@
     .wrapper-cards {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: stretch;
       flex-wrap: wrap;
       width: 80%;
       height: auto;
 
       .card-element {
-        width: 45%;
+        width: 47%;
         margin: 2rem 0;
       }
     }

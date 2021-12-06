@@ -70,13 +70,15 @@ const ShopSlider = () => {
       {/* Slider images */}
       {slider}
 
-      {/* Icons for next && previous slide */}
-      <MdArrowBackIos className="silder-icon left" onClick={prevSlide} />
-      <MdArrowForwardIos className="silder-icon right" onClick={nextSlide} />
+      <div className="wrapper-dots-icons">
+        {/* Icons for next && previous slide */}
+        <MdArrowBackIos className="silder-icon left" onClick={prevSlide} />
 
-      {/* Slider dots */}
-      <div className="container-dots">{dots}</div>
+        {/* Slider dots */}
+        <div className="container-dots">{dots}</div>
 
+        <MdArrowForwardIos className="silder-icon right" onClick={nextSlide} />
+      </div>
       {/* Buttons */}
       <div className="container-btn-slider">
         <div className="container-shop-header">
@@ -84,11 +86,38 @@ const ShopSlider = () => {
           <h2>CASA VERDE SHOP</h2>
         </div>
         {/* React-Router is missing */}
-        <button>Blumensträuße</button>
-        <button>Deko nach Jahreszeit</button>
-        <button>Topfpflanzen</button>
-        <button>Geschenkideen</button>
-        <button>Italienische Spezialitäten</button>
+        <div className="container-btn">
+          <a href="#flowers">
+            <div className="blur-btn"></div>
+            <button href="#flowers" className="flowers">
+              Blumensträuße
+            </button>
+          </a>
+        </div>
+        <div className="container-btn">
+          <a href="#gifts">
+            <div className="blur-btn"></div>
+            <button className="deco">Deko nach Jahreszeit</button>
+          </a>
+        </div>
+        <div className="container-btn">
+          <a href="#plants">
+            <div className="blur-btn"></div>
+            <button className="plants">Topfpflanzen</button>
+          </a>
+        </div>
+        <div className="container-btn">
+          <a href="#gifts">
+            <div className="blur-btn"></div>
+            <button className="gifts">Geschenkideen</button>
+          </a>
+        </div>
+        <div className="container-btn">
+          <a href="#italian">
+            <div className="blur-btn"></div>
+            <button className="italy">Italienische Spezialitäten</button>
+          </a>
+        </div>
       </div>
     </div>
   );

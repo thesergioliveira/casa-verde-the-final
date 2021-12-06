@@ -62,14 +62,40 @@
     align-items: flex-start;
     flex-wrap: wrap;
     padding: 1rem;
-
+    
+  
+    .custom-file-input::before {
+      content: 'Select a Photo..';
+      display: inline-block;
+      background: $cream;
+      
+      border-radius: 10%;
+      padding: 8px 8px 8px 18px;
+      outline: none;
+      white-space: nowrap;
+      -webkit-user-select: none;
+      cursor: pointer;
+      text-shadow: 1px 1px #fff;
+      font-weight: 700;
+      font-size: 10pt;
+    }
+    .custom-file-input:hover::before {
+      border-color: black;
+    }
+    .custom-file-input:active::before {
+      background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    }
     .add-product-wrapper {
-      // border: 2px red dashed;
+    
     }
     .preview {
       border: 2px black solid;
       padding: 2rem;
     }
+  }
+  .delete-container {
+    margin-top: 1rem;
+    border-top: 2px black solid;
   }
   .admin-dash-statistics-container {
     padding: 1rem;

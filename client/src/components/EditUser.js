@@ -121,132 +121,132 @@ function EditUser({ history }) {
   };
 
   return (
-    <div className="edit-user-container">
-      <h1>Profile</h1>
-      <h2 style={{ color: "green" }}>{updateMessage}</h2>
-      <h3 style={{ color: "red" }}>{errorMessage}</h3>
-      <div>
-        <h3> User Information</h3>
-        <p>{userData?.username}</p>
-        <p>{userData?.email}</p>
-        <p>{userData?.phone}</p>
-        <p>
-          {userData?.address} {userData?.houseNumber}
-        </p>
-        <p>{userData?.city}</p>
-        <p> {userData?.state}</p>
-        <p> {userData?.country}</p>
-        <p> {userData?.postalCode}</p>
-        <div className="editIcon" onClick={showEditUser}>
-          <FaUserEdit />
+    <div className="edit-user-box"> 
+      <div className="edit-user-container">
+        <h1>Profile</h1>
+        <h2 style={{ color: "green" }}>{updateMessage}</h2>
+        <h3 style={{ color: "red" }}>{errorMessage}</h3>
+        <div>
+          <h3> User Information</h3>
+          <p>{userData?.username}</p>
+          <p>{userData?.email}</p>
+          <p>{userData?.phone}</p>
+          <p>
+            {userData?.address} {userData?.houseNumber}
+          </p>
+          <p>{userData?.city}</p>
+          <p> {userData?.state}</p>
+          <p> {userData?.country}</p>
+          <p> {userData?.postalCode}</p>
+          <div className="editIcon" onClick={showEditUser}>
+            <FaUserEdit />
+          </div>
+          <div className={show ? "edit-none" : "edit-show"}>
+            <input
+              type="phone"
+              value={phone}
+              name="phone"
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="enter your phone number"
+            />
+            <input
+              type="address"
+              value={address}
+              name="address"
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="enter your address"
+            />
+            <input
+              type="number"
+              value={houseNumber}
+              name="houseNumber"
+              onChange={(e) => setHouseNumber(e.target.value)}
+              placeholder="enter your House Number"
+            />
+            <input
+              type="country"
+              value={country}
+              name="country"
+              onChange={(e) => setCountry(e.target.value)}
+              placeholder="enter your Country Name"
+            />
+            <input
+              type="state"
+              value={state}
+              name="state"
+              onChange={(e) => setState(e.target.value)}
+              placeholder="enter your State Name"
+            />
+            <input
+              type="city"
+              value={city}
+              name="city"
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="enter your City Name"
+            />
+            <input
+              type="postalCode"
+              value={postalCode}
+              name="postalCode"
+              onChange={(e) => setPostalCode(e.target.value)}
+              placeholder="enter your postal Code"
+            />
+          </div>
+          <button className="button-dash" onClick={updateUserInfo}>
+            Update Your Profile
+          </button>
         </div>
-        <div className={show ? "edit-none" : "edit-show"}>
-          <input
-            type="phone"
-            value={phone}
-            name="phone"
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="enter your phone number"
-          />
-          <input
-            type="address"
-            value={address}
-            name="address"
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="enter your address"
-          />
-          <input
-            type="number"
-            value={houseNumber}
-            name="houseNumber"
-            onChange={(e) => setHouseNumber(e.target.value)}
-            placeholder="enter your House Number"
-          />
-          <input
-            type="country"
-            value={country}
-            name="country"
-            onChange={(e) => setCountry(e.target.value)}
-            placeholder="enter your Country Name"
-          />
-          <input
-            type="state"
-            value={state}
-            name="state"
-            onChange={(e) => setState(e.target.value)}
-            placeholder="enter your State Name"
-          />
-          <input
-            type="city"
-            value={city}
-            name="city"
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="enter your City Name"
-          />
-          <input
-            type="postalCode"
-            value={postalCode}
-            name="postalCode"
-            onChange={(e) => setPostalCode(e.target.value)}
-            placeholder="enter your postal Code"
-          />
-        </div>
-        <button className="button-dash" onClick={updateUserInfo}>
-          Update Your Profile
-        </button>
-      </div>
-      <div>
-        <h3> User Password</h3>
-        <span className="password">
-          <input
-            type={showEye ? "text" : "password"}
-            value={password}
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="your password"
-          />
-          <span className="iconPass" onClick={() => setShowEye(!showEye)}>
-            {" "}
-            {showEye ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+        <div>
+          <h3> User Password</h3>
+          <span className="password">
+            <input
+              type={showEye ? "text" : "password"}
+              value={password}
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="your password"
+            />
+            <span className="iconPass" onClick={() => setShowEye(!showEye)}>
+              {" "}
+              {showEye ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+            </span>
           </span>
-        </span>
-        <span className="password">
+          <span className="password">
+            <input
+              type={showEyeConf ? "text" : "password"}
+              value={NewPassword}
+              name="NewPassword"
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="enter your new password"
+            />
+            <span
+              className="iconPass"
+              onClick={() => setShowEyeConf(!showEyeConf)}
+            >
+              {" "}
+              {showEyeConf ? <HiOutlineEye /> : <HiOutlineEyeOff />}
+            </span>
+          </span>
           <input
             type={showEyeConf ? "text" : "password"}
-            value={NewPassword}
-            name="NewPassword"
-            onChange={(e) => setNewPassword(e.target.value)}
-            placeholder="enter your new password"
+            value={passwordConf}
+            name="passwordConf"
+            onChange={(e) => setPasswordConf(e.target.value)}
+            placeholder="confirm your password"
           />
-          <span
-            className="iconPass"
-            onClick={() => setShowEyeConf(!showEyeConf)}
-          >
-            {" "}
-            {showEyeConf ? <HiOutlineEye /> : <HiOutlineEyeOff />}
-          </span>
-        </span>
-
-        <input
-          type={showEyeConf ? "text" : "password"}
-          value={passwordConf}
-          name="passwordConf"
-          onChange={(e) => setPasswordConf(e.target.value)}
-          placeholder="confirm your password"
-        />
-
-        <button onClick={changePassword}>Change Your Password</button>
-      </div>
-      <div>
-        <h3>Delete your account</h3>
-        <input
-          type="password"
-          value={passwordToD}
-          name="passwordToD"
-          onChange={(e) => setPasswordToD(e.target.value)}
-          placeholder="enter your password"
-        />
-        <button onClick={deleteUser}>DELETE ACCOUNT</button>
+          <button onClick={changePassword}>Change Your Password</button>
+        </div>
+        <div>
+          <h3>Delete your account</h3>
+          <input
+            type="password"
+            value={passwordToD}
+            name="passwordToD"
+            onChange={(e) => setPasswordToD(e.target.value)}
+            placeholder="enter your password"
+          />
+          <button onClick={deleteUser}>DELETE ACCOUNT</button>
+        </div>
       </div>
     </div>
   );

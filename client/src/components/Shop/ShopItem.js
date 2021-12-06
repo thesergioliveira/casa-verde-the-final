@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import React from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 
@@ -14,11 +13,21 @@ import {
 } from "react-router-dom";
 import ItemDetails from "./ItemDetails";
 
+import { useSpring, animated } from 'react-spring';
+
+const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
+const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+
+
 function ShopItem(props) {
   const [count, setCount] = useState(0);
 
   const [quantity, setQuantity] = useState(0);
   const [wishlist, setWishlist] = useState(true);
+
+  // const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
+  const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
+
 
   useEffect(() => {
     const displayBasket = async () => {
@@ -28,11 +37,13 @@ function ShopItem(props) {
           setCount(
             res.data.basket.filter((item) => item._id === props.obj._id).length
           );
-           let dublicationCheck = res.data.wishlist.find(item => item._id.toString() === props.obj._id.toString())
-           console.log(dublicationCheck)
-            if(dublicationCheck){
-                setWishlist(false)
-            }
+          let dublicationCheck = res.data.wishlist.find(
+            (item) => item._id.toString() === props.obj._id.toString()
+          );
+          //console.log(dublicationCheck)
+          if (dublicationCheck) {
+            setWishlist(false);
+          }
         })
         .catch((err) => {
           console.log("SOS SOS SOS SOS", err.message);
@@ -63,11 +74,12 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
-    //setCount(count - 1);
-    setCount(0);
+    setCount(count - 1);
+
     axios
       .put(
         "user/removeFromTheBasket",
@@ -78,11 +90,26 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
+        window.location.reload(false);
+      });
+  };
+  const removeAllfromBasket = (id) => {
+    setCount(0);
+    axios
+      .put(
+        "user/toRemoveAll",
+        {
+          productId: id,
+        },
+        config
+      )
+      .then((res) => {
+        console.log(res.data.message);
+        window.location.reload(false);
       });
   };
 
   const addToWishlist = (id) => {
-   
     // let dublicationCheck = user?.wishlist.find(item => item._id.toString() === id.toString())
     setWishlist(!wishlist);
     if (wishlist) {
@@ -96,6 +123,7 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res.data.message);
+          window.location.reload(true);
         });
     } else {
       axios
@@ -108,20 +136,27 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res);
+          window.location.reload(true);
         });
     }
   };
-
+  let myimage;
+  props.obj.image
+    ? (myimage = `http://localhost:5005/${props.obj.image}`)
+    : (myimage = "https://via.placeholder.com/150");
   return (
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">
-        <img
+        <animated.img classname="card"
           // ${process.env.PUBLIC_URL}
-          src={`http://localhost:5005/${props.obj.image}`}
+          src={myimage}
           alt={`img of ${props.obj.name}`}
+          onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+      onMouseLeave={() => set({ xys: [0, 0, 1] })}
+      style={{ transform: prop.xys.interpolate(trans) }}
         />
         <div className="product-infos">
-          <p>{props.obj.name}</p>
+          <p className="product-p">{props.obj.name}</p>
           <p>{props.obj.category}</p>
           <p>
             {props.obj.price} € <span>inkl. MwSt.</span>
@@ -165,7 +200,7 @@ function ShopItem(props) {
             </button>
             <button
               disabled={count === 0}
-              onClick={() => removeFromBasket(props.obj_id)}
+              onClick={() => removeAllfromBasket(props.obj._id)}
             >
               <FiTrash2 className="icon" />
             </button>

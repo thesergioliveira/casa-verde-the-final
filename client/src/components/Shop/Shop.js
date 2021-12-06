@@ -61,12 +61,14 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div className="container-product">
-          <ImEnlarge
+          <div
             className="product-icon"
             onClick={() => {
               history.push(`/shop/product/${obj._id}`);
             }}
-          />
+          >
+            Zum Produkt
+          </div>
 
           <ShopItem obj={obj} />
         </div>
@@ -78,12 +80,14 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div className="container-product">
-          <ImEnlarge
+          <div
             className="product-icon"
             onClick={() => {
               history.push(`/shop/product/${obj._id}`);
             }}
-          />
+          >
+            Zum Produkt
+          </div>
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -94,12 +98,14 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div className="container-product">
-          <ImEnlarge
+          <div
             className="product-icon"
             onClick={() => {
               history.push(`/shop/product/${obj._id}`);
             }}
-          />
+          >
+            Zum Produkt
+          </div>
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -110,12 +116,14 @@ function Shop({ history }) {
     .map((obj) => {
       return (
         <div className="container-product">
-          <ImEnlarge
+          <div
             className="product-icon"
             onClick={() => {
               history.push(`/shop/product/${obj._id}`);
             }}
-          />
+          >
+            Zum Produkt
+          </div>
           <ShopItem obj={obj} />{" "}
         </div>
       );
@@ -124,12 +132,14 @@ function Shop({ history }) {
   const getProducts = data?.map((obj) => {
     return (
       <div className="container-product">
-        <ImEnlarge
+        <div
           className="product-icon"
           onClick={() => {
             history.push(`/shop/product/${obj._id}`);
           }}
-        />
+        >
+          Zum Produkt
+        </div>
         <ShopItem obj={obj} />{" "}
       </div>
     );
@@ -193,13 +203,13 @@ function Shop({ history }) {
         </div>
 
         <div className="products-container">
-          <h2>Flower and plants pots</h2>
+          <h2 id="plants">Flower and plants pots</h2>
           <div className="products">{getFlowerAndPlantsPots}</div>
-          <h2>Bouquet of flowers</h2>
+          <h2 id="flowers">Bouquet of flowers</h2>
           <div className="products">{getBouquetOfFlowers}</div>
-          <h2>Gift baskets</h2>
+          <h2 id="gifts">Gift baskets</h2>
           <div className="products">{getGiftBaskets}</div>
-          <h2>Italian Products</h2>
+          <h2 id="italian">Italian Products</h2>
           <div className="products">{italianProducts}</div>
           <h2>View All </h2>
           <div className="products">{getProducts}</div>

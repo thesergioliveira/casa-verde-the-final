@@ -5,10 +5,9 @@ import { AuthContext } from "../AuthContext";
 import { Link } from "react-router-dom";
 import ShopItem from "./ShopItem";
 import ContactInformation from "../ContactInformation";
-import { BillContext } from "./TotalBillContext"
+import { BillContext } from "./TotalBillContext";
 
 const Basket = () => {
-
   const [data, setData] = useState([]);
   const [token] = useContext(AuthContext);
   const value = useContext(BillContext);
@@ -34,7 +33,6 @@ const Basket = () => {
 
   let displa = "none";
 
-
   // already bought from someone else
   let notAvailableCartItems = data.basket?.filter((item) => item.quantity <= 0);
 
@@ -45,30 +43,34 @@ const Basket = () => {
   let maparr = new Map(cartItems);
 
   let result = [...maparr.values()].filter((item) => item.quantity > 0);
-  
+
   //no dublicated not available items
   let cartNotavAilableItems = notAvailableCartItems?.map((item) => {
     return [item._id, item];
   });
   let maparr2 = new Map(cartNotavAilableItems);
-let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity == 0);
+  let resultNotAvailable = [...maparr2.values()].filter(
+    (item) => item.quantity == 0
+  );
 
   // not delieverable items
   let notDeliverable = result?.filter((item) => item.delivery == false);
 
- 
   //count total and allow checkout button
-// PASS IT TO THE TOTALBILLCONTEXT
-  let total = data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0) - cartNotavAilableItems?.map((item) => item[1].price).reduce((a, b) => a + b, 0)
+  // PASS IT TO THE TOTALBILLCONTEXT
+  let total =
+    data.basket?.map((item) => item.price).reduce((a, b) => a + b, 0) -
+    cartNotavAilableItems
+      ?.map((item) => item[1].price)
+      .reduce((a, b) => a + b, 0);
   {
     total > 0 ? (displa = "inline") : (displa = "none");
   }
 
-  
-  const clearSoldout =async () => {
+  const clearSoldout = async () => {
     if (notAvailableCartItems.length > 0) {
       await notAvailableCartItems?.map((item) => {
-        console.log("CHAO")
+        console.log("CHAO");
 
         axios
           .put(
@@ -88,10 +90,9 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
   };
   return (
     <div className="main-basket-container">
-      <h1>Shopping Basket</h1>
       <div className="lists-container">
         <p className="shipping-msg">
-          ❗ Please take a note that not articles can be send !
+          ❗ Please take a note that not all articles can be send ❗
           {notAvailableCartItems?.length ? (
             <h2>
               the {notAvailableCartItems?.map((item) => `${item.name}, `)} are
@@ -99,6 +100,7 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
             </h2>
           ) : null}
         </p>
+        <h1>Shopping Basket</h1>
 
         <ul className="basket-list">
           <li>
@@ -110,7 +112,7 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
             </li>
           ))}
           {resultNotAvailable?.map((obj, index) => (
-            <li style={{color: "red"}} key={index}>
+            <li style={{ color: "red" }} key={index}>
               <ShopItem obj={obj} />
             </li>
           ))}
@@ -131,8 +133,8 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
       <aside>
         {notDeliverable?.length ? (
           <h2 className="shipping-msg">
-            the {notDeliverable?.map((item) => `${item.name}, `)} are too
-            sensitive to be delivered. Feel free to come from our shop
+            the <span>{notDeliverable?.map((item) => `${item.name},`)}</span>{" "}
+            are too sensitive to be delivered. Feel free to come from our shop
           </h2>
         ) : null}
 
@@ -154,15 +156,17 @@ let resultNotAvailable = [...maparr2.values()].filter((item) => item.quantity ==
         <ContactInformation />
       </aside>
 
-
-      <Link style={{ display: `${displa}` }} total ={total} to="/basket/checkout">
+      <Link
+        style={{ display: `${displa}` }}
+        total={total}
+        to="/basket/checkout"
+      >
         <h3>
           Total:
           {total} $
         </h3>
         <p onClick={clearSoldout}> proceed to Checkout</p>
       </Link>
-      
     </div>
   );
 };

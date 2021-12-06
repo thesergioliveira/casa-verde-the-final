@@ -14,6 +14,7 @@ export default function AddProduct() {
   };
 
   const [productData, setProductData] = useState([]);
+  
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Gift baskets");
   const [price, setPrice] = useState(0);
@@ -38,10 +39,11 @@ export default function AddProduct() {
         console.log("here", err.response?.data);
       });
   };
-
+  
   const obj = { name, category, price, quantity, description, delivery, image };
   useEffect(() => {
     getAllProducts();
+   
   }, []);
 
   const handleUpload = (e) => {
@@ -75,13 +77,31 @@ export default function AddProduct() {
       console.log("error", err.response.data.message);
     }
   };
-
+  const handleDelete = (id) => {
+    if (
+      window.confirm(
+        "Are you sure you want to delete this thing from the database?"
+      )
+    ) {
+      axios
+        .delete(`admin/product/${id}`, config)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } else {
+      console.log("Twe didnt delete it.");
+    }
+  };
   return (
     <div className="admin-dash-add-products-container">
       <div className="add-product-wrapper">
         <h2>ADD A PRODUCT</h2>
         <form onSubmit={handleSubmit}>
-          <input type="file" id="file" onChange={handleUpload} />
+         
+          <input class="custom-file-input" type="file" id="file" onChange={handleUpload} />
           <p>name it:</p>
           <input
             type="text"
@@ -141,7 +161,27 @@ export default function AddProduct() {
           </select>
           <input className="button-dash" type="submit" value="Add me" />
         </form>
+        <div className="delete-container">
+        <h2>DELETE A PRODUCT</h2>
+        <select
+          id="name"
+          onChange={(e) => {
+            setName(e.target.value);
+            console.log(name);
+          }}
+        >
+          {" "}
+          <option value={null}> choose one</option>
+          {productData.map((item) => (
+            <option value={item._id}> {item.name} </option>
+          ))}
+        </select>
+        <button className="button-dash" onClick={() => handleDelete(name)}>
+          DELETE THE PRODUCT
+        </button>
       </div>
+      </div>
+      
 
       <div className="preview">
         <p>preview</p>

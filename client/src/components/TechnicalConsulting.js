@@ -22,6 +22,10 @@ const TechnicalConsulting = () => {
         />
       </div>
 
+      <div className="h3-description">
+        <h3>Text für Consulting hier</h3>
+      </div>
+
       <Technical />
 
       {/* to do- adding calendar and address */}
