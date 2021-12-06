@@ -26,7 +26,9 @@ function ShopItem(props) {
   const [quantity, setQuantity] = useState(0);
   const [wishlist, setWishlist] = useState(true);
 
+  // const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
   const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
+
 
   useEffect(() => {
     const displayBasket = async () => {
@@ -164,14 +166,14 @@ function ShopItem(props) {
     : (myimage = "https://via.placeholder.com/150");
   return (
     <div key={props.obj._id} className="productCard-main-container">
-      <animated.div className="product-box card"
-      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{ transform: prop.xys.interpolate(trans) }}>
-        <img
+      <div className="product-box">
+        <animated.img classname="card"
           // ${process.env.PUBLIC_URL}
           src={myimage}
           alt={`img of ${props.obj.name}`}
+          onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+      onMouseLeave={() => set({ xys: [0, 0, 1] })}
+      style={{ transform: prop.xys.interpolate(trans) }}
         />
         <div className="product-infos">
           <p>{props.obj.name}</p>
@@ -224,7 +226,7 @@ function ShopItem(props) {
             </button>
           </div>
         </div>
-      </animated.div>
+      </div>
     </div>
   );
 }
