@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import React from "react";
 //import { DataContext } from "../UserContext";
 import { AuthContext } from "../AuthContext";
 
@@ -15,11 +14,19 @@ import {
 } from "react-router-dom";
 import ItemDetails from "./ItemDetails";
 
+import { useSpring, animated } from 'react-spring';
+
+const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
+const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+
+
 function ShopItem(props) {
   const [count, setCount] = useState(0);
 
   const [quantity, setQuantity] = useState(0);
   const [wishlist, setWishlist] = useState(true);
+
+  const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
 
   useEffect(() => {
     const displayBasket = async () => {
@@ -157,7 +164,10 @@ function ShopItem(props) {
     : (myimage = "https://via.placeholder.com/150");
   return (
     <div key={props.obj._id} className="productCard-main-container">
-      <div className="product-box">
+      <animated.div className="product-box card"
+      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+      onMouseLeave={() => set({ xys: [0, 0, 1] })}
+      style={{ transform: prop.xys.interpolate(trans) }}>
         <img
           // ${process.env.PUBLIC_URL}
           src={myimage}
@@ -214,7 +224,7 @@ function ShopItem(props) {
             </button>
           </div>
         </div>
-      </div>
+      </animated.div>
     </div>
   );
 }

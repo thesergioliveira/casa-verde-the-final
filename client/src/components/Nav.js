@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import LogoData from "../JSON/logo.json";
 import Menu from "../JSON/menu.json";
+import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { AuthContext } from "./AuthContext";
 import { DataContext } from "./UserContext";
@@ -9,7 +11,7 @@ import { FaUser, FaShoppingBasket } from "react-icons/fa";
 import { GoUnverified, GoVerified } from "react-icons/go";
 
 // set onClick for logo to close the menu - to do
-const Nav = ({ logo }) => {
+const Nav = () => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(true);
   const [none, setNone] = useState(true);
@@ -42,12 +44,22 @@ const Nav = ({ logo }) => {
   const userName = data?.user?.username.toUpperCase();
   const accountVerified = data?.user?.verifyAccount;
 
+  // Logo setup
+  const logo = LogoData.map((obj) => {
+    const { name, path, img } = obj;
+    return (
+      <Link to={path} key={uuidv4()}>
+        <img src={img} alt={name} key={uuidv4()} className={name} />
+      </Link>
+    );
+  });
+
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
-    const { id, name, path } = obj;
+    const { name, path } = obj;
     return (
-      <Link to={path}>
-        <li key={id}>{name}</li>
+      <Link to={path} key={uuidv4()}>
+        <li key={uuidv4()}>{name}</li>
       </Link>
     );
   });

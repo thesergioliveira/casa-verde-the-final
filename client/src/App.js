@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import LogoData from "./JSON/logo.json";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -34,16 +33,6 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import TotalBillProvider from "./components/Shop/TotalBillContext";
 
 function App() {
-  // Logo setup
-  const logo = LogoData.map((obj) => {
-    const { id, name, path, img } = obj;
-    return (
-      <Link to={path}>
-        <img src={img} alt={name} key={id} className={name} />
-      </Link>
-    );
-  });
-  
 
   return (
    
@@ -52,7 +41,7 @@ function App() {
   <DataProvider>
       <AuthContextProvider>
         <Router>
-          <Nav logo={logo} />
+          <Nav />
           <main>
             <Switch>
               {/* Need to add public.env */}
@@ -90,7 +79,7 @@ function App() {
               
             </Switch>
           </main>
-          <Footer logo={logo} />
+          <Footer />
         </Router>
       </AuthContextProvider>
     </DataProvider> 

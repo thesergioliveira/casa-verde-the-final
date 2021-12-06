@@ -58,3 +58,16 @@
     margin-bottom: 10px;
   }
 }
+
+// Animated envelope setup
+
+.animated-envelope {
+  width: 100vw;
+  @include flex;
+}
+
+iframe {
+  width: 18rem;
+  height: 18rem;
+  border: none;
+}

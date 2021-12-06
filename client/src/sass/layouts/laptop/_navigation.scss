@@ -15,11 +15,12 @@ header {
  }
 
 .laptop-setup {
-    width: 100%;
+    width: 90%;
     height: auto;
+    padding: 0;
     background-color: $cream;
     @include flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     animation-play-state: paused;
     
  
@@ -30,7 +31,7 @@ header {
  }
  li {
      display: inline;
-     color: black;
+     color: $black;
      font-weight: bold;
      font-size: 1.2rem;
      margin-right: 1.3rem;
@@ -48,14 +49,15 @@ header {
 
 .nav-top {
     width: 10vw;
+    padding: 0;
     @include flex;
     justify-content: space-between;
     // flex-direction: row-reverse;
 }
 
 .logo {
-    margin: 0;
-    padding: 0;
+   width: 10rem;
+   height: 10rem;
 }
 
 // Ul display none
@@ -99,6 +101,6 @@ header {
       cursor: pointer;
     }
     :hover {
-        color: $violet;
+        color: $dark-green;
     }
   }
