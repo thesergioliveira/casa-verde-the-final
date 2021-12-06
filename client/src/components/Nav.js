@@ -176,7 +176,6 @@ const Nav = () => {
                     fontWeight: "bold",
                     textDecoration: "none",
                     width: "5.5rem",
-                   
                   }}
                   onClick={closeMenu}
                   to="/login"
