@@ -1,0 +1,45 @@
+.wrapper-cookies {
+  height: 5rem;
+
+  .container-cookies {
+    .cookie-bar {
+      border-radius: 2rem 0 0 0;
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .blur-cookies {
+      border-radius: 2rem 0 0 0;
+    }
+  }
+
+  @media screen and (min-width: 720px) {
+    .container-cookies {
+      .cookie-bar {
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 940px) {
+  .wrapper-cookies {
+    height: 6rem;
+    .container-cookies {
+      .cookie-bar {
+        p {
+          font-size: 1.2rem;
+        }
+
+        button {
+          top: -2.5rem;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

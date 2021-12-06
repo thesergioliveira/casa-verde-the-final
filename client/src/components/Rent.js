@@ -22,6 +22,10 @@ const Rent = () => {
         />
       </div>
 
+      <div className="h3-description">
+        <h3>Text für Raumvermietung hier</h3>
+      </div>
+
       <div className="wrapper-gallery">
         <RoomRental />
       </div>

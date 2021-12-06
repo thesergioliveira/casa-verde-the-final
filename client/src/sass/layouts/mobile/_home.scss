@@ -238,6 +238,7 @@
       height: 5rem;
       display: flex;
       justify-content: flex-end;
+      margin-bottom: 0.5rem;
 
       img {
         height: 100%;
@@ -466,13 +467,23 @@
     .deco-services {
       height: 50%;
       width: 80%;
-      max-width: 80%;
       justify-content: flex-start;
 
       .container-deco-services {
-        height: 13%;
+        height: 14%;
         margin-bottom: 1rem;
       }
+    }
+  }
+
+  .h3-description {
+    width: 90%;
+    border-bottom: 1px solid rgb(82, 82, 82);
+    margin-bottom: 1rem;
+
+    h3 {
+      text-align: justify;
+      color: rgb(37, 37, 37);
     }
   }
 }

@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import LogoData from "./JSON/logo.json";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -10,7 +9,12 @@ import Events from "./components/Events";
 import Rent from "./components/Rent";
 import BalletAndPilates from "./components/BalletAndPilates";
 import TechnicalConsulting from "./components/TechnicalConsulting";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
+import Impressum from "./components/Footer/Impressum";
+import Agb from "./components/Footer/Agb";
+import Datenschutz from "./components/Footer/Datenschutz";
+import Widerrufsbelehrung from "./components/Footer/Widerrufsbelehrung";
+import ZahlungAndVersand from "./components/Footer/ZahlungAndVersand";
 import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -29,16 +33,6 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import TotalBillProvider from "./components/Shop/TotalBillContext";
 
 function App() {
-  // Logo setup
-  const logo = LogoData.map((obj) => {
-    const { id, name, path, img } = obj;
-    return (
-      <Link to={path}>
-        <img src={img} alt={name} key={id} className={name} />
-      </Link>
-    );
-  });
-  
 
   return (
    
@@ -47,7 +41,7 @@ function App() {
   <DataProvider>
       <AuthContextProvider>
         <Router>
-          <Nav logo={logo} />
+          <Nav />
           <main>
             <Switch>
               {/* Need to add public.env */}
@@ -65,6 +59,11 @@ function App() {
               <Route path="/technic" exact render={TechnicalConsulting}></Route>
               <Route path="/about" exact render={About}></Route>
               <Route path="/contact" exact render={Contact}></Route>
+              <Route path="/impressum" exact render={Impressum}></Route>
+              <Route path="/agb" exact render={Agb}></Route>
+              <Route path="/datenschutzerklaerung" exact render={Datenschutz}></Route>
+              <Route path="/widerrufsbelehrung" exact render={Widerrufsbelehrung}></Route>
+              <Route path="/zahlung-versand" exact render={ZahlungAndVersand}></Route>
               <Route path="/login" exact component={Login}></Route>
               <Route path="/forgetPassword" exact component={ForgetPassword}></Route>
               <Route path="/resetPassword/:id" exact component={ResetPassword}></Route>
@@ -80,7 +79,7 @@ function App() {
               
             </Switch>
           </main>
-          <Footer logo={logo} />
+          <Footer />
         </Router>
       </AuthContextProvider>
     </DataProvider> 
