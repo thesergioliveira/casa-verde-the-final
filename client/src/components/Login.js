@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { DataContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
 import { HiOutlineEyeOff, HiOutlineEye } from "react-icons/hi";
-
+import Kaktus from "./Kaktus";
 const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,9 @@ const Login = ({ history }) => {
   const [token, setToken] = useContext(AuthContext);
   const [showEye, setShowEye] = useState(false);
   const [loginMessage, setLoginMessage] = useState("");
+  const [rotation, setRotation] = useState(0);
   axios.defaults.withCredentials = true;
+ 
   const loginUser = () => {
     axios
       .post("user/login", {
@@ -21,6 +23,10 @@ const Login = ({ history }) => {
       })
       .then((res) => {
         if (!res.data.token) {
+         
+          
+          console.log(rotation);
+          setRotation(110);
           setLoginMessage(res.data.message);
         } else {
           setToken(res.data.token);
@@ -31,12 +37,17 @@ const Login = ({ history }) => {
         }
       })
       .catch((error) => {
+       
+       
         setLoginMessage(error.response.data.message);
       });
   };
 
   return (
     <div className="login-container">
+   <div style={{ transform: `rotate(${rotation}deg)` }} className="kaktuscon" >
+      <Kaktus /></div>
+      <h5 styleName={{ color: "red" }}>{loginMessage}</h5>
       <input
         type="text"
         value={username}
@@ -66,7 +77,6 @@ const Login = ({ history }) => {
       <button className="button-dash">
         <Link to="/register">Register</Link>
       </button>
-      <h2 style={{ color: "red" }}>{loginMessage}</h2>
     </div>
   );
 };

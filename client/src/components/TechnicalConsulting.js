@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import TechnicData from "../JSON/technic.json";
+//import { Link } from "react-router-dom";
+//import TechnicData from "../JSON/technic.json";
 import Technical from "./Gallery/Technical";
 import ContactInformation from "./ContactInformation";
 import ContactForm from "./ContactForm";

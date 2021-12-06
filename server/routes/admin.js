@@ -4,10 +4,10 @@ const allControllers = require("../controllers/controller");
 const allProductControllers = require("../controllers/productsController");
 const middleware = require("../middlewares/middleware");
 const path = require("path");
-const dirpath = path.join(__dirname, "/uploads")
+const dirpath = path.join(__dirname, "/uploads");
 console.log(dirpath);
 const multer = require("multer");
-const { dir } = require("console");
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
