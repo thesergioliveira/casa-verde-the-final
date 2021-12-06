@@ -1,5 +1,6 @@
+// Import area
 import React from "react";
-
+// About function
 const About = () => {
   return (
     <div className="home">
@@ -16,6 +17,7 @@ const About = () => {
         />
       </div>
       <h2>Über Uns und das Projekt</h2>
+      {/* Text */}
       <p>
         Das Casa Verde ist seit 2001 weithin bekannt für sein mediterranes
         Flair, außergewöhnliche Blumengestaltung sowie für stilvolle
