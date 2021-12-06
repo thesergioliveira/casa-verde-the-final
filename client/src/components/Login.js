@@ -37,6 +37,7 @@ const Login = ({ history }) => {
 
   return (
     <div className="login-container">
+      <h5 style={{ color: "red" }}>{loginMessage}</h5>
       <input
         type="text"
         value={username}
@@ -66,7 +67,6 @@ const Login = ({ history }) => {
       <button className="button-dash">
         <Link to="/register">Register</Link>
       </button>
-      <h2 style={{ color: "red" }}>{loginMessage}</h2>
     </div>
   );
 };

@@ -174,7 +174,7 @@ allControllers.login = async (req, res) => {
       });
     } else {
       res.json({
-        message: "Not Allowed, please check your username or password",
+        message: "False Password Repeat!",
       });
     }
   } catch (err) {

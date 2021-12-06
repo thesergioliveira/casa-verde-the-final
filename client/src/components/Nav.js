@@ -35,10 +35,9 @@ const Nav = () => {
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
-        setToken(null)
+        setToken(null);
       });
   };
-  
 
   // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
@@ -112,7 +111,7 @@ const Nav = () => {
             {logo}
           </div>
           <div className="nav-user">
-            {token? (
+            {token ? (
               <>
                 <Link to="/basket">
                   <li id="basket" key="50" onClick={closeMenu}>
@@ -178,8 +177,6 @@ const Nav = () => {
                     fontWeight: "bold",
                     textDecoration: "none",
                     width: "5.5rem",
-                    
-                   
                   }}
                   onClick={closeMenu}
                   to="/login"
@@ -192,7 +189,6 @@ const Nav = () => {
                     fontWeight: "bold",
                     textDecoration: "none",
                     width: "5.5rem",
-                    
                   }}
                   onClick={closeMenu}
                   to="/register"

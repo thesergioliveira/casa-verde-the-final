@@ -14,11 +14,15 @@ import {
 } from "react-router-dom";
 import ItemDetails from "./ItemDetails";
 
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from "react-spring";
 
-const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
-const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
-
+const calc = (x, y) => [
+  -(y - window.innerHeight / 2) / 20,
+  (x - window.innerWidth / 2) / 20,
+  1.1,
+];
+const trans = (x, y, s) =>
+  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 function ShopItem(props) {
   const [count, setCount] = useState(0);
@@ -27,8 +31,10 @@ function ShopItem(props) {
   const [wishlist, setWishlist] = useState(true);
 
   // const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
-  const [prop, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
-
+  const [prop, set] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 5, tension: 350, friction: 40 },
+  }));
 
   useEffect(() => {
     const displayBasket = async () => {
@@ -68,7 +74,7 @@ function ShopItem(props) {
   // add to basket
   const addToBasket = (id) => {
     //the user have to login in order to add to the basket
-    if (token === null) {
+    if (localStorage.getItem("token") === null) {
       return redirect();
     }
     if (count > 0) {
@@ -167,13 +173,14 @@ function ShopItem(props) {
   return (
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">
-        <animated.img classname="card"
+        <animated.img
+          classname="card"
           // ${process.env.PUBLIC_URL}
           src={myimage}
           alt={`img of ${props.obj.name}`}
           onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{ transform: prop.xys.interpolate(trans) }}
+          onMouseLeave={() => set({ xys: [0, 0, 1] })}
+          style={{ transform: prop.xys.interpolate(trans) }}
         />
         <div className="product-infos">
           <p>{props.obj.name}</p>
