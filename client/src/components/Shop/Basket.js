@@ -7,7 +7,7 @@ import ShopItem from "./ShopItem";
 import ContactInformation from "../ContactInformation";
 import { BillContext } from "./TotalBillContext";
 
-const Basket = () => {
+const Basket = ({history}) => {
   const [data, setData] = useState([]);
   const [token] = useContext(AuthContext);
   const value = useContext(BillContext);
@@ -16,6 +16,7 @@ const Basket = () => {
       authorization: token,
     },
   };
+  if(!token) {history.push("/")}
   useEffect(() => {
     const displayData = async () => {
       await axios

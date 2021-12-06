@@ -6,7 +6,7 @@ const createToken = (user) => {
     process.env.TOKEN_TEXT,
     {
       // in seconds 600s = 10 min
-      expiresIn: 300000,
+      expiresIn: 600000,
     }
   );
 

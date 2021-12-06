@@ -12,11 +12,11 @@ const ContactInformation = () => {
       <div className="contact-info">
         <div className="phone">
           <h5>Tel.</h5>
-          <a href="tel:+49 (0) 177 55226841">+49 (0) 177 55226841</a>
+          <a href="tel:+49 (0) 177 55226841">+49 (0) 176 411 631 71</a>
         </div>
         <div className="mail">
           <h5>E-Mail</h5>
-          <a href="mailto:test@example.com">test@example.com</a>
+          <a href="mailto:test@example.com">casa-verde@t-online.de</a>
         </div>
 
         {/* Address */}

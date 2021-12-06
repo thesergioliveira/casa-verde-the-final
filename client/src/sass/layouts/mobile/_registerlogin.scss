@@ -42,6 +42,7 @@ a:hover {
   input {
     margin: 10px 0 10px 0;
     @include input();
+    height: 30px;
     
   }
 }
@@ -54,8 +55,8 @@ a:hover {
   }
   @include flex();
   flex-direction: column;
-  width: 97%;
-  height: 65vh;
+  width: 95%;
+  height: 70vh;
   max-width: 400px;
   border-radius: 0;
   margin: auto;
