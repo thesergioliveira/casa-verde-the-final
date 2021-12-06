@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const Seminaries = () => {
   const [images, setImages] = useState(5);
 
-  const seminaries = EventsData.filter((obj) => obj.name === "Seminaries");
+  const seminaries = EventsData.filter((obj) => obj.name === "Seminare");
 
   // onClick show more images
   const showMoreImg = () => {

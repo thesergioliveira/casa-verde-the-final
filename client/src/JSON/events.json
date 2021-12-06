@@ -18,7 +18,7 @@
   },
   {
     "id": 1,
-    "name": "Seminaries",
+    "name": "Seminare",
     "link": "#seminaries",
     "linkId": "seminaries",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -35,7 +35,7 @@
   },
   {
     "id": 2,
-    "name": "Art Market",
+    "name": "Kunsthandwerk",
     "link": "#art",
     "linkId": "art",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

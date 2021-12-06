@@ -38,7 +38,7 @@ const AdminDash = () => {
   return (
     <div>
       {data?.length === 0 ? (
-        <h3 style={{ color: "red" }}>NOT Allowed</h3>
+        <h3 style={{ color: "red" }}>Zugriff nicht erlaubt.</h3>
       ) : (
         <div className="main-admin-dash-container">
           <StatisticsAndQuickUpdates data={data} />

@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const Artmarket = () => {
   const [images, setImages] = useState(5);
 
-  const artmarket = EventsData.filter((obj) => obj.name === "Art Market");
+  const artmarket = EventsData.filter((obj) => obj.name === "Kunsthandwerk");
 
   // onClick show more images
   const showMoreImg = () => {
