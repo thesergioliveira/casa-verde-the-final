@@ -183,7 +183,7 @@ function ShopItem(props) {
           style={{ transform: prop.xys.interpolate(trans) }}
         />
         <div className="product-infos">
-          <p>{props.obj.name}</p>
+          <p className="product-p">{props.obj.name}</p>
           <p>{props.obj.category}</p>
           <p>
             {props.obj.price} € <span>inkl. MwSt.</span>

@@ -34,7 +34,6 @@ a {
 
     p {
       margin-bottom: 0.25rem;
-
       font-style: normal;
     }
 
@@ -83,6 +82,13 @@ a {
     // DELIEVERABLE or NOT DELIEVERABLE
     p:nth-child(5) {
       color: rgb(161, 137, 0);
+    }
+
+    .product-p {
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     // Add Product && Wishlist && Remove
