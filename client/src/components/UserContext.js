@@ -19,7 +19,7 @@ export const DataProvider = (props) => {
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
-        localStorage.setItem("token", "");
+        localStorage.removeItem("token");
       });
   }, []);
 

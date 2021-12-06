@@ -46,7 +46,7 @@ allControllers.addUser = async (req, res) => {
     const data = {
       from: process.env.EMAIL,
       to: req.body.email,
-      subject: "Verify Your Email",
+      subject: "Bestätigen Sie Ihre E-Mail Adresse",
       html: `<html>
         <h2>Please click on given link to Verify your Account</h2
         <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
@@ -55,15 +55,18 @@ allControllers.addUser = async (req, res) => {
     };
     await transporter.sendMail(data, function (err, success) {
       if (err) {
-        return res.status(400).json({ error: "verify Email link error" });
+        return res
+          .status(400)
+          .json({ error: "Bestätigungs-E-Mail Link Fehler" });
       } else {
         res.status(200).json({
-          message: "Email has been sent ,Check your Email",
+          message:
+            "Die Bestätigungs-E-Mail wurde gesendet, checken Sie Ihre E-Mails",
         });
       }
     });
     await user.save();
-    res.status(201).json({ message: "New User being added ✅", user });
+    res.status(201).json({ message: "Neuer Nutzer wurde angelegt ✅", user });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -157,7 +160,7 @@ allControllers.login = async (req, res) => {
   const user =
     (await User.findOne({ username })) || (await User.findOne({ email }));
   if (user == null) {
-    return res.status(404).json({ message: "Cannot find user" });
+    return res.status(404).json({ message: "False Username or Email" });
   }
   try {
     if (await bcrypt.compare(password, user.password)) {
@@ -174,7 +177,7 @@ allControllers.login = async (req, res) => {
       });
     } else {
       res.json({
-        message: "False Password Repeat!",
+        message: "False Password please Repeat!",
       });
     }
   } catch (err) {

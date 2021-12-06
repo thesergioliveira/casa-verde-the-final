@@ -10,7 +10,11 @@ router.get("/oneproduct/:id", allProductControllers.getOne);
 // register http://localhost:5005/user/register
 router.post("/register", middleware.validator, allControllers.addUser);
 // resent confirmation Email
-router.get("/resentConf", middleware.checkToken, allControllers.confirmationEmail);
+router.get(
+  "/resentConf",
+  middleware.checkToken,
+  allControllers.confirmationEmail
+);
 // verify account
 router.put("/verifyAccount", allControllers.verifyAccount);
 
@@ -29,8 +33,8 @@ router
     allControllers.updateUserInfos
   )
   .put("/updatePassword", middleware.checkToken, allControllers.updatePassword)
-  .delete("/deleteUser", middleware.checkToken, allControllers.deleteUser)
-  
+  .delete("/deleteUser", middleware.checkToken, allControllers.deleteUser);
+
 router
   .post("/wishlist", middleware.checkToken, allProductControllers.addToWishlist)
   .put(

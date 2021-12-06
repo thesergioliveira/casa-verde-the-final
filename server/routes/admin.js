@@ -3,7 +3,9 @@ var router = express.Router();
 const allControllers = require("../controllers/controller");
 const allProductControllers = require("../controllers/productsController");
 const middleware = require("../middlewares/middleware");
-
+const path = require("path");
+const dirpath = path.join(__dirname, "/uploads");
+console.log(dirpath);
 const multer = require("multer");
 
 const storage = multer.diskStorage({

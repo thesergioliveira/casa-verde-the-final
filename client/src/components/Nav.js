@@ -92,6 +92,7 @@ const Nav = () => {
   //logout
   const logOut = () => {
     localStorage.clear();
+    localStorage.removeItem("token");
     setData("");
     setToken("");
     closeMenu();

@@ -71,6 +71,7 @@ function ShopItem(props) {
   const redirect = () => {
     history.push("/login");
   };
+  console.log(token)
   // add to basket
   const addToBasket = (id) => {
     //the user have to login in order to add to the basket
@@ -95,7 +96,7 @@ function ShopItem(props) {
       });
   };
   const removeFromBasket = (id) => {
-    if (token === null) {
+    if (localStorage.getItem("token") === null) {
       return redirect();
     }
     setCount(count - 1);
@@ -114,7 +115,7 @@ function ShopItem(props) {
       });
   };
   const removeAllfromBasket = (id) => {
-    if (token === null) {
+    if (localStorage.getItem("token") === null) {
       return redirect();
     }
     setCount(0);
@@ -133,7 +134,7 @@ function ShopItem(props) {
   };
 
   const addToWishlist = (id) => {
-    if (token === null) {
+    if (localStorage.getItem("token") === null) {
       return redirect();
     }
     // let dublicationCheck = user?.wishlist.find(item => item._id.toString() === id.toString())
