@@ -24,9 +24,9 @@ const Weddings = () => {
           {name}
         </h3>
 
-        <div className="container-description">
+        {/* <div className="container-description">
           <p>{description}</p>
-        </div>
+        </div> */}
 
         {/* Images gallery */}
         <div key={uuidv4()} className="container-img-outer">
@@ -34,7 +34,7 @@ const Weddings = () => {
             if (imgs.indexOf(img) <= images) {
               return (
                 // active-img-inner -------------------------------- onClick Image
-                <div key={uuidv4()} className="container-img-inner ">
+                <div key={uuidv4()} className="container-img-inner">
                   {/* <IoMdClose className="img-close" /> */}
                   <img src={process.env.PUBLIC_URL + img} alt={linkId} />
                 </div>
@@ -48,7 +48,7 @@ const Weddings = () => {
 
         {/* Button --> Show more */}
         <button key={uuidv4()} onClick={showMoreImg}>
-          Show more
+          Mehr Bilder anzeigen
         </button>
       </div>
     );

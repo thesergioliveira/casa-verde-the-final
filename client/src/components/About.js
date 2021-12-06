@@ -3,7 +3,7 @@ import React from "react";
 // About function
 const About = () => {
   return (
-    <div className="home">
+    <div className="home about">
       <div className="home-top absolut">
         {/* <div className="roof"></div> */}
         <h1>Casa Verde</h1>

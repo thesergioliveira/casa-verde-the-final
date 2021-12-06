@@ -3,9 +3,10 @@
 // Nav setup
 header nav {
   background-color: $cream;
+  z-index: 10;
 
   .nav-top {
-    padding: 0 0.7rem;
+    padding: 0 .7rem;
     @include flex;
     justify-content: space-between;
     height: 4rem;
@@ -79,9 +80,8 @@ header nav {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: $cream;
-  transition: .7s;
+  transition: 0.7s;
   z-index: 10;
- 
 
   // Li setup
   li {

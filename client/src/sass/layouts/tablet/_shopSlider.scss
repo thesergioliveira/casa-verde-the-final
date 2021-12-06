@@ -1,16 +1,52 @@
 .slider-wrapper {
   .container-btn-slider {
+    .container-btn {
+      width: 75%;
+    }
     .container-shop-header {
-      width: auto;
+      width: 65%;
+    }
 
-      h1,
-      h2 {
-        font-size: 3rem;
+    @media screen and (min-width: 680px) {
+      .container-btn {
+        a {
+          button {
+            font-size: 1.1rem;
+            border-radius: 2rem;
+          }
+          .blur-btn {
+            border-radius: 2rem;
+          }
+        }
       }
+      .container-shop-header {
+        h1,
+        h2 {
+          font-size: 2.2rem;
+        }
+      }
+    }
 
-      h2 {
-        align-self: flex-start;
-        padding-left: 2.5rem;
+    @media screen and (min-width: 920px) {
+      .container-btn {
+        width: 70%;
+        a {
+          button {
+            font-size: 1.35rem;
+            border-radius: 2.5rem;
+          }
+          .blur-btn {
+            border-radius: 2.5rem;
+          }
+        }
+      }
+      .container-shop-header {
+        width: 55%;
+
+        h1,
+        h2 {
+          font-size: 2.2rem;
+        }
       }
     }
   }

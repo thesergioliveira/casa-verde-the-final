@@ -55,7 +55,7 @@ router
     allProductControllers.removeFromBasket
   );
 router.put(
-  "/removeAll",
+  "/toRemoveAll",
   middleware.checkToken,
   allProductControllers.removeAllfromBasket
 );

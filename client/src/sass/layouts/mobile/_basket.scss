@@ -1,60 +1,133 @@
 .main-basket-container {
-  @include flex();
+  @include flex;
   flex-direction: column;
-  width: 95%;
-  height: 100%;
+  width: 100%;
+  margin-bottom: 1rem;
 
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-
-  .shipping-msg {
-    background-color: rgb(243, 156, 156);
-    padding: 3px 3px 3px 0px;
-    width: 98%;
-
-    text-align: center;
-    align-items: center;
-  }
-  & h1 {
-    margin: 10px;
-  }
-
-  .lists-container,
-  .wishlist-list {
+  .lists-container {
     width: 100%;
-    @include flex();
+    @include flex;
     flex-direction: column;
-    flex-wrap: wrap;
+
+    .shipping-msg {
+      background-color: rgb(243, 156, 156);
+      width: 100%;
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 3.5vw;
+    }
 
     .basket-list {
-      @include flex();
-      flex-direction: column;
+      @include flex;
       flex-wrap: wrap;
-      margin: 5px;
+      width: 90%;
+      background-color: #3279511f;
+      margin-bottom: 0.75rem;
+      border-radius: 0.5rem;
+
+      li:nth-child(1) {
+        @include flex;
+        width: 100%;
+        h3 {
+          text-align: center;
+          width: 90%;
+          border-bottom: 1px solid black;
+        }
+      }
+
+      li {
+        @include flex;
+        width: 50%;
+        min-width: 13rem;
+        margin-bottom: 0.75rem;
+
+        .productCard-main-container {
+          width: 100%;
+          margin-bottom: 1rem;
+          border-radius: 0 0 1rem 1rem;
+
+          .product-box {
+            background-color: white;
+            border-radius: 0 0 1rem 1rem;
+          }
+        }
+      }
+    }
+
+    .wishlist-list {
+      @include flex;
+      flex-wrap: wrap;
+      width: 90%;
+      background-color: #ffb44327;
+      margin-bottom: 0.75rem;
+      border-radius: 0.5rem;
+
+      li:nth-child(1) {
+        @include flex;
+        width: 100%;
+        h3 {
+          text-align: center;
+          width: 90%;
+          border-bottom: 1px solid black;
+        }
+      }
+      li {
+        @include flex;
+        width: 50%;
+        min-width: 13rem;
+        margin-bottom: 0.75rem;
+
+        .productCard-main-container {
+          width: 100%;
+          margin-bottom: 1rem;
+          border-radius: 0 0 1rem 1rem;
+
+          .product-box {
+            background-color: white;
+            border-radius: 0 0 1rem 1rem;
+          }
+        }
+      }
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+      padding: 1rem;
+      font-size: 1.5rem;
+      border-top: 2px solid $cream;
+      text-align: center;
+      p {
+        font-size: 1.5rem;
+        background-color: $blue;
+        padding: 1rem;
+        color: white;
+        border-radius: 6px;
+      }
     }
   }
 
-  a {
-    color: black;
-    text-decoration: none;
-    padding: 1rem;
-    font-size: 1.5rem;
-    border-top: 2px solid $cream;
-    text-align: center;
-    p {
-      font-size: 1.5rem;
-      background-color: $blue;
-      padding: 1rem;
-      color: white;
-      border-radius: 6px;
-    }
-  }
   aside {
-    @include flex();
+    @include flex;
     flex-direction: column;
     width: 100%;
     padding: 1rem 0 1rem 0;
+
+    .shipping-msg {
+      background-color: rgb(247, 173, 173);
+      width: 100%;
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: normal;
+
+      span {
+        font-size: 1.1rem;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
     h4 {
       margin: 1rem;
     }
@@ -69,6 +142,7 @@
     }
   }
 }
+
 h1 {
   text-align: center;
   padding-bottom: 1rem;

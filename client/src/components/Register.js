@@ -8,13 +8,13 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState();
   const [address, setAddress] = useState("");
   const [houseNumber, setHouseNumber] = useState();
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+  const [postalCode, setPostalCode] = useState();
   const [registerMessage, setRegisterMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showEye, setShowEye] = useState(false);

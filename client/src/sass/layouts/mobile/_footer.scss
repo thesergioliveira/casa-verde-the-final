@@ -6,8 +6,15 @@ footer {
  
     // Ul setup
     ul {
-        padding: 0 0 1em;
+      
+        padding: 0 1em;
         text-align: center;
+        @include flex;
+        flex-wrap: wrap;
+
+        li {
+          margin-right: 1rem;
+        }
 
         // Link's setup
         a {
@@ -18,6 +25,11 @@ footer {
     // Div's and p setup
     p, div {
         text-align: center;
+    }
+
+    .logo {
+      margin: 0;
+      padding: 0;
     }
 }
 
