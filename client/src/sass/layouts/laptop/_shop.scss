@@ -1,16 +1,21 @@
+// Shop setup
 .shop {
+  // Search container
   .search-container {
     justify-content: center;
 
+    // Search bar
     .search-bar {
       width: 30%;
     }
 
+    // Filters
     .filters {
       width: 30%;
     }
   }
 
+  // Product container
   .products-container {
     h2 {
       padding-left: 2rem;
@@ -20,6 +25,7 @@
         width: 25%;
         max-width: 250px;
 
+        // Icon
         .product-icon {
           top: 1.5rem;
           right: 1.5rem;
@@ -27,4 +33,10 @@
       }
     }
   }
+}
+
+// Product mouse animation 
+
+.card:hover {
+  box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
 }

@@ -1,0 +1,13 @@
+// Footer setup Laptop view
+
+footer {
+   li {
+       :hover {
+           color: $dark-green;
+       }
+   }
+
+   .logo-container {
+    padding: 0;
+ }
+}

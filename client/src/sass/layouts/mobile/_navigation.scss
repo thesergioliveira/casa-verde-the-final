@@ -3,9 +3,10 @@
 // Nav setup
 header nav {
   background-color: $cream;
+  z-index: 10;
 
   .nav-top {
-    padding: 0 0.7rem;
+    padding: 0 .7rem;
     @include flex;
     justify-content: space-between;
     height: 4rem;
