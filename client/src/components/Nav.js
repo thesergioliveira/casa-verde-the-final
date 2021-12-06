@@ -164,7 +164,6 @@ const Nav = ({ logo }) => {
                     fontWeight: "bold",
                     textDecoration: "none",
                     width: "5.5rem",
-                   
                   }}
                   onClick={closeMenu}
                   to="/login"

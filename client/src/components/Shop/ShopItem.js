@@ -28,11 +28,13 @@ function ShopItem(props) {
           setCount(
             res.data.basket.filter((item) => item._id === props.obj._id).length
           );
-           let dublicationCheck = res.data.wishlist.find(item => item._id.toString() === props.obj._id.toString())
-           //console.log(dublicationCheck)
-            if(dublicationCheck){
-                setWishlist(false)
-            }
+          let dublicationCheck = res.data.wishlist.find(
+            (item) => item._id.toString() === props.obj._id.toString()
+          );
+          //console.log(dublicationCheck)
+          if (dublicationCheck) {
+            setWishlist(false);
+          }
         })
         .catch((err) => {
           console.log("SOS SOS SOS SOS", err.message);
@@ -68,7 +70,7 @@ function ShopItem(props) {
   };
   const removeFromBasket = (id) => {
     setCount(count - 1);
-    
+
     axios
       .put(
         "user/removeFromTheBasket",
@@ -83,7 +85,6 @@ function ShopItem(props) {
       });
   };
   const removeAllfromBasket = (id) => {
-    
     setCount(0);
     axios
       .put(
@@ -100,7 +101,6 @@ function ShopItem(props) {
   };
 
   const addToWishlist = (id) => {
-   
     // let dublicationCheck = user?.wishlist.find(item => item._id.toString() === id.toString())
     setWishlist(!wishlist);
     if (wishlist) {
@@ -132,7 +132,9 @@ function ShopItem(props) {
     }
   };
   let myimage;
-  props.obj.image ? (myimage = `http://localhost:5005/${props.obj.image}`) : (myimage = "https://via.placeholder.com/150");
+  props.obj.image
+    ? (myimage = `http://localhost:5005/${props.obj.image}`)
+    : (myimage = "https://via.placeholder.com/150");
   return (
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">
@@ -142,7 +144,7 @@ function ShopItem(props) {
           alt={`img of ${props.obj.name}`}
         />
         <div className="product-infos">
-          <p>{props.obj.name}</p>
+          <p className="product-p">{props.obj.name}</p>
           <p>{props.obj.category}</p>
           <p>
             {props.obj.price} € <span>inkl. MwSt.</span>
