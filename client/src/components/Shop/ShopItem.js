@@ -153,7 +153,7 @@ function ShopItem(props) {
           alt={`img of ${props.obj.name}`}
           onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{ transform: prop.xys.interpolate(trans) }}
+      style={{ transform: prop.xys.to(trans) }}
         />
         <div className="product-infos">
           <p className="product-p">{props.obj.name}</p>
