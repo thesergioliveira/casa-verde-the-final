@@ -20,7 +20,6 @@ allControllers.addUser = async (req, res) => {
       phone: req.body.phone,
       address: req.body.address,
       city: req.body.city,
-      admin: true,
       state: req.body.state,
       zip: req.body.zip,
       country: req.body.country,

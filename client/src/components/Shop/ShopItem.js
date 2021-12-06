@@ -11,6 +11,7 @@ import {
   Switch,
   Link,
   useParams,
+  useHistory,
 } from "react-router-dom";
 import ItemDetails from "./ItemDetails";
 
@@ -28,11 +29,13 @@ function ShopItem(props) {
           setCount(
             res.data.basket.filter((item) => item._id === props.obj._id).length
           );
-           let dublicationCheck = res.data.wishlist.find(item => item._id.toString() === props.obj._id.toString())
-           //console.log(dublicationCheck)
-            if(dublicationCheck){
-                setWishlist(false)
-            }
+          let dublicationCheck = res.data.wishlist.find(
+            (item) => item._id.toString() === props.obj._id.toString()
+          );
+          //console.log(dublicationCheck)
+          if (dublicationCheck) {
+            setWishlist(false);
+          }
         })
         .catch((err) => {
           console.log("SOS SOS SOS SOS", err.message);
@@ -47,8 +50,18 @@ function ShopItem(props) {
       authorization: token,
     },
   };
+  //redirect to login if the user is not logged in
+  // redirect to login when its logged out
+  let history = useHistory();
+  const redirect = () => {
+    history.push("/login");
+  };
   // add to basket
   const addToBasket = (id) => {
+    //the user have to login in order to add to the basket
+    if (token === null) {
+      return redirect();
+    }
     if (count > 0) {
       setQuantity(count);
     }
@@ -63,12 +76,15 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
-        window.location.reload(false);
+        //window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
+    if (token === null) {
+      return redirect();
+    }
     setCount(count - 1);
-    
+
     axios
       .put(
         "user/removeFromTheBasket",
@@ -83,7 +99,9 @@ function ShopItem(props) {
       });
   };
   const removeAllfromBasket = (id) => {
-    
+    if (token === null) {
+      return redirect();
+    }
     setCount(0);
     axios
       .put(
@@ -100,7 +118,9 @@ function ShopItem(props) {
   };
 
   const addToWishlist = (id) => {
-   
+    if (token === null) {
+      return redirect();
+    }
     // let dublicationCheck = user?.wishlist.find(item => item._id.toString() === id.toString())
     setWishlist(!wishlist);
     if (wishlist) {
@@ -132,7 +152,9 @@ function ShopItem(props) {
     }
   };
   let myimage;
-  props.obj.image ? (myimage = `http://localhost:5005/${props.obj.image}`) : (myimage = "https://via.placeholder.com/150");
+  props.obj.image
+    ? (myimage = `http://localhost:5005/${props.obj.image}`)
+    : (myimage = "https://via.placeholder.com/150");
   return (
     <div key={props.obj._id} className="productCard-main-container">
       <div className="product-box">

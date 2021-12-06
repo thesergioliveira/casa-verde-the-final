@@ -33,8 +33,6 @@ const AdminDash = () => {
   };
   useEffect(() => {
     displayUsers();
-
-    //getAllProducts();
   }, []);
 
   return (

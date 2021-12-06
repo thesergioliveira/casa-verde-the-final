@@ -12,12 +12,14 @@ export const DataProvider = (props) => {
         authorization: localStorage.getItem("token"),
       },
     };
+
     axios("/user/checkAuth", config)
       .then((res) => {
         setData(res.data);
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
+        localStorage.setItem("token", "");
       });
   }, []);
 

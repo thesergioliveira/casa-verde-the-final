@@ -79,9 +79,8 @@ header nav {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: $cream;
-  transition: .7s;
+  transition: 0.7s;
   z-index: 10;
- 
 
   // Li setup
   li {
@@ -165,7 +164,7 @@ header nav {
 .nav-user {
   @include flex;
   justify-content: space-evenly;
-  width: 30vw;
+  width: 38vw;
 
   // Li setup
   li {
