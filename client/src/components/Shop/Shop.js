@@ -57,7 +57,7 @@ function Shop({ history }) {
     : data.sort((a, b) => a.price - b.price);
 
   const getFlowerAndPlantsPots = data
-    ?.filter((el) => el.category === "Flower and plants pots")
+    ?.filter((el) => el.category === "Blumen und Topfpflanzen")
     .map((obj) => {
       return (
         <div className="container-product">
@@ -76,7 +76,7 @@ function Shop({ history }) {
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
-    ?.filter((el) => el.category === "Bouquet of flowers")
+    ?.filter((el) => el.category === "Blumen und Sträuße")
     .map((obj) => {
       return (
         <div className="container-product">
@@ -94,7 +94,7 @@ function Shop({ history }) {
     });
   //getGiftBaskets
   const getGiftBaskets = data
-    ?.filter((el) => el.category === "Gift baskets")
+    ?.filter((el) => el.category === "Geschenkideen")
     .map((obj) => {
       return (
         <div className="container-product">
@@ -112,7 +112,7 @@ function Shop({ history }) {
     });
   //italianProducts
   const italianProducts = data
-    ?.filter((el) => el.category === "Italian Products")
+    ?.filter((el) => el.category === "Italienische Spezialitäten")
     .map((obj) => {
       return (
         <div className="container-product">

@@ -126,10 +126,10 @@ if (name === "" || category === "bitte auswählen" || price === 0 || quantity ==
             }}
           >
              <option value={null}> bitte auswählen </option>
-            <option value="Bouquet of flowers"> Blumen und Sträuße </option>
-            <option value="Flower and plants pots">Bepflanzungen </option>
-            <option value="Gift baskets"> Geschenke </option>
-            <option value="Italian Products"> Italienische Produkte</option>
+            <option value="Blumen und Sträuße"> Blumen und Sträuße </option>
+            <option value="Blumen und Topfpflanzen">Bepflanzungen </option>
+            <option value="Geschenkideen"> Geschenke </option>
+            <option value="Italienische Spezialitäten"> Italienische Produkte</option>
             </select>
           <p>Preis:</p>
           <input

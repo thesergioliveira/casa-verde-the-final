@@ -15,7 +15,7 @@ export default function UpdateProduct() {
   const [productData, setProductData] = useState([]);
   const [id, setId] = useState();
   const [name, setName] = useState("any name");
-  const [category, setCategory] = useState("Bouquet of flowers");
+  const [category, setCategory] = useState("Blumen und Sträuße");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [description, setDescription] = useState();
@@ -105,10 +105,10 @@ export default function UpdateProduct() {
             }}
           >
              <option value={null}> bitte auswählen </option>
-            <option value="Bouquet of flowers"> Blumen und Sträuße </option>
-            <option value="Flower and plants pots"> Pflanzungen </option>
-            <option value="Gift baskets"> Geschenke </option>
-            <option value="Italian Products"> Italienische Produkte</option>
+            <option value="Blumen und Sträuße"> Blumen und Sträuße </option>
+            <option value="Blumen und Topfpflanzen"> Pflanzungen </option>
+            <option value="Geschenkideen"> Geschenke </option>
+            <option value="Italienische Spezialitäten"> Italienische Produkte</option>
           </select>
           <p>Neuer Preis:</p>
           <input

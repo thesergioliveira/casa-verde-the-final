@@ -170,10 +170,10 @@ const Basket = ({ history }) => {
         total={total}
         to="/basket/checkout"
       >
-        <h3>
+        <h3 >
           Gesamt: <span> {total} €</span>
         </h3>
-        <p onClick={clearSoldout}>Bestellung abschließen</p>
+        <p onClick={clearSoldout}>Gesamt: {total}€ /Bestellung abschließen</p>
       </Link>
     </div>
   );
