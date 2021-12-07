@@ -6,14 +6,12 @@
     "linkId": "workshops",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "imgs": [
-      "./images/events/workshops/workshops-1.png",
-      "./images/events/workshops/workshops-2.png",
-      "./images/events/workshops/workshops-3.png",
-      "./images/events/workshops/workshops-4.png",
-      "./images/events/workshops/workshops-5.png",
-      "./images/events/workshops/workshops-6.png",
-      "./images/events/workshops/workshops-7.png",
-      "./images/events/workshops/workshops-8.png"
+      "./images/events/workshops/workshop1.png",
+      "./images/events/workshops/workshop2.png",
+      "./images/events/workshops/workshop3.png",
+      "./images/events/workshops/workshop4.png",
+      "./images/events/workshops/workshop5.png",
+      "./images/events/workshops/workshop6.png"
     ]
   },
   {
@@ -29,8 +27,7 @@
       "./images/events/seminaries/seminaries-4.png",
       "./images/events/seminaries/seminaries-5.png",
       "./images/events/seminaries/seminaries-6.png",
-      "./images/events/seminaries/seminaries-7.png",
-      "./images/events/seminaries/seminaries-8.png"
+      "./images/events/seminaries/seminaries-7.png"
     ]
   },
   {
