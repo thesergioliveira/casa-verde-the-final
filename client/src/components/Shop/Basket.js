@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import ShopItem from "./ShopItem";
 import ContactInformation from "../ContactInformation";
 import { BillContext } from "./TotalBillContext";
-
-const Basket = () => {
+import Flowershop from "./Flowershop";
+const Basket = ({ history }) => {
   const [data, setData] = useState([]);
   const [token] = useContext(AuthContext);
   const value = useContext(BillContext);
@@ -16,6 +16,9 @@ const Basket = () => {
       authorization: token,
     },
   };
+  if (!token) {
+    history.push("/");
+  }
   useEffect(() => {
     const displayData = async () => {
       await axios
@@ -96,8 +99,8 @@ const Basket = () => {
           ❗
           {notAvailableCartItems?.length ? (
             <h2>
-              the {notAvailableCartItems?.map((item) => `${item.name}, `)} are
-              unfortunately already sold out and not available anymore !
+              Artikel {notAvailableCartItems?.map((item) => `${item.name}, `)}{" "}
+              ist leider ausverkauft und aktuell nicht mehr erhältlich!
             </h2>
           ) : null}
         </p>
@@ -141,9 +144,9 @@ const Basket = () => {
           </h2>
         ) : null}
 
-        <h4>Abholung</h4>
+        <h4 className="mobile-abholungs">Abholung</h4>
 
-        <ul>
+        <ul className="mobile-abholungs">
           <li>
             <p>Mo. - Fr. </p> <p>8:00 - 18:00Uhr</p>
           </li>
@@ -157,6 +160,9 @@ const Basket = () => {
       </aside>
       <aside>
         <ContactInformation />
+        <div className="flowershopclass">
+          <Flowershop />
+        </div>
       </aside>
 
       <Link

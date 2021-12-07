@@ -1,0 +1,25 @@
+
+.login-container,
+.reset-container,
+.forget-container,
+.verify-container {
+  a {
+    @include linkbutton;
+  }
+  @include flex();
+  flex-direction: column;
+  width: 95%;
+  height: 90vh;
+  max-width: 400px;
+  border-radius: 0;
+  margin: auto;
+  padding: 10vw 0 4vw 0;
+  input {
+    margin: 10px 0 10px 0;
+    @include input();
+  }
+
+  h3 {
+    padding: 0.5rem;
+  }
+}

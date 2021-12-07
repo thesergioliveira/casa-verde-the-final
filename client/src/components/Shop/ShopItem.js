@@ -10,6 +10,7 @@ import {
   Switch,
   Link,
   useParams,
+  useHistory,
 } from "react-router-dom";
 import ItemDetails from "./ItemDetails";
 
@@ -64,8 +65,19 @@ function ShopItem(props) {
       authorization: token,
     },
   };
+  //redirect to login if the user is not logged in
+  // redirect to login when its logged out
+  let history = useHistory();
+  const redirect = () => {
+    history.push("/login");
+  };
+  console.log(token);
   // add to basket
   const addToBasket = (id) => {
+    //the user have to login in order to add to the basket
+    if (localStorage.getItem("token") === null) {
+      return redirect();
+    }
     if (count > 0) {
       setQuantity(count);
     }
@@ -80,10 +92,13 @@ function ShopItem(props) {
       )
       .then((res) => {
         console.log(res.data.message);
-        window.location.reload(false);
+        //window.location.reload(false);
       });
   };
   const removeFromBasket = (id) => {
+    if (localStorage.getItem("token") === null) {
+      return redirect();
+    }
     setCount(count - 1);
 
     axios
@@ -100,6 +115,9 @@ function ShopItem(props) {
       });
   };
   const removeAllfromBasket = (id) => {
+    if (localStorage.getItem("token") === null) {
+      return redirect();
+    }
     setCount(0);
     axios
       .put(
@@ -116,6 +134,9 @@ function ShopItem(props) {
   };
 
   const addToWishlist = (id) => {
+    if (localStorage.getItem("token") === null) {
+      return redirect();
+    }
     // let dublicationCheck = user?.wishlist.find(item => item._id.toString() === id.toString())
     setWishlist(!wishlist);
     if (wishlist) {
@@ -129,7 +150,6 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res.data.message);
-          window.location.reload(true);
         });
     } else {
       axios
@@ -160,7 +180,7 @@ function ShopItem(props) {
           alt={`Bild: ${props.obj.name}`}
           onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
           onMouseLeave={() => set({ xys: [0, 0, 1] })}
-          style={{ transform: prop.xys.interpolate(trans) }}
+          style={{ transform: prop.xys.to(trans) }}
         />
         <div className="product-infos">
           <p className="product-p">{props.obj.name}</p>

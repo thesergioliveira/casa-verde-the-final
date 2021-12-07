@@ -21,7 +21,7 @@ const ForgetPassword = () => {
   };
   return (
     <div className="forget-container">
-      <h3>Forget Password</h3>
+      <h3>Passwort vergessen</h3>
       <h4 style={{ color: "green" }}>{message}</h4>
       <input
         type="email"
@@ -30,7 +30,9 @@ const ForgetPassword = () => {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="enter your your email"
       />
-      <button className="button-dash" onClick={forgetPassword}>Submit</button>
+      <button className="button-dash" onClick={forgetPassword}>
+        Bestätigen
+      </button>
     </div>
   );
 };

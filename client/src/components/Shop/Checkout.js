@@ -9,6 +9,7 @@ import {
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 import { BillContext } from "./TotalBillContext";
+
 require("dotenv").config();
 
 export default function Checkout() {

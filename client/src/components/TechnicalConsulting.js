@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import TechnicData from "../JSON/technic.json";
+//import { Link } from "react-router-dom";
+//import TechnicData from "../JSON/technic.json";
 import Technical from "./Gallery/Technical";
-import ContactInformation from "./ContactInformation";
+import ContactSven from "./ContactSven";
 import ContactForm from "./ContactForm";
 import Map from "./Map";
 
@@ -23,14 +23,17 @@ const TechnicalConsulting = () => {
       </div>
 
       <div className="h3-description">
-        <h3>Text für Consulting hier</h3>
+        <h3>
+          Hier entsteht die Beratungsseite von Sven Wacker - Beratender
+          Ingenieur
+        </h3>
       </div>
 
       <Technical />
 
       {/* to do- adding calendar and address */}
       {/* Info, Form && Map */}
-      <ContactInformation />
+      <ContactSven />
       <div className="form-map">
         <ContactForm />
         <Map />

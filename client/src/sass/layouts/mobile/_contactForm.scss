@@ -40,8 +40,8 @@
           border-radius: 7px;
           border: thin solid $blue;
           padding-left: 5px;
-          -webkit-box-shadow: 5px 5px 15px 5px $blue; 
-          box-shadow: 5px 5px 15px 5px $blue;
+          -webkit-box-shadow: 2px 2px 7px 2px $light-blue; 
+          box-shadow: 2px 2px 7px 2px $light-blue;
         }
 
         textarea {
@@ -52,8 +52,8 @@
           resize: none;
           border-radius: 7px;
           border: thin solid $blue;
-          -webkit-box-shadow: 5px 5px 15px 5px $blue; 
-          box-shadow: 5px 5px 15px 5px $blue;
+          -webkit-box-shadow: 2px 2px 7px 2px $light-blue; 
+          box-shadow: 2px 2px 7px 2px $light-blue;
         }
       }
 
@@ -65,8 +65,8 @@
         color: $blue;
         background-color: $white;
         border: thin solid $blue;
-        -webkit-box-shadow: 5px 5px 15px 5px $blue; 
-          box-shadow: 5px 5px 15px 5px $blue;
+        -webkit-box-shadow: 2px 2px 7px 2px $light-blue; 
+        box-shadow: 2px 2px 7px 2px $light-blue;
         font-size: large;
         font-weight: bold;
       }
@@ -78,8 +78,8 @@
         border-radius: 7px;
         background-color: $white;
         border: thin solid $blue;
-        -webkit-box-shadow: 5px 5px 15px 5px $blue; 
-          box-shadow: 5px 5px 15px 5px $blue;
+        -webkit-box-shadow: 2px 2px 7px 2px $light-blue; 
+          box-shadow: 2px 2px 7px 2px $light-blue;
 
         h5 {
           position: absolute;

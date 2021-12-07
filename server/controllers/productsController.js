@@ -156,7 +156,14 @@ allProductControllers.removeAllfromBasket = async (req, res) => {
 };
 allProductControllers.deleteProduct = async (req, res) => {
   try {
-    const product = await Product.findByIdAndDelete(req.params.id);
+     const users = await User.find();
+    
+    const productFromWishlist = await Product.findById(req.params.id);
+    if (productFromWishlist) {
+      users.map((user) => user.wishlist.pull(productFromWishlist));
+    }
+   
+     const product = await Product.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Product deleted ✅" });
   } catch (err) {
     res.status(400).json({ message: err.message });

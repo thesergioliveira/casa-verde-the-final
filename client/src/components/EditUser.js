@@ -15,6 +15,9 @@ function EditUser({ history }) {
       authorization: token,
     },
   };
+  if (token === null) {
+    history.push("/login");
+  }
   const [closeUser, setCloseUser] = useState(true);
   const [show, setShow] = useState(true);
   const [password, setPassword] = useState(null);
@@ -193,11 +196,11 @@ function EditUser({ history }) {
             />
           </div>
           <button className="button-dash" onClick={updateUserInfo}>
-            Update Your Profile
+            Profilupdate
           </button>
         </div>
         <div>
-          <h3>Passwort</h3>
+          <h3>Benutzer Passwort</h3>
           <span className="password">
             <input
               type={showEye ? "text" : "password"}

@@ -5,9 +5,7 @@ import Booking from "./Shop/Booking";
 const ContactForm = () => {
   const [state, handleSubmit] = useForm("xdoyqjpn");
   if (state.succeeded) {
-    return (
-      <p className="form-response">Thank you for sending us your message!</p>
-    );
+    return <p className="form-response">Vielen Dank für Ihre Nachricht!</p>;
   }
 
   return (
@@ -32,7 +30,7 @@ const ContactForm = () => {
           </label>
 
           <label htmlFor="phone">
-            <h5>Tel</h5>
+            <h5>Telefon</h5>
             <input type="number" name="phone" id="phone" />
             <ValidationError
               prefix="Phone"
@@ -42,7 +40,7 @@ const ContactForm = () => {
           </label>
 
           <fieldset htmlFor="value">
-            <h5>Datum</h5>
+            <h5>Datum/Zeit</h5>
             <Booking type="date" name="value" id="value" />
             <ValidationError
               prefix="Value"

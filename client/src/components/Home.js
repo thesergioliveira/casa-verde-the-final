@@ -77,7 +77,7 @@ const Home = () => {
           }
         >
           <Link to={path}>
-            <button>{name}</button>
+            <button onClick={() => window.scrollTo(0, 0)}>{name}</button>
           </Link>
         </div>
       </div>

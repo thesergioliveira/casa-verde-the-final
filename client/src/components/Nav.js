@@ -35,6 +35,7 @@ const Nav = () => {
       })
       .catch((err) => {
         console.log(err?.response?.data.message);
+        setToken(null);
       });
   };
 
@@ -91,6 +92,7 @@ const Nav = () => {
   //logout
   const logOut = () => {
     localStorage.clear();
+    localStorage.removeItem("token");
     setData("");
     setToken("");
     closeMenu();
@@ -129,7 +131,7 @@ const Nav = () => {
                   className={show ? "user-none" : "user-show"}
                   onClick={showEditUser}
                 >
-                  <li key="52">Hallo {userName}</li>
+                  <li key="52"> WILLKOMMEN: {userName}</li>
 
                   <Link to="/settings">
                     <li key="53">

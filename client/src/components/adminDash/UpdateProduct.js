@@ -14,7 +14,7 @@ export default function UpdateProduct() {
 
   const [productData, setProductData] = useState([]);
   const [id, setId] = useState();
-  const [name, setName] = useState("any name")
+  const [name, setName] = useState("any name");
   const [category, setCategory] = useState("Bouquet of flowers");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
@@ -29,7 +29,6 @@ export default function UpdateProduct() {
         if (res.data) {
           setProductData(res.data);
           localStorage.setItem("product", JSON.stringify(res.data));
-         
         } else {
           setProductData({ auth: false });
         }
@@ -39,7 +38,7 @@ export default function UpdateProduct() {
       });
   };
   const obj = { name, id, category, price, quantity, description, delivery };
-  
+
   useEffect(() => {
     getAllProducts();
   }, []);
@@ -49,7 +48,7 @@ export default function UpdateProduct() {
   const handleSubmitForUpdate = async (e) => {
     e.preventDefault();
     const updatedProductData = new FormData();
-    
+
     updatedProductData.append("category", category);
     updatedProductData.append("price", price);
     updatedProductData.append("quantity", quantity);
@@ -70,23 +69,22 @@ export default function UpdateProduct() {
       );
       console.log(result);
       alert("Product updated successfully");
-      
     } catch (err) {
       console.log("error", err.response.data.message);
     }
   };
-   
+
   return (
     <div className="admin-dash-add-products-container">
       <div className="add-product-wrapper">
-        <h2>MODIFY PRODUCT</h2>
+        <h2>Produkt ändern</h2>
         <form onSubmit={handleSubmitForUpdate}>
           <input type="file" id="file" onChange={handleUpload} />
-          <p>name of the product:</p>
+          <p>Name des Produkts:</p>
           <select
             id="name"
             onChange={(e) => {
-                setId(e.target.value);
+              setId(e.target.value);
             }}
           >
             {productData.map((item) => (
@@ -94,7 +92,7 @@ export default function UpdateProduct() {
             ))}
           </select>
 
-          <p>category:</p>
+          <p>Kategorie:</p>
 
           <select
             id="category"
@@ -102,13 +100,10 @@ export default function UpdateProduct() {
               setCategory(e.target.value);
             }}
           >
-            <option value="Bouquet of flowers"> Bouquet of flowers </option>
-            <option value="Flower and plants pots">
-              {" "}
-              Flower and plants pots{" "}
-            </option>
-            <option value="Gift baskets"> Gift baskets </option>
-            <option value="Italian Products"> Italian Products</option>
+            <option value="Bouquet of flowers"> Blumen und Sträuße </option>
+            <option value="Flower and plants pots"> Pflanzungen </option>
+            <option value="Gift baskets"> Geschenke </option>
+            <option value="Italian Products"> Italienische Produkte</option>
           </select>
           <p>RE-price it:</p>
           <input
@@ -119,7 +114,7 @@ export default function UpdateProduct() {
             placeholder="value it"
           />
 
-          <p>change amount:</p>
+          <p>Anzahl ändern:</p>
 
           <input
             type="number"
@@ -129,7 +124,7 @@ export default function UpdateProduct() {
             placeholder="remaining amount"
           />
 
-          <p>write an other description:</p>
+          <p>Andere Beschreibung:</p>
           <input
             type="text"
             value={null}
@@ -137,21 +132,21 @@ export default function UpdateProduct() {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="new description"
           />
-          <p>deliverable or zum abholung?:</p>
+          <p>Lieferung oder Abholung?:</p>
           <select
             id="delivery"
             onChange={(e) => {
               setDelivery(e.target.value);
             }}
           >
-            <option value={true}> deliverable </option>
-            <option value={false}> not deliverable </option>
+            <option value={true}> Lieferung </option>
+            <option value={false}> Abholung </option>
           </select>
           <input className="button-dash" type="submit" value="save changes" />
         </form>
       </div>
       <div className="preview">
-        <p>preview</p>
+        <p>Vorschau</p>
         <ShopItem obj={obj} />
       </div>
     </div>
