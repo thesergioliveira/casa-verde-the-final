@@ -26,7 +26,6 @@ a:hover {
   text-decoration: inherit;
 }
 
-
 .register-container {
   a {
     @include linkbutton;
@@ -43,7 +42,6 @@ a:hover {
     margin: 10px 0 10px 0;
     @include input();
     height: 30px;
-    
   }
 }
 .login-container,
@@ -56,7 +54,7 @@ a:hover {
   @include flex();
   flex-direction: column;
   width: 95%;
-  height: 70vh;
+  height: 130vh;
   max-width: 400px;
   border-radius: 0;
   margin: auto;
@@ -75,7 +73,7 @@ a:hover {
 .password {
   width: 100%;
   @include flex;
-background-color: $cream;
+  background-color: $cream;
   height: 30px;
   border-radius: 7px;
   margin: 2px 0 2px 0;
@@ -89,7 +87,6 @@ background-color: $cream;
     height: 30px;
     font-size: 18px;
     @include flex;
-    
   }
 }
 .button-dash {
@@ -103,4 +100,216 @@ background-color: $cream;
   flex-direction: column;
   justify-content: space-evenly;
   cursor: pointer;
+}
+// kaktus display
+
+.kaktuscon {
+  transition: 0.5s;
+
+  position: absolute;
+
+  top: 30%;
+
+  .container {
+    transform-origin: right bottom 2cm;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    height: 320px;
+    width: 300px;
+  }
+  .pot {
+    position: absolute;
+    width: 85px;
+    border-top: 75px solid #9576ae;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  .pot:after {
+    content: "";
+    position: absolute;
+    width: 118px;
+    height: 20px;
+    background-color: #6d4778;
+    border-radius: 10px;
+    top: -80px;
+    left: -26px;
+  }
+  .pot:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 7px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    left: -2px;
+    top: -42px;
+    transform: rotate(-12deg);
+    -webkit-transform: rotate(-12deg);
+    box-shadow: 0 -32px 0 0 rgba(255, 255, 255, 0.4);
+    -webkit-box-shadow: 0 -32px 0 0 rgba(255, 255, 255, 0.4);
+  }
+  .cactus {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 120px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: #5be55a;
+    z-index: -1;
+  }
+  .cactus:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 6px;
+    background-color: #5be55a;
+    border-radius: 8px;
+    transform: translateX(16px) rotate(-55deg);
+    -webkit-transform: translateX(16px) rotate(-55deg);
+    box-shadow: -6px 2px 0 #5be55a, 6px 6px 0 #5be55a;
+    -webkit-box-shadow: -6px 2px 0 #5be55a, 6px 6px 0 #5be55a;
+  }
+  .cactus:after {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    left: 15px;
+    top: 30px;
+    box-shadow: 10px -12px 0 2px rgba(255, 255, 255, 0.8);
+    -webkit-box-shadow: 10px -12px 0 2px rgba(255, 255, 255, 0.8);
+  }
+  .eye {
+    position: relative;
+    width: 10px;
+    height: 12px;
+    background-color: #000;
+    border-radius: 50%;
+    top: 50px;
+    left: 40px;
+    box-shadow: 30px 0 0 #000, -14px 15px 0 2px #fd8785, 45px 15px 0 2px #fd8785;
+    -webkit-box-shadow: 30px 0 0 #000, -14px 15px 0 2px #fd8785,
+      45px 15px 0 2px #fd8785;
+  }
+  .mouth {
+    position: relative;
+    width: 30px;
+    height: 13px;
+    background-color: #000;
+    border-radius: 0 0 30px 30px;
+    top: 65px;
+    left: 46px;
+  }
+  .mouth:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #fd8785;
+    left: 8px;
+    top: 5px;
+  }
+  .petals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 8px;
+    height: 30px;
+    background-color: #f00;
+    border-radius: 10px;
+  }
+  .petals:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 30px;
+    background-color: #f00;
+    border-radius: 10px;
+    transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);
+  }
+  .petals:after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 30px;
+    background-color: #f00;
+    border-radius: 10px;
+    transform: rotate(-60deg);
+    -webkit-transform: rotate(-60deg);
+  }
+  .dot {
+    position: absolute;
+    background-color: #ff0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  .flower {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 28px;
+    top: 4px;
+    animation: rotate 4s linear infinite;
+    -webkit-animation: rotate 4s linear infinite;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes rotate {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  // .ground{
+  //   position: absolute;
+  //   width: 90px;
+  //   height: 5px;
+  //   background-color: #694102;
+  //   border-radius: 10px;
+  //   bottom: 56px;
+  //   left: 120px;
+  // }
+  // .ground:before{
+  //   position: absolute;
+  //   content: '';
+  //   width: 5px;
+  //   height: 5px;
+  //   background-color: #694102;
+  //   border-radius: 50%;
+  //   left: -21px;
+  //   box-shadow: 114px 0 0 #694102;
+  //   -webkit-box-shadow: 114px 0 0 #694102;
+  // }
+  // .ground:after{
+  //   position: absolute;
+  //   content: '';
+  //   width: 10px;
+  //   height: 5px;
+  //   background-color: #694102;
+  //   border-radius: 10px;
+  //   left: -12px;
+  // }
 }

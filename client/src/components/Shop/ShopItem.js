@@ -71,7 +71,7 @@ function ShopItem(props) {
   const redirect = () => {
     history.push("/login");
   };
-  console.log(token)
+  console.log(token);
   // add to basket
   const addToBasket = (id) => {
     //the user have to login in order to add to the basket
@@ -150,7 +150,6 @@ function ShopItem(props) {
         )
         .then((res) => {
           console.log(res.data.message);
-          window.location.reload(true);
         });
     } else {
       axios

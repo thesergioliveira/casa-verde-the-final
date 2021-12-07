@@ -6,6 +6,7 @@ import { AuthContext } from "../AuthContext";
 import PayPal from "./PayPal";
 import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { BillContext } from "./TotalBillContext"
+
 require("dotenv").config();
 
 export default function Checkout() {

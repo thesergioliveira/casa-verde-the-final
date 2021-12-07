@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import ShopItem from "./ShopItem";
 import ContactInformation from "../ContactInformation";
 import { BillContext } from "./TotalBillContext";
-
+import Flowershop from "./Flowershop";
 const Basket = ({history}) => {
   const [data, setData] = useState([]);
   const [token] = useContext(AuthContext);
@@ -101,6 +101,12 @@ const Basket = ({history}) => {
             </h2>
           ) : null}
         </p>
+        {notDeliverable?.length ? (
+          <h2 className="shipping-msg">
+            the <span>{notDeliverable?.map((item) => `${item.name},`)}</span>{" "}
+            are too sensitive to be delivered. Feel free to come from our shop
+          </h2>
+        ) : null}
         <h1>Shopping Basket</h1>
 
         <ul className="basket-list">
@@ -132,16 +138,11 @@ const Basket = ({history}) => {
         </ul>
       </div>
       <aside>
-        {notDeliverable?.length ? (
-          <h2 className="shipping-msg">
-            the <span>{notDeliverable?.map((item) => `${item.name},`)}</span>{" "}
-            are too sensitive to be delivered. Feel free to come from our shop
-          </h2>
-        ) : null}
+        
 
-        <h4>Abholung</h4>
+        <h4 className="mobile-abholungs">Abholung</h4>
 
-        <ul>
+        <ul className="mobile-abholungs">
           <li>
             <p>Mo. - Fr. </p> <p>8:00 - 18:00Uhr</p>
           </li>
@@ -154,7 +155,11 @@ const Basket = ({history}) => {
         </ul>
       </aside>
       <aside>
-        <ContactInformation />
+      <ContactInformation  />
+      <div className="flowershopclass">
+      <Flowershop />
+      </div>
+       
       </aside>
 
       <Link
@@ -164,9 +169,10 @@ const Basket = ({history}) => {
       >
         <h3>
           Total:
-          {total} $
+         
         </h3>
-        <p onClick={clearSoldout}> proceed to Checkout</p>
+        <p  style={{ backgroundColor: `lightblue`, padding:"10px" }} onClick={clearSoldout}> 
+          {total}$/ Proceed to Checkout</p>
       </Link>
     </div>
   );
