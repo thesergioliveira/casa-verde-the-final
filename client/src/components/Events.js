@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const Events = () => {
   const eventsMenu = EventsData.map((obj) => {
-    const { id, name, link } = obj;
+    const { name, link } = obj;
     return (
       <div key={uuidv4()} className="container-btn-house container-events">
         <div className="container-btn-blur"></div>

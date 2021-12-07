@@ -61,7 +61,7 @@ const ContactForm = () => {
           <input
             className="form-btn"
             type="submit"
-            value="Send"
+            value="Senden"
             disabled={state.submitting}
           />
         </form>

@@ -15,41 +15,20 @@ export default function Cookies() {
         <div className="cookie-bar">
           <button onClick={closeBanner}>❎</button>
           <p>
-            This website uses cookies<span className="the-cookie">🍪 </span>to
-            give you an incredible experience.
+            Diese Website verwendet Cookies.
+            <span className="the-cookie">🍪</span>
           </p>
           <p>
-            By using this website you agree to the{" "}
+            Durch die Nutzung dieser Website stimmen Sie der{" "}
             <span className="datenschutz">
-              <Link to="/datenschutzerklaerung">terms.</Link>
+              <Link to="/datenschutzerklaerung">DSGVO</Link>
             </span>{" "}
+            zu.
           </p>
         </div>
 
         <div className="blur-cookies"></div>
       </div>
     </div>
-
-    // <div className="coocie">
-    //   <div className="container-cookies">
-    //     <input className="checkbox-cb" id="checkbox-cb" type="checkbox" />
-    //     <div className="cookie-bar">
-    //       <span className="themessage">
-    //         This website uses cookies🍪 to give you an incredible experience.
-    //         By using this website you agree to the <a href="#">terms</a>
-    //       </span>
-    //       <span className="themobile">
-    //         This website uses cookies,{" "}
-    //         <span>
-    //           <Link to="/datenschutzerklaerung">learn more</Link>
-    //         </span>
-    //       </span>
-    //       <label for="checkbox-cb" className="close-cb">
-    //         x
-    //       </label>
-    //     </div>
-    //     <div className="blur-cookies"></div>
-    //   </div>
-    // </div>
   );
 }

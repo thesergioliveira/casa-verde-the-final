@@ -177,10 +177,10 @@ function ShopItem(props) {
           classname="card"
           // ${process.env.PUBLIC_URL}
           src={myimage}
-          alt={`img of ${props.obj.name}`}
+          alt={`Bild: ${props.obj.name}`}
           onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      style={{ transform: prop.xys.to(trans) }}
+          onMouseLeave={() => set({ xys: [0, 0, 1] })}
+          style={{ transform: prop.xys.to(trans) }}
         />
         <div className="product-infos">
           <p className="product-p">{props.obj.name}</p>
@@ -190,7 +190,7 @@ function ShopItem(props) {
           </p>
 
           <p>
-            in Stock:{" "}
+            Verfügbar:{" "}
             <span
               className={props.obj.quantity <= 0 ? "product" : "product green"}
             >
@@ -198,7 +198,7 @@ function ShopItem(props) {
             </span>
           </p>
 
-          <p>{props.obj.delivery ? "DELIEVERABLE" : "NOT DELIEVERABLE"}</p>
+          <p>{props.obj.delivery ? "LIEFERBAR" : "NUR ABHOLUNG MÖGLICH"}</p>
 
           <p>
             <span>Produktbeschreibung:</span> <br />

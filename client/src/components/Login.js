@@ -14,7 +14,7 @@ const Login = ({ history }) => {
   const [loginMessage, setLoginMessage] = useState("");
   const [rotation, setRotation] = useState(0);
   axios.defaults.withCredentials = true;
- 
+
   const loginUser = () => {
     axios
       .post("user/login", {
@@ -23,8 +23,6 @@ const Login = ({ history }) => {
       })
       .then((res) => {
         if (!res.data.token) {
-         
-          
           console.log(rotation);
           setRotation(110);
           setLoginMessage(res.data.message);
@@ -37,23 +35,25 @@ const Login = ({ history }) => {
         }
       })
       .catch((error) => {
-       
-       
         setLoginMessage(error.response.data.message);
       });
   };
 
   return (
     <div className="login-container">
-   <div style={{ transform: `rotate(${rotation}deg)` }} className="kaktuscon" >
-      <Kaktus /></div>
+      <div
+        style={{ transform: `rotate(${rotation}deg)` }}
+        className="kaktuscon"
+      >
+        <Kaktus />
+      </div>
       <h5 styleName={{ color: "red" }}>{loginMessage}</h5>
       <input
         type="text"
         value={username}
         name="username"
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="enter your username or your email"
+        placeholder="Benutzername oder E-Mail Adresse eingeben"
       />
       <div className="password">
         <input
@@ -61,7 +61,7 @@ const Login = ({ history }) => {
           value={password}
           name="password"
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="confirm your password"
+          placeholder="Passwort eingeben"
         />
         <span className="iconPass" onClick={() => setShowEye(!showEye)}>
           {" "}
@@ -70,10 +70,10 @@ const Login = ({ history }) => {
       </div>
 
       <button className="button-dash" onClick={loginUser}>
-        Login
+        Anmelden
       </button>
       <Link to="/forgetPassword">Passwort vergessen?</Link>
-      <h4>ODER</h4>
+      <h4>oder</h4>
       <button className="button-dash">
         <Link to="/register">Registrieren</Link>
       </button>
