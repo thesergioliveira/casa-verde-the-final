@@ -92,7 +92,8 @@ const Basket = () => {
     <div className="main-basket-container">
       <div className="lists-container">
         <p className="shipping-msg">
-          ❗ Please take a note that not all articles can be send ❗
+          ❗ Bitte beachten Sie, dass nicht alle Artikel versendet werden können
+          ❗
           {notAvailableCartItems?.length ? (
             <h2>
               the {notAvailableCartItems?.map((item) => `${item.name}, `)} are
@@ -100,11 +101,11 @@ const Basket = () => {
             </h2>
           ) : null}
         </p>
-        <h1>Shopping Basket</h1>
+        <h1>Warenkorb</h1>
 
         <ul className="basket-list">
           <li>
-            <h3> Basket </h3>
+            <h3>Artikel Warenkorb</h3>
           </li>
           {result?.map((obj, index) => (
             <li key={index}>
@@ -120,7 +121,7 @@ const Basket = () => {
 
         <ul className="wishlist-list">
           <li>
-            <h3> Wishlist </h3>
+            <h3>Artikel Merkliste</h3>
           </li>
 
           {data.wishlist?.map((obj, index) => (
@@ -133,8 +134,10 @@ const Basket = () => {
       <aside>
         {notDeliverable?.length ? (
           <h2 className="shipping-msg">
-            the <span>{notDeliverable?.map((item) => `${item.name},`)}</span>{" "}
-            are too sensitive to be delivered. Feel free to come from our shop
+            Artikel{" "}
+            <span>{notDeliverable?.map((item) => `${item.name},`)}</span> kann
+            aus logistischen Gründen nicht versendet werden. Eine Abholung ist
+            zu den unten angegebenen Öffnungszeiten möglich.
           </h2>
         ) : null}
 
@@ -162,10 +165,9 @@ const Basket = () => {
         to="/basket/checkout"
       >
         <h3>
-          Total:
-          {total} $
+          Gesamt: <span> {total} €</span>
         </h3>
-        <p onClick={clearSoldout}> proceed to Checkout</p>
+        <p onClick={clearSoldout}>Bestellung abschließen</p>
       </Link>
     </div>
   );

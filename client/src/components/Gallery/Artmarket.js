@@ -45,7 +45,7 @@ const Artmarket = () => {
 
         {/* Button --> Show more */}
         <button key={uuidv4()} onClick={showMoreImg}>
-          Show more
+          Mehr Bilder anzeigen
         </button>
       </div>
     );

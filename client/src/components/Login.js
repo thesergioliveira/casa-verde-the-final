@@ -42,7 +42,7 @@ const Login = ({ history }) => {
         value={username}
         name="username"
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="enter your username or your email"
+        placeholder="Benutzername oder E-Mail Adresse eingeben"
       />
       <div className="password">
         <input
@@ -50,7 +50,7 @@ const Login = ({ history }) => {
           value={password}
           name="password"
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="confirm your password"
+          placeholder="Passwort eingeben"
         />
         <span className="iconPass" onClick={() => setShowEye(!showEye)}>
           {" "}
@@ -59,12 +59,12 @@ const Login = ({ history }) => {
       </div>
 
       <button className="button-dash" onClick={loginUser}>
-        Login
+        Anmelden
       </button>
       <Link to="/forgetPassword">Passwort vergessen?</Link>
-      <h4>OR</h4>
+      <h4>oder</h4>
       <button className="button-dash">
-        <Link to="/register">Register</Link>
+        <Link to="/register">Registrieren</Link>
       </button>
       <h2 style={{ color: "red" }}>{loginMessage}</h2>
     </div>

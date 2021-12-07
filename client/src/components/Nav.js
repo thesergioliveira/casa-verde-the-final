@@ -129,11 +129,11 @@ const Nav = () => {
                   className={show ? "user-none" : "user-show"}
                   onClick={showEditUser}
                 >
-                  <li key="52"> WELCOME: {userName}</li>
+                  <li key="52">Hallo {userName}</li>
 
                   <Link to="/settings">
                     <li key="53">
-                      Settings <FiSettings />
+                      Einstellungen <FiSettings />
                     </li>
                   </Link>
                   <li
@@ -158,13 +158,13 @@ const Nav = () => {
                         >
                           <GoUnverified />
                           {""}
-                          <p>(Verify !)</p>
+                          <p>(Verifizieren!)</p>
                         </Link>
                       </span>
                     )}
                   </li>
                   <li key="55" onClick={logOut} alt="logout">
-                    Logout <FiLogOut />
+                    Abmelden <FiLogOut />
                   </li>
                 </ul>
               </>
@@ -180,7 +180,7 @@ const Nav = () => {
                   onClick={closeMenu}
                   to="/login"
                 >
-                  sign in
+                  Anmelden
                 </Link>
                 <Link
                   style={{
@@ -192,7 +192,7 @@ const Nav = () => {
                   onClick={closeMenu}
                   to="/register"
                 >
-                  sign up
+                  Registrieren
                 </Link>
               </>
             )}

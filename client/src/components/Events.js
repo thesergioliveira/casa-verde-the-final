@@ -19,7 +19,7 @@ const Events = () => {
           className={
             name === "Workshops"
               ? "btn-rental"
-              : name === "Seminaries"
+              : name === "Seminare"
               ? "btn-events"
               : "btn-ballet"
           }
