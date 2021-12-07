@@ -14,7 +14,7 @@ const Login = ({ history }) => {
   const [loginMessage, setLoginMessage] = useState("");
   const [rotation, setRotation] = useState(0);
   axios.defaults.withCredentials = true;
- 
+
   const loginUser = () => {
     axios
       .post("user/login", {
@@ -23,10 +23,6 @@ const Login = ({ history }) => {
       })
       .then((res) => {
         if (!res.data.token) {
-         
-          
-          console.log(rotation);
-          setRotation(110);
           setLoginMessage(res.data.message);
         } else {
           setToken(res.data.token);
@@ -37,17 +33,23 @@ const Login = ({ history }) => {
         }
       })
       .catch((error) => {
-       
-       
+        setRotation(110);
         setLoginMessage(error.response.data.message);
       });
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <div className="login-container">
-   <div style={{ transform: `rotate(${rotation}deg)` }} className="kaktuscon" >
-      <Kaktus /></div>
-      <h5 styleName={{ color: "red" }}>{loginMessage}</h5>
+    <div onSubmit={handleSubmit} className="login-container">
+      <div
+        style={{ transform: `rotate(${rotation}deg)` }}
+        className="kaktuscon"
+      >
+        <Kaktus />
+      </div>
+      <h5 style={{ color: "red" }}>{loginMessage}</h5>
       <input
         type="text"
         value={username}

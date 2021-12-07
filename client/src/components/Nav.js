@@ -91,8 +91,8 @@ const Nav = () => {
   };
   //logout
   const logOut = () => {
-    localStorage.clear();
     localStorage.removeItem("token");
+    localStorage.removeItem("__paypal_storage__");
     setData("");
     setToken("");
     closeMenu();
@@ -131,16 +131,16 @@ const Nav = () => {
                   className={show ? "user-none" : "user-show"}
                   onClick={showEditUser}
                 >
-                  <li key="52"> WILLKOMMEN: {userName}</li>
+                  <li className="userInfo" key="52"> WILLKOMMEN: <p>{userName}</p></li>
 
-                  <Link to="/settings">
-                    <li key="53">
-                      Einstellungen <FiSettings />
+                  
+                    <li className="userInfo" key="53">
+                      Einstellungen <Link to="/settings"><FiSettings /></Link>
                     </li>
-                  </Link>
-                  <li
+                  
+                  <li className="userInfo"
                     key="54"
-                    style={{ display: "flex", flexDirection: "row" }}
+                    
                   >
                     Account:{" "}
                     {accountVerified ? (
@@ -165,7 +165,7 @@ const Nav = () => {
                       </span>
                     )}
                   </li>
-                  <li key="55" onClick={logOut} alt="logout">
+                  <li className="userInfo" key="55" onClick={logOut} alt="logout">
                     Logout <FiLogOut />
                   </li>
                 </ul>

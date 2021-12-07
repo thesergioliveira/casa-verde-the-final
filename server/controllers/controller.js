@@ -176,7 +176,7 @@ allControllers.login = async (req, res) => {
         },
       });
     } else {
-      res.json({
+      res.status(400).json({
         message: "False Password please Repeat!",
       });
     }

@@ -21,7 +21,7 @@ const Register = () => {
   const [showEyeConf, setShowEyeConf] = useState(false);
   axios.defaults.withCredentials = true;
 
-  const handleSubmit = () => {
+  const register = () => {
     const data = {
       username,
       password,
@@ -56,8 +56,12 @@ const Register = () => {
   const redirect = () => {
     history.push("/login");
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className="register-container">
+    <div onSubmit={handleSubmit} className="register-container">
       <h2>Bereit um es auszuprobieren?</h2>
       <h3 style={{ color: "green" }}>{registerMessage}</h3>
       <h3 style={{ color: "red" }}>{errorMessage}</h3>
@@ -153,7 +157,7 @@ const Register = () => {
         placeholder="Postleitzahl"
       />
 
-      <button className="button-dash" onClick={handleSubmit}>
+      <button className="button-dash" onClick={register}>
         Registrierung
       </button>
 

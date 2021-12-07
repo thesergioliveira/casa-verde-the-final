@@ -72,7 +72,7 @@ header {
   .user-show {
     width: 20vw;
     height: 15vh;
-    top: 5rem;
+    top: 6rem;
     left: 0;
     position: absolute;
     background-color: $cream;
@@ -90,7 +90,15 @@ header {
     @include flex;
     justify-content: space-evenly;
    
-  
+    .userInfo {
+    
+       padding:0 10px;
+       @include flex;
+       align-items:center;
+       justify-content: space-between;
+       width:22%;
+        
+      }
      // Li setup
     li {
       padding-left: 1em;
@@ -103,4 +111,7 @@ header {
     :hover {
         color: $dark-green;
     }
-  }
+  
+  } 
+ 
+   
