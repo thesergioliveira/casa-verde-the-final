@@ -16,12 +16,14 @@ export default function AddProduct() {
   const [productData, setProductData] = useState([]);
   
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("Gift baskets");
+  const [category, setCategory] = useState("please choose");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [description, setDescription] = useState("");
   const [delivery, setDelivery] = useState(false);
   const [image, setImage] = useState("");
+  const [errormsg, setErrormsg] = useState("");
+  
 
   // get all products WE CAN GET THEM WITH USECONTEXT
   const getAllProducts = () => {
@@ -51,6 +53,9 @@ export default function AddProduct() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+if (name === "" || category === "please choose" || price === 0 || quantity === 0 || description === "" || image === "") {
+  setErrormsg("❗❗❗please complete all the fields");
+} else {
 
     const newProductData = new FormData();
     newProductData.append("name", name);
@@ -75,7 +80,7 @@ export default function AddProduct() {
       console.log(result);
     } catch (err) {
       console.log("error", err.response.data.message);
-    }
+    }}
   };
   const handleDelete = (id) => {
     if (
@@ -117,6 +122,7 @@ export default function AddProduct() {
               setCategory(e.target.value);
             }}
           >
+             <option value={null}> please choose </option>
             <option value="Bouquet of flowers"> Bouquet of flowers </option>
             <option value="Flower and plants pots">
               {" "}
@@ -156,10 +162,12 @@ export default function AddProduct() {
               setDelivery(e.target.value);
             }}
           >
+             <option value={null}> please choose </option>
             <option value={true}> deliverable </option>
             <option value={false}> not deliverable </option>
           </select>
           <input className="button-dash" type="submit" value="Add me" />
+          {errormsg && <p className="error-msg">{errormsg}</p>}
         </form>
         <div className="delete-container">
         <h2>DELETE A PRODUCT</h2>

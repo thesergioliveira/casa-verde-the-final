@@ -50,9 +50,7 @@ router.put(
   allProductControllers.updateProduct
 );
 router.delete(
-  "/product/:id",
-
-  allProductControllers.deleteProduct
+  "/product/:id", middleware.checkToken, allProductControllers.deleteProduct
 );
 router.put(
   "/product/quantitycheck/:id",

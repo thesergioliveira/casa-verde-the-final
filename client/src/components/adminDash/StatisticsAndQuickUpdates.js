@@ -18,6 +18,7 @@ export default function StatisticsAndQuickUpdates(props) {
   const [userData, setUserData] = useState([]);
   const [quantity, setQuantity] = useState(0);
   const [count, setCount] = useState(0);
+  const [errormsg, setErrormsg] = useState("");
   const getAllProducts = () => {
     axios
       .get("user/products", config)
@@ -73,7 +74,8 @@ export default function StatisticsAndQuickUpdates(props) {
       .put(`admin/product/quantitycheck/${id}`, updatedProductData, config)
       .then((res) => {
         console.log(res.updatedProductData);
-        alert("Stock updated, please refresh the page");
+        setErrormsg("❗❗❗Stock updated successfully❗❗❗");
+        // alert("Stock updated, please refresh the page");
         window.location.reload(false);
       })
       .catch((err) => {
@@ -127,7 +129,7 @@ export default function StatisticsAndQuickUpdates(props) {
             you have: {productData[detectproduct]?.quantity} from
             {productData[detectproduct]?.name}
           </p>
-          <img src={myimage} alt="product" />
+          <img style={{borderRadius:"100%", margin:"5px"}}src={myimage} alt="product" />
         </div>
         <button
           disabled={productData[detectproduct]?.quantity + count < 1}
@@ -142,6 +144,7 @@ export default function StatisticsAndQuickUpdates(props) {
         <button className="button-dash" onClick={() => updateStock()}>
           UPDATE IT
         </button>
+        <p className="error-msg">{errormsg}</p>
       </span>
     </div>
   );
