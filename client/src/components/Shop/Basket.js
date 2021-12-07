@@ -7,7 +7,7 @@ import ShopItem from "./ShopItem";
 import ContactInformation from "../ContactInformation";
 import { BillContext } from "./TotalBillContext";
 import Flowershop from "./Flowershop";
-const Basket = ({history}) => {
+const Basket = ({ history }) => {
   const [data, setData] = useState([]);
   const [token] = useContext(AuthContext);
   const value = useContext(BillContext);
@@ -16,7 +16,9 @@ const Basket = ({history}) => {
       authorization: token,
     },
   };
-  if(!token) {history.push("/")}
+  if (!token) {
+    history.push("/");
+  }
   useEffect(() => {
     const displayData = async () => {
       await axios
@@ -93,25 +95,20 @@ const Basket = ({history}) => {
     <div className="main-basket-container">
       <div className="lists-container">
         <p className="shipping-msg">
-          ❗ Please take a note that not all articles can be send ❗
+          ❗ Bitte beachten Sie, dass nicht alle Artikel versendet werden können
+          ❗
           {notAvailableCartItems?.length ? (
             <h2>
-              the {notAvailableCartItems?.map((item) => `${item.name}, `)} are
-              unfortunately already sold out and not available anymore !
+              Artikel {notAvailableCartItems?.map((item) => `${item.name}, `)}{" "}
+              ist leider ausverkauft und aktuell nicht mehr erhältlich!
             </h2>
           ) : null}
         </p>
-        {notDeliverable?.length ? (
-          <h2 className="shipping-msg">
-            the <span>{notDeliverable?.map((item) => `${item.name},`)}</span>{" "}
-            are too sensitive to be delivered. Feel free to come from our shop
-          </h2>
-        ) : null}
-        <h1>Shopping Basket</h1>
+        <h1>Warenkorb</h1>
 
         <ul className="basket-list">
           <li>
-            <h3> Basket </h3>
+            <h3>Artikel Warenkorb</h3>
           </li>
           {result?.map((obj, index) => (
             <li key={index}>
@@ -127,7 +124,7 @@ const Basket = ({history}) => {
 
         <ul className="wishlist-list">
           <li>
-            <h3> Wishlist </h3>
+            <h3>Artikel Merkliste</h3>
           </li>
 
           {data.wishlist?.map((obj, index) => (
@@ -138,7 +135,14 @@ const Basket = ({history}) => {
         </ul>
       </div>
       <aside>
-        
+        {notDeliverable?.length ? (
+          <h2 className="shipping-msg">
+            Artikel{" "}
+            <span>{notDeliverable?.map((item) => `${item.name},`)}</span> kann
+            aus logistischen Gründen nicht versendet werden. Eine Abholung ist
+            zu den unten angegebenen Öffnungszeiten möglich.
+          </h2>
+        ) : null}
 
         <h4 className="mobile-abholungs">Abholung</h4>
 
@@ -155,11 +159,10 @@ const Basket = ({history}) => {
         </ul>
       </aside>
       <aside>
-      <ContactInformation  />
-      <div className="flowershopclass">
-      <Flowershop />
-      </div>
-       
+        <ContactInformation />
+        <div className="flowershopclass">
+          <Flowershop />
+        </div>
       </aside>
 
       <Link
@@ -167,12 +170,10 @@ const Basket = ({history}) => {
         total={total}
         to="/basket/checkout"
       >
-        <h3>
-          Total:
-         
+        <h3 >
+          Gesamt: <span> {total} €</span>
         </h3>
-        <p  style={{ backgroundColor: `lightblue`, padding:"10px" }} onClick={clearSoldout}> 
-          {total}$/ Proceed to Checkout</p>
+        <p onClick={clearSoldout}>Gesamt: {total}€ /Bestellung abschließen</p>
       </Link>
     </div>
   );

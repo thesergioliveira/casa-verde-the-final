@@ -143,7 +143,7 @@ header nav {
 .user-show {
   z-index: 13;
   width: 50vw;
-  height: 20vh;
+  height: 24vh;
   top: 4rem;
   right: 0px;
   position: absolute;
@@ -166,6 +166,8 @@ header nav {
   @include flex;
   justify-content: space-evenly;
   width: 38vw;
+  
+  
 
   // Li setup
   li {
@@ -173,6 +175,7 @@ header nav {
     color: black;
     font-weight: bold;
     text-decoration: none;
+    padding:5px;
   }
 }
 .userInfo {

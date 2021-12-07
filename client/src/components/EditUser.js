@@ -97,7 +97,7 @@ function EditUser({ history }) {
   const deleteUser = () => {
     const logoutAfterDelete = () => {
       setTimeout(
-        () => setUpdateMessage("you are not our client anymore 😔"),
+        () => setUpdateMessage("Dein Profil wurde gelöscht. 😔"),
         3000
       );
       setTimeout(
@@ -126,11 +126,11 @@ function EditUser({ history }) {
   return (
     <div className="edit-user-box">
       <div className="edit-user-container">
-        <h1>Profile</h1>
+        <h1>Profil</h1>
         <h2 style={{ color: "green" }}>{updateMessage}</h2>
         <h3 style={{ color: "red" }}>{errorMessage}</h3>
         <div>
-          <h3> Nutzer Information</h3>
+          <h3>Benutzerdaten</h3>
           <p>{userData?.username}</p>
           <p>{userData?.email}</p>
           <p>{userData?.phone}</p>
@@ -150,49 +150,49 @@ function EditUser({ history }) {
               value={phone}
               name="phone"
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="enter your phone number"
+              placeholder="Telefonnummer"
             />
             <input
               type="address"
               value={address}
               name="address"
               onChange={(e) => setAddress(e.target.value)}
-              placeholder="enter your address"
+              placeholder="Straße"
             />
             <input
               type="number"
               value={houseNumber}
               name="houseNumber"
               onChange={(e) => setHouseNumber(e.target.value)}
-              placeholder="enter your House Number"
+              placeholder="Hausnummer"
             />
             <input
               type="country"
               value={country}
               name="country"
               onChange={(e) => setCountry(e.target.value)}
-              placeholder="enter your Country Name"
+              placeholder="Land"
             />
             <input
               type="state"
               value={state}
               name="state"
               onChange={(e) => setState(e.target.value)}
-              placeholder="enter your State Name"
+              placeholder="Bundesland"
             />
             <input
               type="city"
               value={city}
               name="city"
               onChange={(e) => setCity(e.target.value)}
-              placeholder="enter your City Name"
+              placeholder="Stadt"
             />
             <input
               type="postalCode"
               value={postalCode}
               name="postalCode"
               onChange={(e) => setPostalCode(e.target.value)}
-              placeholder="enter your postal Code"
+              placeholder="Postleitzahl"
             />
           </div>
           <button className="button-dash" onClick={updateUserInfo}>
@@ -200,14 +200,14 @@ function EditUser({ history }) {
           </button>
         </div>
         <div>
-          <h3> Nutzer Passwort</h3>
+          <h3>Benutzer Passwort</h3>
           <span className="password">
             <input
               type={showEye ? "text" : "password"}
               value={password}
               name="password"
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="your password"
+              placeholder="aktuelles Passwort"
             />
             <span className="iconPass" onClick={() => setShowEye(!showEye)}>
               {" "}
@@ -220,7 +220,7 @@ function EditUser({ history }) {
               value={NewPassword}
               name="NewPassword"
               onChange={(e) => setNewPassword(e.target.value)}
-              placeholder="enter your new password"
+              placeholder="neues Passwort"
             />
             <span
               className="iconPass"
@@ -235,20 +235,20 @@ function EditUser({ history }) {
             value={passwordConf}
             name="passwordConf"
             onChange={(e) => setPasswordConf(e.target.value)}
-            placeholder="confirm your password"
+            placeholder="Passwort bestätigen"
           />
-          <button onClick={changePassword}>Bitte Passwort ändern</button>
+          <button onClick={changePassword}>Passwort ändern</button>
         </div>
         <div>
-          <h3>Löschung des Accounts</h3>
+          <h3>Profil löschen</h3>
           <input
             type="password"
             value={passwordToD}
             name="passwordToD"
             onChange={(e) => setPasswordToD(e.target.value)}
-            placeholder="enter your password"
+            placeholder="Passwort eingeben"
           />
-          <button onClick={deleteUser}>ACCOUNT LÖSCHEN</button>
+          <button onClick={deleteUser}>PROFIL LÖSCHEN</button>
         </div>
       </div>
     </div>

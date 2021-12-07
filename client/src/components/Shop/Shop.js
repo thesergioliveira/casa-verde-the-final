@@ -57,7 +57,7 @@ function Shop({ history }) {
     : data.sort((a, b) => a.price - b.price);
 
   const getFlowerAndPlantsPots = data
-    ?.filter((el) => el.category === "Flower and plants pots")
+    ?.filter((el) => el.category === "Blumen und Topfpflanzen")
     .map((obj) => {
       return (
         <div className="container-product">
@@ -76,7 +76,7 @@ function Shop({ history }) {
     });
   //getBouquetOfFlowers
   const getBouquetOfFlowers = data
-    ?.filter((el) => el.category === "Bouquet of flowers")
+    ?.filter((el) => el.category === "Blumen und Sträuße")
     .map((obj) => {
       return (
         <div className="container-product">
@@ -94,7 +94,7 @@ function Shop({ history }) {
     });
   //getGiftBaskets
   const getGiftBaskets = data
-    ?.filter((el) => el.category === "Gift baskets")
+    ?.filter((el) => el.category === "Geschenkideen")
     .map((obj) => {
       return (
         <div className="container-product">
@@ -112,7 +112,7 @@ function Shop({ history }) {
     });
   //italianProducts
   const italianProducts = data
-    ?.filter((el) => el.category === "Italian Products")
+    ?.filter((el) => el.category === "Italienische Spezialitäten")
     .map((obj) => {
       return (
         <div className="container-product">
@@ -158,24 +158,24 @@ function Shop({ history }) {
             onChange={changeHandle}
             value={userInput}
             className="searchInput"
-            placeholder="search ..."
+            placeholder="Suche..."
           />
         </div>
         <div className="filters">
           <div>
-            price:
+            Preis:
             <select
               id="price"
               onChange={(e) => {
                 setPriceInput(e.target.value);
               }}
             >
-              <option value="low"> low to high </option>
-              <option value="high"> high to low </option>
+              <option value="low">Aufsteigend</option>
+              <option value="high">Absteigend</option>
             </select>
           </div>
           <div>
-            delivery:
+            Versandmethode:
             <select
               id="delivery"
               onChange={(e) => {
@@ -190,9 +190,9 @@ function Shop({ history }) {
                 //
               }}
             >
-              <option value={true}> pick up from store </option>
-              <option value={false}> shipping </option>
-              <option value={null}> all </option>
+              <option value={true}>Nur Abholung möglich</option>
+              <option value={false}>Lieferbar</option>
+              <option value={null}>Alle</option>
             </select>
           </div>
         </div>
@@ -203,15 +203,15 @@ function Shop({ history }) {
         </div>
 
         <div className="products-container">
-          <h2 id="plants">Flower and plants pots</h2>
+          <h2 id="plants">Blumen und Topfpflanzen</h2>
           <div className="products">{getFlowerAndPlantsPots}</div>
-          <h2 id="flowers">Bouquet of flowers</h2>
+          <h2 id="flowers">Blumensträuße</h2>
           <div className="products">{getBouquetOfFlowers}</div>
-          <h2 id="gifts">Gift baskets</h2>
+          <h2 id="gifts">Geschenkideen</h2>
           <div className="products">{getGiftBaskets}</div>
-          <h2 id="italian">Italian Products</h2>
+          <h2 id="italian">Italienische Spezialitäten</h2>
           <div className="products">{italianProducts}</div>
-          <h2>View All </h2>
+          <h2>Alle Produkte</h2>
           <div className="products">{getProducts}</div>
         </div>
         {/* version with ul */}

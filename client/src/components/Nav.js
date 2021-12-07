@@ -160,13 +160,13 @@ const Nav = () => {
                         >
                           <GoUnverified />
                           {""}
-                          <p>(Verifizierung!)</p>
+                          <p>(Verifizieren!)</p>
                         </Link>
                       </span>
                     )}
                   </li>
                   <li className="userInfo" key="55" onClick={logOut} alt="logout">
-                    Logout <FiLogOut />
+                    Abmelden <FiLogOut />
                   </li>
                 </ul>
               </>
@@ -178,11 +178,12 @@ const Nav = () => {
                     fontWeight: "bold",
                     textDecoration: "none",
                     width: "5.5rem",
+                    fontSize:"16px"
                   }}
                   onClick={closeMenu}
                   to="/login"
                 >
-                  Log in
+                  Anmelden
                 </Link>
                 <Link
                   style={{
@@ -190,11 +191,12 @@ const Nav = () => {
                     fontWeight: "bold",
                     textDecoration: "none",
                     width: "5.5rem",
+                    fontSize:"16px"
                   }}
                   onClick={closeMenu}
                   to="/register"
                 >
-                  sign up
+                  Registrieren
                 </Link>
               </>
             )}

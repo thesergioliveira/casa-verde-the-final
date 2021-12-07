@@ -16,7 +16,7 @@ export default function AddProduct() {
   const [productData, setProductData] = useState([]);
 
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("please choose");
+  const [category, setCategory] = useState("bitte auswählen");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [description, setDescription] = useState("");
@@ -52,7 +52,7 @@ export default function AddProduct() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-if (name === "" || category === "please choose" || price === 0 || quantity === 0 || description === "" || image === "") {
+if (name === "" || category === "bitte auswählen" || price === 0 || quantity === 0 || description === "" || image === "") {
   setErrormsg("❗❗❗please complete all the fields");
 } else {
 
@@ -78,7 +78,7 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
       );
       console.log(result);
     } catch (err) {
-      console.log("error", err.response.data.message);
+      setErrormsg("❗❗❗versuch nochmals");
     }}
   };
   const handleDelete = (id) => {
@@ -102,7 +102,7 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
   return (
     <div className="admin-dash-add-products-container">
       <div className="add-product-wrapper">
-        <h2>ADD A PRODUCT</h2>
+        <h2>Produkt hinzufügen</h2>
         <form onSubmit={handleSubmit}>
           <input
             class="custom-file-input"
@@ -110,26 +110,26 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
             id="file"
             onChange={handleUpload}
           />
-          <p>name it:</p>
+          <p>Name des Produkts:</p>
           <input
             type="text"
             value={name}
             name="name"
             onChange={(e) => setName(e.target.value)}
-            placeholder="name of the product"
+            placeholder="Produktname"
           />
-          <p>category:</p>
+          <p>Kategorie:</p>
           <select
             id="category"
             onChange={(e) => {
               setCategory(e.target.value);
             }}
           >
-             <option value={null}> please choose </option>
-            <option value="Bouquet of flowers"> Blumen und Sträuße </option>
-            <option value="Flower and plants pots">Bepflanzungen </option>
-            <option value="Gift baskets"> Geschenke </option>
-            <option value="Italian Products"> Italienische Produkte</option>
+             <option value={null}> bitte auswählen </option>
+            <option value="Blumen und Sträuße"> Blumen und Sträuße </option>
+            <option value="Blumen und Topfpflanzen">Bepflanzungen </option>
+            <option value="Geschenkideen"> Geschenke </option>
+            <option value="Italienische Spezialitäten"> Italienische Produkte</option>
             </select>
           <p>Preis:</p>
           <input
@@ -153,7 +153,7 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
             value={description}
             name="description"
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="description"
+            placeholder="Beschreibung"
           />
           <p>Lieferung oder Abholung?:</p>
           <select
@@ -162,11 +162,11 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
               setDelivery(e.target.value);
             }}
           >
-             <option value={null}> please choose </option>
+             <option value={null}> bitte auswählen </option>
             <option value={true}> Lieferung </option>
             <option value={false}> Abholung </option>
           </select>
-          <input className="button-dash" type="submit" value="Add me" />
+          <input className="button-dash" type="submit" value="Hinzufügen" />
           {errormsg && <p className="error-msg">{errormsg}</p>}
         </form>
         <div className="delete-container">

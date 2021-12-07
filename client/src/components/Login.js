@@ -23,6 +23,8 @@ const Login = ({ history }) => {
       })
       .then((res) => {
         if (!res.data.token) {
+          console.log(rotation);
+          setRotation(110);
           setLoginMessage(res.data.message);
         } else {
           setToken(res.data.token);
@@ -43,19 +45,20 @@ const Login = ({ history }) => {
 
   return (
     <div onSubmit={handleSubmit} className="login-container">
+    <div className="login-container">
       <div
         style={{ transform: `rotate(${rotation}deg)` }}
         className="kaktuscon"
       >
         <Kaktus />
       </div>
-      <h5 style={{ color: "red" }}>{loginMessage}</h5>
+      <h5 styleName={{ color: "red" }}>{loginMessage}</h5>
       <input
         type="text"
         value={username}
         name="username"
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="enter your username or your email"
+        placeholder="Benutzername oder E-Mail Adresse eingeben"
       />
       <div className="password">
         <input
@@ -63,7 +66,7 @@ const Login = ({ history }) => {
           value={password}
           name="password"
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="confirm your password"
+          placeholder="Passwort eingeben"
         />
         <span className="iconPass" onClick={() => setShowEye(!showEye)}>
           {" "}
@@ -72,13 +75,14 @@ const Login = ({ history }) => {
       </div>
 
       <button className="button-dash" onClick={loginUser}>
-        Login
+        Anmelden
       </button>
       <Link to="/forgetPassword">Passwort vergessen?</Link>
-      <h4>ODER</h4>
+      <h4>oder</h4>
       <button className="button-dash">
         <Link to="/register">Registrieren</Link>
       </button>
+    </div>
     </div>
   );
 };

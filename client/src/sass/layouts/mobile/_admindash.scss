@@ -26,7 +26,6 @@
     padding: 0 1em 0 0;
     margin: 0;
     width: 100%;
-   
   }
   select::-ms-expand {
     display: none;
@@ -46,15 +45,9 @@
     color: black;
   }
 
-  .admin-dash-modify-products-container {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
+
   .admin-dash-add-products-container {
+    
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -62,13 +55,12 @@
     align-items: flex-start;
     flex-wrap: wrap;
     padding: 1rem;
-    
-  
+
     .custom-file-input::before {
-      content: 'Select a Photo..';
+      content: "Foto auswählen..";
       display: inline-block;
       background: $cream;
-      
+
       border-radius: 10%;
       padding: 8px 8px 8px 18px;
       outline: none;
@@ -85,19 +77,19 @@
     .custom-file-input:active::before {
       background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
     }
-    .add-product-wrapper {
-    
-    }
+   
     .preview {
-      border: 2px black solid;
-      padding: 2rem;
+      width: auto;
+      padding: 1rem;
+      
     }
   }
   .delete-container {
     margin-top: 1rem;
-    border-top: 2px black solid;
   }
   .admin-dash-statistics-container {
+    .statistics {
+    }
     padding: 1rem;
     width: 70%;
     display: flex;
@@ -108,10 +100,8 @@
     .quick-update-view {
       @include flex();
       flex-direction: column;
- width: 240px;
-      height: 150px;
-     
-      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      height: auto;
     }
     button:disabled {
       background-color: red;
