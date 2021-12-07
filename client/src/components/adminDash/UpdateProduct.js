@@ -21,6 +21,7 @@ export default function UpdateProduct() {
   const [description, setDescription] = useState();
   const [delivery, setDelivery] = useState(false);
   const [image, setImage] = useState();
+  const [errormsg, setErrormsg] = useState("");
   // get all products WE CAN GET THEM WITH USECONTEXT
   const getAllProducts = () => {
     axios
@@ -47,6 +48,9 @@ export default function UpdateProduct() {
   };
   const handleSubmitForUpdate = async (e) => {
     e.preventDefault();
+    if (name === "" || category === "bitte auswählen" || price === 0 || quantity === 0 || description === "" || image === "") {
+      setErrormsg("❗❗❗please complete all the fields");
+    } else {
     const updatedProductData = new FormData();
 
     updatedProductData.append("category", category);
@@ -71,7 +75,7 @@ export default function UpdateProduct() {
       alert("Product updated successfully");
     } catch (err) {
       console.log("error", err.response.data.message);
-    }
+    }}
   };
 
   return (
@@ -79,14 +83,14 @@ export default function UpdateProduct() {
       <div className="add-product-wrapper">
         <h2>Produkt ändern</h2>
         <form onSubmit={handleSubmitForUpdate}>
-          <input type="file" id="file" onChange={handleUpload} />
+          <input class="custom-file-input" type="file" id="file" onChange={handleUpload} />
           <p>Name des Produkts:</p>
           <select
             id="name"
             onChange={(e) => {
               setId(e.target.value);
             }}
-          >
+          > <option value={null}> bitte auswählen </option>
             {productData.map((item) => (
               <option value={item._id}> {item.name} </option>
             ))}
@@ -100,18 +104,19 @@ export default function UpdateProduct() {
               setCategory(e.target.value);
             }}
           >
+             <option value={null}> bitte auswählen </option>
             <option value="Bouquet of flowers"> Blumen und Sträuße </option>
             <option value="Flower and plants pots"> Pflanzungen </option>
             <option value="Gift baskets"> Geschenke </option>
             <option value="Italian Products"> Italienische Produkte</option>
           </select>
-          <p>RE-price it:</p>
+          <p>Neuer Preis:</p>
           <input
             type="number"
             value={null}
             name="price"
             onChange={(e) => setPrice(e.target.value)}
-            placeholder="value it"
+            placeholder="Neuer Preis"
           />
 
           <p>Anzahl ändern:</p>
@@ -121,7 +126,7 @@ export default function UpdateProduct() {
             value={null}
             name="quantity"
             onChange={(e) => setQuantity(e.target.value)}
-            placeholder="remaining amount"
+            placeholder="Anzahl"
           />
 
           <p>Andere Beschreibung:</p>
@@ -130,7 +135,7 @@ export default function UpdateProduct() {
             value={null}
             name="description"
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="new description"
+            placeholder="Neue Beschreibung"
           />
           <p>Lieferung oder Abholung?:</p>
           <select
@@ -139,10 +144,11 @@ export default function UpdateProduct() {
               setDelivery(e.target.value);
             }}
           >
+             <option value={null}> bitte auswählen </option>
             <option value={true}> Lieferung </option>
             <option value={false}> Abholung </option>
           </select>
-          <input className="button-dash" type="submit" value="save changes" />
+          <input className="button-dash" type="submit" value="Änderungen speichern" />
         </form>
       </div>
       <div className="preview">

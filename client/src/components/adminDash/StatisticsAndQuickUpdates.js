@@ -136,7 +136,7 @@ export default function StatisticsAndQuickUpdates(props) {
             {productData[detectproduct]?.name}
           </p>
           <img style={{borderRadius:"100%", margin:"5px"}}src={myimage} alt="product" />
-        </div>
+       <span>
         <button
           disabled={productData[detectproduct]?.quantity + count < 1}
           className="button-dash"
@@ -148,8 +148,8 @@ export default function StatisticsAndQuickUpdates(props) {
           PLUS {count}
         </button>
         <button className="button-dash" onClick={() => updateStock()}>
-          UPDATE
-        </button>
+          AKTUALISIEREN
+        </button> </span></div>
         <p className="error-msg">{errormsg}</p>
       </span>
     </div>
