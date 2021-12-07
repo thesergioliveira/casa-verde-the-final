@@ -15,7 +15,9 @@ function EditUser({ history }) {
       authorization: token,
     },
   };
-  if(token=== null){history.push("/login")}
+  if (token === null) {
+    history.push("/login");
+  }
   const [closeUser, setCloseUser] = useState(true);
   const [show, setShow] = useState(true);
   const [password, setPassword] = useState(null);
@@ -122,13 +124,13 @@ function EditUser({ history }) {
   };
 
   return (
-    <div className="edit-user-box"> 
+    <div className="edit-user-box">
       <div className="edit-user-container">
         <h1>Profile</h1>
         <h2 style={{ color: "green" }}>{updateMessage}</h2>
         <h3 style={{ color: "red" }}>{errorMessage}</h3>
         <div>
-          <h3> User Information</h3>
+          <h3> Nutzer Information</h3>
           <p>{userData?.username}</p>
           <p>{userData?.email}</p>
           <p>{userData?.phone}</p>
@@ -194,11 +196,11 @@ function EditUser({ history }) {
             />
           </div>
           <button className="button-dash" onClick={updateUserInfo}>
-            Update Your Profile
+            Profilupdate
           </button>
         </div>
         <div>
-          <h3> User Password</h3>
+          <h3> Nutzer Passwort</h3>
           <span className="password">
             <input
               type={showEye ? "text" : "password"}
@@ -235,10 +237,10 @@ function EditUser({ history }) {
             onChange={(e) => setPasswordConf(e.target.value)}
             placeholder="confirm your password"
           />
-          <button onClick={changePassword}>Change Your Password</button>
+          <button onClick={changePassword}>Bitte Passwort ändern</button>
         </div>
         <div>
-          <h3>Delete your account</h3>
+          <h3>Löschung des Accounts</h3>
           <input
             type="password"
             value={passwordToD}
@@ -246,7 +248,7 @@ function EditUser({ history }) {
             onChange={(e) => setPasswordToD(e.target.value)}
             placeholder="enter your password"
           />
-          <button onClick={deleteUser}>DELETE ACCOUNT</button>
+          <button onClick={deleteUser}>ACCOUNT LÖSCHEN</button>
         </div>
       </div>
     </div>

@@ -58,7 +58,7 @@ const Register = () => {
   };
   return (
     <div className="register-container">
-      <h2>Ready to take a free trial?</h2>
+      <h2>Bereit um es auszuprobieren?</h2>
       <h3 style={{ color: "green" }}>{registerMessage}</h3>
       <h3 style={{ color: "red" }}>{errorMessage}</h3>
       <input
@@ -66,14 +66,14 @@ const Register = () => {
         value={username}
         name="username"
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="choose your username"
+        placeholder="Bitte Nutzername wählen"
       />
       <input
         type="email"
         value={email}
         name="email"
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="your email"
+        placeholder="Ihre E-Mail"
       />
       <div className="password">
         <input
@@ -81,7 +81,7 @@ const Register = () => {
           value={password}
           name="password"
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="your password"
+          placeholder="Passwort eingeben"
         />
         <span className="iconPass" onClick={() => setShowEye(!showEye)}>
           {" "}
@@ -94,7 +94,7 @@ const Register = () => {
           value={passwordConf}
           name="passwordConf"
           onChange={(e) => setPasswordConf(e.target.value)}
-          placeholder="confirm your password"
+          placeholder="Passwort wiederholen"
         />
         <span className="iconPass" onClick={() => setShowEyeConf(!showEyeConf)}>
           {" "}
@@ -107,42 +107,42 @@ const Register = () => {
         value={phone}
         name="phone"
         onChange={(e) => setPhone(e.target.value)}
-        placeholder="enter your phone number"
+        placeholder="Ihre Telefonnummer"
       />
       <input
         type="address"
         value={address}
         name="address"
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="enter your address"
+        placeholder="Strasse"
       />
       <input
         type="houseNumber"
         value={houseNumber}
         name="houseNumber"
         onChange={(e) => setHouseNumber(e.target.value)}
-        placeholder="enter your houseNumber"
+        placeholder="Hausnummer"
       />
       <input
         type="country"
         value={country}
         name="country"
         onChange={(e) => setCountry(e.target.value)}
-        placeholder="enter your Country Name"
+        placeholder="Land"
       />
       <input
         type="state"
         value={state}
         name="state"
         onChange={(e) => setState(e.target.value)}
-        placeholder="enter your State Name"
+        placeholder="Bundesland"
       />
       <input
         type="city"
         value={city}
         name="city"
         onChange={(e) => setCity(e.target.value)}
-        placeholder="enter your City Name"
+        placeholder="Stadt"
       />
 
       <input
@@ -150,14 +150,14 @@ const Register = () => {
         value={postalCode}
         name="postalCode"
         onChange={(e) => setPostalCode(e.target.value)}
-        placeholder="enter your postalCode"
+        placeholder="Postleitzahl"
       />
 
       <button className="button-dash" onClick={handleSubmit}>
-        Register
+        Registrierung
       </button>
 
-      <h4>OR</h4>
+      <h4>ODER</h4>
       <button className="button-dash">
         <Link to="/login">Login</Link>
       </button>

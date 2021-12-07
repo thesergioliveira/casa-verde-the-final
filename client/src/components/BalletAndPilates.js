@@ -12,7 +12,7 @@ const BalletAndPilates = () => {
       <div className="home-top absolut">
         {/* <div className="roof"></div> */}
         <h1>Casa Verde</h1>
-        <p>Courses</p>
+        <p>Kursangebot</p>
       </div>
 
       <div className="container-courses">

@@ -30,7 +30,7 @@ const ContactForm = () => {
           </label>
 
           <label htmlFor="phone">
-            <h5>Tel</h5>
+            <h5>Telefon</h5>
             <input type="number" name="phone" id="phone" />
             <ValidationError
               prefix="Phone"
@@ -40,7 +40,7 @@ const ContactForm = () => {
           </label>
 
           <fieldset htmlFor="value">
-            <h5>Date/Time</h5>
+            <h5>Datum/Zeit</h5>
             <Booking type="date" name="value" id="value" />
             <ValidationError
               prefix="Value"
@@ -49,7 +49,7 @@ const ContactForm = () => {
             />
           </fieldset>
           <label>
-            <h5>Message</h5>
+            <h5>Nachricht</h5>
             <textarea type="text" name="message" id="message"></textarea>
             <ValidationError
               prefix="Message"

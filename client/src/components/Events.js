@@ -19,7 +19,7 @@ const Events = () => {
           className={
             name === "Workshops"
               ? "btn-rental"
-              : name === "Seminaries"
+              : name === "Seminare"
               ? "btn-events"
               : "btn-ballet"
           }
@@ -61,7 +61,12 @@ const Events = () => {
       </div>
 
       <div className="h3-description">
-        <h3>Text für Events hier</h3>
+        <h3>Hier entsteht die Internetpräsenz für unsere Events 2022</h3>
+        <h4>
+          Wir freuen uns schon sehr Euch alle im neuen bunten Casa Verde
+          begrüßen zu dürfen.
+        </h4>
+        <h5>Bis dahin bleibt gesund und munter!</h5>
       </div>
 
       <Workshops />

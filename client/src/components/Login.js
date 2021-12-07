@@ -73,9 +73,9 @@ const Login = ({ history }) => {
         Login
       </button>
       <Link to="/forgetPassword">Passwort vergessen?</Link>
-      <h4>OR</h4>
+      <h4>ODER</h4>
       <button className="button-dash">
-        <Link to="/register">Register</Link>
+        <Link to="/register">Registrieren</Link>
       </button>
     </div>
   );

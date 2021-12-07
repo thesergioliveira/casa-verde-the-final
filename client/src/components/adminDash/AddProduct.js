@@ -14,7 +14,7 @@ export default function AddProduct() {
   };
 
   const [productData, setProductData] = useState([]);
-  
+
   const [name, setName] = useState("");
   const [category, setCategory] = useState("please choose");
   const [price, setPrice] = useState(0);
@@ -41,11 +41,10 @@ export default function AddProduct() {
         console.log("here", err.response?.data);
       });
   };
-  
+
   const obj = { name, category, price, quantity, description, delivery, image };
   useEffect(() => {
     getAllProducts();
-   
   }, []);
 
   const handleUpload = (e) => {
@@ -65,7 +64,7 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
     newProductData.append("description", description);
     newProductData.append("delivery", delivery);
     newProductData.append("image", image);
-    
+
     try {
       const result = await axios.post(
         `admin/product/`,
@@ -105,8 +104,12 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
       <div className="add-product-wrapper">
         <h2>ADD A PRODUCT</h2>
         <form onSubmit={handleSubmit}>
-         
-          <input class="custom-file-input" type="file" id="file" onChange={handleUpload} />
+          <input
+            class="custom-file-input"
+            type="file"
+            id="file"
+            onChange={handleUpload}
+          />
           <p>name it:</p>
           <input
             type="text"
@@ -123,15 +126,12 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
             }}
           >
              <option value={null}> please choose </option>
-            <option value="Bouquet of flowers"> Bouquet of flowers </option>
-            <option value="Flower and plants pots">
-              {" "}
-              Flower and plants pots{" "}
-            </option>
-            <option value="Gift baskets"> Gift baskets </option>
-            <option value="Italian Products"> Italian Products</option>
-          </select>
-          <p>price it:</p>
+            <option value="Bouquet of flowers"> Blumen und Sträuße </option>
+            <option value="Flower and plants pots">Bepflanzungen </option>
+            <option value="Gift baskets"> Geschenke </option>
+            <option value="Italian Products"> Italienische Produkte</option>
+            </select>
+          <p>Preis:</p>
           <input
             type="number"
             value={price}
@@ -139,7 +139,7 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
             onChange={(e) => setPrice(e.target.value)}
             placeholder="price"
           />
-          <p>how many in stock:</p>
+          <p>Lagermenge:</p>
           <input
             type="number"
             value={quantity}
@@ -147,7 +147,7 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
             onChange={(e) => setQuantity(e.target.value)}
             placeholder="quantity"
           />
-          <p>describe it:</p>
+          <p>Beschreibung:</p>
           <input
             type="text"
             value={description}
@@ -155,7 +155,7 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
             onChange={(e) => setDescription(e.target.value)}
             placeholder="description"
           />
-          <p>deliverable or zum abholung?:</p>
+          <p>Lieferung oder Abholung?:</p>
           <select
             id="delivery"
             onChange={(e) => {
@@ -163,36 +163,35 @@ if (name === "" || category === "please choose" || price === 0 || quantity === 0
             }}
           >
              <option value={null}> please choose </option>
-            <option value={true}> deliverable </option>
-            <option value={false}> not deliverable </option>
+            <option value={true}> Lieferung </option>
+            <option value={false}> Abholung </option>
           </select>
           <input className="button-dash" type="submit" value="Add me" />
           {errormsg && <p className="error-msg">{errormsg}</p>}
         </form>
         <div className="delete-container">
-        <h2>DELETE A PRODUCT</h2>
-        <select
-          id="name"
-          onChange={(e) => {
-            setName(e.target.value);
-            console.log(name);
-          }}
-        >
-          {" "}
-          <option value={null}> choose one</option>
-          {productData.map((item) => (
-            <option value={item._id}> {item.name} </option>
-          ))}
-        </select>
-        <button className="button-dash" onClick={() => handleDelete(name)}>
-          DELETE THE PRODUCT
-        </button>
+          <h2>Löschen eines Produktes</h2>
+          <select
+            id="name"
+            onChange={(e) => {
+              setName(e.target.value);
+              console.log(name);
+            }}
+          >
+            {" "}
+            <option value={null}>Auswahl</option>
+            {productData.map((item) => (
+              <option value={item._id}> {item.name} </option>
+            ))}
+          </select>
+          <button className="button-dash" onClick={() => handleDelete(name)}>
+            Produkt löschen
+          </button>
+        </div>
       </div>
-      </div>
-      
 
       <div className="preview">
-        <p>preview</p>
+        <p>Vorschau</p>
         <ShopItem obj={obj} />
       </div>
     </div>
