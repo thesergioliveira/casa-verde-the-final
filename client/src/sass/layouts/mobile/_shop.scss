@@ -19,62 +19,79 @@
   select::-ms-expand {
     display: none;
   }
+
+  // Products for Search
+  .search-result {
+    width: 100vw;
+    .space-for-results {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+
+      .productCard-main-container {
+        margin: 0 10px 1rem 10px;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0.2rem 0.1rem 0.7rem rgba(0, 0, 0, 0.35);
+        width: 45%;
+
+        .product-box {
+          @include flex;
+          flex-direction: column;
+          width: 100%;
+
+          img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 .products-container {
   width: 100%;
 
   h2 {
-    padding-left: 0.5rem;
-    margin-bottom: 1rem;
+    background-color: #3279510c;
+    text-align: center;
+    padding-bottom: 1rem;
+    padding-top: 0.2rem;
+    margin-top: 0.5rem;
   }
 
   .products {
     @include flex;
     flex-wrap: wrap;
     width: 100%;
+    background-color: #3279510c;
 
     .container-product {
       width: 50%;
+      min-width: 11rem;
       margin-bottom: 1.5rem;
       position: relative;
 
       .product-icon {
+        cursor: pointer;
+        border-radius: 0.4rem;
+        background-color: #32795193;
+        padding: 0.4rem 0.6rem;
         position: absolute;
-        top: 0.5rem;
-        right: 1.25rem;
-        font-size: 1.5rem;
+        top: 0.3rem;
+        right: 0.9rem;
+        font-size: 0.6rem;
+        color: white;
+        z-index: 1;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
-}
-
-// .product {
-//     width:9.6rem;
-//     height: 21rem;
-//     margin: 1rem;
-//     border: blue 1px solid;
-//     img {
-//         width: 9.5rem;
-//         height: 9.5rem;
-//         border: red 1px solid;
-//     }
-// }
-
-// Products for Search (need some work)
-.search-result {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.space-for-results {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .search-container {

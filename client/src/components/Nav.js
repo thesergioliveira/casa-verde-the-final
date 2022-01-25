@@ -1,15 +1,17 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import LogoData from "../JSON/logo.json";
 import Menu from "../JSON/menu.json";
+import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { AuthContext } from "./AuthContext";
 import { DataContext } from "./UserContext";
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
-import { GoUnverified, GoVerified, GoMailRead } from "react-icons/go";
+import { GoUnverified, GoVerified } from "react-icons/go";
 
 // set onClick for logo to close the menu - to do
-const Nav = ({ logo }) => {
+const Nav = () => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(true);
   const [none, setNone] = useState(true);
@@ -35,44 +37,40 @@ const Nav = ({ logo }) => {
         console.log(err?.response?.data.message);
       });
   };
- 
 
   // get the userName && Account status
   const userName = data?.user?.username.toUpperCase();
   const accountVerified = data?.user?.verifyAccount;
 
-  // on scroll function to animate the nav menu
-  const [showOnScroll, setShowOnScroll] = useState("animate");
-  const controlNav = () => {
-    if (window.scrollY > 100) {
-      setShowOnScroll("animate");
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', controlNav);
-    return () => {
-      window.removeEventListener('scroll', controlNav);
-    }
-  },[]);
+  // Logo setup
+  const logo = LogoData.map((obj) => {
+    const { name, path, img } = obj;
+    return (
+      <Link to={path} key={uuidv4()}>
+        <img src={img} alt={name} key={uuidv4()} className={name} />
+      </Link>
+    );
+  });
 
   //hamburgerMenu
   const navMenu = Menu.map((obj) => {
-    const { id, name, path } = obj;
+    const { name, path } = obj;
     return (
-      <Link to={path}>
-        <li key={id}>{name}</li>
+      <Link to={path} key={uuidv4()}>
+        <li key={uuidv4()}>{name}</li>
       </Link>
     );
   });
   //userMenu
   const showEditUser = () => {
     setOpenUser(openUser);
-    
+
     setCloseUser(!closeUser);
     setShow(!show);
     closeMenu();
-    if(show===true){getData();}
+    if (show === true) {
+      getData();
+    }
   };
   const closeUserMenu = () => {
     setCloseUser(true);
@@ -106,7 +104,7 @@ const Nav = ({ logo }) => {
 
   return (
     <header>
-      <nav className={`laptop-setup animate ${showOnScroll}`}>
+      <nav className="laptop-setup">
         <div className="nav-top">
           <div className="logo-container" onClick={closeMenu}>
             {logo}
@@ -138,14 +136,29 @@ const Nav = ({ logo }) => {
                       Settings <FiSettings />
                     </li>
                   </Link>
-                  <li key="54">
+                  <li
+                    key="54"
+                    style={{ display: "flex", flexDirection: "row" }}
+                  >
                     Account:{" "}
                     {accountVerified ? (
                       <GoVerified style={{ color: "green" }} />
                     ) : (
                       <span>
-                        <Link to="/ReVerifyAccount" style={{ color: "red" }}>
-                          <GoUnverified /> <GoMailRead />
+                        <Link
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            color: "red",
+                            justifyContent: "space-between",
+                            cursor: "pointer",
+                            width: "6rem",
+                          }}
+                          to="/ReVerifyAccount"
+                        >
+                          <GoUnverified />
+                          {""}
+                          <p>(Verify !)</p>
                         </Link>
                       </span>
                     )}
@@ -162,6 +175,7 @@ const Nav = ({ logo }) => {
                     color: "black",
                     fontWeight: "bold",
                     textDecoration: "none",
+                    width: "5.5rem",
                   }}
                   onClick={closeMenu}
                   to="/login"
@@ -173,6 +187,7 @@ const Nav = ({ logo }) => {
                     color: "black",
                     fontWeight: "bold",
                     textDecoration: "none",
+                    width: "5.5rem",
                   }}
                   onClick={closeMenu}
                   to="/register"

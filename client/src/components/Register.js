@@ -8,14 +8,15 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState();
   const [address, setAddress] = useState("");
-  const [houseNumber, setHouseNumber] = useState("");
+  const [houseNumber, setHouseNumber] = useState();
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+  const [postalCode, setPostalCode] = useState();
   const [registerMessage, setRegisterMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [showEye, setShowEye] = useState(false);
   const [showEyeConf, setShowEyeConf] = useState(false);
   axios.defaults.withCredentials = true;
@@ -43,10 +44,11 @@ const Register = () => {
       })
       .then((res) => {
         console.log(res.data);
+        setRegisterMessage(res.data.message);
         redirect();
       })
       .catch((err) => {
-        setRegisterMessage(err.response.data.message);
+        setErrorMessage(err.response.data.message);
       });
   };
   // i used useHistory to redirect after registering to the login page
@@ -57,6 +59,8 @@ const Register = () => {
   return (
     <div className="register-container">
       <h2>Ready to take a free trial?</h2>
+      <h3 style={{ color: "green" }}>{registerMessage}</h3>
+      <h3 style={{ color: "red" }}>{errorMessage}</h3>
       <input
         type="text"
         value={username}
@@ -154,8 +158,9 @@ const Register = () => {
       </button>
 
       <h4>OR</h4>
-      <Link to="/login">Login</Link>
-      <h3>{registerMessage}</h3>
+      <button className="button-dash">
+        <Link to="/login">Login</Link>
+      </button>
     </div>
   );
 };

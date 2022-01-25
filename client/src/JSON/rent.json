@@ -4,14 +4,17 @@
     "name": "Raum Vermietung",
     "link": "#room",
     "linkId": "room",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Unser neuer Multifunktionsraum ist inzwischen fertig und läd zu den verschiedensten Aktivitäten rund um Körper Geist und Seele ein..",
     "imgs": [
       "./images/rental/room-1.png",
       "./images/rental/room-2.png",
       "./images/rental/room-3.png",
       "./images/rental/room-4.png",
       "./images/rental/room-5.png",
-      "./images/rental/room-6.png"
+      "./images/rental/room-6.png",
+      "./images/rental/room-7.png",
+      "./images/rental/room-8.png",
+      "./images/rental/room-9.png"
     ]
   }
 ]

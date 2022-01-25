@@ -6,7 +6,6 @@ const allProductControllers = {};
 
 // Add new Product from admin
 allProductControllers.addProduct = async (req, res) => {
- 
   User.findById(req.id).then((user) => {
     try {
       if (user) {
@@ -39,7 +38,7 @@ allProductControllers.updateProduct = async (req, res) => {
         category: req.body.category,
         description: req.body.description,
         price: req.body.price,
-         image: req.file.path,
+        image: req.file.path,
         delivery: req.body.delivery,
         quantity: req.body.quantity,
       },
@@ -55,18 +54,15 @@ allProductControllers.updateQuantity = async (req, res) => {
   try {
     const findProduct = await Product.findByIdAndUpdate(req.params.id, {
       $set: {
-       
         quantity: req.body.quantity,
       },
     });
-    
+
     res.status(200).json({ message: "Quantity has been updated", findProduct });
   } catch (error) {
     res.status(400).json({ message: err.message });
   }
 };
-
-
 
 // Add new Product to the basket from users
 //616ec638b7d4def05aa683c5 bs for product id
@@ -91,7 +87,11 @@ allProductControllers.addToWishlist = async (req, res) => {
   try {
     const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
-    if (user && product) {
+
+    let dublicationCheck = user?.wishlist.find(
+      (item) => item._id.toString() === product._id.toString()
+    );
+    if (user && product && !dublicationCheck) {
       user.wishlist.push(product);
       user.save();
       res.status(201).json({ message: "Product added to wishlist ✅" });
@@ -106,8 +106,9 @@ allProductControllers.addToWishlist = async (req, res) => {
 allProductControllers.removeFromWishlist = async (req, res) => {
   try {
     const user = await User.findById(req.id);
-    
+
     const product = await Product.findById(req.body.productId);
+
     if (user && product) {
       user.wishlist.pull(product);
       user.save();
@@ -124,8 +125,9 @@ allProductControllers.removeFromBasket = async (req, res) => {
     const user = await User.findById(req.id);
     const product = await Product.findById(req.body.productId);
     if (user && product) {
-      console.log("HHHHHHHHHEEEEEEEEEEEYYYYYYYYYYYY",product);
-      user.basket.pull(product);
+      let productIndex = user.basket.indexOf(product);
+      user.basket.splice(productIndex, 1);
+
       user.save();
 
       res.status(201).json({ message: "Product removed from basket ✅" });
@@ -137,20 +139,20 @@ allProductControllers.removeFromBasket = async (req, res) => {
   }
 };
 allProductControllers.removeAllfromBasket = async (req, res) => {
-
   try {
     const user = await User.findById(req.id);
-    if (user) {
-      user.basket = [];
+    const product = await Product.findById(req.body.productId);
+    if (user && product) {
+      user.basket.pull(product);
       user.save();
-      res.status(200).json({ message: "Basket emptied ✅" });
+
+      res.status(201).json({ message: "Product removed from basket ✅" });
     } else {
-      res.status(404).json({ message: "User not found" });
+      res.status(404).json({ message: "User or product not found" });
     }
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
-
 };
 allProductControllers.deleteProduct = async (req, res) => {
   try {
@@ -241,7 +243,7 @@ allProductControllers.getOne = async (req, res) => {
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
-}
+};
 // get all products from a user upon the id
 
 allProductControllers.getOneByID = async (req, res) => {

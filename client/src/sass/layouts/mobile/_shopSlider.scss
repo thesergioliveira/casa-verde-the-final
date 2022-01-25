@@ -10,7 +10,7 @@
     opacity: 0;
     width: 100%;
     height: 100%;
-    transition: opacity ease-in-out 0.5s;
+    transition: opacity ease-in-out 0.8s;
 
     img {
       width: 100%;
@@ -24,63 +24,116 @@
   }
 
   // Slider Icons
-  .silder-icon {
+  .wrapper-dots-icons {
+    width: 100%;
     position: absolute;
     bottom: 1rem;
-    font-size: 2rem;
-    color: white;
-  }
-  .left {
-    left: 1rem;
-  }
-  .right {
-    right: 1rem;
-  }
-
-  // Slider Dots
-  .container-dots {
     @include flex;
-    justify-content: space-evenly;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    bottom: 1rem;
-    width: 8.5rem;
-    height: 2rem;
 
-    .dot {
-      width: 1.1rem;
-      height: 1.1rem;
-      border-radius: 50%;
-      border: 0.2rem solid white; // <-- Color
-      background-color: white; // <-- Color
+    .silder-icon {
+      font-size: 2rem;
+      color: white;
     }
-    .active {
-      background-color: black; // <-- Color
+
+    // Slider Dots
+    .container-dots {
+      border-radius: 1rem;
+      background-color: #3279519f;
+      @include flex;
+      justify-content: space-evenly;
+      // position: absolute;
+      // margin-left: auto;
+      // margin-right: auto;
+      // left: 0;
+      // right: 0;
+      // bottom: 1rem;
+      width: 8.5rem;
+      height: 2rem;
+      margin: 0 2rem;
+
+      .dot {
+        width: 1.1rem;
+        height: 1.1rem;
+        border-radius: 50%;
+        border: 0.2rem solid white; // <-- Color
+        background-color: white; // <-- Color
+      }
+      .active {
+        background-color: $dark-green; // <-- Color
+      }
     }
   }
 
   .container-btn-slider {
-    width: 90%;
-    height: 70%;
-    position: absolute;
+    width: 100%;
+    height: 75%;
+    position: relative;
     @include flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
 
-    button {
+    .container-btn {
       width: 90%;
-      height: 2.5rem;
-      background-color: rgba(255, 255, 255, 0.75);
-      border: none;
+      height: 9%;
+      @include flex;
       border-radius: 1.2rem;
-      font-size: 1rem;
+      a {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        @include flex;
+        border-radius: 1.2rem;
+        button {
+          width: 100%;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0.75);
+          border: none;
+          border-radius: 1.2rem;
+          font-size: 1rem;
+          color: white;
+          z-index: 1;
+        }
+
+        .blur-btn {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 1.2rem;
+          background-color: rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(3px);
+        }
+
+        &:hover {
+          button {
+            text-decoration: underline;
+          }
+
+          .blur-btn {
+            display: none;
+          }
+        }
+
+        .flowers {
+          background-color: #3279519f;
+        }
+
+        .deco {
+          background-color: #ff57579f;
+        }
+
+        .plants {
+          background-color: #00c2cb9f;
+        }
+
+        .gifts {
+          background-color: #ff66c49f;
+        }
+
+        .italy {
+          background-color: #ffb4439f;
+        }
+      }
     }
 
     .container-shop-header {
@@ -89,16 +142,22 @@
       flex-direction: column;
       h1,
       h2 {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-radius: 0.3rem;
       }
 
       h1 {
         padding: 0;
         align-self: flex-start;
+        background-color: #fdf0bea8;
+        padding: 0 0.75rem;
       }
 
       h2 {
         align-self: flex-end;
+        background-color: #88d467a8;
+        padding: 0 0.75rem;
       }
     }
   }

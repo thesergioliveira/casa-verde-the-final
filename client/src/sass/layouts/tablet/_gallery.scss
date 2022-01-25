@@ -1,38 +1,103 @@
 .home {
-  .wrapper-img-services {
-    .container-gallery {
-      .container-description {
-        width: 60%;
-        p {
-          font-size: 1.25rem;
-          margin-bottom: 1.5rem;
+  .wrapper-gallery {
+    .wrapper-img-services {
+      .container-gallery {
+        h3 {
+          font-size: 1.8rem;
+        }
+
+        .container-img-outer {
+          .container-img-inner {
+            img {
+              width: 10rem;
+              height: 10rem;
+            }
+          }
+        }
+
+        button {
+          font-size: 0.9rem;
+          height: 4rem;
+          width: 15rem;
+        }
+
+        .container-more-blur {
+          height: 4rem;
+          width: 15rem;
         }
       }
+    }
+  }
 
+  .wrapper-img-services {
+    .container-gallery {
       h3 {
-        margin-bottom: 0.75rem;
-        font-size: 1.75rem;
-      }
-
-      button {
-        width: 35%;
-        height: 2.2rem;
-        bottom: 2.2rem;
-        border-radius: 1rem;
-        font-size: 1rem;
-        box-shadow: 0.2rem 0.2rem 0.8rem black;
-        bottom: 3rem;
-      }
-      .container-more-blur {
-        width: 35%;
-        height: 2.2rem;
-        bottom: 2.2rem;
-        border-radius: 1rem;
-        bottom: 3rem;
+        font-size: 1.8rem;
       }
 
       .container-img-outer {
-        width: 80%;
+        .container-img-inner {
+          img {
+            width: 10rem;
+            height: 10rem;
+          }
+        }
+      }
+
+      button {
+        font-size: 0.9rem;
+        height: 4rem;
+        width: 15rem;
+      }
+
+      .container-more-blur {
+        height: 4rem;
+        width: 15rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .wrapper-gallery {
+      .wrapper-img-services {
+        .container-gallery {
+          h3 {
+            font-size: 2rem;
+          }
+
+          .container-img-outer {
+            .container-img-inner {
+              img {
+                width: 13rem;
+                height: 13rem;
+              }
+            }
+          }
+
+          button {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    .wrapper-img-services {
+      .container-gallery {
+        h3 {
+          font-size: 2rem;
+        }
+
+        .container-img-outer {
+          .container-img-inner {
+            img {
+              width: 13rem;
+              height: 13rem;
+            }
+          }
+        }
+
+        button {
+          font-size: 1rem;
+        }
       }
     }
   }

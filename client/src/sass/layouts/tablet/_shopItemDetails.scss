@@ -1,0 +1,28 @@
+.single-page-product-details {
+  border: none;
+  justify-content: center;
+  align-items: center;
+
+  .link-back {
+    font-size: 1.4rem;
+  }
+
+  .productCard-main-container {
+    margin: 0;
+    width: 70%;
+
+    .product-box {
+      .product-infos {
+        padding: 0;
+
+        .product-buttons {
+          width: 80%;
+        }
+      }
+    }
+
+    img {
+      padding: 0;
+    }
+  }
+}

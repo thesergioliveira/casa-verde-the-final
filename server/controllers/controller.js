@@ -20,7 +20,7 @@ allControllers.addUser = async (req, res) => {
       phone: req.body.phone,
       address: req.body.address,
       city: req.body.city,
-      admin: req.body.admin,
+      admin: true,
       state: req.body.state,
       zip: req.body.zip,
       country: req.body.country,
@@ -47,23 +47,27 @@ allControllers.addUser = async (req, res) => {
     const data = {
       from: process.env.EMAIL,
       to: req.body.email,
-      subject: "Verify Your Email",
+      subject: "Bestätigen Sie Ihre E-Mail Adresse",
       html: `<html>
         <h2>Please click on given link to Verify your Account</h2
         <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
+        
       </html>`,
     };
     await transporter.sendMail(data, function (err, success) {
       if (err) {
-        return res.status(400).json({ error: "verify Email link error" });
+        return res
+          .status(400)
+          .json({ error: "Bestätigungs-E-Mail Link Fehler" });
       } else {
         res.status(200).json({
-          message: "Email has been sent ,Check your Email",
+          message:
+            "Die Bestätigungs-E-Mail wurde gesendet, checken Sie Ihre E-Mails",
         });
       }
     });
     await user.save();
-    res.status(201).json({ message: "New User being added ✅", user });
+    res.status(201).json({ message: "Neuer Nutzer wurde angelegt ✅", user });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -188,7 +192,7 @@ allControllers.deleteUser = async (req, res) => {
   try {
     if (await bcrypt.compare(password, user.password)) {
       await User.findByIdAndDelete(req.id);
-      res.status(200).json({ message: "this user been deleted" });
+      res.status(200).json({ message: "this user has been deleted" });
     } else {
       res.status(400).json({ message: "false Password please repeat !" });
     }
@@ -285,7 +289,7 @@ allControllers.forgotPassword = async (req, res) => {
       subject: "Reset Your Password",
       html: `<html>
         <h2>Please click on given link to reset your password</h2
-        <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
+       <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
       </html>`,
     };
 

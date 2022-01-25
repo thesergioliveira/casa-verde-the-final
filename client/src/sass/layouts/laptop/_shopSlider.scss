@@ -1,0 +1,27 @@
+.slider-wrapper {
+  .container-btn-slider {
+    .container-btn {
+      width: 45%;
+      a {
+        button {
+          height: 2.65rem;
+          max-width: 600px;
+          font-size: 1.1rem;
+        }
+        .blur-btn {
+          height: 2.65rem;
+          max-width: 600px;
+        }
+      }
+    }
+    .container-shop-header {
+      width: 35%;
+      max-width: 400px;
+
+      h1,
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+}

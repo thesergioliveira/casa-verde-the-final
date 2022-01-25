@@ -1,12 +1,8 @@
 .products-container {
-  h2 {
-    padding-left: 2rem;
-  }
   .products {
-    justify-content: space-evenly;
-
     .container-product {
       width: 33%;
+      max-width: 16rem;
     }
   }
 }

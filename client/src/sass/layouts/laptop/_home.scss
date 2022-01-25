@@ -1,57 +1,75 @@
 .home {
+  .h3-description {
+    width: 80%;
+    h3 {
+      font-size: 1.3rem;
+      text-align: center;
+    }
+  }
 
   .home-top {
-  .roof {
-    border-width: 0 28vw 10vh;
+    .roof {
+      border-width: 0 24vw 12vh;
+    }
+
+    .laptop-width {
+      border-width: 0 15vw 10vh;
+    }
   }
-}
 
   .wrapper-btn-house {
-    width: 55vw;
+    width: 48vw;
   }
 
   .wrapper-cards {
-    @include flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 60vw;
+    width: 48vw;
 
     .card-element {
-      width: 25%;
-      height: 50vh;
-      margin: 2rem;
+      width: 100%;
       box-shadow: 0.75rem 0.75rem 1.5rem rgba(0, 0, 0);
     }
 
-    .card-top {
-      h3 {
-        font-size: 1.5rem;
-        padding-left: 0.75rem;
-      }
-    }
-
-    .container-description {
-      p {
-        font-size: 1.3rem;
-      }
-    }
-
-    .container-image {
-      img {
-        width: 10rem;
-        height: 10rem;
+    // Card Bottom (Button)
+    .container-bottom-btn {
+      a {
+        button {
+          font-size: 0.85rem;
+        }
       }
     }
   }
 
   .wrapper-event-section {
-  .container-buttons-roof {
-    .events,
-    .container-contact-btn,
-    .deco-services {
-      width: 55vw;
+    .container-buttons-roof {
+      .events,
+      .container-contact-btn,
+      .deco-services {
+        width: 40vw;
+        max-width: 550px;
+      }
     }
   }
- }
+
+  @media screen and (min-width: 1420px) {
+    .wrapper-cards {
+      .card-element {
+        width: 45%;
+      }
+    }
+  }
+  .container-img-outer {
+    .container-img-inner {
+    opacity: .8;
+      img {
+        width: 10rem;
+        height: 10rem;
+      }
+      &:hover {
+        transform: scale(2);
+        transition: .5s ease-in-out;
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+  }
 }
