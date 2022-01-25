@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import HomeData from "../JSON/home.json";
-import { v4 as uuidv4 } from "uuid";
-import TextMe from "./TextMe";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import HomeData from '../JSON/home.json';
+import { v4 as uuidv4 } from 'uuid';
+// import TextMe from "./TextMe";
 
 const Home = () => {
   const homeElements = HomeData.map((obj) => {
@@ -13,17 +13,17 @@ const Home = () => {
           <div className="container-btn-blur"></div>
           <button
             className={
-              name === "Blumenstation und Bestellungen"
-                ? "btn-shop"
-                : name === "Dekorationen und Auftragsarbeiten"
-                ? "btn-deco"
-                : name === "Veranstaltungen"
-                ? "btn-events"
-                : name === "Raumvermietung"
-                ? "btn-rental"
-                : name === "Ballett/Pilates"
-                ? "btn-ballet"
-                : "btn-technical"
+              name === 'Blumenstation und Bestellungen'
+                ? 'btn-shop'
+                : name === 'Dekorationen und Auftragsarbeiten'
+                ? 'btn-deco'
+                : name === 'Veranstaltungen'
+                ? 'btn-events'
+                : name === 'Raumvermietung'
+                ? 'btn-rental'
+                : name === 'Ballett/Pilates'
+                ? 'btn-ballet'
+                : 'btn-technical'
             }
           ></button>
 
@@ -63,17 +63,17 @@ const Home = () => {
 
         <div
           className={
-            name === "Blumenstation und Bestellungen"
-              ? "container-bottom-btn bg-shop"
-              : name === "Dekorationen und Auftragsarbeiten"
-              ? "container-bottom-btn bg-deco"
-              : name === "Veranstaltungen"
-              ? "container-bottom-btn bg-events"
-              : name === "Raumvermietung"
-              ? "container-bottom-btn bg-rental"
-              : name === "Ballett/Pilates"
-              ? "container-bottom-btn bg-ballet"
-              : "container-bottom-btn bg-technical"
+            name === 'Blumenstation und Bestellungen'
+              ? 'container-bottom-btn bg-shop'
+              : name === 'Dekorationen und Auftragsarbeiten'
+              ? 'container-bottom-btn bg-deco'
+              : name === 'Veranstaltungen'
+              ? 'container-bottom-btn bg-events'
+              : name === 'Raumvermietung'
+              ? 'container-bottom-btn bg-rental'
+              : name === 'Ballett/Pilates'
+              ? 'container-bottom-btn bg-ballet'
+              : 'container-bottom-btn bg-technical'
           }
         >
           <Link to={path}>
@@ -88,7 +88,7 @@ const Home = () => {
     <div className="home">
       <div className="bg-home">
         <img
-          src={process.env.PUBLIC_URL + "../images/bg-barrels.jpg"}
+          src={process.env.PUBLIC_URL + '../images/bg-barrels.jpg'}
           alt="barrels"
         />
       </div>
@@ -99,7 +99,7 @@ const Home = () => {
       </div>
       <div className="wrapper-btn-house">{homeElements}</div>
       <div className="wrapper-cards">{cardElements}</div>
-      <TextMe />
+      {/* <TextMe /> */}
     </div>
   );
 };
