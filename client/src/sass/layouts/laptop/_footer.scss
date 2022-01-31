@@ -1,13 +1,18 @@
 // Footer setup Laptop view
 
 footer {
-   li {
-       :hover {
-           color: $dark-green;
-       }
-   }
+  position: relative;
+  bottom: 0;
 
-   .logo-container {
+  //   margin-bottom: 5px;
+
+  li {
+    :hover {
+      color: $dark-green;
+    }
+  }
+
+  .logo-container {
     padding: 0;
- }
+  }
 }

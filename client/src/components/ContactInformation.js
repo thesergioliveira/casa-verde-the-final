@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const ContactInformation = () => {
   return (
@@ -8,7 +8,7 @@ const ContactInformation = () => {
         <h4 id="contact">Kontakt</h4>
       </div>
 
-      {/* Phone && Mail */}
+      {/* Phone && Mail && Address*/}
       <div className="contact-info">
         <div className="phone">
           <h5>Tel.</h5>
@@ -18,13 +18,11 @@ const ContactInformation = () => {
           <h5>E-Mail</h5>
           <a href="mailto:test@example.com">casa-verde@t-online.de</a>
         </div>
-
-        {/* Address */}
-      </div>
-      <div className="location">
-        <h5>Anschrift</h5>
-        <p>Hauptstraße 28A</p>
-        <p>67304 Eisenberg (Pfalz)</p>
+        <div className="location">
+          <h5>Anschrift</h5>
+          <p>Hauptstraße 28A</p>
+          <p>67304 Eisenberg (Pfalz)</p>
+        </div>
       </div>
     </div>
   );

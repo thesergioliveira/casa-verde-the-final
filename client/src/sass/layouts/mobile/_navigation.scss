@@ -6,14 +6,13 @@ header nav {
   z-index: 10;
 
   .nav-top {
-    padding: 0 .7rem;
+    padding: 0 0.7rem;
     @include flex;
     justify-content: space-between;
     height: 4rem;
   }
   .none {
-    width: 0;
-    height: 0;
+    display: none;
     transition: 0.7s;
     overflow: hidden;
   }
@@ -161,11 +160,17 @@ header nav {
     text-decoration: none;
   }
 }
-// added by me Hamza ,just at the moment to look nice we change it later
+// Sign and Sign up button design
 .nav-user {
   @include flex;
+  gap: 2%;
   justify-content: space-evenly;
-  width: 30vw;
+  width: 40vw;
+
+  a {
+    text-align: center;
+    font: $my-font;
+  }
 
   // Li setup
   li {
@@ -174,6 +179,9 @@ header nav {
     color: black;
     font-weight: bold;
     text-decoration: none;
+  }
+  :hover {
+    background-color: $cream;
   }
 }
 

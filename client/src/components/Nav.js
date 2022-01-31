@@ -1,14 +1,14 @@
-import React, { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
-import LogoData from "../JSON/logo.json";
-import Menu from "../JSON/menu.json";
-import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
-import { AuthContext } from "./AuthContext";
-import { DataContext } from "./UserContext";
-import { FiLogOut, FiSettings } from "react-icons/fi";
-import { FaUser, FaShoppingBasket } from "react-icons/fa";
-import { GoUnverified, GoVerified } from "react-icons/go";
+import React, { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import LogoData from '../JSON/logo.json';
+import Menu from '../JSON/menu.json';
+import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+import { AuthContext } from './AuthContext';
+import { DataContext } from './UserContext';
+import { FiLogOut, FiSettings } from 'react-icons/fi';
+import { FaUser, FaShoppingBasket } from 'react-icons/fa';
+import { GoUnverified, GoVerified } from 'react-icons/go';
 
 // set onClick for logo to close the menu - to do
 const Nav = () => {
@@ -26,10 +26,10 @@ const Nav = () => {
   const getData = () => {
     const config = {
       headers: {
-        authorization: localStorage.getItem("token"),
+        authorization: localStorage.getItem('token'),
       },
     };
-    axios("/user/checkAuth", config)
+    axios('/user/checkAuth', config)
       .then((res) => {
         setData(res.data);
       })
@@ -91,15 +91,15 @@ const Nav = () => {
   //logout
   const logOut = () => {
     localStorage.clear();
-    setData("");
-    setToken("");
+    setData('');
+    setToken('');
     closeMenu();
     redirect();
   };
   // redirect to login when its logged out
   let history = useHistory();
   const redirect = () => {
-    history.push("/login");
+    history.push('/login');
   };
 
   return (
@@ -118,7 +118,7 @@ const Nav = () => {
                   </li>
                 </Link>
                 <div
-                  className={closeUser ? "hamburger close" : "hamburger open"}
+                  className={closeUser ? 'hamburger close' : 'hamburger open'}
                   onClick={showEditUser}
                 >
                   <li key="51">
@@ -126,7 +126,7 @@ const Nav = () => {
                   </li>
                 </div>
                 <ul
-                  className={show ? "user-none" : "user-show"}
+                  className={show ? 'user-none' : 'user-show'}
                   onClick={showEditUser}
                 >
                   <li key="52"> WELCOME: {userName}</li>
@@ -138,26 +138,26 @@ const Nav = () => {
                   </Link>
                   <li
                     key="54"
-                    style={{ display: "flex", flexDirection: "row" }}
+                    style={{ display: 'flex', flexDirection: 'row' }}
                   >
-                    Account:{" "}
+                    Account:{' '}
                     {accountVerified ? (
-                      <GoVerified style={{ color: "green" }} />
+                      <GoVerified style={{ color: 'green' }} />
                     ) : (
                       <span>
                         <Link
                           style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            color: "red",
-                            justifyContent: "space-between",
-                            cursor: "pointer",
-                            width: "6rem",
+                            display: 'flex',
+                            flexDirection: 'row',
+                            color: 'red',
+                            justifyContent: 'space-between',
+                            cursor: 'pointer',
+                            width: '6rem',
                           }}
                           to="/ReVerifyAccount"
                         >
                           <GoUnverified />
-                          {""}
+                          {''}
                           <p>(Verify !)</p>
                         </Link>
                       </span>
@@ -172,10 +172,17 @@ const Nav = () => {
               <>
                 <Link
                   style={{
-                    color: "black",
-                    fontWeight: "bold",
-                    textDecoration: "none",
-                    width: "5.5rem",
+                    color: 'black',
+                    marginRight: '2%',
+                    padding: '3px',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    width: '5.5rem',
+                    backgroundColor: '#ff66c4b5',
+                    borderRadius: '5px',
+                    boxShadow: '2px 6px rgba(0, 0, 0,0.1)',
+                    transform: 'uppercase',
+                    cursor: 'pointer',
                   }}
                   onClick={closeMenu}
                   to="/login"
@@ -184,10 +191,15 @@ const Nav = () => {
                 </Link>
                 <Link
                   style={{
-                    color: "black",
-                    fontWeight: "bold",
-                    textDecoration: "none",
-                    width: "5.5rem",
+                    color: 'black',
+                    fontWeight: 'bold',
+                    padding: '3px',
+                    textDecoration: 'none',
+                    width: '6rem',
+                    backgroundColor: '#ffb443ca',
+                    boxShadow: '2px 6px rgba(0, 0, 0,0.1)',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
                   }}
                   onClick={closeMenu}
                   to="/register"
@@ -197,9 +209,8 @@ const Nav = () => {
               </>
             )}
           </div>
-
           <div
-            className={close ? "hamburger close" : "hamburger open"}
+            className={close ? 'hamburger close' : 'hamburger open'}
             onClick={showMenu}
           >
             <div className="menu-roof"></div>
@@ -209,7 +220,7 @@ const Nav = () => {
           </div>
         </div>
         <ul
-          className={none ? "none hide" : "show"}
+          className={none ? 'none hide' : 'show'}
           id="laptop"
           onClick={showMenu}
         >

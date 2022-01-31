@@ -1,11 +1,11 @@
 // Controller functions come here
-const { User } = require("../model/casaverdeModel");
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const { createToken } = require("../JWT-check");
-const { sign, verify } = require("jsonwebtoken");
-const _ = require("lodash");
-const nodemailer = require("nodemailer");
+const { User } = require('../model/casaverdeModel');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const { createToken } = require('../JWT-check');
+const { sign, verify } = require('jsonwebtoken');
+const _ = require('lodash');
+const nodemailer = require('nodemailer');
 const allControllers = {};
 
 // Add new User
@@ -28,46 +28,46 @@ allControllers.addUser = async (req, res) => {
       postalCode: req.body.postalCode,
       verifyAccount: false,
     });
-    const token = await sign(
-      { email: req.body.email },
-      process.env.EMAIL_VERIFY_KEY,
-      {
-        expiresIn: "20m",
-      }
-    );
+    // const token = await sign(
+    //   { email: req.body.email },
+    //   process.env.EMAIL_VERIFY_KEY,
+    //   {
+    //     expiresIn: '20m',
+    //   }
+    // );
 
-    let testAccount = nodemailer.createTestAccount();
-    let transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
-      },
-    });
-    const data = {
-      from: process.env.EMAIL,
-      to: req.body.email,
-      subject: "Bestätigen Sie Ihre E-Mail Adresse",
-      html: `<html>
-        <h2>Please click on given link to Verify your Account</h2
-        <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
-        
-      </html>`,
-    };
-    await transporter.sendMail(data, function (err, success) {
-      if (err) {
-        return res
-          .status(400)
-          .json({ error: "Bestätigungs-E-Mail Link Fehler" });
-      } else {
-        res.status(200).json({
-          message:
-            "Die Bestätigungs-E-Mail wurde gesendet, checken Sie Ihre E-Mails",
-        });
-      }
-    });
+    // let testAccount = nodemailer.createTestAccount();
+    // let transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   auth: {
+    //     user: process.env.EMAIL,
+    //     pass: process.env.PASSWORD,
+    //   },
+    // });
+    // const data = {
+    //   from: process.env.EMAIL,
+    //   to: req.body.email,
+    //   subject: 'Bestätigen Sie Ihre E-Mail Adresse',
+    //   html: `<html>
+    //     <h2>Please click on given link to Verify your Account</h2
+    //     <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
+
+    //   </html>`,
+    // };
+    // await transporter.sendMail(data, function (err, success) {
+    //   if (err) {
+    //     return res
+    //       .status(400)
+    //       .json({ error: 'Bestätigungs-E-Mail Link Fehler' });
+    //   } else {
+    //     res.status(200).json({
+    //       message:
+    //         'Die Bestätigungs-E-Mail wurde gesendet, checken Sie Ihre E-Mails',
+    //     });
+    //   }
+    // });
     await user.save();
-    res.status(201).json({ message: "Neuer Nutzer wurde angelegt ✅", user });
+    res.status(201).json({ message: 'Neuer Nutzer wurde angelegt ✅', user });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -89,13 +89,13 @@ allControllers.confirmationEmail = async (req, res) => {
       { email: user.email },
       process.env.EMAIL_VERIFY_KEY,
       {
-        expiresIn: "20m",
+        expiresIn: '20m',
       }
     );
 
     let testAccount = nodemailer.createTestAccount();
     let transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: 'gmail',
       auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
@@ -104,7 +104,7 @@ allControllers.confirmationEmail = async (req, res) => {
     const data = {
       from: process.env.EMAIL,
       to: user.email,
-      subject: "Verify Your Email",
+      subject: 'Verify Your Email',
       html: `<html>
       <h2>Please click on given link to Verify your Account</h2
       <a href="${process.env.CLIENT_URL}/verifyAccount/${token}">Verify your Email</a>
@@ -112,10 +112,10 @@ allControllers.confirmationEmail = async (req, res) => {
     };
     await transporter.sendMail(data, function (err, success) {
       if (err) {
-        return res.status(400).json({ error: "verify Email link error" });
+        return res.status(400).json({ error: 'verify Email link error' });
       } else {
         res.status(200).json({
-          message: "Email has been sent ,Check your Email",
+          message: 'Email has been sent ,Check your Email',
         });
       }
     });
@@ -130,7 +130,7 @@ allControllers.verifyAccount = async (req, res) => {
     if (token) {
       verify(token, process.env.EMAIL_VERIFY_KEY, async (err, decodedToken) => {
         if (err) {
-          return res.status(400).json({ error: "Incorrect or Expired Token" });
+          return res.status(400).json({ error: 'Incorrect or Expired Token' });
         }
         const { email } = decodedToken;
         console.log(email);
@@ -143,10 +143,10 @@ allControllers.verifyAccount = async (req, res) => {
             },
           }
         );
-        res.status(200).json({ message: "User with this email is verified" });
+        res.status(200).json({ message: 'User with this email is verified' });
       });
     } else {
-      return res.status(400).json({ error: "something went wrong !!" });
+      return res.status(400).json({ error: 'something went wrong !!' });
     }
   } catch (err) {
     res.status(err.status).json({ message: err.message });
@@ -161,7 +161,7 @@ allControllers.login = async (req, res) => {
   const user =
     (await User.findOne({ username })) || (await User.findOne({ email }));
   if (user == null) {
-    return res.status(404).json({ message: "Cannot find user" });
+    return res.status(404).json({ message: 'Cannot find user' });
   }
   try {
     if (await bcrypt.compare(password, user.password)) {
@@ -178,7 +178,7 @@ allControllers.login = async (req, res) => {
       });
     } else {
       res.json({
-        message: "Not Allowed, please check your username or password",
+        message: 'Not Allowed, please check your username or password',
       });
     }
   } catch (err) {
@@ -192,9 +192,9 @@ allControllers.deleteUser = async (req, res) => {
   try {
     if (await bcrypt.compare(password, user.password)) {
       await User.findByIdAndDelete(req.id);
-      res.status(200).json({ message: "this user has been deleted" });
+      res.status(200).json({ message: 'this user has been deleted' });
     } else {
-      res.status(400).json({ message: "false Password please repeat !" });
+      res.status(400).json({ message: 'false Password please repeat !' });
     }
   } catch (err) {
     res.status(err.status).json({ message: err.message });
@@ -205,7 +205,7 @@ allControllers.deleteUser = async (req, res) => {
 allControllers.getOneUser = async (req, res) => {
   try {
     const user = await User.findById(req.id);
-    res.json({ auth: "true", user });
+    res.json({ auth: 'true', user });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -224,7 +224,7 @@ allControllers.updateUserInfos = async (req, res) => {
         postalCode: req.body.postalCode,
       },
     });
-    res.status(200).json({ message: "user address been updated" });
+    res.status(200).json({ message: 'user address been updated' });
   } catch (error) {
     res.status(400).json({ message: err.message });
   }
@@ -235,7 +235,7 @@ allControllers.updatePassword = async (req, res) => {
   if (newPassword !== passwordConf && newPassword == undefined) {
     return res
       .status(400)
-      .json({ message: "your confirmation password failed ,please repeat" });
+      .json({ message: 'your confirmation password failed ,please repeat' });
   }
   let _id = req.id;
   const hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -247,10 +247,10 @@ allControllers.updatePassword = async (req, res) => {
           password: hashedPassword,
         },
       });
-      res.status(200).json({ message: "your password been changed" });
+      res.status(200).json({ message: 'your password been changed' });
     } else {
       res.status(400).json({
-        message: "Not Allowed, please check your password",
+        message: 'Not Allowed, please check your password',
       });
     }
   } catch (error) {
@@ -259,7 +259,10 @@ allControllers.updatePassword = async (req, res) => {
 };
 // test landing page
 allControllers.getDate = async (req, res) => {
-  res.status(200).json(req.id);
+  const date = new Date();
+  res.status(200).json({
+    message: `Connection with the DB was established, today is : ${date}`,
+  });
 };
 
 //forget password
@@ -269,15 +272,15 @@ allControllers.forgotPassword = async (req, res) => {
     if (err || !user) {
       return res
         .status(400)
-        .json({ error: "user with this email does not exist" });
+        .json({ error: 'user with this email does not exist' });
     }
     const token = sign({ _id: user._id }, process.env.RESET_PASSWORD_KEY, {
-      expiresIn: "20m",
+      expiresIn: '20m',
     });
     await user.updateOne({ resetLink: token });
     let testAccount = await nodemailer.createTestAccount();
     let transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: 'gmail',
       auth: {
         user: process.env.EMAIL, // generated ethereal user
         pass: process.env.PASSWORD, // generated ethereal password
@@ -286,7 +289,7 @@ allControllers.forgotPassword = async (req, res) => {
     const data = {
       from: process.env.EMAIL,
       to: email,
-      subject: "Reset Your Password",
+      subject: 'Reset Your Password',
       html: `<html>
         <h2>Please click on given link to reset your password</h2
        <a href="${process.env.CLIENT_URL}/resetPassword/${token}">Change your Password</a>
@@ -295,10 +298,10 @@ allControllers.forgotPassword = async (req, res) => {
 
     await transporter.sendMail(data, function (err, success) {
       if (err) {
-        return res.status(400).json({ error: "reset password link error" });
+        return res.status(400).json({ error: 'reset password link error' });
       } else {
         res.status(200).json({
-          message: "Email has been sent ,Check your Email",
+          message: 'Email has been sent ,Check your Email',
         });
       }
     });
@@ -310,7 +313,7 @@ allControllers.resetPassword = async (req, res) => {
   if (newPassword !== passwordConf) {
     return res
       .status(401)
-      .json({ error: "False Password Confirmation please repeat" });
+      .json({ error: 'False Password Confirmation please repeat' });
   }
 
   if (resetLink) {
@@ -318,23 +321,23 @@ allControllers.resetPassword = async (req, res) => {
       if (err) {
         return res
           .status(401)
-          .json({ error: "Incorrect token or it is expired" });
+          .json({ error: 'Incorrect token or it is expired' });
       }
     });
     User.findOne({ resetLink }, async (err, user) => {
       if (err || !user) {
         return res
           .status(400)
-          .json({ error: "user with this token does not exist" });
+          .json({ error: 'user with this token does not exist' });
       }
       const hashedPassword = await bcrypt.hash(newPassword, 10);
       const obj = { password: hashedPassword };
       user = _.extend(user, obj);
       user.save();
-      res.status(200).json({ message: "Your password has been changed" });
+      res.status(200).json({ message: 'Your password has been changed' });
     });
   } else {
-    return res.status(401).json({ error: "Authentication error!!!" });
+    return res.status(401).json({ error: 'Authentication error!!!' });
   }
 };
 module.exports = allControllers;
