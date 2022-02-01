@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Ballet from "./Gallery/Ballet";
-import Pilates from "./Gallery/Pilates";
-import ContactForm from "./ContactForm";
-import ContactInformation from "./ContactInformation";
-import Map from "./Map";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Ballet from './Gallery/Ballet';
+import Pilates from './Gallery/Pilates';
+import ContactForm from './ContactForm';
+import ContactInformation from './ContactInformation';
+import Map from './Map';
 
 const BalletAndPilates = () => {
   return (
@@ -17,13 +17,16 @@ const BalletAndPilates = () => {
 
       <div className="container-courses">
         <img
-          src={process.env.PUBLIC_URL + "../images/ballet_pilates.png"}
+          src={process.env.PUBLIC_URL + '../images/ballet_pilates.png'}
           alt="Aussenansicht Raumvermietung"
         />
       </div>
 
       <div className="h3-description">
-        <h3>Text für Kurse hier</h3>
+        <h3>
+          Here are some of the courses we provide, please feel free to contact
+          us for any further information
+        </h3>
       </div>
 
       <Ballet />

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import ServicesData from "../../JSON/services.json";
-import { v4 as uuidv4 } from "uuid";
-import { IoMdClose } from "react-icons/io";
+import React, { useState } from 'react';
+import ServicesData from '../../JSON/services.json';
+import { v4 as uuidv4 } from 'uuid';
+import { IoMdClose } from 'react-icons/io';
 
 const Weddings = () => {
   const [images, setImages] = useState(5);
 
-  const weddings = ServicesData.filter((obj) => obj.name === "Hochzeiten");
+  const weddings = ServicesData.filter((obj) => obj.name === 'Hochzeiten');
 
   // onClick show more images
   const showMoreImg = () => {
@@ -23,11 +23,6 @@ const Weddings = () => {
         <h3 id={linkId} key={uuidv4()}>
           {name}
         </h3>
-
-        {/* <div className="container-description">
-          <p>{description}</p>
-        </div> */}
-
         {/* Images gallery */}
         <div key={uuidv4()} className="container-img-outer">
           {imgs.map((img) => {

@@ -99,7 +99,6 @@ const Home = () => {
       </div>
       <div className="wrapper-btn-house">{homeElements}</div>
       <div className="wrapper-cards">{cardElements}</div>
-      {/* <TextMe /> */}
     </div>
   );
 };
