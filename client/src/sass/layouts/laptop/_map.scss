@@ -3,5 +3,8 @@
   padding-left: 4rem;
   iframe {
     max-width: 30rem;
+    box-shadow: inset 18px 5px 15px 15px black, 10px 12px 10px -10px black;
+    border: 2px solid rgba(128, 128, 128, 0.475);
+    border-radius: 10px;
   }
 }

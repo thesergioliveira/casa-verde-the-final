@@ -79,7 +79,7 @@ header nav {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: $cream;
-  transition: 0.7s;
+  transition: all 0.5s ease-in-out;
   z-index: 10;
 
   // Li setup
@@ -87,6 +87,7 @@ header nav {
     width: 100%;
     padding-left: 1em;
     list-style: none;
+    text-decoration: none;
   }
 
   // Link's setup
@@ -111,7 +112,7 @@ header nav {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: $cream;
-  transition: 0.7s;
+  transition: all 0.5s ease-in-out;
   overflow: hidden;
 
   // Li setup
@@ -141,7 +142,7 @@ header nav {
 // Show nav setup
 .user-show {
   z-index: 13;
-  width: 50vw;
+  width: 35vw;
   height: 20vh;
   top: 4rem;
   right: 0px;
@@ -152,12 +153,22 @@ header nav {
   justify-content: space-evenly;
   flex-direction: column;
   background-color: $cream;
-  transition: 2s;
+  transition: all 0.3s ease-in-out;
   border-radius: 5px;
+  font-size: 1.3rem;
 
+  :not(:last-child) {
+    border-bottom: 2px solid rgba(128, 128, 128, 0.674);
+    padding-bottom: 2px;
+  }
   // Link's setup
-  a {
+  a,
+  li {
     text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
+  :hover {
+    color: $dark-green;
   }
 }
 // Sign and Sign up button design
@@ -166,10 +177,12 @@ header nav {
   gap: 2%;
   justify-content: space-evenly;
   width: 40vw;
+  transition: all 0.3s ease-in-out;
 
   a {
     text-align: center;
     font: $my-font;
+    width: 100%;
   }
 
   // Li setup
@@ -179,6 +192,7 @@ header nav {
     color: black;
     font-weight: bold;
     text-decoration: none;
+    width: 100%;
   }
   :hover {
     background-color: $cream;

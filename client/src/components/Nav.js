@@ -129,11 +129,14 @@ const Nav = () => {
                   className={show ? 'user-none' : 'user-show'}
                   onClick={showEditUser}
                 >
-                  <li key="52"> WELCOME: {userName}</li>
+                  <li key="52"> WELCOME, {userName}</li>
 
                   <Link to="/settings">
                     <li key="53">
-                      Settings <FiSettings />
+                      Settings{' '}
+                      <span>
+                        <FiSettings />
+                      </span>
                     </li>
                   </Link>
                   <li
@@ -158,7 +161,7 @@ const Nav = () => {
                         >
                           <GoUnverified />
                           {''}
-                          <p>(Verify !)</p>
+                          <p>(Verify!)</p>
                         </Link>
                       </span>
                     )}

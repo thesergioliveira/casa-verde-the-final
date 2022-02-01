@@ -1,11 +1,11 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../AuthContext";
-import { Link } from "react-router-dom";
-import ShopItem from "./ShopItem";
-import ContactInformation from "../ContactInformation";
-import { BillContext } from "./TotalBillContext";
+import React from 'react';
+import axios from 'axios';
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../AuthContext';
+import { Link } from 'react-router-dom';
+import ShopItem from './ShopItem';
+import ContactInformation from '../ContactInformation';
+import { BillContext } from './TotalBillContext';
 
 const Basket = () => {
   const [data, setData] = useState([]);
@@ -19,19 +19,19 @@ const Basket = () => {
   useEffect(() => {
     const displayData = async () => {
       await axios
-        .get("user/getTheBasket", config)
+        .get('user/getTheBasket', config)
         .then((res) => {
           setData(res.data);
         })
         .catch((err) => {
-          console.log("SOS SOS SOS SOS", err.message);
+          console.log('SOS SOS SOS SOS', err.message);
         });
     };
 
     displayData();
   }, []);
 
-  let displa = "none";
+  let displa = 'none';
 
   // already bought from someone else
   let notAvailableCartItems = data.basket?.filter((item) => item.quantity <= 0);
@@ -64,17 +64,17 @@ const Basket = () => {
       ?.map((item) => item[1].price)
       .reduce((a, b) => a + b, 0);
   {
-    total > 0 ? (displa = "inline") : (displa = "none");
+    total > 0 ? (displa = 'inline') : (displa = 'none');
   }
 
   const clearSoldout = async () => {
     if (notAvailableCartItems.length > 0) {
       await notAvailableCartItems?.map((item) => {
-        console.log("CHAO");
+        console.log('CHIAO');
 
         axios
           .put(
-            "user/removeFromTheBasket",
+            'user/removeFromTheBasket',
             {
               productId: item._id,
             },
@@ -85,7 +85,7 @@ const Basket = () => {
           });
       });
     } else {
-      console.log("no items to remove");
+      console.log('no items to remove');
     }
   };
   return (
@@ -112,7 +112,7 @@ const Basket = () => {
             </li>
           ))}
           {resultNotAvailable?.map((obj, index) => (
-            <li style={{ color: "red" }} key={index}>
+            <li style={{ color: 'red' }} key={index}>
               <ShopItem obj={obj} />
             </li>
           ))}
@@ -133,7 +133,7 @@ const Basket = () => {
       <aside>
         {notDeliverable?.length ? (
           <h2 className="shipping-msg">
-            the <span>{notDeliverable?.map((item) => `${item.name},`)}</span>{" "}
+            the <span>{notDeliverable?.map((item) => `${item.name},`)}</span>{' '}
             are too sensitive to be delivered. Feel free to come from our shop
           </h2>
         ) : null}
